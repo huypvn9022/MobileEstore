@@ -1,5 +1,6 @@
 package com.mobilestore.model;
 
-public class LoaiSanPham {
 
+public class LoaiSanPham {
+	
 }
