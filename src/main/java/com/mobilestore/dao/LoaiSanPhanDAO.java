@@ -1,5 +1,9 @@
 package com.mobilestore.dao;
 
-public interface LoaiSanPhanDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mobilestore.model.LoaiSanPham;
+
+public interface LoaiSanPhanDAO extends JpaRepository<LoaiSanPham, String>{
 
 }

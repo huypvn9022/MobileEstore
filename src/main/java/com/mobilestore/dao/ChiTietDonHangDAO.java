@@ -1,5 +1,9 @@
 package com.mobilestore.dao;
 
-public interface ChiTietDonHangDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mobilestore.model.ChiTietDonHang;
+
+public interface ChiTietDonHangDAO extends JpaRepository<ChiTietDonHang, Integer>{
 
 }

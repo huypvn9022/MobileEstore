@@ -1,5 +1,9 @@
 package com.mobilestore.dao;
 
-public interface HinhAnhDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mobilestore.model.HinhAnh;
+
+public interface HinhAnhDAO extends JpaRepository<HinhAnh, Integer>{
 
 }

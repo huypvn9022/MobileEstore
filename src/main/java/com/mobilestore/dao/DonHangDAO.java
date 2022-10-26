@@ -1,5 +1,9 @@
 package com.mobilestore.dao;
 
-public interface DonHangDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mobilestore.model.DonHang;
+
+public interface DonHangDAO extends JpaRepository<DonHang, Integer>{
 
 }
