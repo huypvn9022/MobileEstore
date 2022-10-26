@@ -1,6 +1,7 @@
 package com.mobilestore.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoaiSanPham {
+	@Id
 	private String maLoai;
 	private String tenLoai;
 }
