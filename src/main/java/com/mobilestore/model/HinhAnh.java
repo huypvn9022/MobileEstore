@@ -1,20 +1,30 @@
 package com.mobilestore.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
+@Data @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name="HinhAnh")
 public class HinhAnh {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int MaHinh;
-	private int MaSP;
-	private String HinhAnh;
+	private int maHinh;
+	private int maSP;
+	private String hinhAnh;
+	
+	// san pham
+	@ManyToOne
+	@JoinColumn(name = "Ma_SP")
+	SanPham maSp;
 } 

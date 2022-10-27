@@ -1,9 +1,11 @@
 package com.mobilestore.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -24,5 +26,7 @@ public class NhanVien {
 	private Date ngaySinh;
 	private boolean chucVu;
 	
-	
+	// don hang
+	@OneToMany(mappedBy = "manv")
+	List<DonHang> donhang;
 }
