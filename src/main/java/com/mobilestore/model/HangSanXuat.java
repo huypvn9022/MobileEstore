@@ -22,6 +22,6 @@ public class HangSanXuat {
 	private String tenHang;
 	
 	//san pham
-	@OneToMany(mappedBy = "maHang")
+	@OneToMany(mappedBy = "mahang")
 	List<SanPham> sanpham;
 }

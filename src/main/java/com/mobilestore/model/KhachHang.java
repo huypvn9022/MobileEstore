@@ -27,10 +27,10 @@ public class KhachHang {
 	private String diaChi;
 
 	// binh luan
-	@OneToMany(mappedBy = "taiKhoan")
-	List<BinhLuan> binhluan;
+	@OneToMany(mappedBy = "tk")
+	List<BinhLuan> bl;
 
 	// don hang
-	@OneToMany(mappedBy = "taikhoan")
+	@OneToMany(mappedBy = "makh")
 	List<DonHang> donhang;
 }

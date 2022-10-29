@@ -21,6 +21,6 @@ public class LoaiSanPham {
 	private String maLoai;
 	private String tenLoai;
 	
-	@OneToMany(mappedBy = "maLoai")
+	@OneToMany(mappedBy = "maloai")
 	List<SanPham> sanpham;
 }

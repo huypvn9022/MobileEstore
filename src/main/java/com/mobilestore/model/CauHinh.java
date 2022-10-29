@@ -30,6 +30,6 @@ public class CauHinh {
 	private String thuongHieu;
 	
 	//san pham
-	@OneToMany(mappedBy = "maCh")
-	List<SanPham> sanpham;
+	@OneToMany(mappedBy = "mach")
+	List<SanPham> sp;
 }

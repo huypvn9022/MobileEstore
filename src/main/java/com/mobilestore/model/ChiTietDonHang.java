@@ -1,5 +1,6 @@
 package com.mobilestore.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,19 +21,18 @@ import lombok.NoArgsConstructor;
 public class ChiTietDonHang {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Mactdh")
 	private int maCTDH;
-	private int madon;
-	private int maSP;
+	@Column(name = "DonGia")
 	private Double donGia;
+	@Column(name = "SoLuong")
 	private int soLuong;
 
 	// san pham
-	@ManyToOne
-	@JoinColumn(name = "Ma_SP")
+	@ManyToOne @JoinColumn(name = "Masp")
 	SanPham masp;
 	
 	// don hang
-	@ManyToOne
-	@JoinColumn(name = "Ma_Don")
-	DonHang maDon;
+	@ManyToOne @JoinColumn(name = "MaDon")
+	DonHang madon;
 }

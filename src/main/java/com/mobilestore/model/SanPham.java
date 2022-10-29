@@ -2,7 +2,10 @@ package com.mobilestore.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,36 +22,36 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "SanPham")
 public class SanPham {
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "Masp")
 	private int maSP;
+	@Column(name = "TenSP")
 	private String tenSP;
+	@Column(name = "SoLuong")
 	private int soLuong;
+	@Column(name = "DonGia")
 	private double donGia;
+	@Column(name = "MoTa")
 	private String moTa;
+	@Column(name = "TrangThai")
 	private boolean trangThai;
-	private String mahang;
-	private int maCH;
-	private String maloai;
 	
 
 	// loai sp
-	@ManyToOne
-	@JoinColumn(name = "Ma_Loai")
-	LoaiSanPham maLoai;
+	@ManyToOne @JoinColumn(name = "Maloai")
+	LoaiSanPham maloai;
 
 	// hang san xuat
-	@ManyToOne
-	@JoinColumn(name = "Ma_Hang")
-	HangSanXuat maHang;
+	@ManyToOne @JoinColumn(name = "Mahang")
+	HangSanXuat mahang;
 	
 	// hinh anh
-	@OneToMany(mappedBy = "maSp")
+	@OneToMany(mappedBy = "masp")
 	List<HinhAnh> hinhanh;
 	
 	// cau hinh
-	@ManyToOne
-	@JoinColumn(name = "Ma_CH")
-	CauHinh maCh;
+	@ManyToOne @JoinColumn(name = "MaCH")
+	CauHinh mach;
 	
 	// chi tiet don hang
 	@OneToMany(mappedBy = "masp")
