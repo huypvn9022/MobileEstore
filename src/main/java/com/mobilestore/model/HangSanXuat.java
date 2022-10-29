@@ -2,6 +2,7 @@ package com.mobilestore.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,7 +19,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "HangSX")
 public class HangSanXuat {
 	@Id
+	@Column(name = "mahang")
 	private String maHang;
+	
+	@Column(name = "tenhang")
 	private String tenHang;
 	
 	//san pham

@@ -13,22 +13,27 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @AllArgsConstructor @NoArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name="BinhLuan")
+@Table(name = "BinhLuan")
 public class BinhLuan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Mabl")
+	@Column(name = "mabl")
 	private int maBL;
-	@Column(name = "NoiDung")
+	
+	@Column(name = "noidung")
 	private String noiDung;
-	
-	//sanpham
-	@ManyToOne @JoinColumn(name = "MaSP")
+
+	// sanpham
+	@ManyToOne
+	@JoinColumn(name = "masp")
 	SanPham sp;
-	
+
 	// khach hang
-	@ManyToOne @JoinColumn(name = "Taikhoan")
+	@ManyToOne
+	@JoinColumn(name = "taikhoan")
 	KhachHang tk;
 }

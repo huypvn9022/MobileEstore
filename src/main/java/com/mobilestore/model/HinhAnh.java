@@ -21,13 +21,14 @@ import lombok.NoArgsConstructor;
 public class HinhAnh {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Mahinh")
+	@Column(name = " mahinh")
 	private int maHinh;
-	@Column(name = "HinhAnh")
+	
+	@Column(name = "hinhanh")
 	private String hinhAnh;
 
 	// san pham
 	@ManyToOne
-	@JoinColumn(name = "Masp")
+	@JoinColumn(name = "masp")
 	SanPham masp;
 }

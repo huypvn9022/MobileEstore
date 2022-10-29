@@ -21,18 +21,20 @@ import lombok.NoArgsConstructor;
 public class ChiTietDonHang {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Mactdh")
+	@Column(name = "mactdh")
 	private int maCTDH;
-	@Column(name = "DonGia")
+	
+	@Column(name = "dongia")
 	private Double donGia;
-	@Column(name = "SoLuong")
+	
+	@Column(name = "soluong")
 	private int soLuong;
 
 	// san pham
-	@ManyToOne @JoinColumn(name = "Masp")
+	@ManyToOne @JoinColumn(name = "masp")
 	SanPham masp;
 	
 	// don hang
-	@ManyToOne @JoinColumn(name = "MaDon")
+	@ManyToOne @JoinColumn(name = "madon")
 	DonHang madon;
 }

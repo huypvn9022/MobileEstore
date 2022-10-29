@@ -23,26 +23,31 @@ import lombok.NoArgsConstructor;
 @Table(name = "SanPham")
 public class SanPham {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Masp")
+	@Column(name = "masp")
 	private int maSP;
-	@Column(name = "TenSP")
+	
+	@Column(name = "tensp")
 	private String tenSP;
-	@Column(name = "SoLuong")
+	
+	@Column(name = "soluong")
 	private int soLuong;
-	@Column(name = "DonGia")
+	
+	@Column(name = "dongia")
 	private double donGia;
-	@Column(name = "MoTa")
+	
+	@Column(name = "mota")
 	private String moTa;
-	@Column(name = "TrangThai")
+	
+	@Column(name = "trangthai")
 	private boolean trangThai;
 	
 
 	// loai sp
-	@ManyToOne @JoinColumn(name = "Maloai")
+	@ManyToOne @JoinColumn(name = "maloai")
 	LoaiSanPham maloai;
 
 	// hang san xuat
-	@ManyToOne @JoinColumn(name = "Mahang")
+	@ManyToOne @JoinColumn(name = "mahang")
 	HangSanXuat mahang;
 	
 	// hinh anh
@@ -50,7 +55,7 @@ public class SanPham {
 	List<HinhAnh> hinhanh;
 	
 	// cau hinh
-	@ManyToOne @JoinColumn(name = "MaCH")
+	@ManyToOne @JoinColumn(name = "mach")
 	CauHinh mach;
 	
 	// chi tiet don hang

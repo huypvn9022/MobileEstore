@@ -27,25 +27,28 @@ import lombok.NoArgsConstructor;
 public class DonHang {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Madon")
+	@Column(name = "madon")
 	private int maDon;
-	@Column(name = "NgayTao")
+	
+	@Column(name = "ngaytao")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngayTao;
-	@Column(name = "TongTien")
+	
+	@Column(name = "tongtien")
 	private String tongTien;
-	@Column(name = "TrangThai")
+	
+	@Column(name = "trangthai")
 	private String trangThai;
 	
 	// khach hang
 	@ManyToOne
-	@JoinColumn(name = "Makh")
+	@JoinColumn(name = "makh")
 	KhachHang makh;
 	
 	// nhan vien
 	@ManyToOne
-	@JoinColumn(name = "Manv")
+	@JoinColumn(name = "manv")
 	NhanVien manv;
 	
 	// chi tiet don hang
