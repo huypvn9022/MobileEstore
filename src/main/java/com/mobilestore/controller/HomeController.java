@@ -12,4 +12,9 @@ public class HomeController {
 		return "layout/index";
 	}
 	
+	@RequestMapping("/admin")
+	public String admin(Model model) {
+		return "admin/index";
+	}
+	
 }

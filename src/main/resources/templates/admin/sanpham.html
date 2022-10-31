@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+
+<title>Sản Phẩm</title>
+
+<!--     Fonts and icons     -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+<!-- Nucleo Icons -->
+<link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+<link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+<link href="/assets/css/upload.css" rel="stylesheet" />
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/85b9f1f1eb.js" crossorigin="anonymous"></script>
+
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+<!-- CSS Files -->
+<link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+	<aside
+		class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+		id="sidenav-main">
+		<div class="sidenav-header">
+			<i
+				class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+				aria-hidden="true" id="iconSidenav"></i> <a class="navbar-brand m-0"
+				href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
+				target="_blank"> <img src="../assets/img/logo-ct.png"
+				class="navbar-brand-img h-100" alt="main_logo"> <span
+				class="ms-1 font-weight-bold text-white">ADMIN</span>
+			</a>
+		</div>
+		<hr class="horizontal light mt-0 mb-2">
+		<div class="collapse navbar-collapse  w-auto  max-height-vh-100"
+			id="sidenav-collapse-main">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a
+					class="nav-link text-white "
+					href="/admin/index">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">dashboard</i>
+						</div> <span class="nav-link-text ms-1">Đơn Hàng</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link text-white " href="/admin/nhanvien">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">table_view</i>
+						</div> <span class="nav-link-text ms-1">Nhân Viên</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link text-white active bg-gradient-primary"
+					href="/admin/sanpham">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">receipt_long</i>
+						</div> <span class="nav-link-text ms-1">Sản Phẩm</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link text-white "
+					href="/admin/khachhang">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">person</i>
+						</div> <span class="nav-link-text ms-1">Khách Hàng</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link text-white "
+					href="/admin/thongke">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+						</div> <span class="nav-link-text ms-1">Thống Kê Doanh Thu</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link text-white "
+					href="/admin/hoadon">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">notifications</i>
+						</div> <span class="nav-link-text ms-1">Hóa Đơn</span>
+				</a></li>
+				<li class="nav-item mt-3">
+					<h6
+						class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account
+						pages</h6>
+				</li>
+				<li class="nav-item"><a class="nav-link text-white "
+					href="/admin/dangnhap">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">login</i>
+						</div> <span class="nav-link-text ms-1">Đăng Nhập</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link text-white "
+					href="/admin/dangxuat">
+						<div
+							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">logout</i>
+						</div> <span class="nav-link-text ms-1">Đăng Xuất</span>
+				</a></li>
+			</ul>
+		</div>
+	</aside>
+	<main
+		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+		<!-- Navbar -->
+		<nav
+			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+			id="navbarBlur" navbar-scroll="true">
+			<div class="container-fluid py-1 px-3">
+				<nav aria-label="breadcrumb">
+					<ol
+						class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+						<li class="breadcrumb-item text-sm"><a
+							class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+						<li class="breadcrumb-item text-sm text-dark active"
+							aria-current="page">Sản Phẩm</li>
+					</ol>
+					<h6 class="font-weight-bolder mb-0">Sản Phẩm</h6>
+				</nav>
+				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
+						<form action="/admin/sanpham/page" modelAttribute="sp">
+							<div class="input-group input-group-outline">	
+								<label class="form-label">Type here...</label> 
+								<input path="tensp" value="${tensp}" type="text" class="form-control" style="height: 40px; "/>
+									<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
+							</div>
+						</form>
+					</div>
+					<ul class="navbar-nav  justify-content-end">
+						<li class="nav-item d-flex align-items-center">
+							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0"> 
+								<i class="fa fa-user me-sm-1"></i> 
+								<a href="dangnhap.html"><span class="d-sm-inline d-none">Đăng Nhập</span></a>
+							</a> 
+						</li>
+						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+							<a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+								<div class="sidenav-toggler-inner">
+									<i class="sidenav-toggler-line"></i> 
+									<i class="sidenav-toggler-line"></i> 
+									<i class="sidenav-toggler-line"></i>
+								</div>
+						</a>
+						</li>
+						<li class="nav-item px-3 d-flex align-items-center"><a
+							href="javascript:;" class="nav-link text-body p-0"> <i
+								class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+						</a></li>
+
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- End Navbar -->
+
+		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" 
+				role="tab" aria-controls="nav-home" aria-selected="true">Quản lý sản phẩm</button>
+				<button class="nav-link" id="nav-image-tab" data-bs-toggle="tab" data-bs-target="#nav-image" type="button" role="tab"
+					aria-controls="nav-profile" aria-selected="false">Quản lý hình ảnh</button>
+				<button class="nav-link" id="nav-cauhinh-tab" data-bs-toggle="tab" data-bs-target="#nav-cauhinh" type="button" role="tab"
+				aria-controls="nav-profile" aria-selected="false">Quản lý cấu hình</button>
+			</div>
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<div class="container-fluid py-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Danh Sách Sản Phẩm</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2">
+									<div class="table-responsive p-0">
+										<table class="table align-items-center mb-0">
+											<thead>
+												<tr>
+													<th
+														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Sản Phẩm</th>
+													<th
+														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên Sản Phẩm</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số Lượng</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Đơn Giá</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tình Trạng</th>
+													<th class="text-secondary opacity-7"></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+													<p class="text-xs font-weight-bold mb-0 ms-3">masp</p>
+													</td>
+													<td>
+														<div class="d-flex px-2 py-1">
+															
+															<div class="d-flex flex-column justify-content-center">
+																<h6 class="mb-0 text-sm">tensp</h6>
+															</div>
+														</div>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xs font-weight-bold mb-0 text-secondary">so luong</h6>
+													</td>
+													<td class="align-middle text-center"><span
+														class="text-secondary text-xs font-weight-bold">don gia</span>
+													</td>
+													<td class="align-middle text-center">
+														<div>
+															<img src="../img/${sp.hinh}" class="avatar avatar-sm me-3 border-radius-lg ms-3">
+														</div>
+													</td>
+													<td class="align-middle">
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs">Del</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="text-center mt-3">
+											<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
+											<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
+											<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
+											<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2" >
+									<form action="/admin/sanpham" modelAttribute="sp"  class="text-start" style="padding: 0 200px;">
+										<div class="row">
+											<div class="col-6">
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Loại Sản Phẩm</label> 
+													<br>
+													<select path="maloai" class="form-control ms-2">
+														<option value="">SamSung</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-6">												
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Hãng sản xuất</label> 
+													<br>
+													<select path="maloai" class="form-control ms-2">
+														<option value="">Iphone</option>
+				
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="input-group input-group-outline mb-3">
+											<label class="mt-2">Tình Trạng</label> 
+											<br>
+											<select path="maloai" class="form-control ms-2">
+												<option value="">Còn Hàng</option>
+		
+											</select>
+										</div>
+										<div class="input-group input-group-outline mb-3">
+											<label class="form-label">Tên Sản Phẩm</label>
+											 <input path="tensp" type="text" class="form-control"/>
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<div class="input-group input-group-outline">
+													<label class="form-label">Số Lượng</label> 
+													<input path="soluong" type="number" class="form-control"/>
+												</div>
+											</div>
+											<div class="col-6">
+												<div class="input-group input-group-outline ">
+													<label class="form-label">Đơn Giá</label>
+													 <input path="dongia" type="text" class="form-control"/>
+												</div>
+											</div>
+										</div>
+										<div class="text-center">
+											<button formaction="/admin/sanpham/them" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+											<button formaction="/admin/sanpham/sua" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+											<button formaction="/admin/sanpham/xoa/${sp.masp}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
+											<button formaction="/admin/sanpham/moi" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+										</div>
+		
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="nav-image" role="tabpanel"  aria-labelledby="nav-image-tab">
+				<div class="container-fluid py-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Danh Sách Hình Ảnh</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2">
+									<div class="table-responsive p-0">
+										<table class="table align-items-center mb-0">
+											<thead>
+												<tr>
+													<th
+														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mã Hình</th>
+													<th
+														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên Sản Phẩm</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hình Ảnh</th>
+													<th class="text-secondary opacity-7"></th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach var="sp" items="${page.content}">
+												<tr>
+													<td>
+													<p class="text-xs font-weight-bold mb-0 ms-3">ma sp}</p>
+													</td>
+													<td>
+														<div class="d-flex px-2 py-1">
+															
+															<div class="d-flex flex-column justify-content-center">
+																<h6 class="mb-0 text-sm">ten sp</h6>
+															</div>
+														</div>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xs font-weight-bold mb-0 text-secondary">so luong</h6>
+													</td>
+													<td class="align-middle">
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs">Del</a>
+													</td>
+												</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+										<div class="text-center mt-3">
+											<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
+											<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
+											<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
+											<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2" >
+									<form action="/admin/sanpham" modelAttribute="sp"  class="text-start" style="padding: 0 200px;">
+										<div class="input-group input-group-outline mb-3">
+											<label class="mt-2">Tên Sản Phẩm</label> 
+											<br>
+											<select path="maloai" class="form-control ms-2">
+												<option value="">SamSung</option>
+		
+											</select>
+										</div>
+										<div class="input-group input-group-outline my-3 ">
+											 <div class="input-file-container">  
+												<input path="hinh" class="input-file" id="my-file" type="file" />
+												  <label tabindex="0" for="my-file" class="input-file-trigger">Chọn Hình Ảnh</label>
+											  </div>
+											  <p class="file-return"></p>
+										</div>
+		
+										<div class="text-center">
+											<button formaction="/admin/sanpham/them" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+											<button formaction="/admin/sanpham/sua" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+											<button formaction="/admin/sanpham/xoa/${sp.masp}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
+											<button formaction="/admin/sanpham/moi" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="nav-cauhinh" role="tabpanel"  aria-labelledby="nav-cauhinhh-tab">
+				<div class="container-fluid py-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Danh Sách Sản Phẩm</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2">
+									<div class="table-responsive p-0">
+										<table class="table align-items-center mb-0">
+											<thead>
+												<tr>
+													<th
+														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên Sản Phẩm</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Độ Phân Giải</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Độ Rộng</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hệ Điều Hành</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Chip</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pin</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ram</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rom</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Thương Hiệu</th>
+													<th class="text-secondary opacity-7"></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+													<h6 class="text-sm font-weight-bold mb-0 ms-2 ">ten sp</h6>
+													</td>
+													<td>
+														<div class="d-flex px-2 py-1">
+															<div class="d-flex flex-column justify-content-center">
+																<p class="mb-0 text-sm">do phan giai</p>
+															</div>	
+														</div>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xs font-weight-bold mb-0 text-secondary">do rong</h6>
+													</td>
+													<td class="align-middle text-center"><span
+														class="text-secondary text-xs font-weight-bold">he dieu hanh</span>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xs font-weight-bold mb-0 text-secondary">chip</h6>
+													</td>
+													<td class="align-middle text-center"><span
+														class="text-secondary text-xs font-weight-bold">pin</span>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xs font-weight-bold mb-0 text-secondary">ram</h6>
+													</td>
+													<td class="align-middle text-center"><span
+														class="text-secondary text-xs font-weight-bold">rom</span>
+													</td>
+													<td class="align-middle text-center">
+														<div>
+															<span class="text-secondary text-xs font-weight-bold">thung hioeu</span>
+														</div>
+													</td>
+													<td class="align-middle">
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
+														<a href="/admin/sanpham/edit/${sp.masp}" class="text-secondary font-weight-bold text-xs">Del</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="text-center mt-3">
+											<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
+											<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
+											<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
+											<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2" >
+									<form action="/admin/sanpham" modelAttribute="sp"  class="text-start" style="padding: 0 200px;">
+										<div class="input-group input-group-outline mb-3">
+											<label class="mt-2">Ten Sản Phẩm</label> 
+											<br>
+											<select path="maloai" class="form-control ms-2">
+												<option value="">SamSung</option>
+											</select>
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Thương Hiệu</label> 
+													<br>
+													<select path="maloai" class="form-control ms-2">
+														<option value="">SamSung</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-6">
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Pin </label> 
+													<br>
+													<select path="maloai" class="form-control ms-2">
+														<option value="">Iphone</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Ram</label> 
+													<br>
+													<select path="maloai" class="form-control ms-2">
+														<option value="">Iphone</option>
+				
+													</select>
+												</div>
+											</div>
+											<div class="col-6">
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Rom</label> 
+													<br>
+													<select path="maloai" class="form-control ms-2">
+														<option value="">Iphone</option>
+				
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<div class=" input-group input-group-outline mb-3">
+													<label class="form-label">Hệ Điều Hành</label> 
+													<input path="soluong" type="t" class="form-control"/>
+												</div>
+											</div>
+											<div class="col-6">
+												<div class=" input-group input-group-outline mb-3">
+													<label class="form-label">Chip</label> 
+													<input path="soluong" type="t" class="form-control"/>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<div class=" input-group input-group-outline mb-3">
+													<label class="form-label">Độ Phân Giải</label> 
+													<input path="soluong" type="t" class="form-control"/>
+												</div>
+											</div>
+											<div class="col-6">
+												<div class=" input-group input-group-outline mb-3">
+													<label class="form-label">Độ Rộng</label> 
+													<input path="soluong" type="t" class="form-control"/>
+												</div>
+											</div>
+										</div>
+										<div class="text-center">
+											<button formaction="/admin/sanpham/them" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+											<button formaction="/admin/sanpham/sua" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+											<button formaction="/admin/sanpham/xoa/${sp.masp}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
+											<button formaction="/admin/sanpham/moi" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+										</div>
+		
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer py-4  ">
+			<div class="container-fluid">
+				<div class="row align-items-center justify-content-lg-between">
+					<div class="col-lg-6 mb-lg-0 mb-4">
+						<div
+							class="copyright text-center text-sm text-muted text-lg-start">
+							@
+							<script>
+								document.write(new Date().getFullYear())
+							</script>
+							, made with <i class="fa fa-heart"></i> by <a
+								href="https://www.creative-tim.com" class="font-weight-bold"
+								target="_blank">Ken</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</main>
+
+	<div class="fixed-plugin">
+		<div th:replace="/admin/setting_web"></div>
+	</div>
+	<!--   Core JS Files   -->
+	<script src="/assets/js/core/popper.min.js"></script>
+	<script src="/assets/js/core/bootstrap.min.js"></script>
+	<script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+	<script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+	<script src="/assets/js/plugins/chartjs.min.js"></script>
+	<script>
+		var ctx = document.getElementById("chart-bars").getContext("2d");
+
+		new Chart(ctx, {
+			type : "bar",
+			data : {
+				labels : [ "M", "T", "W", "T", "F", "S", "S" ],
+				datasets : [ {
+					label : "Sales",
+					tension : 0.4,
+					borderWidth : 0,
+					borderRadius : 4,
+					borderSkipped : false,
+					backgroundColor : "rgba(255, 255, 255, .8)",
+					data : [ 50, 20, 10, 22, 50, 10, 40 ],
+					maxBarThickness : 6
+				}, ],
+			},
+			options : {
+				responsive : true,
+				maintainAspectRatio : false,
+				plugins : {
+					legend : {
+						display : false,
+					}
+				},
+				interaction : {
+					intersect : false,
+					mode : 'index',
+				},
+				scales : {
+					y : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							suggestedMin : 0,
+							suggestedMax : 500,
+							beginAtZero : true,
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+							color : "#fff"
+						},
+					},
+					x : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+				},
+			},
+		});
+
+		var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+		new Chart(ctx2, {
+			type : "line",
+			data : {
+				labels : [ "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+						"Nov", "Dec" ],
+				datasets : [ {
+					label : "Mobile apps",
+					tension : 0,
+					borderWidth : 0,
+					pointRadius : 5,
+					pointBackgroundColor : "rgba(255, 255, 255, .8)",
+					pointBorderColor : "transparent",
+					borderColor : "rgba(255, 255, 255, .8)",
+					borderColor : "rgba(255, 255, 255, .8)",
+					borderWidth : 4,
+					backgroundColor : "transparent",
+					fill : true,
+					data : [ 50, 40, 300, 320, 500, 350, 200, 230, 500 ],
+					maxBarThickness : 6
+
+				} ],
+			},
+			options : {
+				responsive : true,
+				maintainAspectRatio : false,
+				plugins : {
+					legend : {
+						display : false,
+					}
+				},
+				interaction : {
+					intersect : false,
+					mode : 'index',
+				},
+				scales : {
+					y : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+					x : {
+						grid : {
+							drawBorder : false,
+							display : false,
+							drawOnChartArea : false,
+							drawTicks : false,
+							borderDash : [ 5, 5 ]
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+				},
+			},
+		});
+
+		var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+
+		new Chart(ctx3, {
+			type : "line",
+			data : {
+				labels : [ "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+						"Nov", "Dec" ],
+				datasets : [ {
+					label : "Mobile apps",
+					tension : 0,
+					borderWidth : 0,
+					pointRadius : 5,
+					pointBackgroundColor : "rgba(255, 255, 255, .8)",
+					pointBorderColor : "transparent",
+					borderColor : "rgba(255, 255, 255, .8)",
+					borderWidth : 4,
+					backgroundColor : "transparent",
+					fill : true,
+					data : [ 50, 40, 300, 220, 500, 250, 400, 230, 500 ],
+					maxBarThickness : 6
+
+				} ],
+			},
+			options : {
+				responsive : true,
+				maintainAspectRatio : false,
+				plugins : {
+					legend : {
+						display : false,
+					}
+				},
+				interaction : {
+					intersect : false,
+					mode : 'index',
+				},
+				scales : {
+					y : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							display : true,
+							padding : 10,
+							color : '#f8f9fa',
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+					x : {
+						grid : {
+							drawBorder : false,
+							display : false,
+							drawOnChartArea : false,
+							drawTicks : false,
+							borderDash : [ 5, 5 ]
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+				},
+			},
+		});
+	</script>
+	<script>
+		var win = navigator.platform.indexOf('Win') > -1;
+		if (win && document.querySelector('#sidenav-scrollbar')) {
+			var options = {
+				damping : '0.5'
+			}
+			Scrollbar.init(document.querySelector('#sidenav-scrollbar'),
+					options);
+		}
+	</script>
+	<script type="text/javascript">
+	document.querySelector("html").classList.add('js');
+
+	var fileInput  = document.querySelector( ".input-file" ),  
+	    button     = document.querySelector( ".input-file-trigger" ),
+	    the_return = document.querySelector(".file-return");
+	      
+	button.addEventListener( "keydown", function( event ) {  
+	    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+	        fileInput.focus();  
+	    }  
+	});
+	button.addEventListener( "click", function( event ) {
+	   fileInput.focus();
+	   return false;
+	});  
+	fileInput.addEventListener( "change", function( event ) {  
+	    the_return.innerHTML = this.value;  
+	});  
+	</script>
+	<!-- Github buttons -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+	<script src="/assets/js/material-dashboard.min.js?v=3.0.2"></script>
+</body>
+
+</html>
