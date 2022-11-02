@@ -11,6 +11,10 @@ public class HomeController {
 	public String index(Model model) {
 		return "layout/index";
 	}
+	@RequestMapping("/shop-grid")
+	public String index2(Model model) {
+		return "layout/shop-grid";
+	}
 	
 	@RequestMapping("/admin")
 	public String admin(Model model) {
