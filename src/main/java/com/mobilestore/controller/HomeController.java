@@ -9,7 +9,7 @@ public class HomeController {
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
-		return "layout/DMatKhau";
+		return "layout/index";
 	}
 	@RequestMapping("/shop-grid")
 	public String index2(Model model) {
