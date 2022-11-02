@@ -27,8 +27,17 @@
   </head>
 
   <body>
-    <!-- Humberger End -->
-
+  	<!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    
+   	<!-- Responsive -->
+	<div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+		<div th:replace="/layout/humber_menu"></div>
+    </div>
+    
     <!-- Header Section Begin -->
  	<header class="header">
  		<div th:replace="/layout/header"></div>
