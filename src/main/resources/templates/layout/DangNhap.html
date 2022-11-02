@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Ogani Template" />
+    <meta name="keywords" content="Ogani, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ogani | Template</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/client/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/elegant-icons.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/nice-select.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/owl.carousel.min.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/client/css/styles.css" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+ 	<header class="header">
+ 		<div th:replace="/layout/header"></div>
+ 	</header>
+    <!-- Header Section End -->
+
+    <!--  -->
+    <div class="hero">
+      <div class="container">
+        <div id="layoutSidenav">
+          <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+              <div class="sb-sidenav-menu">
+                <div class="nav ">
+                  <div class="menu-bara">
+                    <div class="sb-sidenav-menu-heading"><img src="img/account.png" height="25px"></div>
+                    <div class="sb-sidenav-menu-heading">Tài khoản</div> 
+                </div>
+
+                  <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Thông tin tài khoản
+                  </a>
+
+                  <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Quản lý đơn hàng
+                  </a>
+
+                  <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Quên mật khẩu
+                  </a>
+
+                  <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Đổi mật khẩu
+                  </a>
+
+                  <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Đăng nhập
+                  </a>
+
+                  <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Đăng ký
+                  </a>
+
+                  <a class="nav-link" href="index.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    Đăng xuất
+                  </a>
+
+            </nav>
+          </div>
+          <div id="layoutSidenav_content">
+            <main>
+              <div class="container-fluid px-4">
+
+              <!--  -->
+              <h1 class="mt-4">Đăng nhập</h1>
+              <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active"><hr></li>
+              </ol>
+            </div>
+            <!--  -->
+            <div class="container-fluid px-4">
+              <div class="container-accout">
+              <form action="/action_page.php">
+
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Tài khoản:</label>
+                        <input
+                          type="text" 
+                          class="form-control"
+                          placeholder="Nhập tài khoản "
+                        />
+                </div>
+
+                  <div class="mb-3 ">
+                    <label for="email" class="form-label">Mật khẩu:</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Nhập mật khẩu"
+                      />
+                  </div>
+              
+
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+              </form>
+            </div>
+              
+              </div>
+            </main>
+          </div>
+        </div>
+
+      </div>
+    </div>
+ 
+          
+    <!-- Hero Section End -->
+
+    <!-- Footer Section Begin -->
+     <footer class="footer spad">
+        <div th:replace="/layout/footer"></div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="/client/js/jquery-3.3.1.min.js"></script>
+    <script src="/client/js/bootstrap.min.js"></script>
+    <script src="/client/js/jquery.nice-select.min.js"></script>
+    <script src="/client/js/jquery-ui.min.js"></script>
+    <script src="/client/js/jquery.slicknav.js"></script>
+    <script src="/client/js/mixitup.min.js"></script>
+    <script src="/client/js/owl.carousel.min.js"></script>
+    <script src="/client/js/main.js"></script>
+  </body>
+</html>
