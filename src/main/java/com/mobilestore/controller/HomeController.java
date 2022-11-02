@@ -16,6 +16,16 @@ public class HomeController {
 		return "layout/shop-grid";
 	}
 	
+	@RequestMapping("/product-details")
+	public String productDetails(Model model) {
+		return "layout/ChiTietSanPham";
+	}
+	
+	@RequestMapping("/cart")
+	public String cart(Model model) {
+		return "layout/GioHang";
+	}
+	
 	@RequestMapping("/admin")
 	public String admin(Model model) {
 		return "admin/index";
