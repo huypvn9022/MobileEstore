@@ -19,6 +19,10 @@ public class HomeController {
 	public String cart(Model model) {
 		return "layout/GioHang";
 	}
+	@RequestMapping("/product-details")
+	public String productDetails(Model model) {
+		return "layout/ChiTietGioHang";
+	}
 	
 	@RequestMapping("/admin")
 	public String admin(Model model) {
