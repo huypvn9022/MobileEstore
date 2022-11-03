@@ -15,6 +15,10 @@ public class HomeController {
 	public String index2(Model model) {
 		return "layout/shop-grid";
 	}
+	@RequestMapping("/cart")
+	public String cart(Model model) {
+		return "layout/GioHang";
+	}
 	
 	@RequestMapping("/admin")
 	public String admin(Model model) {
