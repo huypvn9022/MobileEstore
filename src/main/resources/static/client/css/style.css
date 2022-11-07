@@ -2101,12 +2101,6 @@ transparent;
   Index
 -------------------------*/
 
-.hero .container-banner{
-	margin-left: 110px;
-	margin-right: 110px;
-}
-
-
 .container .title-phone {
 	text-transform: uppercase;
 	font-size: 16px;
@@ -2163,7 +2157,7 @@ transparent;
 .container .slider-parent {
 	width: 100%;
 	height: auto;
-	background-color: #7d9ad2;
+	background-color: #1d3245;
 }
 
 .container .slider-parent .title {
@@ -2171,14 +2165,14 @@ transparent;
 	padding-top: 15px; 
 	color: white;
 	font-weight: bold;
-	font-family: 'Roboto', sans-serif;
-	font-size: 24px;
+	font-size: 30px;
 	text-transform: uppercase;
+	letter-spacing: 3px;
 }
 
 .container .slider-child {
-	background-color: #7d9ad2;
-	padding: 5px 50px 20px;
+	background-color: #1d3245;
+	margin: 5px 32px 15px;
 }
 
 .container .slider-child .row {
@@ -2194,6 +2188,11 @@ transparent;
 	background-color: white;
 	width: 20%;
 	margin-bottom: 15px;
+}
+
+.slider-parent .view-all-product .btn:hover{
+	color: white;
+	background-color: #7d9ad2;
 }
 
 /*---------------------
