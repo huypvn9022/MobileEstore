@@ -44,10 +44,7 @@ public class CauHinh {
 	@Column(name = "rom")
 	private String rom;
 	
-	@Column(name = "thuonghieu")
-	private String thuongHieu;
-	
 	//san pham
-	@OneToMany(mappedBy = "mach")
-	List<SanPham> sp;
+	@OneToMany(mappedBy = "maCH")
+	List<SanPham> sanpham;
 }

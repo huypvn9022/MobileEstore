@@ -31,15 +31,15 @@ public class KhachHang {
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "sdt")
-	private int SDT;
+	@Column(name = "sđt")
+	private int SĐT;
 	
 	@Column(name = "diachi")
 	private String diaChi;
 
 	// binh luan
-	@OneToMany(mappedBy = "tk")
-	List<BinhLuan> bl;
+	@OneToMany(mappedBy = "taikhoan")
+	List<BinhLuan> binhluan;
 
 	// don hang
 	@OneToMany(mappedBy = "makh")

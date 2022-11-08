@@ -34,8 +34,8 @@ public class NhanVien {
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "sdt")
-	private String SDT;
+	@Column(name = "sđt")
+	private String SĐT;
 	
 	@Column(name = "diachi")
 	private String diaChi;

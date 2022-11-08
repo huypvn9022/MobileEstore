@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class ChiTietDonHang {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "mactdh")
+	@Column(name = "mactđh")
 	private int maCTDH;
 	
 	@Column(name = "dongia")
@@ -32,7 +32,7 @@ public class ChiTietDonHang {
 
 	// san pham
 	@ManyToOne @JoinColumn(name = "masp")
-	SanPham masp;
+	SanPham maSP;
 	
 	// don hang
 	@ManyToOne @JoinColumn(name = "madon")

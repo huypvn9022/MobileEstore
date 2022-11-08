@@ -53,5 +53,5 @@ public class DonHang {
 	
 	// chi tiet don hang
 	@OneToMany(mappedBy = "madon")
-	List<ChiTietDonHang> ctdh;
+	List<ChiTietDonHang> chiTietDonHang;
 }

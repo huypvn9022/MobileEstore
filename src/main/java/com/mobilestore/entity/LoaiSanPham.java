@@ -13,10 +13,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@Table(name = "LoaiSP")
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "LoaiSP")
 public class LoaiSanPham {
 	@Id
 	@Column(name = "maloai")
@@ -25,6 +25,6 @@ public class LoaiSanPham {
 	@Column(name = "tenloai")
 	private String tenLoai;
 	
-	@OneToMany(mappedBy = "maloai")
+	@OneToMany(mappedBy = "maLoai")
 	List<SanPham> sanpham;
 }
