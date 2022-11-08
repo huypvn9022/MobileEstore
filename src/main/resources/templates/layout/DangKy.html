@@ -22,12 +22,11 @@
     <link rel="stylesheet" href="/client/css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="/client/css/styles_2.css" type="text/css" />
     <link rel="stylesheet" href="/client/css/style.css" type="text/css" />
-    <!-- <link rel="stylesheet" href="/client/css/styles.css" type="text/css" /> -->
     
   </head>
 
   <body>
-
+	
     <!-- Header Section Begin -->
  	<header class="header">
  		<div th:replace="/layout/header"></div>
@@ -38,66 +37,11 @@
     <div class="hero">
       <div class="container">
         <div id="layoutSidenav">
-          <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-              <div class="sb-sidenav-menu">
-                <div class="nav ">
-                    <div class="menu-bara">
-                        <div class="sb-sidenav-menu-heading"><img src="/client/img/account.png" height="25px"></div>
-                        <div class="sb-sidenav-menu-heading">Tài khoản</div> 
-                    </div>
-
-                  <a class="nav-link" href="TTTaiKhoan.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Thông tin tài khoản
-                  </a>
-
-                  <a class="nav-link" href="QLDonHang.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quản lý đơn hàng
-                  </a>
-
-                  <a class="nav-link" href="QMatKhau.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quên mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="DMatKhau.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đổi mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="DangNhap.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng nhập
-                  </a>
-
-                  <a class="nav-link" href="DangKy.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng ký
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng xuất
-                  </a>
-
-            </nav>
-          </div>
+        
+		<!-- menu -->
+		<div th:replace="/menu_client/header_account"></div>
+		<!-- end menu -->
+		
           <div id="layoutSidenav_content">
             <main>
               <div class="container-fluid px-4">
@@ -132,7 +76,7 @@
                       <div class="mb-3">
                         <label for="number" class="form-label">Số điện thoại:</label>
                             <input
-                              type="number"
+                              type="text"
                               class="form-control"
                               placeholder="Nhập số điện thoại"
                             />
@@ -155,18 +99,15 @@
                             placeholder="Nhập địa chỉ "
                           />
                       </div>
-                  <button type="submit" class="btn btn-primary">Đăng ký</button>
+                  <button type="submit" class="btn-submit ">Đăng ký</button>
                 </form>
               </div>
               </div>
             </main>
           </div>
         </div>
-
       </div>
     </div>
- 
-          
     <!-- Hero Section End -->
 
     <!-- Footer Section Begin -->

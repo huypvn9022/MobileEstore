@@ -9,7 +9,7 @@ public class HomeController {
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
-		return "layout/index";
+		return "layout/QLDonHang";
 	}
 	@RequestMapping("/shop-grid")
 	public String index2(Model model) {
@@ -23,11 +23,8 @@ public class HomeController {
 	public String productDetails(Model model) {
 		return "layout/ChiTietGioHang";
 	}
-	
 	@RequestMapping("/admin")
 	public String admin(Model model) {
 		return "admin/index";
 	}
-	
-	
 }
