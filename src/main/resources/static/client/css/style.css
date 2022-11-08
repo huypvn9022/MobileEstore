@@ -1,6 +1,41 @@
-
 @import
 	url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+/******************************************************************
+  Template Name: Ogani
+  Description:  Ogani eCommerce  HTML Template
+  Author: Colorlib
+  Author URI: https://colorlib.com
+  Version: 1.0
+  Created: Colorlib
+******************************************************************/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1.  Template default CSS
+	1.1	Variables
+	1.2	Mixins
+	1.3	Flexbox
+	1.4	Reset
+2.  Helper Css
+3.  Header Section
+4.  Hero Section
+5.  Service Section
+6.  Categories Section
+7.  Featured Section
+8.  Latest Product Section
+9.  Contact
+10.  Footer Style
+-------------------------------------------------------------------*/
+
+/*----------------------------------------*/
+/* Template default CSS
+/*----------------------------------------*/
+	
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 
 html, body {
 	height: 100%;
@@ -63,7 +98,6 @@ input:focus, select:focus, button:focus, textarea:focus {
 a:hover, a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
 }
 
 ul, ol {
@@ -245,6 +279,7 @@ transparent;
 }
 }
 
+
 /*---------------------
   Header
 -----------------------*/
@@ -411,7 +446,8 @@ transparent;
 
 .header__logo {
 	padding: 10px 20px 15px 20px;
-	font-family: 'Lobster', cursive;
+	/*font-family: 'Lobster', cursive;*/
+	font-family: 'Chewy', cursive;
 	font-size: 35px;
 }
 
@@ -501,7 +537,6 @@ transparent;
 .header__cart {
 	text-align: right;
 	padding: 24px 0;
-	margin-top: 5px;
 }
 
 .header__cart ul {
@@ -512,8 +547,9 @@ transparent;
 .header__cart ul li {
 	list-style: none;
 	display: inline-block;
-	margin-right: 15px;
+	margin-right: 10px;
 }
+
 
 .header__cart ul li:last-child {
 	margin-right: 0;
@@ -738,7 +774,6 @@ transparent;
 	display: flex;
 	align-items: center;
 	width: 100%;
-
 }
 
 .hero__text span {
@@ -804,7 +839,7 @@ transparent;
 	position: absolute;
 	left: -35px;
 	top: 50%;
-	--webkit-transform: translateY(-35px);
+	-webkit-transform: translateY(-35px);
 	background: #ffffff;
 }
 
@@ -2065,6 +2100,104 @@ transparent;
 	text-align: center;
 }
 
+/*------------------------
+  Index
+-------------------------*/
+
+.container .title-phone {
+	text-transform: uppercase;
+	font-size: 16px;
+	background-color: #7d9ad2;
+	color: white;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	font-weight: 600;
+}
+
+.border .card-body .title {
+	font-size: 15px;
+	line-height: 18px;
+	font-weight: 600;
+}
+
+.border .card-body .title-product {
+	font-size: 15px;
+	line-height: 18px;
+	font-weight: 600;
+}
+
+.border .card-body .price {
+	font-size: 14px;
+	margin-top: 5px;
+	font-weight: 500;
+}
+
+.card-body .price .price-new {
+	color: red;
+}
+
+.card-body .price .price-old {
+	margin-left: 5px;
+	text-decoration: line-through;
+}
+
+
+.card-group .row .col:hover{
+	box-shadow: 0px 0px 8px 8px rgb(234, 237, 237);
+	color: #7d9ad2;
+	cursor: pointer;	
+	margin-top: -2px !important;
+} 
+
+
+.slider-child .row .col-lg-3:hover .card-body .title{
+	cursor: pointer;	
+}
+
+.container .slider-parent {
+	width: 100%;
+	height: auto;
+	background-color: #1d3245;
+}
+
+.container .slider-parent .title {
+	text-align: center;
+	padding-top: 15px; 
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+.container .slider-child {
+	background-color: #1d3245;
+	margin: 5px 32px 15px;
+}
+
+.container .slider-child .row {
+	background-color: white;
+	padding: 18px 20px;
+}
+
+.slider-parent .view-all-product {
+	text-align: center;
+}
+
+.slider-parent .view-all-product .btn {
+	background-color: white;
+	width: 20%;
+	margin-bottom: 15px;
+}
+
+.slider-parent .view-all-product .btn:hover{
+	color: white;
+	background-color: #7d9ad2;
+}
+
 /*---------------------
   Checkout
 -----------------------*/
@@ -2678,11 +2811,9 @@ transparent;
 	font-size: 30px;
 }
 
-
 /*---------------------
   Product Details
 -----------------------*/
-
 .product-details {
 	padding-top: 50px;
 }
@@ -2711,7 +2842,7 @@ transparent;
 	margin-bottom: 16px;
 }
 
-.product__details__rating{
+.product__details__rating {
 	color: #EDBB0E;
 }
 
@@ -2892,25 +3023,25 @@ transparent;
 }
 
 .box__item.act {
-    border-color: #2f80ed;
-    color: #2f80ed;
+	border-color: #2f80ed;
+	color: #2f80ed;
 }
 
 .box__item {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    color: #333;
-    display: inline-block;
-    font-size: 13px;
-    min-width: 67px;
-    padding: 0 15px;
-    text-align: center;
-    margin-bottom: 5px;
-    margin-right: 2px;
-    vertical-align: top;
-    height: 36px;
-    line-height: 36px;
-    position: relative;
+	border: 1px solid #e0e0e0;
+	border-radius: 2px;
+	color: #333;
+	display: inline-block;
+	font-size: 13px;
+	min-width: 67px;
+	padding: 0 15px;
+	text-align: center;
+	margin-bottom: 5px;
+	margin-right: 2px;
+	vertical-align: top;
+	height: 36px;
+	line-height: 36px;
+	position: relative;
 }
 
 .box__item:hover {
@@ -2946,7 +3077,7 @@ transparent;
 }
 
 #card-reviews {
-	width: 100%; 
+	width: 100%;
 	margin-bottom: 20px;
 }
 
@@ -2987,7 +3118,7 @@ transparent;
 }
 
 .categories__slider.owl-carousel .owl-nav button {
-	font-size: 18px;
+	font-size: 20px;
 	color: #1c1c1c;
 	height: 70px;
 	width: 30px;
@@ -2996,17 +3127,16 @@ transparent;
 	border: 1px solid #ebebeb;
 	position: absolute;
 	left: -35px;
-	top: 50%;
-	--webkit-transform: translateY(-35px);
+	top: 44%;
+	-webkit-transform: translateY(-35px);
 	background: #ffffff;
 }
+
 
 .categories__slider.owl-carousel .owl-nav button.owl-next {
 	left: auto;
 	right: -35px;
 }
-
-
 
 /*---------------------
   Footer
