@@ -103,15 +103,16 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<nav class="header__menu">
-					<ul>
-						<li><a href="#">iPhone</a></li>
+					<ul class="inline-block">
+						<li th:each="hsx: ${hangsx}"><a href="#"><b th:text="${hsx.tenHang}"></b></a></li>
+						<!-- <li><a href="#">iPhone</a></li>
 						<li><a href="#">Samsung</a></li>
 						<li><a href="#">Xiaomi</a></li>
 						<li><a href="#">Oppo</a></li>
 						<li><a href="#">Nokia</a></li>
 						<li><a href="#">Vivo</a></li>
 						<li><a href="#">Realme</a></li>
-						<li><a href="#">Sony</a></li>
+						<li><a href="#">Sony</a></li> -->
 					</ul>
 				</nav>
 			</div>

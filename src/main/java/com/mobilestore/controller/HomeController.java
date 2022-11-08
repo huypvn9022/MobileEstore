@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 	
-	@RequestMapping("/index")
-	public String index(Model model) {
-		return "layout/index";
-	}
+//	@RequestMapping("/index")
+//	public String index(Model model) {
+//		return "layout/index";
+//	}
 	@RequestMapping("/shop-grid")
 	public String index2(Model model) {
 		return "layout/shop-grid";
