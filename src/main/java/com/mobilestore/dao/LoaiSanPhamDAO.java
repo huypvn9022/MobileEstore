@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.mobilestore.entity.LoaiSanPham;
 
-public interface LoaiSanPhanDAO extends JpaRepository<LoaiSanPham, String>{
+public interface LoaiSanPhamDAO extends JpaRepository<LoaiSanPham, String>{
 
 }

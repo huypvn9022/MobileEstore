@@ -48,5 +48,5 @@ public class HinhAnh {
 	// san pham
 	@ManyToOne
 	@JoinColumn(name = "masp")
-	SanPham maSP;
+	SanPham masp;
 }

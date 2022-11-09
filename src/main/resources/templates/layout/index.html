@@ -249,7 +249,7 @@
 			<div
 				class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
 				
-				<div th:each="listsp: ${listsanpham}">
+				<div th:each="listsp: ${listsp}">
 					<div class="col">
 						<div class="border product-img">
 							<!--Card image-->
@@ -260,9 +260,9 @@
 							<!--Card Body-->
 							<div class="card-body card-body-cascade text-left">
 								<!--Card Title-->
-								<h5 class="title">{{listsp.tenSP}}</h5>
+								<h5 class="title" th:text="${listsp.tenSP}"></h5>
 								<div class="price">
-									<span class="price-new">{{listsp.donGia}}</span> 
+									<span class="price-new" ></span> 
 									<span class="price-old">23.950.000đ</span>
 								</div>
 							</div>

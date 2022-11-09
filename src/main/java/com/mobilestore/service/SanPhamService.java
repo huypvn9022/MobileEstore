@@ -10,12 +10,12 @@ import com.mobilestore.entity.SanPham;
 
 @Service
 public class SanPhamService {
-	@Autowired
-	SanPhamDAO dao;
 
-	public List<SanPham> findAll() {
-		return dao.findAll();
-	}
+	@Autowired
+	SanPhamDAO spdao;
 	
+	public List<SanPham> findAll(){
+		return spdao.findAll();
+	}
 	
 }

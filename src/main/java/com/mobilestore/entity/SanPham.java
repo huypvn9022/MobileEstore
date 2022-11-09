@@ -54,21 +54,21 @@ public class SanPham implements Serializable {
 	// cau hinh
 	@ManyToOne
 	@JoinColumn(name = "mach")
-	CauHinh mach;
+	CauHinh maCH;
 	
 	// loai sp
 	@ManyToOne
 	@JoinColumn(name = "maloai")
-	LoaiSanPham maloai;
+	LoaiSanPham maLoai;
 
 	// hinh anh
 	@JsonIgnore
-	@OneToMany(mappedBy = "maSP")
+	@OneToMany(mappedBy = "masp")
 	List<HinhAnh> hinhanh;
 
 	// chi tiet don hang
 	@JsonIgnore
-	@OneToMany(mappedBy = "maSP")
+	@OneToMany(mappedBy = "masp")
 	List<ChiTietDonHang> chiTietDonHang;
 	
 }
