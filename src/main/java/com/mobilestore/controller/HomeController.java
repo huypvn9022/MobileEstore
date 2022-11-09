@@ -30,7 +30,6 @@ public class HomeController {
 	@RequestMapping("/index")
 	public String list(Model model) {
 
-//		List<LoaiSanPham> listsp = loaispService.findAll();
 		List<SanPham> listsp = spService.findAll();
 		model.addAttribute("hangsx", hangSXService.findAll());
 		model.addAttribute("listsp" ,listsp);
