@@ -248,26 +248,27 @@
 		<div class="card-group">
 			<div
 				class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
-				
-				<div th:each="listsp: ${listsp}">
-					<div class="col">
-						<div class="border product-img">
-							<!--Card image-->
-							<div class="view product-frame view-cascade overlay text-center">
-								<img class="img-fluid mt-4 img-org" width="150" height="150"
-									src="/client/img/categories/cart-1.jpg" alt="">
-							</div>
-							<!--Card Body-->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5 class="title" th:text="${listsp.tenSP}"></h5>
-								<div class="price">
-									<span class="price-new" ></span> 
-									<span class="price-old">23.950.000đ</span>
-								</div>
+
+
+				<div class="col" th:each="listsp: ${listsp}">
+					<div class="border product-img">
+						<!--Card image-->
+						<div class="view product-frame view-cascade overlay text-center">
+							<img class="img-fluid mt-4 img-org" width="150" height="150"
+								src="/client/img/product/${hinhAnh.hinhAnh1}" alt="">
+						</div>
+						<!--Card Body-->
+						<div class="card-body card-body-cascade text-left">
+							<!--Card Title-->
+							<h5 class="title text-truncate" th:text="${listsp.tenSP}"></h5>
+							<div class="price">
+								<span class="price-new"
+									th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}">đ</span>
+								<span class="price-old">23.950.000đ</span>
 							</div>
 						</div>
 					</div>
+
 				</div>
 
 			</div>

@@ -1,5 +1,7 @@
 package com.mobilestore.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "HinhAnh")
-public class HinhAnh {
+@Table(name = "Hinhanh")
+public class HinhAnh implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mahinh")
