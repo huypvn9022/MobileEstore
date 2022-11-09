@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "SanPham")
+@Table(name = "Sanpham")
 public class SanPham implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
