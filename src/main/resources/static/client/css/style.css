@@ -454,7 +454,7 @@ transparent;
 
 .header__menu {
 	text-align: center;
-	background-color: #171e2c;
+	background-color: #001933;
 	padding: 5px 0;
 }
 
@@ -2149,6 +2149,10 @@ transparent;
 	margin-top: -2px !important;
 } 
 
+.slider-child .no-gutters .col-lg-3{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
 
 .slider-child .row .col-lg-3:hover .card-body .title{
 	cursor: pointer;	
@@ -3123,16 +3127,38 @@ transparent;
 	text-align: center;
 	border: 1px solid #ebebeb;
 	position: absolute;
-	left: -35px;
+	left: 0px;
 	top: 44%;
 	-webkit-transform: translateY(-35px);
 	background: #ffffff;
 }
 
+.categories__slider.owl-carousel .owl-nav button.owl-prev{
+	border-radius: 0 30px 30px 0;
+}
+
+.categories__slider.owl-carousel .owl-nav button.owl-prev span{
+	font-size: 50px;
+	margin-top: 9px;
+	margin-right: 5px;
+	font-weight: 100;	
+}
+
+.categories__slider.owl-carousel .owl-nav button.owl-next{
+	border-radius: 30px 0 0 30px;
+}
+
+.categories__slider.owl-carousel .owl-nav button.owl-next span{
+	font-size: 50px;
+	margin-top: 9px;
+	margin-left: 7px;
+	font-weight: 100;	
+}
+
 
 .categories__slider.owl-carousel .owl-nav button.owl-next {
 	left: auto;
-	right: -35px;
+	right: 0px;
 }
 
 /*---------------------
