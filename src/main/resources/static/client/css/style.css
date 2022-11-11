@@ -32,7 +32,7 @@
 	
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 html, body {
 	height: 100%;
@@ -280,9 +280,10 @@ transparent;
 /*---------------------
   Header
 -----------------------*/
+/*
 .header {
 	background: #7d9ad2;
-}
+} */
 
 .header__top {
 	background: #f5f5f5;
@@ -442,7 +443,7 @@ transparent;
 }
 
 .header__logo {
-	padding: 10px 20px 15px 20px;
+	padding: 10px 20px;
 	/*font-family: 'Lobster', cursive;*/
 	font-family: 'Chewy', cursive;
 	font-size: 35px;
@@ -450,6 +451,7 @@ transparent;
 
 .header__logo a {
 	display: inline-block;
+	color: black;
 }
 
 .header__menu {
@@ -532,19 +534,24 @@ transparent;
 }
 
 .header__cart {
-	text-align: right;
 	padding: 24px 0;
 }
 
 .header__cart ul {
 	display: inline-block;
 	margin-right: 20px;
+	
 }
 
 .header__cart ul li {
 	list-style: none;
 	display: inline-block;
 	margin-right: 10px;
+}
+
+.header__cart ul li a{
+	color: black !important;
+	font-size: 17px;
 }
 
 
@@ -681,7 +688,6 @@ transparent;
 .hero__search__form {
 	width: 400px;
 	height: 40px;
-	border: 1px solid #ebebeb;
 	position: relative;
 	float: left;
 }
@@ -716,11 +722,11 @@ transparent;
 
 .hero__search__form form input {
 	width: 100%;
-	border: none;
-	height: 40px;
-	font-size: 14px;
+	height: 45px;
+	font-size: 17px;
 	color: black;
 	padding-left: 20px;
+	border: 1px solid #C0C0C0;
 }
 
 .hero__search__form form input::placeholder {
@@ -729,9 +735,9 @@ transparent;
 
 .hero__search__form form button {
 	position: absolute;
-	right: 0;
-	top: -1px;
-	height: 40px;
+	right: 1px;
+	top: 1px;
+	height: 42px;
 }
 
 .hero__search__phone {
@@ -2101,6 +2107,7 @@ transparent;
   Index
 -------------------------*/
 
+
 .container .title-phone {
 	text-transform: uppercase;
 	font-size: 16px;
@@ -2833,8 +2840,9 @@ transparent;
 	cursor: pointer;
 }
 
-.product__details__pic__slider.owl-carousel .owl-item img {
-	width: auto;
+.owl-carousel .owl-item img {
+	width: 210px;
+	display: inline;
 }
 
 .product__details__text h3 {
