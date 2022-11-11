@@ -23,7 +23,8 @@ public class HomeController {
 	public String productDetails(Model model) {
 		return "layout/ChiTietGioHang";
 	}
-	
-
-
+	@RequestMapping("/admin")
+	public String admin(Model model) {
+		return "admin/index";
+	}
 }

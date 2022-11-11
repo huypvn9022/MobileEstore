@@ -1,4 +1,4 @@
-package com.mobilestore.model;
+package com.mobilestore.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
