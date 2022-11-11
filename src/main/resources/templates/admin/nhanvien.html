@@ -73,13 +73,6 @@
 							<i class="material-icons opacity-10">format_textdirection_r_to_l</i>
 						</div> <span class="nav-link-text ms-1">Thống Kê Doanh Thu</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link text-white "
-					href="/admin/hoadon">
-						<div
-							class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-							<i class="material-icons opacity-10">notifications</i>
-						</div> <span class="nav-link-text ms-1">Hóa Đơn</span>
-				</a></li>
 				<li class="nav-item mt-3">
 					<h6
 						class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account
@@ -190,32 +183,33 @@
 											<th class="text-secondary opacity-7"></th>
 										</tr>
 									</thead>
-									<tbody>										<tr>
+									<tbody>	
+										<tr th:each="page : ${pages}">
 											<td>
 												<div class="d-flex px-2 py-1 ms-2">
 													<div class="d-flex flex-column justify-content-center">
-														<h6 class="mb-0 text-sm">ten</h6>
-														<p class="text-xs text-secondary mb-0">tai khoan</p>
+														<h6 class="mb-0 text-sm">[[*{hoTen}]]</h6>
+														<p class="text-xs text-secondary mb-0">[[*{taiKhoan}]]</p>
 													</div>
 												</div>
 											</td>
 											<td>
-												<p class="text-xs font-weight-bold mb-0">pass</p>
+												<p class="text-xs font-weight-bold mb-0">[[*{matKhau}]]</p>
 											</td>
 											<td class="align-middle text-center text-sm">
-												<span class="text-secondary text-xs font-weight-bold">email</span>
+												<span class="text-secondary text-xs font-weight-bold">[[*{email}]]</span>
 											</td>
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">ngay sinh </span>
+												class="text-secondary text-xs font-weight-bold">[[*{ngaySinh}]] </span>
 											</td>
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">sdt</span>
+												class="text-secondary text-xs font-weight-bold">[[*{SDT}]]</span>
 											</td>
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">dia chi</span>
+												class="text-secondary text-xs font-weight-bold">[[*{diaChi}]]</span>
 											</td>
 											<td class="align-middle text-center"><span
-												class="text-secondary text-xs font-weight-bold">chuc vu</span>
+												class="text-secondary text-xs font-weight-bold">[[*{chucVu?'Quản lý':'Nhân viên'}]]</span>
 											</td>
 											<td class="align-middle">
 											<a href="/admin/nhanvien/edit/${nv.taikhoan}" class="text-secondary font-weight-bold text-xs"

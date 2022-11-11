@@ -1,4 +1,4 @@
-package com.mobilestore.entity;
+package com.mobilestore.model;
 
 import java.util.List;
 
@@ -13,19 +13,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
+@Table(name = "Loaisp")
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "HangSX")
-public class HangSanXuat {
+public class LoaiSanPham {
 	@Id
-	@Column(name = "mahang")
-	private String maHang;
+	@Column(name = "maloai")
+	private String maLoai;
 	
-	@Column(name = "tenhang")
-	private String tenHang;
+	@Column(name = "tenloai")
+	private String tenLoai;
 	
-	//san pham
-	@OneToMany(mappedBy = "mahang")
+	@OneToMany(mappedBy = "maloai")
 	List<SanPham> sanpham;
 }
