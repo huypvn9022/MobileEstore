@@ -1,4 +1,4 @@
-package com.mobilestore.entity;
+package com.mobilestore.model;
 
 import java.util.Date;
 import java.util.List;
@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
-@Table(name="DonHang")
+@Table(name="Donhang")
 public class DonHang {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

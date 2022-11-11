@@ -1,4 +1,4 @@
-package com.mobilestore.entity;
+package com.mobilestore.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,23 +17,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "BinhLuan")
-public class BinhLuan {
+@Table(name = "Chitietdh")
+public class ChiTietDonHang {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "mabl")
-	private int maBL;
+	@Column(name = "mactdh")
+	private int maCTDH;
 	
-	@Column(name = "noidung")
-	private String noiDung;
+	@Column(name = "dongia")
+	private Double donGia;
+	
+	@Column(name = "soluong")
+	private int soLuong;
 
-	// sanpham
-	@ManyToOne
-	@JoinColumn(name = "masp")
-	SanPham sp;
-
-	// khach hang
-	@ManyToOne
-	@JoinColumn(name = "taikhoan")
-	KhachHang tk;
+	// san pham
+	@ManyToOne @JoinColumn(name = "masp")
+	SanPham masp;
+	
+	// don hang
+	@ManyToOne @JoinColumn(name = "madon")
+	DonHang madon;
 }
