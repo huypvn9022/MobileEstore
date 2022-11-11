@@ -124,10 +124,10 @@
 				</nav>
 				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
-						<form action="/admin/sanpham/page" modelAttribute="sp">
+						<form action="/admin/khachhang/search" method="post">
 							<div class="input-group input-group-outline">	
 								<label class="form-label">Type here...</label> 
-								<input path="tensp" value="" type="text" class="form-control" style="height: 40px; "/>
+								<input name="keyword" type="text" class="form-control" style="height: 40px; "/>
 									<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
 							</div>
 						</form>
@@ -178,59 +178,58 @@
 									<thead>
 										<tr>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tài Khoản</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tài Khoản</th>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Mật Khẩu</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-3">Mật Khẩu</th>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Họ Và Tên</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-3">Họ Và Tên</th>
 											<th
-												class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">SĐT</th>
+												class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-3">SĐT</th>
 											<th
-												class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Địa Chỉ</th>
+												class=" text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Địa Chỉ</th>
 											<th
-												class=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>											
+												class=" text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Email</th>											
 											<th class="text-secondary opacity-7"></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr th:each="page : ${pages}">
 											<td>
-												<p class="text-xs font-weight-bold mb-0 ms-3">tai khoan</p>
+												<p class="text-xm font-weight-bold mb-0 ms-3" th:text="${page.taiKhoan}"></p>
 											</td>
 											<td>
 												<div class="d-flex px-2 py-1">
-													
 													<div class="d-flex flex-column justify-content-center">
-														<h6 class="mb-0 text-xs text-xs font-weight-bold mb-0 text-secondary">matkhau</h6>
+														<h6 th:text="${page.matKhau}" class="mb-0 text-xm font-weight-bold mb-0 text-secondary"></h6>
 													</div>
 												</div>
 											</td>
 											<td class="align-middle text-sm ">
-												<h6 class="text-xs font-weight-bold mb-0 text-secondary ms-2">hoten</h6>
+												<h6 th:text="${page.hoTen}" class="text-xm font-weight-bold mb-0 text-secondary ms-2"></h6>
 											</td>
-											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-2">sdt</span>
+											<td class="align-middle "><span th:text="${page.SDT }"
+												class="text-secondary text-xm font-weight-bold ms-2"></span>
 											</td>
-											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-3">diachi</span>
+											<td class="align-middle "><span th:text="${page.diaChi}"
+												class="text-secondary text-xm font-weight-bold ms-3"></span>
 											</td>
-											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-3">email</span>
+											<td class="align-middle "><span th:text="${page.email}"
+												class="text-secondary text-xm font-weight-bold ms-3"></span>
 											</td>
 											<td class="align-middle">
-											<a href="/admin/khachhang/edit/${kh.taikhoankh}" class="text-secondary font-weight-bold text-xs"
+											<a th:href="|/admin/khachhang/edit/${page.taiKhoan}|" class="text-secondary font-weight-bold text-xs"
 												data-toggle="tooltip" data-original-title="Edit user">Edit </a>
-											<a href="/admin/khachhang/edit/${kh.taikhoankh}" class="text-secondary font-weight-bold text-xs ms-2"
+											<a th:href="|/admin/khachhang/delete/${page.taiKhoan}|" class="text-secondary font-weight-bold text-xs ms-2"
 												data-toggle="tooltip" data-original-title="Edit user">Del </a>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 								<div class="text-center mt-3">
-									<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
-									<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
-									<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
-									<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+									<a th:href="|/admin/khachhang?p=0|" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
+									<a th:href="|/admin/khachhang?p=${pages.number-1}|" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
+									<a th:href="|/admin/khachhang?p=${pages.number+1}|" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
+									<a th:href="|/admin/khachhang?p=${pages.totalPages-1}|" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
 								</div>
 							</div>
 						</div>
@@ -248,49 +247,52 @@
 							</div>
 						</div>
 						<div class="card-body px-0 pb-2" >
-							<form action="/admin/khachhang" modelAttribute="kh" class="text-start" style="padding: 0 200px;">
+							<h4 class="h5">[[${message}]]</h4>						
+							<form action="/admin/khachhang" th:object="${khachHang}" method="post" class="text-start" style="padding: 0 200px;">
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Tài Khoản</label> 
-											<input path="taikhoankh" type="text" class="form-control"/>
+											<input th:field="*{taiKhoan}" type="text" class="form-control"/>
+											<p th:if="${#fields.hasErrors('taiKhoan')}" th:errorclass="error" th:errors="*{taiKhoan}"></p>
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Mật Khẩu</label> 
-											<input path="matkhau" type="password" class="form-control"/>
+											<input th:field="*{matKhau}" type="text"  class="form-control"/>
+											<p th:if="${#fields.hasErrors('matKhau')}" th:errorclass="error" th:errors="*{matKhau}"></p>
 										</div>
 									</div>
 								</div>
 
 								<div class="input-group input-group-outline mt-3 mb-3">
 									<label class="form-label">Họ Và Tên</label> 
-									<input path="hoten" type="text" class="form-control"/>
+									<input th:field="*{hoTen}" type="text" class="form-control"/>
 								</div>
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline 3">
 											<label class="form-label">SĐT</label> 
-											<input path="sdt" type="text" class="form-control"/>
+											<input th:field="*{SDT}" type="text" class="form-control"/>
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Email</label>
-											<input path="email" type="email" class="form-control"/>
+											<input th:field="*{email}" type="email" class="form-control"/>
 										</div>
 									</div>
 								</div>
 								<div class="input-group input-group-outline mt-3">
 									<label class="form-label">Địa Chỉ</label>
-									 <input path="diachi" type="text" class="form-control"/>
+									 <input th:field="*{diaChi}" type="text" class="form-control"/>
 								</div>
 								<div class="text-center">
-									<button formaction="/admin/khachhang/them"  class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
-									<button formaction="/admin/khachhang/sua" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
-									<button formaction="/admin/khachhang/xoa/${kh.taikhoankh}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
-									<button formaction="/admin/khachhang/moi" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+									<button formaction="/admin/khachhang/create"  class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+									<button formaction="/admin/khachhang/update" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+									<a th:href="|/admin/khachhang/delete/${khachHang.taiKhoan}|" class="btn bg-gradient-info my-4 mb-2">Xóa</a>
+									<a th:href="|/admin/khachhang/new|" class="btn bg-gradient-danger my-4 mb-2">Mới</a>
 								</div>
 							</form>
 						</div>
@@ -590,7 +592,7 @@
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="/assets/js/material-dashboard.min.js?v=3.0.2"></script>
+	<script src="/assets/js/material-dashboard.js?v=3.0.2"></script>
 </body>
 
 </html>

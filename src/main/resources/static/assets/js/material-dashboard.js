@@ -552,6 +552,14 @@ window.onload = function() {
         this.parentElement.classList.remove('is-filled');
       }
     };
+    
+     inputs[i].onmouseover  = function(e) {
+      if (this.value != "") {
+        this.parentElement.classList.add('is-filled');
+      } else {
+        this.parentElement.classList.remove('is-filled');
+      }
+    };
 
     inputs[i].addEventListener('focusout', function(e) {
       if (this.value != "") {
