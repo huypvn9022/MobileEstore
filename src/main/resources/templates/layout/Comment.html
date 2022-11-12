@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zxx">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Ogani Template">
+<meta name="keywords" content="Ogani, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Mobile Estore</title>
+
+<!-- Google Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	rel="stylesheet">
+
+<!-- Css Styles -->
+<link rel="stylesheet" href="/client/css/bootstrap.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/font-awesome.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/elegant-icons.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/nice-select.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/jquery-ui.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/owl.carousel.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/slicknav.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/style.css" type="text/css">
+<link rel="stylesheet" href="/client/css/comment.css" type="text/css">
+
+
+</head>
+
+<body>
+
+	<!-- Header header Begin -->
+	<header class="header">
+		<div th:replace="/layout/header"></div>
+	</header>
+	<!-- Header header End -->
+	<div class="container">
+
+		<!-- form -->
+		<div class=" d-flex justify-content-center mb-5">
+			<form action="#" class="w-50">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Name" id="name">
+				</div>
+				<div class="form-group">
+					<input type="date" class="form-control" placeholder="Enter password" id="date" hidden="true"> 
+				</div>
+				<div class="form-group">
+					<textarea rows="5" cols="5" class="form-control" placeholder="Content" id="body"></textarea>
+				</div>
+				<button type="button" id="addComment" class="btn btn-secondary w-100">Send</button>
+			</form>
+		</div>
+
+		<!-- comment -->
+		<div class="commentBox">
+			<div class="comment-list"></div>
+		</div>
+	</div>
+
+
+	<!-- comment client start-->
+
+
+
+	<!-- comment client end -->
+
+
+
+
+	<!-- Footer Section Begin -->
+	<footer class="footer spad">
+		<div th:replace="/layout/footer"></div>
+	</footer>
+	<!-- Footer Section End -->
+
+	<!-- Js Plugins -->
+	<script src="/client/js/jquery-3.3.1.min.js"></script>
+	<script src="/client/js/bootstrap.min.js"></script>
+	<script src="/client/js/jquery.nice-select.min.js"></script>
+	<script src="/client/js/jquery-ui.min.js"></script>
+	<script src="/client/js/jquery.slicknav.js"></script>
+	<script src="/client/js/mixitup.min.js"></script>
+	<script src="/client/js/owl.carousel.min.js"></script>
+	<script src="/client/js/main.js"></script>
+	<script src="/client/js/comment.js"></script>
+
+
+
+</body>
+
+</html>
