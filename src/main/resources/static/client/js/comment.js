@@ -27,7 +27,8 @@ $(document).ready(function() {
 		}
 		content.push(addObj)
 		localStorage.comentData = JSON.stringify(content)
-		render(addObj);
+		render(addObj)
+		$(".commentBox").fadeIn()
 		$("#name").val('')
 		$("#date").val('')
 		$("#body").val('')
