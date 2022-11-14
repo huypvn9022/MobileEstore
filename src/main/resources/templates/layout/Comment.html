@@ -42,11 +42,18 @@
 		<div th:replace="/layout/header"></div>
 	</header>
 	<!-- Header header End -->
+	
+	<!-- comment client start-->
 	<div class="container">
+		
+		<!-- button show/hide -->
+		<div class="d-flex justify-content-start">
+			<button id="buttonToggle" class="btn btn-outline-primary">Viết bình luận</button>
+		</div>
 
 		<!-- form -->
 		<div class=" d-flex justify-content-center mb-2">
-			<form action="#" class="w-75">
+			<form action="#" class="w-75" id="panelToggle" >
 				<div class="row">
 					<div class="col-1 d-flex justify-content-center align-items-center">
 						<i class="fa fa-user-circle" aria-hidden="true"></i>
@@ -69,7 +76,6 @@
 				</div>
 			</form>
 		</div>
-
 		<!-- comment -->
 		<div class=" d-flex justify-content-center">
 			<div class="commentBox w-75">
@@ -77,17 +83,8 @@
 			</div>
 		</div>
 	</div>
-
-
-	<!-- comment client start-->
-
-
-
 	<!-- comment client end -->
-
-
-
-
+	
 	<!-- Footer Section Begin -->
 	<footer class="footer spad">
 		<div th:replace="/layout/footer"></div>
