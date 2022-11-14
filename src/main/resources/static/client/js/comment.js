@@ -18,6 +18,19 @@ $(document).ready(function() {
 	for (let i = 0; i < content.length; i++) {
 		render(content[i])
 	}
+	
+	// button toggle
+	$("#buttonToggle").click(function(){	
+		$("#panelToggle").slideToggle()
+	})
+	
+	// if content temp
+	if(content.length == 0){
+		$(".commentBox").css("display", "none")
+	} else {
+		$(".commentBox").css("display", "block")
+	}
+	
 	// action
 	$("#addComment").click(function() {
 		let addObj = {
