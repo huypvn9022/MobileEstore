@@ -15,7 +15,8 @@ body{
 	padding: 2%;
 	width: 95%;
 	height: auto;
-	border: 1px solid #eee;	
+	border: 1px solid #eee;
+	display: none;	
 }
 
 .commentBox .leftPaneImg{
