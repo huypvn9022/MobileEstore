@@ -18,26 +18,45 @@ $(document).ready(function() {
 	for (let i = 0; i < content.length; i++) {
 		render(content[i])
 	}
+	
+	// button toggle
+	$("#buttonToggle").click(function(){	
+		$("#panelToggle").slideToggle()
+	})
+	
+	// if content temp
+	if(content.length == 0){
+		$(".commentBox").css("display", "none")
+	} else {
+		$(".commentBox").css("display", "block")
+	}
+	
 	// action
 	$("#addComment").click(function() {
 		let addObj = {
-			"name": $("#name").val(),
+			"name": $("#name").val(), 
 			"date": today,
 			"body": $("#body").val()
 		}
 		content.push(addObj)
 		localStorage.comentData = JSON.stringify(content)
 		render(addObj);
+		$(".commentBox").fadeIn()
 		$("#name").val('')
 		$("#date").val('')
 		$("#body").val('')
 	})
 
 	//delete
-	for (let i = 0; i < content.length; i++) {
-		$("#delete").click(function() {
-			console.log("delete" + i)
+	$("#delete").each(function(index){
+		$(this).click(function(){
+			console.log(index)
 		})
+	})
+	
+	
+	for(let i = 0; i < content.length; i++){
+			
 	}
 
 

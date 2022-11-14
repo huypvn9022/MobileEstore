@@ -15,7 +15,8 @@ body{
 	padding: 2%;
 	width: 95%;
 	height: auto;
-	border: 1px solid #eee;	
+	border: 1px solid #eee;
+	display: none;	
 }
 
 .commentBox .leftPaneImg{
@@ -77,6 +78,10 @@ body{
 
 .clear{
 	clear: both;
+}
+
+.container form {
+	display: none;
 }
 
 .container form .row .col-1 i{
