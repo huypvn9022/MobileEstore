@@ -35,11 +35,11 @@ public class HomeController {
 	@RequestMapping("/index")
 	public String list(Model model) {
 		List<SanPham> listsp = spService.findAll();
-		SanPham sp = new SanPham();
-		List<HinhAnh> anh = sp.getHinhanh();
-//		HinhAnh img = new HinhAnh();
+//		SanPham sp = new SanPham();
+//		List<HinhAnh> hinhAnh = sp.getHinhanh();
+//		HinhAnh hinhAnh = new HinhAnh();
 		
-//		model.addAttribute("hinhAnh", anh.get);
+//		model.addAttribute("hinhAnh", hinhAnh);
 		model.addAttribute("hangsx", hangSXService.findAll());
 		model.addAttribute("listsp", listsp);
 		

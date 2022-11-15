@@ -254,8 +254,10 @@
 					<div class="border product-img">
 						<!--Card image-->
 						<div class="view product-frame view-cascade overlay text-center">
-							<img class="img-fluid mt-4 img-org" width="150" height="150"
-								src="/client/img/product/${hinhAnh.hinhAnh1}" alt="">
+							<img class="img-fluid mt-4 img-org" width="150" height="150" 
+								th:src="@{|/client/img/product/${listsp.hinhanh.hinhAnh1}|}" alt="">
+							<!-- <img class="img-fluid mt-4 img-org" width="150" height="150"
+								th:src="@{'/client/img/product/' + ${listsp.hinhanh}}"> -->
 						</div>
 						<!--Card Body-->
 						<div class="card-body card-body-cascade text-left">
