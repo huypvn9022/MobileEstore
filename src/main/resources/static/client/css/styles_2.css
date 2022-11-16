@@ -52,7 +52,6 @@
     rgba(255, 255, 255, 0.15),
     rgba(255, 255, 255, 0)
   );
-  --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -74,7 +73,6 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
@@ -2194,6 +2192,7 @@ progress {
 .form-label {
   margin-bottom: 0.5rem;
   font-weight: 500;
+  font-weight: bold;
 }
 
 .col-form-label {
@@ -5153,6 +5152,10 @@ fieldset:disabled .btn {
   flex-wrap: wrap;
   padding: 0 0;
   margin-bottom: 1rem;
+  background-color: #7d9ad2;
+  height: 2px;
+  margin-bottom: 1rem;
+  margin-top: 5px;
   list-style: none;
 }
 
@@ -7817,6 +7820,7 @@ fieldset:disabled .btn {
 
 .mt-4 {
   margin-top: 1.5rem !important;
+  text-transform: uppercase;
 }
 
 .mt-5 {
@@ -11948,16 +11952,29 @@ body {
 }
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
   padding: 1.75rem 1rem 0.75rem;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: bold;
+  font-family: sans-serif;
   text-transform: uppercase;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
   display: flex;
   align-items: center;
   padding-top: 0.75rem;
+  text-transform: uppercase;
+  font-family: sans-serif;
   padding-bottom: 0.75rem;
   position: relative;
+}
+.sb-sidenav .sb-sidenav-menu .nav .nav-link:hover{
+  color: black;
+  -webkit-transition: all, 0.1s;
+  -moz-transition: all, 0.1s;
+  -ms-transition: all, 0.1s;
+  -o-transition: all, 0.1s;
+  transition: all, 0.5s;
+  padding: 5px 0;
+  display: block;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
   font-size: 0.9rem;
@@ -11984,7 +12001,7 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #212529;
+  background-color: #7d9ad2;
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
@@ -12202,4 +12219,19 @@ body {
   width: 20px !important;
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
+}
+.container-accout{
+ padding: 0 150px 0 150px;
+}
+.container-accout .btn-submit{
+	background-color: #7d9ad2;
+	border: none;
+	padding: 10px 15px 10px 15px;
+	border-radius: 6px;
+	transition: border-color 0.5s, background-color 0.5s, color 0.5s;
+	color: white;
+	font-weight: 600;
+}
+.container-accout .btn-submit:hover{
+	background-color: black;	
 }

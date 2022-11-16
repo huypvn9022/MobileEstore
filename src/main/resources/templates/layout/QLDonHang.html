@@ -24,91 +24,23 @@
     <link rel="stylesheet" href="/client/css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="/client/css/styles_2.css" type="text/css" />
     <link rel="stylesheet" href="/client/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="/client/css/styles.css" type="text/css" />
   </head>
 
   <body>
-  	<!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-    
-   	<!-- Responsive -->
-	<div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-		<div th:replace="/layout/humber_menu"></div>
-    </div>
-    
     <!-- Header Section Begin -->
-     <header class="header">
+ 	<header class="header">
  		<div th:replace="/layout/header"></div>
  	</header>
     <!-- Header Section End -->
-
     <!--  -->
     <div class="hero">
       <div class="container">
-
         <div id="layoutSidenav">
-          <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-              <div class="sb-sidenav-menu">
-                <div class="nav ">
-                  <div class="menu-bara">
-                    <div class="sb-sidenav-menu-heading"><img src="/client/img/account.png" height="25px"></div>
-                    <div class="sb-sidenav-menu-heading">Tài khoản</div> 
-                </div>
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Thông tin tài khoản
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quản lý đơn hàng
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quên mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đổi mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng nhập
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng ký
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng xuất
-                  </a>
-
-            </nav>
-          </div>
+               
+		<!-- menu -->
+		<div th:replace="/menu_client/header_account"></div>
+		<!-- end menu -->
+		
           <div id="layoutSidenav_content">
             <main>
               <div class="container-fluid px-4">
@@ -116,8 +48,6 @@
                 <ol class="breadcrumb mb-4">
                   <li class="breadcrumb-item active">Quản lý đơn hàng</li>
                 </ol>
-              
-
               <!--  -->
               <!--start search -->
               <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -190,16 +120,12 @@
                   </tbody>
                 </table>
               </div>
-              
-              
             </main>
           </div>
         </div>
 
       </div>
     </div>
- 
-          
     <!-- Hero Section End -->
 
     <!-- Footer Section Begin -->
