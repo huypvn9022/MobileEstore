@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mobilestore.dao.HinhAnhDAO;
 import com.mobilestore.dao.SanPhamDAO;
-import com.mobilestore.entity.HinhAnh;
-import com.mobilestore.entity.LoaiSanPham;
-import com.mobilestore.entity.SanPham;
+import com.mobilestore.model.HinhAnh;
+import com.mobilestore.model.LoaiSanPham;
+import com.mobilestore.model.SanPham;
 import com.mobilestore.service.HangSanXuatService;
 import com.mobilestore.service.HinhAnhService;
 import com.mobilestore.service.LoaiSanPhamService;

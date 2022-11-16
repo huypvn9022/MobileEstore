@@ -1,4 +1,4 @@
-package com.mobilestore.entity;
+package com.mobilestore.model;
 
 import java.io.Serializable;
 import java.util.List;

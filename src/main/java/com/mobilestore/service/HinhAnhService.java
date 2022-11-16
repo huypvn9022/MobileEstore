@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mobilestore.dao.HinhAnhDAO;
-import com.mobilestore.entity.HinhAnh;
+import com.mobilestore.model.HinhAnh;
 
 @Service
 public class HinhAnhService {

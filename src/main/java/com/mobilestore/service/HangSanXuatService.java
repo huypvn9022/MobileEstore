@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mobilestore.dao.HangSanXuatDAO;
-import com.mobilestore.entity.HangSanXuat;
+import com.mobilestore.model.HangSanXuat;
 
 @Service
 public class HangSanXuatService {

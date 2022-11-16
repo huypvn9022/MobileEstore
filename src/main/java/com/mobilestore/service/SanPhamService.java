@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mobilestore.dao.SanPhamDAO;
-import com.mobilestore.entity.SanPham;
+import com.mobilestore.model.SanPham;
 
 @Service
 public class SanPhamService {
