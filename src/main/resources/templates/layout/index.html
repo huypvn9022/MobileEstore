@@ -253,12 +253,12 @@
 				<div class="col" th:each="listsp: ${listsp}">
 					<div class="border product-img">
 						<!--Card image-->
-						<div class="view product-frame view-cascade overlay text-center">
-							<img class="img-fluid mt-4 img-org" width="150" height="150" 
-								th:src="@{|/client/img/product/${listsp.hinhanh.hinhAnh1}|}" alt="">
-							<!-- <img class="img-fluid mt-4 img-org" width="150" height="150"
-								th:src="@{'/client/img/product/' + ${listsp.hinhanh}}"> -->
-						</div>
+						<th:block th:each="img: ${images}">
+							<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
+								<img class="mt-4 img-org" width="150 !important" height="150 !important"
+									th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="">
+							</div>
+						</th:block>
 						<!--Card Body-->
 						<div class="card-body card-body-cascade text-left">
 							<!--Card Title-->
@@ -270,7 +270,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 
 			</div>

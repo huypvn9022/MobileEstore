@@ -13,7 +13,7 @@ public class HinhAnhService {
 	@Autowired
 	HinhAnhDAO hinhanhdao;
 
-	public List<HinhAnh> getAnhs() {
+	public List<HinhAnh> findAll() {
 		return hinhanhdao.findAll();
 	}
 

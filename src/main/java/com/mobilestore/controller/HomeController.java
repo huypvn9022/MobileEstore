@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mobilestore.dao.HinhAnhDAO;
 import com.mobilestore.dao.SanPhamDAO;
 import com.mobilestore.entity.HinhAnh;
 import com.mobilestore.entity.LoaiSanPham;
@@ -31,15 +32,12 @@ public class HomeController {
 	@Autowired
 	HinhAnhService hinhanhService;
 	
-	
 	@RequestMapping("/index")
 	public String list(Model model) {
 		List<SanPham> listsp = spService.findAll();
-//		SanPham sp = new SanPham();
-//		List<HinhAnh> hinhAnh = sp.getHinhanh();
-//		HinhAnh hinhAnh = new HinhAnh();
-		
-//		model.addAttribute("hinhAnh", hinhAnh);
+		List<HinhAnh> images = hinhanhService.findAll();
+	
+		model.addAttribute("images", images);
 		model.addAttribute("hangsx", hangSXService.findAll());
 		model.addAttribute("listsp", listsp);
 		
