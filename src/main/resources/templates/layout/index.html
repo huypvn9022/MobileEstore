@@ -254,10 +254,12 @@
 					<div class="border product-img">
 						<!--Card image-->
 						<th:block th:each="img: ${images}">
+							<a th:href="@{|/product/detail/${listsp.maSP}|}">
 							<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
 								<img class="mt-4 img-org" width="150 !important" height="150 !important"
 									th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="">
 							</div>
+							</a>
 						</th:block>
 						<!--Card Body-->
 						<div class="card-body card-body-cascade text-left">
