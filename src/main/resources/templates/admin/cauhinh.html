@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+
+<title>Sản Phẩm - Cấu Hình</title>
+
+<!--     Fonts and icons     -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+<!-- Nucleo Icons -->
+<link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+<link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+<link href="/assets/css/upload.css" rel="stylesheet" />
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/85b9f1f1eb.js" crossorigin="anonymous"></script>
+
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+<!-- CSS Files -->
+<link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show  bg-gray-200">
+
+	<aside th:replace="/admin/header"></aside>
+	
+	<main
+		class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+		<!-- Navbar -->
+		<nav
+			class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+			id="navbarBlur" navbar-scroll="true">
+			<div class="container-fluid py-1 px-3">
+				<nav aria-label="breadcrumb">
+					<ol
+						class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+						<li class="breadcrumb-item text-sm"><a
+							class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+						<li class="breadcrumb-item text-sm text-dark active"
+							aria-current="page">Sản Phẩm - Cấu Hình</li>
+					</ol>
+					<h6 class="font-weight-bolder mb-0">Sản Phẩm - Cấu Hình</h6>
+				</nav>
+				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
+						<form action="/admin/cauhinh/search" method="post">
+							<div class="input-group input-group-outline">	
+								<label class="form-label">Type here...</label> 
+								<input name="keyword" type="text" class="form-control" style="height: 40px; "/>
+									<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
+							</div>
+						</form>
+					</div>
+					<ul class="navbar-nav  justify-content-end">
+						<li class="nav-item d-flex align-items-center">
+							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0"> 
+								<i class="fa fa-user me-sm-1"></i> 
+								<a href="dangnhap.html"><span class="d-sm-inline d-none">Đăng Nhập</span></a>
+							</a> 
+						</li>
+						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+							<a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+								<div class="sidenav-toggler-inner">
+									<i class="sidenav-toggler-line"></i> 
+									<i class="sidenav-toggler-line"></i> 
+									<i class="sidenav-toggler-line"></i>
+								</div>
+						</a>
+						</li>
+						<li class="nav-item px-3 d-flex align-items-center"><a
+							href="javascript:;" class="nav-link text-body p-0"> <i
+								class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+						</a></li>
+
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- End Navbar -->			
+			
+				<div class="container-fluid py-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Danh Sách Cấu Hình</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2">
+									<div class="table-responsive p-0">
+										<table class="table align-items-center mb-0">
+											<thead>
+												<tr>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Mã Cấu Hình</th>										
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Độ Phân Giải</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Độ Rộng</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Hệ Điều Hành</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Chip</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pin</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ram</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rom</th>
+													<th
+														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Thương Hiệu</th>
+													<th class="text-secondary opacity-7"></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="page : ${pages}">
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.maCH}]]</h6>
+													</td>												
+													<td>
+														<h6 class="text-center text-xm font-weight-bold mb-0 text-secondary">[[${page.doPhanGiai}]]</h6>												
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.doRong}]]</h6>
+													</td>
+													<td class="align-middle text-center"><span
+														class="text-secondary text-xm font-weight-bold">[[${page.heDH}]]</span>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.chip}]]</h6>
+													</td>
+													<td class="align-middle text-center"><span
+														class="text-secondary text-xm font-weight-bold">[[${page.pin}]]</span>
+													</td>
+													<td class="align-middle text-center text-sm">
+														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.ram}]]</h6>
+													</td>
+													<td class="align-middle text-center"><span
+														class="text-secondary text-xm font-weight-bold">[[${page.rom}]]</span>
+													</td>
+													<td class="align-middle text-center">
+														<div>
+															<span class="text-secondary text-xs font-weight-bold">[[${page.thuongHieu}]]</span>
+														</div>
+													</td>
+													<td class="align-middle">
+														<a th:href="@{|/admin/cauhinh/edit/${page.maCH}|}" class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
+														<a th:href="@{|/admin/cauhinh/delete/${page.maCH}|}" class="text-secondary font-weight-bold text-xs">Del</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="text-center mt-3">
+											<a th:href="@{|/admin/cauhinh?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
+											<a th:href="@{|/admin/cauhinh?p=${pages.getNumber() > 0 ? pages.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
+											<a th:href="@{|/admin/cauhinh?p=${pages.getNumber() < pages.getTotalPages() -1 ? pages.getNumber() + 1 : pages.getTotalPages() -1}|}"
+												class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
+											<a th:href="@{|/admin/cauhinh?p=${pages.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
+									</div>
+								</div>
+								<div class="card-body px-0 pb-2" >
+									<h6 class="text-center text-danger mb-3" th:text="${message}"></h6>						
+									<form action="/admin/sanpham" th:object="${cauhinh}" method="post" class="text-start" style="padding: 0 200px;">
+										<div class=" input-group input-group-outline mb-3">
+											<label class="form-label">Mã Cấu Hình</label> 
+											<input th:field="*{maCH}" type="text" class="form-control" readonly/>
+										</div>																		
+										<div class="row">
+											<div class="col-6">
+												<div class="input-group input-group-outline mb-3">
+													<label class="mt-2">Thương Hiệu</label> 
+													<br>
+													<select th:field="*{thuongHieu}" class="form-control ms-2">
+														<option th:each="item : ${hangsx}" th:value="${item.tenHang}">[[${item.tenHang}]]</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-6">
+												<div class=" input-group input-group-outline ">
+													<label class="form-label">Pin</label> 
+													<input th:field="*{pin}" type="text" class="form-control"/>
+												</div>
+												<p th:if="${#fields.hasErrors('pin')}" th:errors="*{pin}" class="text-danger mb-0"></p>										
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-6">
+												<div class="input-group input-group-outline ">
+													<label class="mt-2">Ram</label> 
+													<br>
+													<select th:field="*{ram}" class="form-control ms-2">
+														<option value="4 GB">4 GB</option>
+														<option value="6 GB">6 GB</option>
+														<option value="8 GB">8 GB</option>
+														<option value="12 GB">12 GB</option>
+														<option value="16 GB">16 GB</option>
+														<option value="32 GB">32 GB</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-6">
+												<div class="input-group input-group-outline ">
+													<label class="mt-2">Rom</label> 
+													<br>
+													<select th:field="*{rom}" class="form-control ms-2">
+														<option value="32 GB">32 GB</option>
+														<option value="64 GB">64 GB</option>
+														<option value="128 GB">128 GB</option>
+														<option value="256 GB">256 GB</option>
+														<option value="512 GB">512 GB</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-6">
+												<div class=" input-group input-group-outline ">
+													<label class="form-label">Hệ Điều Hành</label> 
+													<input th:field="*{heDH}" type="text" class="form-control"/>
+												</div>
+												<p th:if="${#fields.hasErrors('heDH')}" th:errors="*{heDH}" class="text-danger mb-0"></p>										
+											</div>
+											<div class="col-6">
+												<div class=" input-group input-group-outline ">
+													<label class="form-label">Chip</label> 
+													<input th:field="*{chip}" type="text" class="form-control"/>
+												</div>
+												<p th:if="${#fields.hasErrors('chip')}" th:errors="*{chip}" class="text-danger mb-0"></p>																				
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<div class=" input-group input-group-outline ">
+													<label class="form-label">Độ Phân Giải</label> 
+													<input th:field="*{doPhanGiai}" type="text" class="form-control"/>
+												</div>
+												<p th:if="${#fields.hasErrors('doPhanGiai')}" th:errors="*{doPhanGiai}" class="text-danger mb-0"></p>																						
+											</div>
+											<div class="col-6">
+												<div class=" input-group input-group-outline ">
+													<label class="form-label">Độ Rộng</label> 
+													<input th:field="*{doRong}" type="text" class="form-control"/>
+												</div>
+												<p th:if="${#fields.hasErrors('doRong')}" th:errors="*{doRong}" class="text-danger mb-0"></p>										
+											</div>
+										</div>
+										<div class="text-center">
+											<button formaction="/admin/cauhinh/create" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
+											<button formaction="/admin/cauhinh/update" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
+											<button th:formaction="@{|/admin/cauhinh/delete/${cauhinh.maCH}|}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
+											<button formaction="/admin/cauhinh/new" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
+										</div>
+		
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+		<footer class="footer py-4  ">
+			<div class="container-fluid">
+				<div class="row align-items-center justify-content-lg-between">
+					<div class="col-lg-6 mb-lg-0 mb-4">
+						<div
+							class="copyright text-center text-sm text-muted text-lg-start">
+							@
+							<script>
+								document.write(new Date().getFullYear())
+							</script>
+							, made with <i class="fa fa-heart"></i> by <a
+								href="https://www.creative-tim.com" class="font-weight-bold"
+								target="_blank">Ken</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</main>
+
+	<div class="fixed-plugin">
+		<div th:replace="/admin/setting_web"></div>
+	</div>
+	<!--   Core JS Files   -->
+	<script src="/assets/js/core/popper.min.js"></script>
+	<script src="/assets/js/core/bootstrap.min.js"></script>
+	<script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+	<script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+	<script src="/assets/js/plugins/chartjs.min.js"></script>
+	<script>
+		var ctx = document.getElementById("chart-bars").getContext("2d");
+
+		new Chart(ctx, {
+			type : "bar",
+			data : {
+				labels : [ "M", "T", "W", "T", "F", "S", "S" ],
+				datasets : [ {
+					label : "Sales",
+					tension : 0.4,
+					borderWidth : 0,
+					borderRadius : 4,
+					borderSkipped : false,
+					backgroundColor : "rgba(255, 255, 255, .8)",
+					data : [ 50, 20, 10, 22, 50, 10, 40 ],
+					maxBarThickness : 6
+				}, ],
+			},
+			options : {
+				responsive : true,
+				maintainAspectRatio : false,
+				plugins : {
+					legend : {
+						display : false,
+					}
+				},
+				interaction : {
+					intersect : false,
+					mode : 'index',
+				},
+				scales : {
+					y : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							suggestedMin : 0,
+							suggestedMax : 500,
+							beginAtZero : true,
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+							color : "#fff"
+						},
+					},
+					x : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+				},
+			},
+		});
+
+		var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+		new Chart(ctx2, {
+			type : "line",
+			data : {
+				labels : [ "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+						"Nov", "Dec" ],
+				datasets : [ {
+					label : "Mobile apps",
+					tension : 0,
+					borderWidth : 0,
+					pointRadius : 5,
+					pointBackgroundColor : "rgba(255, 255, 255, .8)",
+					pointBorderColor : "transparent",
+					borderColor : "rgba(255, 255, 255, .8)",
+					borderColor : "rgba(255, 255, 255, .8)",
+					borderWidth : 4,
+					backgroundColor : "transparent",
+					fill : true,
+					data : [ 50, 40, 300, 320, 500, 350, 200, 230, 500 ],
+					maxBarThickness : 6
+
+				} ],
+			},
+			options : {
+				responsive : true,
+				maintainAspectRatio : false,
+				plugins : {
+					legend : {
+						display : false,
+					}
+				},
+				interaction : {
+					intersect : false,
+					mode : 'index',
+				},
+				scales : {
+					y : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+					x : {
+						grid : {
+							drawBorder : false,
+							display : false,
+							drawOnChartArea : false,
+							drawTicks : false,
+							borderDash : [ 5, 5 ]
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+				},
+			},
+		});
+
+		var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+
+		new Chart(ctx3, {
+			type : "line",
+			data : {
+				labels : [ "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct",
+						"Nov", "Dec" ],
+				datasets : [ {
+					label : "Mobile apps",
+					tension : 0,
+					borderWidth : 0,
+					pointRadius : 5,
+					pointBackgroundColor : "rgba(255, 255, 255, .8)",
+					pointBorderColor : "transparent",
+					borderColor : "rgba(255, 255, 255, .8)",
+					borderWidth : 4,
+					backgroundColor : "transparent",
+					fill : true,
+					data : [ 50, 40, 300, 220, 500, 250, 400, 230, 500 ],
+					maxBarThickness : 6
+
+				} ],
+			},
+			options : {
+				responsive : true,
+				maintainAspectRatio : false,
+				plugins : {
+					legend : {
+						display : false,
+					}
+				},
+				interaction : {
+					intersect : false,
+					mode : 'index',
+				},
+				scales : {
+					y : {
+						grid : {
+							drawBorder : false,
+							display : true,
+							drawOnChartArea : true,
+							drawTicks : false,
+							borderDash : [ 5, 5 ],
+							color : 'rgba(255, 255, 255, .2)'
+						},
+						ticks : {
+							display : true,
+							padding : 10,
+							color : '#f8f9fa',
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+					x : {
+						grid : {
+							drawBorder : false,
+							display : false,
+							drawOnChartArea : false,
+							drawTicks : false,
+							borderDash : [ 5, 5 ]
+						},
+						ticks : {
+							display : true,
+							color : '#f8f9fa',
+							padding : 10,
+							font : {
+								size : 14,
+								weight : 300,
+								family : "Roboto",
+								style : 'normal',
+								lineHeight : 2
+							},
+						}
+					},
+				},
+			},
+		});
+	</script>
+	<script>
+		var win = navigator.platform.indexOf('Win') > -1;
+		if (win && document.querySelector('#sidenav-scrollbar')) {
+			var options = {
+				damping : '0.5'
+			}
+			Scrollbar.init(document.querySelector('#sidenav-scrollbar'),
+					options);
+		}
+	</script>
+	<script type="text/javascript">
+	document.querySelector("html").classList.add('js');
+
+	var fileInput  = document.querySelector( ".input-file" ),  
+	    button     = document.querySelector( ".input-file-trigger" ),
+	    the_return = document.querySelector(".file-return");
+	      
+	button.addEventListener( "keydown", function( event ) {  
+	    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+	        fileInput.focus();  
+	    }  
+	});
+	button.addEventListener( "click", function( event ) {
+	   fileInput.focus();
+	   return false;
+	});  
+	fileInput.addEventListener( "change", function( event ) {  
+	    the_return.innerHTML = this.value;  
+	});  
+	</script>
+	<!-- Github buttons -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+	<script src="/assets/js/material-dashboard.js?v=3.0.2"></script>
+</body>
+
+</html>

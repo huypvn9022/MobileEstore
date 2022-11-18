@@ -1,5 +1,6 @@
 package com.mobilestore.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name="Donhang")
-public class DonHang {
+public class DonHang  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "madon")
@@ -33,10 +34,10 @@ public class DonHang {
 	@Column(name = "ngaytao")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date ngayTao;
+	private Date ngayTao = new Date();
 	
 	@Column(name = "tongtien")
-	private String tongTien;
+	private double tongTien;
 	
 	@Column(name = "trangthai")
 	private String trangThai;
@@ -52,6 +53,6 @@ public class DonHang {
 	NhanVien manv;
 	
 	// chi tiet don hang
-	@OneToMany(mappedBy = "madon")
+	@OneToMany(mappedBy = "madh")
 	List<ChiTietDonHang> ctdh;
 }

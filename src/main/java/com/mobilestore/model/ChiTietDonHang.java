@@ -1,5 +1,7 @@
 package com.mobilestore.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "Chitietdh")
-public class ChiTietDonHang {
+public class ChiTietDonHang implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mactdh")
@@ -32,9 +34,9 @@ public class ChiTietDonHang {
 
 	// san pham
 	@ManyToOne @JoinColumn(name = "masp")
-	SanPham masp;
+	 SanPham masp;
 	
 	// don hang
 	@ManyToOne @JoinColumn(name = "madon")
-	DonHang madon;
+	DonHang madh;
 }
