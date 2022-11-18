@@ -74,42 +74,6 @@
 		</section>
 		<!-- Hero Section End -->
 
-<<<<<<< HEAD
-<!-- Css Styles -->
-<link rel="stylesheet" href="/client/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/slicknav.min.css"
-	type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<link rel="stylesheet" href="/client/css/style.css" type="text/css">
-<!-- <link rel="stylesheet" href="/client/css/header.css" type="text/css"> -->
-</head>
-
-<body ng-app="mobile-estore-app" ng-controller="mobile-estore-ctrl">
-
-	<!-- Header header Begin -->
-	<header class="header">
-		<div th:replace="/layout/header"></div>
-	</header>
-	<!-- Header header End -->
-
-	<!-- Hero Section Begin -->
-	<section class="hero mb-5">
-=======
-		<!-- Categories Section Begin -->
-		<!-- Categories Section End -->
-
->>>>>>> 5c3ccbade905334e1e715536e8935b1d1101eb23
 		<div class="container">
 			<div class="slider-parent">
 				<div class="title">sản phẩm bán chạy</div>
@@ -247,9 +211,7 @@
 							<!--Card image-->
 							<th:block th:each="img: ${images}">
 								<a th:href="@{|/product/detail/${listsp.maSP}|}">
-									<div
-										class="view product-frame view-cascade overlay text-center"
-										th:if="${img.masp.maSP == listsp.maSP}">
+									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
 										<img class="mt-4 img-org" width="150 !important"
 											height="150 !important"
 											th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="">
@@ -273,7 +235,6 @@
 			</div>
 		</div>
 		<!-- View Product End -->
-
 
 		<!-- Title Desgn Start -->
 		<div class="container mb-4 mt-5">
@@ -385,37 +346,6 @@
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
-	</div>
-	<!-- View Product End -->
-
-
-
-
-
-	<!-- Footer Section Begin -->
-	<footer class="footer spad">
-		<div th:replace="/layout/footer"></div>
-	</footer>
-	<!-- Footer Section End -->
-
-	<!-- Js Plugins -->
-	<script src="/client/js/jquery-3.3.1.min.js"></script>
-	<script src="/client/js/bootstrap.min.js"></script>
-	<script src="/client/js/jquery.nice-select.min.js"></script>
-	<script src="/client/js/jquery-ui.min.js"></script>
-	<script src="/client/js/jquery.slicknav.js"></script>
-	<script src="/client/js/mixitup.min.js"></script>
-	<script src="/client/js/owl.carousel.min.js"></script>
-	<script src="/client/js/main.js"></script>
-	<script src="/client/js/mobile-cart.js"></script>
-
-
-</body>
-
-</html>
-=======
 		<!-- View Product End -->
 	</main>
 </div>
->>>>>>> 5c3ccbade905334e1e715536e8935b1d1101eb23
