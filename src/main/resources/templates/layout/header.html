@@ -100,7 +100,9 @@
 			<div class="col-lg-12">
 				<nav class="header__menu">
 					<ul class="inline-block">
-						<li th:each="hsx: ${hangsx}"><a href="#"><b th:text="${hsx.tenHang}"></b></a></li>
+						<th:block th:each="h:${hangsx}">
+							<li><a href="#"><b th:text="${h.tenHang}"></b></a></li>
+						</th:block>
 					</ul>
 				</nav>
 			</div>

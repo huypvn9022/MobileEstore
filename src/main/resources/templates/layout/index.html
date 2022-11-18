@@ -1,19 +1,80 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="zxx">
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
+	<main>
+		<!-- Hero Section Begin -->
+		<section class="hero mb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-8">
+						<div id="carouselExampleIndicators" class="carousel slide"
+							data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img class="d-block w-100" src="/client/img/hero/banner-1.jpg"
+										alt="First slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" src="/client/img/hero/banner-2.jpg"
+										alt="Second slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" src="/client/img/hero/banner-3.jpg"
+										alt="Third slide">
+								</div>
+							</div>
+							<ol class="carousel-indicators">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0"
+									class="active"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+							</ol>
+							<a class="carousel-control-prev"
+								href="#carouselExampleIndicators" role="button"
+								data-slide="prev"> <span class="carousel-control-prev-icon"
+								aria-hidden="true"></span> <span class="sr-only">Previous</span>
+							</a> <a class="carousel-control-next"
+								href="#carouselExampleIndicators" role="button"
+								data-slide="next"> <span class="carousel-control-next-icon"
+								aria-hidden="true"></span> <span class="sr-only">Next</span>
+							</a>
+						</div>
 
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="Ogani Template">
-<meta name="keywords" content="Ogani, unica, creative, html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Mobile Estore</title>
+					</div>
 
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
-	rel="stylesheet">
+					<div class="col-4">
+						<div class="row">
+							<div class="col-md-6 pl-0">
+								<a href="https://www.youtube.com/watch?v=FT3ODSg1GFE"> <img
+									height="130px" alt="" class=""
+									src="/client/img/banner/iphone.jpg">
+								</a>
+							</div>
+							<div class="col-md-6 pl-0" style="margin-left: -5px">
+								<a href="https://www.youtube.com/watch?v=iq5aUUETl0o"> <img
+									height="130px" alt="" src="/client/img/banner/oppo.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-md-6 pl-0">
+								<a href="https://www.youtube.com/watch?v=FzshLMEVbrU"> <img
+									height="130px" alt="" class=""
+									src="/client/img/banner/samsung.jpg">
+								</a>
+							</div>
+							<div class="col-md-6 pl-0" style="margin-left: -5px">
+								<a href="https://www.youtube.com/watch?v=rZm4gg5CvWc"> <img
+									height="130px" alt="" class=""
+									src="/client/img/banner/xiaomi.jpg">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Hero Section End -->
 
+<<<<<<< HEAD
 <!-- Css Styles -->
 <link rel="stylesheet" href="/client/css/bootstrap.min.css"
 	type="text/css">
@@ -44,352 +105,287 @@
 
 	<!-- Hero Section Begin -->
 	<section class="hero mb-5">
+=======
+		<!-- Categories Section Begin -->
+		<!-- Categories Section End -->
+
+>>>>>>> 5c3ccbade905334e1e715536e8935b1d1101eb23
 		<div class="container">
-			<div class="row">
-				<div class="col-8">
-					<div id="carouselExampleIndicators" class="carousel slide"
-						data-ride="carousel">
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img class="d-block w-100" src="/client/img/hero/banner-1.jpg"
-									alt="First slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="/client/img/hero/banner-2.jpg"
-									alt="Second slide">
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="/client/img/hero/banner-3.jpg"
-									alt="Third slide">
-							</div>
-						</div>
-						<ol class="carousel-indicators">
-							<li data-target="#carouselExampleIndicators" data-slide-to="0"
-								class="active"></li>
-							<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-							<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-						</ol>
-						<a class="carousel-control-prev" href="#carouselExampleIndicators"
-							role="button" data-slide="prev"> <span
-							class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-							class="sr-only">Previous</span>
-						</a> <a class="carousel-control-next"
-							href="#carouselExampleIndicators" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
-					</div>
-
-				</div>
-
-				<div class="col-4">
-					<div class="row">
-						<div class="col-md-6 pl-0">
-							<a href="https://www.youtube.com/watch?v=FT3ODSg1GFE"> <img
-								height="130px" alt="" class=""
-								src="/client/img/banner/iphone.jpg">
-							</a>
-						</div>
-						<div class="col-md-6 pl-0" style="margin-left: -5px">
-							<a href="https://www.youtube.com/watch?v=iq5aUUETl0o"> <img
-								height="130px" alt="" src="/client/img/banner/oppo.jpg">
-							</a>
-						</div>
-					</div>
-					<div class="row mt-2">
-						<div class="col-md-6 pl-0">
-							<a href="https://www.youtube.com/watch?v=FzshLMEVbrU"> <img
-								height="130px" alt="" class=""
-								src="/client/img/banner/samsung.jpg">
-							</a>
-						</div>
-						<div class="col-md-6 pl-0" style="margin-left: -5px">
-							<a href="https://www.youtube.com/watch?v=rZm4gg5CvWc"> <img
-								height="130px" alt="" class=""
-								src="/client/img/banner/xiaomi.jpg">
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Hero Section End -->
-
-	<!-- Categories Section Begin -->
-	<!-- Categories Section End -->
-
-	<div class="container">
-		<div class="slider-parent">
-			<div class="title">sản phẩm bán chạy</div>
-			<div class="slider-child">
-				<div class="row no-gutters">
-					<div class="categories__slider owl-carousel">
-						<div class="col-lg-3">
-							<div class="border card-cascade card-ecommerce wider">
-								<!--Card image-->
-								<div class="view view-cascade overlay text-center">
-									<img class="img-fluid mt-4" width="150" height="150"
-										src="/client/img/categories/cart-1.jpg" alt="">
-								</div>
-								<!--Card Body-->
-								<div class="card-body">
-									<!--Card Title-->
-									<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản Đẹp
-										Như Mới</h5>
-									<div class="price">
-										<span class="price-new">23.950.000đ</span> <span
-											class="price-old">23.950.000đ</span>
+			<div class="slider-parent">
+				<div class="title">sản phẩm bán chạy</div>
+				<div class="slider-child">
+					<div class="row no-gutters">
+						<div class="categories__slider owl-carousel">
+							<div class="col-lg-3">
+								<div class="border card-cascade card-ecommerce wider">
+									<!--Card image-->
+									<div class="view view-cascade overlay text-center">
+										<img class="img-fluid mt-4" width="150" height="150"
+											src="/client/img/categories/cart-1.jpg" alt="">
+									</div>
+									<!--Card Body-->
+									<div class="card-body">
+										<!--Card Title-->
+										<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản
+											Đẹp Như Mới</h5>
+										<div class="price">
+											<span class="price-new">23.950.000đ</span> <span
+												class="price-old">23.950.000đ</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="border card-cascade card-ecommerce wider">
-								<!--Card image-->
-								<div class="view view-cascade overlay text-center">
-									<img class="img-fluid mt-4" width="150" height="150"
-										src="/client/img/categories/cart-1.jpg" alt="">
-								</div>
-								<!--Card Body-->
-								<div class="card-body card-body-cascade text-left">
-									<!--Card Title-->
-									<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản Đẹp
-										Như Mới</h5>
-									<div class="price">
-										<span class="price-new">23.950.000đ</span> <span
-											class="price-old">23.950.000đ</span>
+							<div class="col-lg-3">
+								<div class="border card-cascade card-ecommerce wider">
+									<!--Card image-->
+									<div class="view view-cascade overlay text-center">
+										<img class="img-fluid mt-4" width="150" height="150"
+											src="/client/img/categories/cart-1.jpg" alt="">
+									</div>
+									<!--Card Body-->
+									<div class="card-body card-body-cascade text-left">
+										<!--Card Title-->
+										<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản
+											Đẹp Như Mới</h5>
+										<div class="price">
+											<span class="price-new">23.950.000đ</span> <span
+												class="price-old">23.950.000đ</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="border card-cascade card-ecommerce wider">
-								<!--Card image-->
-								<div class="view view-cascade overlay text-center">
-									<img class="img-fluid mt-4" width="150" height="150"
-										src="/client/img/categories/cart-1.jpg" alt="">
-								</div>
-								<!--Card Body-->
-								<div class="card-body card-body-cascade text-left">
-									<!--Card Title-->
-									<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản Đẹp
-										Như Mới</h5>
-									<div class="price">
-										<span class="price-new">23.950.000đ</span> <span
-											class="price-old">23.950.000đ</span>
+							<div class="col-lg-3">
+								<div class="border card-cascade card-ecommerce wider">
+									<!--Card image-->
+									<div class="view view-cascade overlay text-center">
+										<img class="img-fluid mt-4" width="150" height="150"
+											src="/client/img/categories/cart-1.jpg" alt="">
+									</div>
+									<!--Card Body-->
+									<div class="card-body card-body-cascade text-left">
+										<!--Card Title-->
+										<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản
+											Đẹp Như Mới</h5>
+										<div class="price">
+											<span class="price-new">23.950.000đ</span> <span
+												class="price-old">23.950.000đ</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="border card-cascade card-ecommerce wider">
-								<!--Card image-->
-								<div class="view view-cascade overlay text-center">
-									<img class="img-fluid mt-4" width="150" height="150"
-										src="/client/img/categories/cart-1.jpg" alt="">
-								</div>
-								<!--Card Body-->
-								<div class="card-body card-body-cascade text-left">
-									<!--Card Title-->
-									<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản Đẹp
-										Như Mới</h5>
-									<div class="price">
-										<span class="price-new">23.950.000đ</span> <span
-											class="price-old">23.950.000đ</span>
+							<div class="col-lg-3">
+								<div class="border card-cascade card-ecommerce wider">
+									<!--Card image-->
+									<div class="view view-cascade overlay text-center">
+										<img class="img-fluid mt-4" width="150" height="150"
+											src="/client/img/categories/cart-1.jpg" alt="">
+									</div>
+									<!--Card Body-->
+									<div class="card-body card-body-cascade text-left">
+										<!--Card Title-->
+										<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản
+											Đẹp Như Mới</h5>
+										<div class="price">
+											<span class="price-new">23.950.000đ</span> <span
+												class="price-old">23.950.000đ</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="border card-cascade card-ecommerce wider">
-								<!--Card image-->
-								<div class="view view-cascade overlay text-center">
-									<img class="img-fluid mt-4" width="150" height="150"
-										src="/client/img/categories/cart-1.jpg" alt="">
-								</div>
-								<!--Card Body-->
-								<div class="card-body card-body-cascade text-left">
-									<!--Card Title-->
-									<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản Đẹp
-										Như Mới</h5>
-									<div class="price">
-										<span class="price-new">23.950.000đ</span> <span
-											class="price-old">23.950.000đ</span>
+							<div class="col-lg-3">
+								<div class="border card-cascade card-ecommerce wider">
+									<!--Card image-->
+									<div class="view view-cascade overlay text-center">
+										<img class="img-fluid mt-4" width="150" height="150"
+											src="/client/img/categories/cart-1.jpg" alt="">
+									</div>
+									<!--Card Body-->
+									<div class="card-body card-body-cascade text-left">
+										<!--Card Title-->
+										<h5 class="title-product">iPhone XR 64Gb Cũ Nguyên Bản
+											Đẹp Như Mới</h5>
+										<div class="price">
+											<span class="price-new">23.950.000đ</span> <span
+												class="price-old">23.950.000đ</span>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<!--View all product -->
-			<div class="view-all-product">
-				<div class="btn">Xem tất cả</div>
-			</div>
-
-
-		</div>
-	</div>
-
-	<!-- Title Desgn Start -->
-	<div class="container mb-4 mt-5">
-		<div class="d-flex">
-			<span class="title-phone"> điện thoại đáng mua nhất </span>
-			<div class="ml-auto d-flex align-items-end">
-				<a href="#">Xem tất cả điện thoại <b>></b></a>
-			</div>
-		</div>
-	</div>
-	<!-- Title Desgn End -->
-
-	<!-- View Product Start -->
-	<div class="container">
-		<div class="card-group">
-			<div
-				class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
-
-
-				<div class="col" th:each="listsp: ${listsp}">
-					<div class="border product-img">
-						<!--Card image-->
-						<th:block th:each="img: ${images}">
-							<a th:href="@{|/product/detail/${listsp.maSP}|}">
-							<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
-								<img class="mt-4 img-org" width="150 !important" height="150 !important"
-									th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="">
-							</div>
-							</a>
-						</th:block>
-						<!--Card Body-->
-						<div class="card-body card-body-cascade text-left">
-							<!--Card Title-->
-							<h5 class="title text-truncate" th:text="${listsp.tenSP}"></h5>
-							<div class="price">
-								<span class="price-new"
-									th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}">đ</span>
-								<span class="price-old">23.950.000đ</span>
-							</div>
-						</div>
-					</div>
+				<!--View all product -->
+				<div class="view-all-product">
+					<div class="btn">Xem tất cả</div>
 				</div>
+
 
 			</div>
 		</div>
-	</div>
-	<!-- View Product End -->
 
-
-	<!-- Title Desgn Start -->
-	<div class="container mb-4 mt-5">
-		<div class="d-flex">
-			<span class="title-phone"> phụ kiện đáng mua nhất </span>
-			<div class="ml-auto d-flex align-items-end">
-				<a href="#">Xem tất cả phụ kiện <b>></b></a>
-			</div>
-		</div>
-	</div>
-	<!-- Title Desgn End -->
-
-	<!-- View Product Start -->
-	<div class="container">
-		<div class="card-group">
-			<div
-				class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
-				<div class="col">
-					<div class="border product-img">
-						<!--Card image-->
-						<div class="view product-frame view-cascade overlay text-center">
-							<img class="img-fluid mt-4 img-org" width="150" height="150"
-								src="/client/img/categories/cart-1.jpg" alt="">
-						</div>
-						<!--Card Body-->
-						<div class="card-body card-body-cascade text-left">
-							<!--Card Title-->
-							<h5 class="title">iPhone XR 64Gb Cũ Nguyên Bản Đẹp Như Mới
-								New</h5>
-							<div class="price">
-								<span class="price-new">23.950.000đ</span> <span
-									class="price-old">23.950.000đ</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border card-cascade card-ecommerce wider">
-						<!--Card image-->
-						<div class="view view-cascade overlay text-center">
-							<img class="img-fluid mt-4" width="150" height="150"
-								src="/client/img/categories/cart-2.jpg" alt="">
-						</div>
-						<!--Card Body-->
-						<div class="card-body card-body-cascade text-left">
-							<!--Card Title-->
-							<h5 class="title">iPhone 11 64GB Chính Hãng VN/A</h5>
-							<div class="price">
-								<span class="price-new">23.950.000đ</span> <span
-									class="price-old">23.950.000đ</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border card-cascade card-ecommerce wider">
-						<!--Card image-->
-						<div class="view view-cascade overlay text-center">
-							<img class="img-fluid mt-4" width="150" height="150"
-								src="/client/img/categories/cart-3.jpg" alt="">
-						</div>
-						<!--Card Body-->
-						<div class="card-body card-body-cascade text-left">
-							<!--Card Title-->
-							<h5 class="title">iPhone 13 128GB Chính Hãng VN/A</h5>
-							<div class="price">
-								<span class="price-new">23.950.000đ</span> <span
-									class="price-old">23.950.000đ</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border card-cascade card-ecommerce wider">
-						<!--Card image-->
-						<div class="view view-cascade overlay text-center">
-							<img class="img-fluid mt-4" width="150" height="150"
-								src="/client/img/categories/cart-4.jpg" alt="">
-						</div>
-						<!--Card Body-->
-						<div class="card-body card-body-cascade text-left">
-							<!--Card Title-->
-							<h5 class="title">iPhone XR 64Gb Cũ Nguyên Bản Đẹp Như Mới</h5>
-							<div class="price">
-								<span class="price-new">23.950.000đ</span> <span
-									class="price-old">23.950.000đ</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border card-cascade card-ecommerce wider">
-						<!--Card image-->
-						<div class="view view-cascade overlay text-center">
-							<img class="img-fluid mt-4" width="150" height="150"
-								src="/client/img/categories/cart-5.jpg" alt="">
-						</div>
-						<!--Card Body-->
-						<div class="card-body card-body-cascade text-left">
-							<!--Card Title-->
-							<h5 class="title">iPhone XR 64Gb Cũ Nguyên Bản Đẹp Như Mới</h5>
-							<div class="price">
-								<span class="price-new">23.950.000đ</span> <span
-									class="price-old">23.950.000đ</span>
-							</div>
-						</div>
-					</div>
+		<!-- Title Desgn Start -->
+		<div class="container mb-4 mt-5">
+			<div class="d-flex">
+				<span class="title-phone"> điện thoại đáng mua nhất </span>
+				<div class="ml-auto d-flex align-items-end">
+					<a href="#">Xem tất cả điện thoại <b>></b></a>
 				</div>
 			</div>
 		</div>
+		<!-- Title Desgn End -->
+
+		<!-- View Product Start -->
+		<div class="container">
+			<div class="card-group">
+				<div
+					class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
+
+
+					<div class="col" th:each="listsp: ${listsp}">
+						<div class="border product-img">
+							<!--Card image-->
+							<th:block th:each="img: ${images}">
+								<a th:href="@{|/product/detail/${listsp.maSP}|}">
+									<div
+										class="view product-frame view-cascade overlay text-center"
+										th:if="${img.masp.maSP == listsp.maSP}">
+										<img class="mt-4 img-org" width="150 !important"
+											height="150 !important"
+											th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="">
+									</div>
+								</a>
+							</th:block>
+							<!--Card Body-->
+							<div class="card-body card-body-cascade text-left">
+								<!--Card Title-->
+								<h5 class="title text-truncate" th:text="${listsp.tenSP}"></h5>
+								<div class="price">
+									<span class="price-new"
+										th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}">đ</span>
+									<span class="price-old">23.950.000đ</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- View Product End -->
+
+
+		<!-- Title Desgn Start -->
+		<div class="container mb-4 mt-5">
+			<div class="d-flex">
+				<span class="title-phone"> phụ kiện đáng mua nhất </span>
+				<div class="ml-auto d-flex align-items-end">
+					<a href="#">Xem tất cả phụ kiện <b>></b></a>
+				</div>
+			</div>
+		</div>
+		<!-- Title Desgn End -->
+
+		<!-- View Product Start -->
+		<div class="container">
+			<div class="card-group">
+				<div
+					class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
+					<div class="col">
+						<div class="border product-img">
+							<!--Card image-->
+							<div class="view product-frame view-cascade overlay text-center">
+								<img class="img-fluid mt-4 img-org" width="150" height="150"
+									src="/client/img/categories/cart-1.jpg" alt="">
+							</div>
+							<!--Card Body-->
+							<div class="card-body card-body-cascade text-left">
+								<!--Card Title-->
+								<h5 class="title">iPhone XR 64Gb Cũ Nguyên Bản Đẹp Như Mới
+									New</h5>
+								<div class="price">
+									<span class="price-new">23.950.000đ</span> <span
+										class="price-old">23.950.000đ</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border card-cascade card-ecommerce wider">
+							<!--Card image-->
+							<div class="view view-cascade overlay text-center">
+								<img class="img-fluid mt-4" width="150" height="150"
+									src="/client/img/categories/cart-2.jpg" alt="">
+							</div>
+							<!--Card Body-->
+							<div class="card-body card-body-cascade text-left">
+								<!--Card Title-->
+								<h5 class="title">iPhone 11 64GB Chính Hãng VN/A</h5>
+								<div class="price">
+									<span class="price-new">23.950.000đ</span> <span
+										class="price-old">23.950.000đ</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border card-cascade card-ecommerce wider">
+							<!--Card image-->
+							<div class="view view-cascade overlay text-center">
+								<img class="img-fluid mt-4" width="150" height="150"
+									src="/client/img/categories/cart-3.jpg" alt="">
+							</div>
+							<!--Card Body-->
+							<div class="card-body card-body-cascade text-left">
+								<!--Card Title-->
+								<h5 class="title">iPhone 13 128GB Chính Hãng VN/A</h5>
+								<div class="price">
+									<span class="price-new">23.950.000đ</span> <span
+										class="price-old">23.950.000đ</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border card-cascade card-ecommerce wider">
+							<!--Card image-->
+							<div class="view view-cascade overlay text-center">
+								<img class="img-fluid mt-4" width="150" height="150"
+									src="/client/img/categories/cart-4.jpg" alt="">
+							</div>
+							<!--Card Body-->
+							<div class="card-body card-body-cascade text-left">
+								<!--Card Title-->
+								<h5 class="title">iPhone XR 64Gb Cũ Nguyên Bản Đẹp Như Mới</h5>
+								<div class="price">
+									<span class="price-new">23.950.000đ</span> <span
+										class="price-old">23.950.000đ</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="border card-cascade card-ecommerce wider">
+							<!--Card image-->
+							<div class="view view-cascade overlay text-center">
+								<img class="img-fluid mt-4" width="150" height="150"
+									src="/client/img/categories/cart-5.jpg" alt="">
+							</div>
+							<!--Card Body-->
+							<div class="card-body card-body-cascade text-left">
+								<!--Card Title-->
+								<h5 class="title">iPhone XR 64Gb Cũ Nguyên Bản Đẹp Như Mới</h5>
+								<div class="price">
+									<span class="price-new">23.950.000đ</span> <span
+										class="price-old">23.950.000đ</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<<<<<<< HEAD
 	</div>
 	<!-- View Product End -->
 
@@ -418,3 +414,8 @@
 </body>
 
 </html>
+=======
+		<!-- View Product End -->
+	</main>
+</div>
+>>>>>>> 5c3ccbade905334e1e715536e8935b1d1101eb23

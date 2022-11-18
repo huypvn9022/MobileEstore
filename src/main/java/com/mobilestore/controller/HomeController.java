@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -45,7 +46,6 @@ public class HomeController {
 		List<HinhAnh> images = hinhanhService.findAll();
 	
 		model.addAttribute("images", images);
-		model.addAttribute("hangsx", hangSXService.findAll());
 		model.addAttribute("listsp", listsp);
 		
 		return "layout/index";
@@ -84,19 +84,43 @@ public class HomeController {
 	}
 	
 	
-	
-	@RequestMapping("/shop-grid")
-	public String index2(Model model) {
-		return "layout/shop-grid";
-	}
-	@RequestMapping("/cart")
-	public String cart(Model model) {
-		return "layout/GioHang";
-	}
 	@RequestMapping("/product-details")
 	public String productDetails(Model model) {
 		return "layout/ChiTietSanPham";
 	}
+	@RequestMapping("/register")
+	public String dangky(Model model) {
+		return "layout/dangky";
+	}
+	@RequestMapping("/login")
+	public String register(Model model) {
+		return "layout/dangnhap";
+	}
+	@RequestMapping("/change-password")
+	public String changePassword(Model model) {
+		return "layout/dmatkhau";
+	}
+	@RequestMapping("/cart")
+	public String cart(Model model) {
+		return "layout/giohang";
+	}
+	@RequestMapping("order-management")
+	public String orderManagement(Model model) {
+		return "layout/qldonhang";
+	}
+	@RequestMapping("/forgot-password")
+	public String forgotPassword(Model model) {
+		return "layout/qmatkhau";
+	}
+	@RequestMapping("/shop-grid")
+	public String shopGrid(Model model) {
+		return "layout/shop-grid";
+	}
+	@RequestMapping("account-information")
+	public String accoutInformation(Model model) {
+		return "layout/tttaikhoan";
+	}
+	
 	
 	@RequestMapping("/admin")
 	public String admin(Model model) {
