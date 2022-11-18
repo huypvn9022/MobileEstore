@@ -9,7 +9,15 @@
 
 'use strict';
 
+
+
 (function ($) {
+	
+	// style slider image product detail
+	$(".product__details__pic__slider img").click(function(){
+		let slideImg = $(this).attr("src")
+		$("#imgOrigin img").attr("src", slideImg)
+	})
 
     /*------------------
         Preloader

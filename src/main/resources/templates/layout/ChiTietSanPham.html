@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zxx">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Ogani Template">
+<meta name="keywords" content="Ogani, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Mobile Estore</title>
+
+<!-- Google Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
+	rel="stylesheet">
+
+<!-- Css Styles -->
+<link rel="stylesheet" href="/client/css/bootstrap.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/font-awesome.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/elegant-icons.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/nice-select.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/jquery-ui.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/owl.carousel.min.css"
+	type="text/css">
+<link rel="stylesheet" href="/client/css/slicknav.min.css"
+	type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="/client/css/style.css" type="text/css">
+<link rel="stylesheet" href="/client/css/comment.css" type="text/css">
+</head>
+
+<body>
+
+	<!-- Header header Begin -->
+	<header class="header">
+		<div th:replace="/layout/header"></div>
+	</header>
+	<!-- Header header End -->
+
+	<!-- Product Details Begin -->
+	<section class="product-details spad pt-0">
+		<div class="container">
+			<div class="mb-2">
+				<a href="/index" class="btn btn-link pl-0">Trang chủ</a> <i
+					class="fa fa-angle-right" aria-hidden="true"></i> <a href="#"
+					class="btn btn-link">Sản phẩm</a> <i class="fa fa-angle-right"
+					aria-hidden="true"></i> <a href="" class="btn btn-link">[[${sanpham.tenSP}]]</a>
+			</div>
+			<div>
+				<h3 class="d-inline mr-2">
+					<b>[[${sanpham.tenSP}]]</b>
+				</h3>
+				<div class="product__details__rating d-inline mr-3">
+					<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+						class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+						class="fa fa-star-half-o"></i> <span>(999 reviews)</span>
+				</div>
+				<button class="btn-success d-inline border-none"
+					style="border-radius: 13px;">Trả góp 0%</button>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="product__details__pic">
+						<th:block th:each="anh: ${anhs}">
+							<div class="productss border" id="imgOrigin" >
+								<img class="product__details__pic__item--large center"
+									style="width: 100%; height: 100%"
+									th:src="@{|/client/img/product/${anh.hinhAnh1}|}" alt="error">
+							</div>
+							<div class="product__details__pic__slider owl-carousel">
+								<th:block th:each="listAnh: ${listAnh}">
+									<img th:src="@{|/client/img/product/${listAnh}|}" alt="error"
+										class="border mt-2">
+								</th:block>
+							</div>
+						</th:block>
+					</div>
+				</div>
+				<div class="col-1"></div>
+				<div class="col-lg-5 col-md-6">
+					<div class="product__details__text">
+						<div class="row">
+							<span class="product__details__price"
+								th:text="${#numbers.formatDecimal(sanpham.donGia - (((sanpham.donGia)/100)*10), 0, 'COMMA', 0, 'POINT')}">
+								đ</span>
+							&nbsp;
+							<span class="product__details__price">
+								<s th:text="${#numbers.formatDecimal(sanpham.donGia, 0, 'COMMA', 0, 'POINT')}">đ</s>
+							</span>
+						</div>
+						<div>
+							<a href="#" data-index="0" class="box__item item">64GB</a> <a
+								href="#" data-index="0" class="box__item item">128GB</a> <a
+								href="#" data-index="0" class="box__item item">256GB</a>
+						</div>
+						<div>
+							<a href="#" data-index="0" class="box__item item" id="color1">Tím</a>
+							<a href="#" data-index="0" class="box__item item" id="color2"
+								style="color: grey;">Xám</a> <a href="#" data-index="0"
+								class="box__item item" id="color3">Vàng</a>
+						</div>
+						<table class="table border border-info"
+							style="margin-top: 10px; margin-bottom: 20px;">
+							<tr >
+								<th class="thead-light"
+									style="background-color: rgb(195, 215, 232); text-align: center; border-top: 1px solid #17A2B8; border-bottom: 1px solid black">Khuyến
+									mãi</th>
+							</tr>
+							<tr>
+								<td><i class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									aria-hidden="true"></i>SẴN HÀNG, chi tiết số lượng vui lòng gọi
+									0123.456.789<br> <i
+									class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									aria-hidden="true"></i>Giảm 5% tối đa 1.000.000đ khi thanh toán
+									qua Kredivo<br> <i
+									class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									aria-hidden="true"></i>Tặng đến 3.000.000đ khi thu cũ đổi mới
+									(Chi tiết)<br> <i
+									class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									aria-hidden="true"></i>Tặng 500.000đ khi mua Apple Watch<br>
+									<i class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									aria-hidden="true"></i>Mua tai nghe Airpods 3 giá chỉ còn
+									4.100.000<br></td>
+						</table>
+						<div class="border border-info p-3">
+							<div class="row">
+								<div class="col-1">
+									<i class="fa fa-shield border-success" aria-hidden="true"></i>
+								</div>
+								<div class="col-11">Tình trạng: Mới 100%, Nguyên Seal,
+									Chưa Kích Hoạt, Đủ Bảo Hành</div>
+							</div>
+							<div class="row">
+								<div class="col-1">
+									<i class="fa fa-shield border-success" aria-hidden="true"></i>
+								</div>
+								<div class="col-11">Bộ sản phẩm chuẩn: Thân máy, Cable,
+									Sách hướng dẫn, Cây lấy sim</div>
+							</div>
+							<div class="row">
+								<div class="col-1">
+									<i class="fa fa-shield border-success" aria-hidden="true"></i>
+								</div>
+								<div class="col-11">Bảo hành: 24 tháng chính hãng (12
+									tháng tại Apple + 12 tháng tại MobileEstore)</div>
+							</div>
+						</div>
+						
+						<a th:attr="ng-click=@{|cart.add(${sanpham.maSP})|}"
+							class="btn btn-outline-primary w-100 mt-3"
+							style="text-align: center; border-radius: 5px">
+							Mua ngay
+						</a>
+
+					</div>
+				</div>
+
+			</div>
+			<hr />
+		</div>
+	</section>
+	<!-- Product Details End -->
+
+
+	<!-- Product description and parameters Begin -->
+	<div class="product_description">
+		<div class="container">
+			<div class="row">
+				<div class="col-8">
+					<a data-index="0" class="box__item item font-weight-bold mt-4 mb-2 w-25"
+						id="left"
+						style="background-color: rgb(228, 233, 237); font-size: 17px;">Mô
+						tả sản phẩm</a><br> 
+					<span> 
+						<p class="text-justify">
+							[[${sanpham.moTa}]]
+						</p>
+					</span>
+					<div class="text-center">
+						<button type="button" class="btn btn-link">Xem thêm</button>
+					</div>
+				</div>
+
+
+				<div class="col-4">
+					<a data-index="0"
+						class="box__item item w-100 font-weight-bold mt-4 mb-2" id="right"
+						style="background-color: rgb(228, 233, 237); font-size: 17px;">Thông
+						số sản phẩm</a><br>
+					<table class="table table-striped">
+						<tbody>
+							<th:block th:each="cauHinh : ${cauHinh}">
+								<tr>
+									<th scope="1">Độ phân giải</th>
+									<td>[[${cauHinh.doPhanGiai}]]</td>
+								</tr>
+								<tr>
+									<th scope="1">Độ rộng</th>
+									<td>[[${cauHinh.doRong}]]</td>
+								</tr>
+								<tr>
+									<th scope="1">Hệ điều hành</th>
+									<td>[[${cauHinh.heDH}]]</td>
+								</tr>
+								<tr>
+									<th scope="1">Chip</th>
+									<td>[[${cauHinh.chip}]]</td>
+								</tr>
+								<tr>
+									<th scope="1">Pin</th>
+									<td>[[${cauHinh.pin}]]</td>
+								</tr>
+								<tr>
+									<th scope="1">RAM</th>
+									<td>[[${cauHinh.ram}]]</td>
+								</tr>
+								<tr>
+									<th scope="1">ROM</th>
+									<td>[[${cauHinh.rom}]]</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+					<button class="btn btn-outline-primary w-100">Xem cấu hình
+						chi tiết</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product description and parameters End -->
+
+
+	<!-- Reviews -->
+	<!-- 
+	<section class="reviews">
+		<div class="container">
+			<div class="card" id="card-reviews">
+				<div class="card-body">
+					<h5 class="card-title">
+						<b>Người dùng</b>
+					</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Sản phẩm tốt. Ủng hộ
+						lâu dài</h6>
+					<div class="card" style="width: 100%;">
+						<div class="card-body">
+							<h5 class="card-title">Quản trị viên!</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Cảm ơn quý khách
+								hàng đã mua sản phẩm!</h6>
+						</div>
+					</div>
+					<div class="row mt-4">
+						<form class="container col-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Tiêu đề">
+							</div>
+							<div class="form-group">
+								<textarea type="text" class="form-control" placeholder="Mô tả"></textarea>
+							</div>
+							<a href="#" data-index="0" class="box__item item"
+								id="button-feedback"
+								style="background-color: rgb(228, 233, 237);">Phản hồi</a><br>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	 -->
+	<!-- Reviews End -->
+
+	<!-- comment client start-->
+	<div class="container">
+		<div class="mb-3">
+			<h4 class="font-weight-bold d-inline">Đánh giá điện thoại [[${sanpham.tenSP}]]</h4>
+			<span class="d-inline ml-3">
+				<i class="fa fa-star text-warning" aria-hidden="true"></i>
+				<i class="fa fa-star text-warning" aria-hidden="true"></i>
+				<i class="fa fa-star text-warning" aria-hidden="true"></i>
+				<i class="fa fa-star text-warning" aria-hidden="true"></i>
+				<i class="fa fa-star text-warning" aria-hidden="true"></i>
+			</span>
+		</div>
+		<hr />
+		<!-- form -->
+		<div class="d-flex justify-content-center mt-5 mb-1">
+			<form action="#" class="w-75" id="panelToggle">
+				<div class="row">
+					<div class="col-1">
+						<i class="fa fa-user-circle" aria-hidden="true"></i>
+					</div>
+					<div class="col-9">
+						<input type="text" class="form-control" placeholder="Tên hiện thị"
+							id="name">
+					</div>
+					<div class="col-2">
+						<button type="button" id="addComment" class="btn btn-primary">Post</button>
+						<button type="button" id="addComment" class="btn btn-danger">Cancel</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="date" class="form-control"
+						placeholder="Enter password" id="date" hidden="true">
+				</div>
+				<div class="form-group">
+					<textarea rows="5" cols="5" class="form-control"
+						placeholder="Nội dung bình luận ..." id="body"></textarea>
+				</div>
+			</form>
+		</div>
+		<!-- comment -->
+		<div class="d-flex justify-content-center mb-5">
+			<div class="commentBox w-75">
+				<div class="comment-list"></div>
+			</div>
+		</div>
+	</div>
+	<!-- comment client end -->
+
+	<!-- Similar products Begin -->
+	<section class="categories">
+		<div class="container">
+			<hr />
+			<a data-index="0" class="box__item item w-25 font-weight-bold mb-2"
+				id="right"
+				style="background-color: rgb(228, 233, 237); font-size: 17px;">Sản
+				phẩm cùng loại</a><br>
+			<div class="row">
+				<div class="categories__slider owl-carousel">
+
+					<th:block th:each="listSpHang: ${sanpham.maHang.sanpham}">
+						<div class="col-lg-3">
+							
+						<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">
+							<img th:src="@{|/client/img/product/${listAnh.hinhAnh1}|}" alt="error" />
+						</th:block>
+
+						<!-- <img class="categories__item set-bg" th:src="@{|/client/img/product/${sanPham}|}" alt="error"/> -->
+							[[${listSpHang.tenSP}]]
+						</div>
+					</th:block>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Similar products End -->
+
+	<!-- Footer Section Begin -->
+	<footer class="footer spad">
+		<div th:replace="/layout/footer"></div>
+	</footer>
+	<!-- Footer Section End -->
+
+	<!-- Js Plugins -->
+	<script src="/client/js/jquery-3.3.1.min.js"></script>
+	<script src="/client/js/bootstrap.min.js"></script>
+	<script src="/client/js/jquery.nice-select.min.js"></script>
+	<script src="/client/js/jquery-ui.min.js"></script>
+	<script src="/client/js/jquery.slicknav.js"></script>
+	<script src="/client/js/mixitup.min.js"></script>
+	<script src="/client/js/owl.carousel.min.js"></script>
+	<script src="/client/js/main.js"></script>
+	<script src="/client/js/comment.js"></script>
+	<script src="/client/js/mobile-cart.js"></script>
+
+
+</body>
+
+</html>

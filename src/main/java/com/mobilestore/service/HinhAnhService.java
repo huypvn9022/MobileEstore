@@ -16,5 +16,9 @@ public class HinhAnhService {
 	public List<HinhAnh> findAll() {
 		return hinhanhdao.findAll();
 	}
+	
+	public HinhAnh findById(Integer id) {
+		return hinhanhdao.findById(id).get();
+	}
 
 }

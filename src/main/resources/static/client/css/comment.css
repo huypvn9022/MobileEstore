@@ -1,0 +1,102 @@
+@charset "ISO-8859-1";
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.commentBox {
+	padding: 2%;
+	width: 95%;
+	height: auto;
+	border: 1px solid #eee;
+	display: none;
+}
+
+.commentBox .leftPaneImg {
+	width: 7%;
+	height: 55px;
+	border: 1px solid black;
+	float: left;
+	border-radius: 50%;
+	border: none;
+	background-color: #eee;
+}
+
+.commentBox .leftPaneImg i {
+	font-size: 35px;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+	color: #808080;
+}
+
+.commentBox .rightPanel {
+	width: 91%;
+	float: left;
+	margin-left: 1%;
+	padding: 5px 15px;
+	align-items: center;
+}
+
+.commentBox .rightPanel .title {
+	font-weight: bolder;
+}
+
+.commentBox .rightPanel .straight {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.commentBox .rightPanel .description {
+	display: block;
+	margin-top: 3px;
+	text-align: justify;
+}
+
+.commentBox .rightPanel .delete {
+	height: 100%;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: -15px;
+}
+
+.commentBox .border-list {
+	width: 100%;
+	border-bottom: 1px solid #eee;
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
+
+.clear {
+	clear: both;
+}
+
+.container form .row .col-1 i {
+	font-size: 40px;
+}
+
+.container form .row .col-2 {
+	padding-left: 0px;
+}
+
+.container form .row .col-2 .fa-user {
+	margin-right: -75%;
+}
+
+.container form .row .col-2 i {
+	font-size: 40px;
+	margin-left: -50px;
+}
+
+.container form .row .col-7 {
+	padding-left: 0px;
+	margin-left: -60px;
+}
