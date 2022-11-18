@@ -1,5 +1,6 @@
 package com.mobilestore.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,30 +21,31 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "Khachhang")
-public class KhachHang {
+public class KhachHang implements Serializable{
 	@Id
 	@Column(name = "taikhoan")
-	@NotBlank(message="Tài khoản không được bỏ trống")
+	@NotEmpty(message="Tài khoản không được bỏ trống")
 	private String taiKhoan;
 	
 	@Column(name = "matkhau")
-	@NotBlank(message="Mật khẩu không được bỏ trống")
+	@NotEmpty(message="Mật khẩu không được bỏ trống")
 	private String matKhau;
 	
 	@Column(name = "hoten")
-	@NotBlank(message = "Tài khoản không được bỏ trống")
+	@NotEmpty(message = "Họ và tên không được bỏ trống")
 	private String hoTen;
 	
 	@Column(name = "email")
+	@NotEmpty(message = "Email Không được bỏ trống")
 	@Email(message = "Email không đúng định dạng")
 	private String email;
 	
 	@Column(name = "sdt")
-	@NotBlank(message = "Số điện thoại không được bỏ trống")
+	@NotEmpty(message = "Số điện thoại không được bỏ trống")
 	private String SDT;
 	
 	@Column(name = "diachi")
-	@NotBlank(message = "Địa chỉ không được bỏ trống")
+	@NotEmpty(message = "Địa chỉ không được bỏ trống")
 	private String diaChi;
 
 	// binh luan

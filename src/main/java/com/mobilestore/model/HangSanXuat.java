@@ -1,5 +1,6 @@
 package com.mobilestore.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "Hangsx")
-public class HangSanXuat {
+public class HangSanXuat implements Serializable{
 	@Id
 	@Column(name = "mahang")
 	private String maHang;

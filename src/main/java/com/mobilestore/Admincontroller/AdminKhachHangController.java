@@ -1,4 +1,4 @@
-package com.mobilestore.controller;
+package com.mobilestore.Admincontroller;
 
 import java.util.Optional;
 
@@ -22,7 +22,7 @@ import com.mobilestore.service.SessionService;
 
 @Controller
 @RequestMapping("/admin")
-public class KhachHangController {
+public class AdminKhachHangController {
 	@Autowired
 	KhachHangSevice khService;
 	
@@ -45,8 +45,12 @@ public class KhachHangController {
 	
 	@RequestMapping("/khachhang/create")
 	public String khachhang_addNew(Model model,@Valid @ModelAttribute("khachHang") KhachHang kh,
-			BindingResult bindingResult) {
-		if(bindingResult.hasErrors() || kh.getTaiKhoan().equals(null)) {
+			BindingResult bindingResult,@RequestParam("p") Optional<Integer> p) {
+		Pageable pageable = PageRequest.of(p.orElse(0),5);
+		Page<KhachHang> pages = khService.findAll(pageable);
+		
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("pages", pages);
 			model.addAttribute("khachHang", kh);
 			return "admin/khachhang";
 		}else {
@@ -57,14 +61,28 @@ public class KhachHangController {
 	}
 	
 	@RequestMapping("/khachhang/update")
-	public String khachhang_update(Model model, @ModelAttribute("khachHang") KhachHang kh) {
-		if(khService.existsById(kh.getTaiKhoan())) {
+	public String khachhang_update(Model model, @Valid @ModelAttribute("khachHang") KhachHang kh,
+			 BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
+		Pageable pageable = PageRequest.of(p.orElse(0),5);
+		Page<KhachHang> pages = khService.findAll(pageable);
+		
+		if(!khService.existsById(kh.getTaiKhoan())) {
+			model.addAttribute("message", "Không tìm thấy khách hàng");
+			
+			model.addAttribute("pages", pages);
+			model.addAttribute("khachHang", kh);
+			return "admin/khachhang";
+		}else if(bindingResult.hasErrors()) {
+			model.addAttribute("message", "Cập nhật thất bại");
+						
+			model.addAttribute("pages", pages);
+			model.addAttribute("khachHang", kh);
+			return "admin/khachhang";
+		}else {
 			khService.update(kh);
 			model.addAttribute("message", "Cập nhật thành công");
 			return "redirect:/admin/khachhang/edit/" + kh.getTaiKhoan();
-		}else {
-			model.addAttribute("message", "Cập nhật thất bại");
-			return "redirect:/admin/khachhang";
+
 		}
 	}
 	
@@ -75,27 +93,32 @@ public class KhachHangController {
 		String kwords = kw.orElse(sessionService.get("keyword",""));
 		sessionService.get("keyword",kwords);
 		Page<KhachHang> pages = khService.findAllByKeyword(pageable,"%"+kwords+"%");
+		
 		model.addAttribute("pages", pages);
 		model.addAttribute("khachHang", kh);
 		return "admin/khachhang";
 	}
 	
 	@RequestMapping("/khachhang/delete/{taiKhoan}")
-	public String khachhang_delete(Model model, @PathVariable("taiKhoan") String tk) {
-		if(tk.isBlank()) {
-			model.addAttribute("message", "Vui lòng chọn tài khoản để xóa");
-			return "redirect:/admin/khachhang";
+	public String khachhang_delete(Model model, @ModelAttribute("khachHang") KhachHang kh,
+			@PathVariable("taiKhoan") String tk, @RequestParam("p") Optional<Integer> p) {
+		Pageable pageable = PageRequest.of(p.orElse(0),5);
+		Page<KhachHang> pages = khService.findAll(pageable);
+		
+		if(tk.equalsIgnoreCase("null")) {
+			model.addAttribute("message", "Vui lòng chọn một tài khoản để xóa");
+			model.addAttribute("pages", pages);
+			return "admin/khachhang";
 		}else {
-			model.addAttribute("message", "Xóa thành công");
 			khService.delete(tk);
+			model.addAttribute("message", "Xóa thành công");	
+			return "redirect:/admin/khachhang";
 		}
-
-		return "redirect:/admin/khachhang";
 	}
 	
 	@RequestMapping("/khachhang/edit/{taiKhoan}")
 	public String khachhang_edit(Model model, @PathVariable("taiKhoan") String taiKhoan,
-			@RequestParam("p") Optional<Integer> p) {
+			@RequestParam("p") Optional<Integer> p ) {
 		KhachHang kh = khService.findById(taiKhoan);
 		model.addAttribute("khachHang", kh);
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
