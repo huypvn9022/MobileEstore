@@ -112,15 +112,13 @@ public class HomeController {
 	public String forgotPassword(Model model) {
 		return "layout/qmatkhau";
 	}
-<<<<<<< HEAD
+
 	@RequestMapping("/shop-grid")
 	public String shopGrid(Model model) {
 		return "layout/shop-grid";
 	}
-	@RequestMapping("/account-information")
-=======
+
 	@RequestMapping("account-information")
->>>>>>> 233ca108b08d06554f12e0c841161f14b81e8cec
 	public String accoutInformation(Model model) {
 		return "layout/tttaikhoan";
 	}
