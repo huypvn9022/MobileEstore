@@ -1,119 +1,69 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
-	<main>    
-    <!--  -->
-    <div class="hero">
-      <div class="container">
-
-        <div id="layoutSidenav">
-          <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-              <div class="sb-sidenav-menu">
-                <div class="nav ">
-                  <div class="menu-bara">
-                    <div class="sb-sidenav-menu-heading"><img src="/client/img/account.png" height="25px"></div>
-                    <div class="sb-sidenav-menu-heading">Tài khoản</div> 
-                </div>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Thông tin tài khoản
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quản lý đơn hàng
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quên mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đổi mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng nhập
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng ký
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng xuất
-                  </a>
-
-            </nav>
-          </div>
-          <div id="layoutSidenav_content">
-            <main>
-              <div class="container-fluid px-4">
-
-              <!--  -->
-              <h1 class="mt-4">Quên mật khẩu</h1>
-              <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"><hr></li>
-              </ol>
-            </div>
-            <!--  -->
-            <div class="container-fluid px-4">
-              <div class="container-accout">
-              <form action="/action_page.php">
-
-                    <div class="mb-3">
-                      <label for="name" class="form-label">Tài khoản:</label>
-                        <input
-                          type="name" 
-                          class="form-control"
-                          id="name"
-                          placeholder="Nhập họ và tên "
-                          name="name"
-                        />
-                </div>
-
-                  <div class="mb-3 ">
-                    <label for="email" class="form-label">Email:</label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        placeholder="Nhập địa chỉ email"
-                        name="email"
-                      />
-                  </div>
-              
-
-                <button type="submit" class="btn btn-primary">Lấy lại mật khẩu</button>
-              </form>
-            </div>
-              
-              </div>
-            </main>
-          </div>
-        </div>
-
-      </div>
-    </div>
-	<!-- Hero Section End -->
+	<main>
+		<div class="grid-members">
+			<!-- Tabs form -->
+			<div class="grid-item">
+				<div class="user-menu-side">
+					<div class="user-name">
+						<img onerror="" src="https://didongthongminh.vn/images/logo-user.svg" alt="avatar" class="img-responsive">
+						<div class="name">
+							Xin chào, <span>codvps18948</span>
+						</div>
+					</div>
+					<ul>
+						<li class="">
+							<a href="/account-information"> 
+								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản
+							</a>
+						</li>
+						<li class="">
+							<a href="/order-management"> 
+								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lý đơn hàng
+							</a>
+						</li>
+						<li class="">
+							<a href="/change-password"> 
+								<i class="fa fa-lock" aria-hidden="true"></i> Đổi mật khẩu
+							</a>
+						</li>
+						<li class="active">
+							<a href="/forgot-password"> 
+								<i class="fa fa-unlock" aria-hidden="true"></i> Quên mật khẩu
+							</a>
+						</li>
+						<li>
+							<a href="#"> 
+								<i class="fa fa-power-off" aria-hidden="true"></i> Đăng xuất
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- Forms -->
+			<div class="grid-item">
+				<div class="user-content-side">
+					<h2 class="member-title">Quên Mật Khẩu</h2>
+					<hr/>
+					<form action="" method="post" name="frmUser" id="frmUser" enctype="multipart/form-data">
+						<div class="box-user">
+							<label class="label-input" for="u_name">Tài khoản</label> <input
+								type="text" name="u_name" id="u_name" value="codvps18948"
+								placeholder="Tài khoản" class="form-control">
+						</div>
+						<div class="box-user">
+							<label class="label-input" for="u_email">Email</label> <input
+								type="text" name="u_email" id="u_email"
+								value="codvps18948@fpt.edu.vn" placeholder="Email"
+								class="form-control">
+						</div>
+						<div class="box-user box-submit">
+							<a href="#" class="submit-btn"
+								onclick="">Lấy Lại Mật Khẩu</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</main>
 </div>

@@ -89,12 +89,12 @@ public class HomeController {
 		return "layout/ChiTietSanPham";
 	}
 	@RequestMapping("/register")
-	public String dangky(Model model) {
+	public String register(Model model) {
 		return "layout/dangky";
 	}
 	@RequestMapping("/login")
-	public String register(Model model) {
-		return "layout/dangnhap";
+	public String login(Model model) {
+		return "layout/dangnhap-dangky";
 	}
 	@RequestMapping("/change-password")
 	public String changePassword(Model model) {
@@ -116,7 +116,7 @@ public class HomeController {
 	public String shopGrid(Model model) {
 		return "layout/shop-grid";
 	}
-	@RequestMapping("account-information")
+	@RequestMapping("/account-information")
 	public String accoutInformation(Model model) {
 		return "layout/tttaikhoan";
 	}
