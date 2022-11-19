@@ -59,11 +59,12 @@ public class SanPhamController {
 	 @RequestMapping("/search")
 	 public String search(Model model,@RequestParam("Keywords") Optional<String> kw,
 				@RequestParam("p") Optional<Integer> p) {
-		 List<HinhAnh> images = hinhanhService.findAll();
+		 
 		 String kwords = kw.orElse(sessionService.get("keywords",""));
 			sessionService.get("keywords",kwords);
 			Pageable pageable = PageRequest.of(p.orElse(0), 15);
 			Page<SanPham> products = spdao.findAllByKeywords(pageable,"%"+kwords+"%");
+			List<HinhAnh> images = hinhanhService.findAll();
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 		 return "layout/shop-grid";
