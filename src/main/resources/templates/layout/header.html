@@ -67,8 +67,8 @@
 				</div>
 				<div class="col-lg-5">
 					<div class="hero__search__form mt-3">
-						<form action="#">
-							<input type="text" placeholder="Bạn cần tìm gì?">
+						<form action="/product/search" method="post">
+							<input mane="Keywords" type="text" placeholder="Bạn cần tìm gì?">
 							<button type="submit" class="site-btn"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
@@ -97,7 +97,7 @@
 				<nav class="header__menu">
 					<ul class="inline-block">
 						<th:block th:each="h:${hangsx}">
-							<li><a href="#"><b th:text="${h.tenHang}"></b></a></li>
+							<li><a th:href="|/product/${h.maHang}|"><b th:text="${h.tenHang}" data-user="${h.maHang}"></b></a></li>
 						</th:block>
 					</ul>
 				</nav>

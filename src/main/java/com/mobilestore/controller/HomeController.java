@@ -112,10 +112,6 @@ public class HomeController {
 	public String forgotPassword(Model model) {
 		return "layout/qmatkhau";
 	}
-	@RequestMapping("/shop-grid")
-	public String shopGrid(Model model) {
-		return "layout/shop-grid";
-	}
 	@RequestMapping("account-information")
 	public String accoutInformation(Model model) {
 		return "layout/tttaikhoan";
