@@ -39,7 +39,7 @@
 		</div>
 		<nav class="humberger__menu__nav mobile-menu">
 			<ul>
-				<li><a href="#">iPhone</a></li>
+				<li><a  value="IP" name=mahang>iPhone</a></li>
 				<li><a href="#">Samsung</a></li>
 				<li><a href="#">Xiaomi</a></li>
 				<li><a href="#">Oppo</a></li>
@@ -101,21 +101,18 @@
 	<!-- Hero Section Begin -->
 	<section class="hero">
 		<div class="row">
+		<th:block th:each="hang : ${category}">
 			<div class="col-lg-12">
+			
 				<nav class="header__menu">
 					<ul>
-						<li><a href="#">iPhone</a></li>
-						<li><a href="#">Samsung</a></li>
-						<li><a href="#">Xiaomi</a></li>
-						<li><a href="#">Oppo</a></li>
-						<li><a href="#">Nokia</a></li>
-						<li><a href="#">Vivo</a></li>
-						<li><a href="#">Realme</a></li>
-						<li><a href="#">Sony</a></li>
+						<li><a th:text="${hang.tenHang}"data-user="${han.maHang}">iPhone</a></li>
 					</ul>
 				</nav>
+			
 			</div>
-		</div>
+			</th:block>
+		</div>	
 	</section>
 	<!-- Hero Section End -->
 </div>

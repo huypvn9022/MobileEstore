@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="/client/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="/client/css/style.css" type="text/css">
-</head>
+
 
 <body>
 	<!-- Header header Begin -->
@@ -308,28 +308,36 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-							<div class="featured__item">
-								<div class="featured__item__pic set-bg"
-									data-setbg="/client/img/featured/feature-3.jpg">
-									<ul class="featured__item__pic__hover">
-										<li><a href="#"><i class="fa fa-heart"></i></a></li>
-										<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-										<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-									</ul>
-								</div>
-								<div class="featured__item__text">
-									<h6>
-										<a href="#">Crab Pool Security</a>
-									</h6>
-									<h5>$30.00</h5>
+					<th:block >
+						
+							<div class="row">
+								<div class="" th:each="product : ${products}">
+									<div class="border product-img">
+										<!--Card image-->
+										<div
+											class="view product-frame view-cascade overlay text-center">
+											<img class="img-fluid mt-4 img-org" width="210" height="210"
+												src="/client/img/categories/cart-1.jpg" alt="">
+										</div>
+										<!--Card Body-->
+										<div class="card-body card-body-cascade text-left">
+											<!--Card Title-->
+											<h5 class="title" th:text="${product.tenSP}">iPhone XR
+												64Gb Cũ Nguyên Bản Đẹp Như Mới New</h5>
+											<div class="price">
+												<span class="price-new" th:text="${product.donGia}"+>23.950.000đ</span> 
+													
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-						
+					</th:block>
+
 					<div class="product__pagination">
-						<a href="#"> << </a> <a href="#"> <- </a> <a href="#"> -> </a><a href="#"> >> </a>
+						<a href="#"> << </a> <a href="#"> <- </a> <a href="#"> -> </a><a
+							href="#"> >> </a>
 					</div>
 				</div>
 			</div>
