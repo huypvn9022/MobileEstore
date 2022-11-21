@@ -2111,6 +2111,13 @@ transparent;
   Index
 -------------------------*/
 
+.panel-product{
+	background-color: #F5F5FA;
+} 
+
+.container .card-group .row .col{
+	background-color: white;
+}
 
 .container .title-phone {
 	text-transform: uppercase;
@@ -2154,10 +2161,9 @@ transparent;
 
 
 .card-group .row .col:hover{
-	box-shadow: 0px 0px 8px 8px rgb(234, 237, 237);
+	box-shadow: 0px 5px 8px 8px rgb(234, 237, 237);
 	color: #7d9ad2;
 	cursor: pointer;	
-	margin-top: -2px !important;
 } 
 
 .slider-child .no-gutters .col-lg-3{
