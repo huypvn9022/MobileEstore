@@ -326,25 +326,36 @@
 	<section class="categories">
 		<div class="container">
 			<hr />
-			<a data-index="0" class="box__item item w-25 font-weight-bold mb-2"
-				id="right"
-				style="background-color: rgb(228, 233, 237); font-size: 17px;">Sản
-				phẩm cùng loại</a><br>
+			<a data-index="0" class="box__item item w-25 font-weight-bold mb-2" id="right"
+				style="background-color: rgb(228, 233, 237); font-size: 17px;">Sản phẩm cùng loại</a><br>
 			<div class="row">
-				<div class="categories__slider owl-carousel">
+				<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
+				<!-- <div class="categories__slider owl-carousel"> -->
 
 					<th:block th:each="listSpHang: ${sanpham.maHang.sanpham}">
 						<div class="col-lg-3">
 							
-						<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">
-							<img th:src="@{|/client/img/product/${listAnh.hinhAnh1}|}" alt="error" />
-						</th:block>
+							<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">
+								<a th:href="@{|/product/detail/${listSpHang.maSP}|}">
+									<img th:src="@{|/client/img/product/${listAnh.hinhAnh1}|}" alt="error" />
+								</a>
+							</th:block>
 
 						<!-- <img class="categories__item set-bg" th:src="@{|/client/img/product/${sanPham}|}" alt="error"/> -->
-							[[${listSpHang.tenSP}]]
+							<!-- [[${listSpHang.tenSP}]] -->
+							<div class="card-body card-body-cascade text-left">
+								<!--Card Title-->
+								<h5 class="title text-truncate" th:text="${listSpHang.tenSP}"></h5>
+								<div class="price">
+									<span class="price-new"
+										th:text="${#numbers.formatDecimal(listSpHang.donGia, 0, 'COMMA', 0, 'POINT')}">đ</span>
+									<span class="price-old">23.950.000đ</span>
+								</div>
+							</div>
 						</div>
 					</th:block>
 				</div>
+				<!-- </div> -->
 			</div>
 		</div>
 	</section>
