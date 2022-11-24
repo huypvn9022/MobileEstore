@@ -30,10 +30,11 @@
 <link rel="stylesheet" href="/client/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="/client/css/style.css" type="text/css">
-<!-- <link rel="stylesheet" href="/client/css/header.css" type="text/css"> -->
+<link rel="stylesheet" href="/client/css/comment.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body>
+<body ng-app="mobile-estore-app" ng-controller="mobile-estore-ctrl">
 
 	<!-- Header header Begin -->
 	<header class="header">
@@ -43,7 +44,7 @@
 	
 	<!-- Header main Begin -->
 	<section>
-		<main th:insert="${main}"></main>
+		<main th:replace="${main}"></main>
 	</section>
 	<!-- Header main End -->
 
@@ -62,7 +63,8 @@
 	<script src="/client/js/mixitup.min.js"></script>
 	<script src="/client/js/owl.carousel.min.js"></script>
 	<script src="/client/js/main.js"></script>
-
+	<script src="/client/js/comment.js"></script>
+	<script src="/client/js/mobile-cart.js"></script>
 
 
 </body>

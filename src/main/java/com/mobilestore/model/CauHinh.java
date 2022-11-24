@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,31 +22,32 @@ import lombok.NoArgsConstructor;
 public class CauHinh {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "mach")
+	@Column(name = "Mach")
 	private int maCH;
 	
-	@Column(name = "dophangiai")
+	@Column(name = "Dophangiai")
 	private String doPhanGiai;
 	
-	@Column(name = "dorong")
+	@Column(name = "Dorong")
 	private String doRong;
 	
-	@Column(name = "hedh")
+	@Column(name = "Hedh")
 	private String heDH;
 	
-	@Column(name = "chip")
+	@Column(name = "Chip")
 	private String chip;
 	
-	@Column(name = "pin")
+	@Column(name = "Pin")
 	private String pin;
 	
-	@Column(name = "ram")
+	@Column(name = "Ram")
 	private String ram;
 	
-	@Column(name = "rom")
+	@Column(name = "Rom")
 	private String rom;
 	
 	//san pham
+	@JsonIgnore
 	@OneToMany(mappedBy = "maCH")
 	List<SanPham> sanpham;
 }

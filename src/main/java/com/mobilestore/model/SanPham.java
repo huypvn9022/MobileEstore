@@ -28,37 +28,37 @@ import lombok.NoArgsConstructor;
 public class SanPham implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "masp")
+	@Column(name = "Masp")
 	private int maSP;
 
-	@Column(name = "tensp")
+	@Column(name = "Tensp")
 	private String tenSP;
 
-	@Column(name = "soluong")
+	@Column(name = "Soluong")
 	private int soLuong;
 
-	@Column(name = "dongia")
+	@Column(name = "Dongia")
 	private double donGia;
 
-	@Column(name = "mota")
+	@Column(name = "Mota")
 	private String moTa;
 
-	@Column(name = "trangthai")
+	@Column(name = "Trangthai")
 	private boolean trangThai;
 
 	// hang san xuat
 	@ManyToOne
-	@JoinColumn(name = "mahang")
+	@JoinColumn(name = "Mahang")
 	HangSanXuat maHang;
 
 	// cau hinh
 	@ManyToOne
-	@JoinColumn(name = "mach")
+	@JoinColumn(name = "Mach")
 	CauHinh maCH;
 	
 	// loai sp
 	@ManyToOne
-	@JoinColumn(name = "maloai")
+	@JoinColumn(name = "Maloai")
 	LoaiSanPham maLoai;
 
 	// hinh anh

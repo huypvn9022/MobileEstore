@@ -59,7 +59,11 @@ public class HomeController {
 		double priceOld = sanpham.getDonGia() - ((sanpham.getDonGia() / 100) * 5);
 		model.addAttribute("priceOld", priceOld);
 		
+		// hiện thị ảnh chính theo id
 		HinhAnh anh = hinhanhService.findById(id);
+		
+		// Hiện thị ảnh chính giỏ hàng
+		List<HinhAnh> anhCart = hinhanhService.findAll();
 		
 		// lưu các sản phẩm thành một list
 		List<String> listAnh = new ArrayList<String>();
@@ -80,9 +84,24 @@ public class HomeController {
 		model.addAttribute("listAnh", listAnh);
 		model.addAttribute("cauHinh", cauHinh);
 		model.addAttribute("listImg", listImg);
+		model.addAttribute("anhCart", anhCart);
 		return "layout/ChiTietSanPham";
 	}
 	
+
+	@RequestMapping("/cart")
+	public String cart(Model model) {
+		// hiện thị ảnh giỏ hàng
+		List<HinhAnh> lisImg = hinhanhService.findAll();
+		model.addAttribute("listImg" ,lisImg);	
+		return "layout/giohang";
+	} 
+	
+	// thanh toán
+	@RequestMapping("/checkout")
+	public String pay(Model model) {
+		return "layout/thanhtoan";
+	}
 	
 	@RequestMapping("/product-details")
 	public String productDetails(Model model) {
@@ -100,10 +119,7 @@ public class HomeController {
 	public String changePassword(Model model) {
 		return "layout/dmatkhau";
 	}
-	@RequestMapping("/cart")
-	public String cart(Model model) {
-		return "layout/giohang";
-	}
+	
 	@RequestMapping("order-management")
 	public String orderManagement(Model model) {
 		return "layout/qldonhang";

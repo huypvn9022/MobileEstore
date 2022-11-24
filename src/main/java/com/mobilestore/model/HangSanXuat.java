@@ -21,10 +21,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "HangSX")
 public class HangSanXuat {
 	@Id
-	@Column(name = "mahang")
+	@Column(name = "Mahang")
 	private String maHang;
 	
-	@Column(name = "tenhang")
+	@Column(name = "Tenhang")
 	private String tenHang;
 	
 	//san pham

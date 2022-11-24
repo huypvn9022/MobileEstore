@@ -22,10 +22,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "LoaiSP")
 public class LoaiSanPham {
 	@Id
-	@Column(name = "maloai")
+	@Column(name = "Maloai")
 	private String maLoai;
 	
-	@Column(name = "tenloai")
+	@Column(name = "Tenloai")
 	private String tenLoai;
 	
 	@JsonIgnore

@@ -31,7 +31,7 @@ public class ChiTietDonHang {
 	private int soLuong;
 
 	// san pham
-	@ManyToOne @JoinColumn(name = "masp")
+	@ManyToOne @JoinColumn(name = "Masp")
 	SanPham masp;
 	
 	// don hang

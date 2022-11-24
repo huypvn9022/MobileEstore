@@ -49,6 +49,6 @@ public class HinhAnh implements Serializable {
 
 	// san pham
 	@ManyToOne
-	@JoinColumn(name = "masp")
+	@JoinColumn(name = "Masp")
 	SanPham masp;
 }

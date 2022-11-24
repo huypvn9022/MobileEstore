@@ -1,81 +1,83 @@
-<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
 	<main>
 	<!-- Cart Details Begin -->
-	<div class="container ">
-		<div class="row mt-5">
-			<div class="col-8 pl-0">
+	<div ng-hide="cart.items.length == 0" class="container">
+			<div class="mb-2" style="margin-left : -15px">
+				<a href="/index" class="btn btn-link pl-0" >Trang chủ</a> <i
+					class="fa fa-angle-right" aria-hidden="true"></i> 
+					<a href="#" class="btn btn-link">Sản phẩm</a>
+			<i class="fa fa-angle-right" aria-hidden="true"></i> 
+					<a href="#" class="btn btn-link">Giỏ hàng của bạn</a>
+			</div>
+			<div class="text-uppercase mb-3 mt-3" style="margin-left:-15px; ">
+				<h4>thông tin giỏ hàng</h4>
+			</div>
+			<div class="row mt-2">
+			<div class="col-12 pl-0">
 				<div class="table-responsive">
-					<table class="table">
-						<thead>
+					<table class="table border-left border-right border-bottom">
+						<thead style="background-color: #f7f7f7">
 							<tr>
 								<th scope="col">Sản phẩm</th>
-								<th scope="col">Tên sản phẩm</th>
-								<th scope="col">Gía bán</th>
-								<th scope="col">A</th>
-								<th scope="col">B</th>
-								<th scope="col">Heading</th>
+								<th scope="col">Hình ảnh</th>
+								<th scope="col" class="text-center">Số lượng</th>
+								<th scope="col">Đơn giá</th>
+								<th scope="col">Tổng tiền</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
-								<td>Cell</td>
+							<tr ng-repeat="item in cart.items">
+								<td hidden="true">{{item.maSP}}</td>
+								<td>
+									<a class="text-dark" href="/product/detail/{{item.maSP}}"> {{item.tenSP}} </a>
+								</td>
+								
+								<td ng-repeat="image in cart.imageArr" ng-if="image.masp.maSP == item.maSP">
+									
+									<img src="/client/img/product/{{image.hinhAnh1}}" width="100" height="100" alt="error">
+								</td>
+								 
+								<td class="text-center">
+									<input ng-change="cart.saveToLocalStorage()" type="number" ng-model="item.soLuong" min="1" 
+									class="w-25 text-center p-0 border" />
+								</td>
+								<td>{{item.donGia | number : 0}} VNĐ</td>
+								<td>{{item.soLuong * item.donGia | number : 0}} VNĐ</td>
+								<td><i ng-click="cart.remove(item.maSP)" class="fa fa-trash-o" aria-hidden="true" style="" ></i></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-			</div>
-			<div class="col-4 pr-0 border-left">
-				<div>
-					<div class="titlea text-center">
-						<h5 class="font-weight-normal">TỔNG TIỀN GIỎ HÀNG</h5>
+				
+				<div class="w-50 float-right border p-5">
+					<div class="d-flex">
+						<span class="d-inline">
+							<h5>Tạm tính :</h5>
+						</span>
+						<h5 class="ml-auto d-inline font-weight-normal">{{cart.price
+							| number : 0}} VNĐ</h5>
 					</div>
 					<hr />
-					<div class="bodyaa">
-						<div class="d-flex">
-							<div class="">TỔNG SẢN PHẨM</div>
-							<div class="ml-auto">12</div>
-						</div>
-						<div class="d-flex mt-3 mb-3">
-							<div class="">TỔNG TIỀN HÀNG</div>
-							<div class="ml-auto">12</div>
-						</div>
-						<div class="d-flex">
-							<div class="">THÀNH TIỀN</div>
-							<div class="ml-auto">12</div>
-						</div>
+					<div class="d-flex">
+						<span class="d-inline">
+							<h5>Khuyến mãi :</h5>
+						</span>
+						<h5 class="ml-auto d-inline font-weight-normal">0 VNĐ</h5>
 					</div>
 					<hr />
-					<div class="d-flex mb-3">
-							<div class="">TẠM TÍNH</div>
-							<div class="ml-auto">12</div>
+					<div class="d-flex">
+						<span class="d-inline">
+							<h5>Tổng tiền :</h5>
+						</span>
+						<h5 class="ml-auto d-inline text-danger font-weight-normal">{{cart.price
+							| number : 0}} VNĐ</h5>
 					</div>
-					<span class="text-danger pt-5 text-center">
-						Bạn được miễn phí ship khi đơn hàng có giá trị trên 2,000,000vnđ
-					</span>
-					<div class="d-flex justify-content-center mt-4">
-						<button type="button" class="btn btn-outline-primary mr-2">TIẾP TỤC MUA SẮM</button>
-						<button type="button" class="btn btn-dark">THANH TOÁN</button>
+					<hr />
+					<div class="float-right">
+						<a href="/index" class="btn btn-outline-success">Tiếp tục mua
+							hàng</a> <a href="/checkout" class="btn btn-outline-primary">Thanh
+							toán</a>
 					</div>
 				</div>
 			</div>
@@ -84,8 +86,18 @@
 	<!-- Cart Details End -->
 
 
-	<!-- Customer information Begin -->
-
-	<!-- Customer information End -->
+	<!-- Cart Empty Start -->
+	<div ng-show="cart.items.length == 0" class="text-center" style="margin-top: 150px; min-height: 370px">
+		<div class="text-danger mb-3" style="font-size: 80px">
+			<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+		</div>
+		<span class="h4">Không còn sản phẩm nào trong giỏ hàng !</span>
+		<div class="mt-3">
+			<a href="/index" class="btn btn-outline-primary w-25">Quay lại trang chủ</a>
+		</div>
+	</div>
+	<!-- Cart Empty End -->
+	
+	
 	</main>
-</div>
+</html>
