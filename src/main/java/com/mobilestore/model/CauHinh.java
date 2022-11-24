@@ -22,31 +22,30 @@ import lombok.NoArgsConstructor;
 public class CauHinh {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Mach")
+	@Column(name = "mach")
 	private int maCH;
 	
-	@Column(name = "Dophangiai")
+	@Column(name = "dophangiai")
 	private String doPhanGiai;
 	
-	@Column(name = "Dorong")
+	@Column(name = "dorong")
 	private String doRong;
 	
-	@Column(name = "Hedh")
+	@Column(name = "hedh")
 	private String heDH;
 	
-	@Column(name = "Chip")
+	@Column(name = "chip")
 	private String chip;
 	
-	@Column(name = "Pin")
+	@Column(name = "pin")
 	private String pin;
 	
-	@Column(name = "Ram")
+	@Column(name = "ram")
 	private String ram;
 	
-	@Column(name = "Rom")
+	@Column(name = "rom")
 	private String rom;
 	
-	//san pham
 	@JsonIgnore
 	@OneToMany(mappedBy = "maCH")
 	List<SanPham> sanpham;

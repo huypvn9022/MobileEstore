@@ -13,6 +13,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -45,10 +47,12 @@ public class NhanVien {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaySinh;
 	
-	@Column(name = "chucvu")
-	private boolean chucVu;
+	@JsonIgnore
+	@OneToMany(mappedBy = "taiKhoan")
+	List<VaiTroNhanVien> vaiTroNV;
 	
 	// don hang
+	@JsonIgnore
 	@OneToMany(mappedBy = "manv")
 	List<DonHang> donhang;
 }

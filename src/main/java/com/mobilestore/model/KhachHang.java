@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,11 +39,17 @@ public class KhachHang {
 	@Column(name = "diachi")
 	private String diaChi;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "taiKhoan")
+	List<VaiTroKhachHang> vaiTroKH;
+	
 	// binh luan
+	@JsonIgnore
 	@OneToMany(mappedBy = "taikhoan")
 	List<BinhLuan> binhluan;
 
 	// don hang
+	@JsonIgnore
 	@OneToMany(mappedBy = "makh")
 	List<DonHang> donhang;
 }
