@@ -1,158 +1,134 @@
-<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
+<div xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/main :: dynamic (~{::main})}">
 	<main>
-    <!--  -->
-    <div class="hero">
-      <div class="container">
+		<div class="grid-members">
+			<!-- Tabs form -->
+			<div class="grid-item">
+				<div class="user-menu-side">
+					<div class="user-name">
+						<img onerror=""
+							src="https://didongthongminh.vn/images/logo-user.svg"
+							alt="avatar" class="img-responsive">
+						<div class="name">
+							Xin chào, <span>codvps18948</span>
+						</div>
+					</div>
+					<ul>
+						<li class="">
+							<a href="/account-information"> 
+								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản
+							</a>
+						</li>
+						<li class="active">
+							<a href="/order-management"> 
+								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lý đơn hàng
+							</a>
+						</li>
+						<li class="">
+							<a href="/change-password"> 
+								<i class="fa fa-lock" aria-hidden="true"></i> Đổi mật khẩu
+							</a>
+						</li>
+						<li class="">
+							<a href="/forgot-password"> 
+								<i class="fa fa-unlock" aria-hidden="true"></i> Quên mật khẩu
+							</a>
+						</li>
+						<li>
+							<a href="#"> 
+								<i class="fa fa-power-off" aria-hidden="true"></i> Đăng xuất
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 
-        <div id="layoutSidenav">
-          <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-              <div class="sb-sidenav-menu">
-                <div class="nav ">
-                  <div class="menu-bara">
-                    <div class="sb-sidenav-menu-heading"><img src="/client/img/account.png" height="25px"></div>
-                    <div class="sb-sidenav-menu-heading">Tài khoản</div> 
-                </div>
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Thông tin tài khoản
-                  </a>
+			<!-- Forms -->
+			<div class="grid-item">
+				<div class="user-content-side">
+					<h2 class="member-title">Quản Lý Đơn Hàng</h2>
 
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quản lý đơn hàng
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Quên mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đổi mật khẩu
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng nhập
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng ký
-                  </a>
-
-                  <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon">
-                      <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    Đăng xuất
-                  </a>
-
-            </nav>
-          </div>
-          <div id="layoutSidenav_content">
-            <main>
-              <div class="container-fluid px-4">
-                <h1 class="mt-4">Quản lý đơn hàng</h1>
-                <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item active">Quản lý đơn hàng</li>
-                </ol>
-              
-
-              <!--  -->
-              <!--start search -->
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                  
-                    <form class="d-flex">
-                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                  </div>
-                </div>
-              </nav> 
-              <!-- end search -->
-              
-              <div class="container mt-3 px-4">
-                <h2>Đơn hàng</h2>
-                
-                <table class="table table-bordered table-sm">
-                  <thead>
-                    <tr>
-                      <th>Mã đơn hàng</th>
-                      <th>Tên sản phẩm</th>
-                      <th>Ngày tạo</th>
-                      <th>Số lượng</th>
-                      <th>Tổng tiền</th>
-                      <th>Trạng thái</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>01</td>
-                      <td>Iphone 13</td>
-                      <td>12/07/2022</td>
-                      <td>14</td>
-                      <td>30.000.000vnd</td>
-                      <td>Đã nhận</td>
-                    </tr>
-                    <tr>
-                      <td>02</td>
-                      <td>Iphone 13 pro max</td>
-                      <td>12/07/2022</td>
-                      <td>52</td>
-                      <td>30.000.000vnd</td>
-                      <td>Đã hủy</td>
-                    </tr>
-                    <tr>
-                      <td>03</td>
-                      <td>Iphone 14 pro max</td>
-                      <td>12/07/2022</td>
-                      <td>23</td>
-                      <td>30.000.000vnd</td>
-                      <td>Đã nhận</td>
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td>Iphone 14 pro max</td>
-                        <td>12/07/2022</td>
-                        <td>23</td>
-                        <td>30.000.000vnd</td>
-                        <td>Đã nhận</td>
-                      </tr>
-                      <tr>
-                        <td>05</td>
-                        <td>Iphone 14 pro max</td>
-                        <td>12/07/2022</td>
-                        <td>23</td>
-                        <td>30.000.000vnd</td>
-                        <td>Đã nhận</td>
-                      </tr>
-                  </tbody>
-                </table>
-              </div>
-              
-              
-            </main>
-          </div>
-        </div>
-
-      </div>
-    </div>
-	<!-- Hero Section End -->
-	</main>
+					<div class="list-order-member">
+						<table class="table table-order-member">
+							<thead>
+								<tr>
+									<th>Mã đơn</th>
+									<th>Ngày</th>
+									<th>Sản phẩm</th>
+									<th>Địa chỉ</th>
+									<th>Tổng tiền</th>
+									<th>Trạng thái</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td data-title="Mã đơn" class="id-order">DH00007455</td>
+									<td data-title="Ngày">19/11/2022</td>
+									<td data-title="Sản phẩm"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB Chính hãng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Địa chỉ">TP.HCM</td>
+									<td data-title="Tổng tiền">34.490.000<sup>đ</sup>
+									</td>
+									<td data-title="Trạng thái"></td>
+								</tr>
+								<tr>
+									<td data-title="Mã đơn" class="id-order">DH00007455</td>
+									<td data-title="Ngày">19/11/2022</td>
+									<td data-title="Sản phẩm"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB Chính hãng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Địa chỉ">TP.HCM</td>
+									<td data-title="Tổng tiền">34.490.000<sup>đ</sup>
+									</td>
+									<td data-title="Trạng thái"></td>
+								</tr>
+								<tr>
+									<td data-title="Mã đơn" class="id-order">DH00007455</td>
+									<td data-title="Ngày">19/11/2022</td>
+									<td data-title="Sản phẩm"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB Chính hãng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Địa chỉ">TP.HCM</td>
+									<td data-title="Tổng tiền">34.490.000<sup>đ</sup>
+									</td>
+									<td data-title="Trạng thái"></td>
+								</tr>
+								<tr>
+									<td data-title="Mã đơn" class="id-order">DH00007455</td>
+									<td data-title="Ngày">19/11/2022</td>
+									<td data-title="Sản phẩm"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB Chính hãng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Địa chỉ">TP.HCM</td>
+									<td data-title="Tổng tiền">34.490.000<sup>đ</sup>
+									</td>
+									<td data-title="Trạng thái"></td>
+								</tr>
+								<tr>
+									<td data-title="Mã đơn" class="id-order">DH00007455</td>
+									<td data-title="Ngày">19/11/2022</td>
+									<td data-title="Sản phẩm"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB Chính hãng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Địa chỉ">TP.HCM</td>
+									<td data-title="Tổng tiền">34.490.000<sup>đ</sup>
+									</td>
+									<td data-title="Trạng thái"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 </div>
+</main>
+</div>
+
+
