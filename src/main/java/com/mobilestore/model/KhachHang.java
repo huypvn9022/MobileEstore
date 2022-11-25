@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -40,8 +42,9 @@ public class KhachHang {
 	private String diaChi;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "taiKhoan")
-	List<VaiTroKhachHang> vaiTroKH;
+	@ManyToOne
+	@JoinColumn(name = "vaitrokh")
+	VaiTro vaiTroKH;
 	
 	// binh luan
 	@JsonIgnore

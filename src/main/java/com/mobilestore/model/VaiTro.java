@@ -29,12 +29,12 @@ public class VaiTro {
 	private String tenVaiTro;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "vaiTro")
-	List<VaiTroNhanVien> vaiTroNV; 
+	@OneToMany(mappedBy = "vaiTroNV")
+	List<NhanVien> vaiTroNV; 
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "vaiTro")
-	List<VaiTroKhachHang> vaiTroKH;
+	@OneToMany(mappedBy = "vaiTroKH")
+	List<KhachHang> vaiTroKH;
 
 
 
