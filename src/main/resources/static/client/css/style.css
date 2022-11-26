@@ -2111,8 +2111,18 @@ transparent;
   Index
 -------------------------*/
 
-.panel-product{
+.container .panel-product{
 	background-color: #F5F5FA;
+	padding-bottom: 15px;
+} 
+
+#padding-panel-products {
+	margin-top: 15px;
+}
+
+#padding-panel-products .panel-product .container{
+	padding-bottom: 5px;
+	padding-top: 15px;
 } 
 
 .container .card-group .row .col{
