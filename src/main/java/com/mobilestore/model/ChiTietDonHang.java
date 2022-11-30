@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class ChiTietDonHang implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "mactdh")
+	@Column(name = "MaCTĐH")
 	private int maCTDH;
 	
 	@Column(name = "dongia")

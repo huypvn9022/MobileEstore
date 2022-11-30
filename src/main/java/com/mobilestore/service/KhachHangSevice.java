@@ -43,8 +43,8 @@ public class KhachHangSevice {
 		return dao.existsById(taikhoan);
 	}
 	
-	public Page<KhachHang> findAllByKeyword(Pageable pageable, String keyword) {
-		return dao.findAllByKeyword(pageable,keyword);
+	public List<KhachHang> findAllByKeyword(String keyword) {
+		return dao.findAllByKeyword(keyword);
 	}
 	
 }

@@ -46,10 +46,10 @@
 				</nav>
 				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
-						<form action="/admin/sanpham/page" modelAttribute="sp">
+						<form action="/admin/sanpham/page" >
 							<div class="input-group input-group-outline">	
 								<label class="form-label">Type here...</label> 
-								<input path="tensp" value="" type="text" class="form-control" style="height: 40px; "/>
+								<input  type="text" class="form-control" style="height: 40px; "/>
 									<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
 							</div>
 						</form>
@@ -114,44 +114,45 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr th:each="order : ${listdh}">
 											<td>
-												<p class="text-xs font-weight-bold mb-0 ms-3">madon</p>
+												<p class=" text-xs font-weight-bold mb-0 ms-5">[[${order.maDon}]]</p>
 											</td>
 											<td>
 												<div class="d-flex px-2 py-1">
 													
 													<div class="d-flex flex-column justify-content-center">
-														<h6 class="mb-0 text-xs text-xs font-weight-bold mb-0 text-secondary">ngaytao</h6>
+														<h6 class="mb-0 text-xs text-xs font-weight-bold mb-0 text-secondary">[[${order.ngayTao}]]</h6>
 													</div>
 												</div>
 											</td>
 											<td class="align-middle text-sm ">
-												<h6 class="text-xs font-weight-bold mb-0 text-secondary ms-2">hoten</h6>
+												<h6 class="text-xs font-weight-bold mb-0 text-secondary ms-2">[[${order.makh.hoTen}]]</h6>
 											</td>
 											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-2">tongtien</span>
+												class="text-secondary text-xs font-weight-bold ms-2">[[${#numbers.formatDecimal(order.tongTien, 0, 'COMMA', 0, 'POINT')}]]</span>
 											</td>
 											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-3">diachi</span>
+												class="text-secondary text-xs font-weight-bold ms-3">[[${order.makh.diaChi}]]</span>
 											</td>
 											<td class="align-middle "><span
-												class="text-secondary text-xs font-weight-bold ms-3">trangthai</span>
+												class="text-secondary text-xs font-weight-bold ms-3">[[${order.trangThai}]]</span>
 											</td>
 											<td class="align-middle">
-											<a href="/admin/khachhang/edit/${kh.taikhoankh}" class="text-secondary font-weight-bold text-xs"
+											<a th:href="@{|/admin/order/edit/${order.maDon}|}" class="text-secondary font-weight-bold text-xs"
 												data-toggle="tooltip" data-original-title="Edit user">Edit </a>
-											<a href="/admin/khachhang/edit/${kh.taikhoankh}" class="text-secondary font-weight-bold text-xs ms-2"
+											<a th:href="@{|/admin/order/delete/${order.maDon}|}" class="text-secondary font-weight-bold text-xs ms-2"
 												data-toggle="tooltip" data-original-title="Edit user">Del </a>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 								<div class="text-center mt-3">
-									<a href="/admin/sanpham?p=0" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-solid fa-backward-step"></i></a>
-									<a href="/admin/sanpham?p=${page.number-1}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-backward"></i> </a>
-									<a href="/admin/sanpham?p=${page.number+1}" class="mx-2" style="text-transform: uppercase; font-weight: bold;" ><i class="fa fa-solid fa-forward"></i> </a>
-									<a href="/admin/sanpham?p=${page.totalPages-1}" class="ms-1" style="text-transform: uppercase; font-weight: bold;" ><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+									<a th:href="@{|/admin/order?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
+									<a th:href="@{|/admin/order?p=${listdh.getNumber() > 0 ? listdh.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
+									<a th:href="@{|/admin/order?p=${listdh.getNumber() < listdh.getTotalPages() -1 ? listdh.getNumber() + 1 : listdh.getTotalPages() -1}|}"
+										class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
+									<a th:href="@{|/admin/order?p=${listdh.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
 								</div>
 							</div>
 						</div>
@@ -169,42 +170,73 @@
 							</div>
 						</div>
 						<div class="card-body px-0 pb-2">
-							<form action="" class="text-start" style="padding: 0 200px;">
-								<div class="row">
+							<form action="/admin/order" th:object="${donhang}" class="text-start" method="post" style="padding: 0 200px;">
+								<div class="row mb-3">
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Mã Đơn Hàng </label> 
-											<input type="text" class="form-control">
+											<input th:field="*{maDon}" type="text" class="form-control" readonly>
 										</div>
+										<p th:if="${#fields.hasErrors('maDon')}" th:errors="*{maDon}" class="text-danger mb-0"></p>																														
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Ngày Tạo</label> 
-											<input type="text" class="form-control">
+											<input th:field="*{ngayTao}" type="text" class="form-control">
 										</div>
 									</div>
 								</div>
+								<div class="input-group input-group-outline ">
+									<label class="form-label">Nhân Viên bán</label> 
+									<input th:field="*{manv.taiKhoan}" name="manv" type="text" class="form-control" readonly>
+								</div>								
 								<p class=" font-weight-bold text-center mt-3">Thông Tin Khách Hàng</p>
+								<div class="input-group input-group-outline mb-3 ">
+									<label class="form-label">Tài Khoản</label> 
+									<input th:field="*{makh.taiKhoan}" type="text" class="form-control" readonly>									
+								</div>								
 								<div class="row">
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">Tên Khách hàng </label> 
-											<input type="text" class="form-control">
+											<input th:field="*{makh.hoTen}" type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="input-group input-group-outline ">
 											<label class="form-label">SĐT</label> 
-											<input type="text" class="form-control">
+											<input th:field="*{makh.SDT}" type="text" class="form-control">
 										</div>
 									</div>
 								</div>
 								<div class="input-group input-group-outline mt-3 ">
 									<label class="form-label">Địa Chỉ</label> 
-									<input type="text" class="form-control">
+									<input th:field="*{makh.diaChi}" type="text" class="form-control">
 								</div>
 
 								<p class=" font-weight-bold mb-0 text-center mt-3">Thông Tin Mua Hàng</p>
+								<div class="row mt-3 mb-3">
+									<div class="col-6 ">
+										<div class="input-group input-group-outline mb-3">
+											<label class="mt-2">Tên Sản phẩm </label> 
+											<br>
+											<select th:name="masp" class="form-control ms-2">
+												<th:block th:each="sp : ${listsp}">
+													<option th:value="${sp.maSP}">[[${sp.tenSP}]]</option>
+												</th:block>
+											</select>
+										</div>
+									</div>
+									<div class="col-3"> 
+										<div class="input-group input-group-outline ">
+											<label class="form-label">Số Lượng </label> 
+											<input type="text" name="soluong" class="form-control">
+										</div>										
+									</div>										
+									<div class="col-3"> 
+										<button th:formaction="@{|/admin/order/add/product/${donhang.maDon}|}" type="submit" class="btn bg-gradient-danger">Add</button>																											
+									</div>		
+								</div>								
 								<table class="table">
 									<thead>
 										<tr>
@@ -216,47 +248,38 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th scope="row"><label class="ms-3 text-xs">SP100</label></th>
-											<td><label class="ms-3 text-xs">Iphone 13</label></td>
-											<td><input class="ms-3 text-xs " value="1"></td>
-											<td><label class="ms-3 text-xs">20.000.000 VNĐ</label></td>
+										<tr th:each="item : *{ctdh}">
+											<th scope="row"><label class="ms-3 text-xs" th:text="${item.masp.maSP}"></label></th>
+											<td><label class="ms-3 text-xs">[[${item.masp.tenSP}]]</label></td>
+											<td><label class="ms-3 text-xs" >[[${item.soLuong}]]</label></td>
+											<td><label class="ms-3 text-xs">[[${#numbers.formatDecimal(item.donGia, 0, 'COMMA', 0, 'POINT')}]] VNĐ</label></td>
 											<td><label class="ms-3 text-xs">Còn hàng</label></td>
 											<td class="align-middle">
-												<a href="javascript:;" class="text-secondary font-weight-bold text-xs"
+												<button th:formaction="@{|/admin/order/delete/product/${item.maCTDH}/${item.madh.maDon}|}" class="text-secondary font-weight-bold text-xs btn"
 												data-toggle="tooltip" data-original-title="Edit user">Del 
-												</a>
-											</td>
+												</button>
+											</td>											
 										</tr>
 									</tbody>
 								</table>
-
-								<div class="row">
-									<div class="col-6">
-										<div class="input-group input-group-outline mb-3">
-											<label class="mt-2">Khuyến Mãi</label> 
-											<br>
-											<select path="maloai" class="form-control ms-2">
-												<option value="">SamSung</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-6">
-										<div class="input-group input-group-outline mb-3">
-											<label class="mt-2">Trạng Thái </label> 
-											<br>
-											<select path="maloai" class="form-control ms-2">
-												<option value="">Iphone</option>
-											</select>
-										</div>
-									</div>
+								<div class="input-group input-group-outline mb-3">
+									<label class="mt-2">Trạng Thái </label> 
+									<br>
+									<select th:field="*{trangThai}" class="form-control ms-2">
+										<option value="Chưa xử lí">Chưa xử lí</option>
+										<option value="Hoàn thành">Hoàn thành</option>
+										<option value="Hủy đơn hàng">Hủy đơn hàng</option>
+										
+									</select>
 								</div>
-								<p class="text-sm font-weight-bold mb-0">Tổng Tiền: 20.000.000 VNĐ</p>
-								<div class="text-center">
-									<button type="button" class="btn bg-gradient-primary my-4 mb-2">Xóa Đơn Hàng</button>
-									<button type="button" class="btn bg-gradient-info my-4 mb-2">Sửa Đơn Hàng</button>
-									<button type="button" class="btn bg-gradient-danger my-4 mb-2">Duyệt Đơn Hàng</button>
-									<button type="button" class="btn bg-gradient-secondary my-4 mb-2">Hủy Đơn Hàng</button>
+								<div class="input-group input-group-outline mb-3">
+									<label class="mt-2">Tổng Tiền</label> 
+ 									<input th:value="${#numbers.formatDecimal(tongtien.tongTien, 1, 'NONE', 0, 'DEFAULT')}" name="tongtien" class="form-control ms-3" type="text">								
+								</div>								
+ 	 							<div class="text-center">
+									<button th:formaction="@{|/admin/order/delete/${donhang.maDon}|}" type="submit" class="btn bg-gradient-primary my-4 mb-2">Xóa Đơn Hàng</button>
+									<button formaction="/admin/order/update" type="submit" class="btn bg-gradient-info my-4 mb-2">Sửa Đơn Hàng</button>
+									<button formaction="/admin/order/reset" type="submit" class="btn bg-gradient-danger my-4 mb-2">Mới</button>									
 								</div>
 							</form>
 						</div>
@@ -555,7 +578,7 @@
 	<!-- Github buttons -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-	<script src="/assets/js/material-dashboard.min.js?v=3.0.2"></script>
+	<script src="/assets/js/material-dashboard.js?v=3.0.2"></script>
 </body>
 
 </html>
