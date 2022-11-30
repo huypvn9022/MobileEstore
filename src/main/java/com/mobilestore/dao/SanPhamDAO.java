@@ -14,7 +14,7 @@ import com.mobilestore.model.SanPham;
 public interface SanPhamDAO extends JpaRepository<SanPham, Integer>{
 	@Query(value = "SELECT o FROM SanPham o WHERE o.tenSP LIKE ?1")
 	List <SanPham> findAllByKeyword(String keywords);
-	@Query(value = "SELECT o FROM SanPham o WHERE o.maHang.maHang = ?1")
+	@Query(value = "SELECT o FROM SanPham o WHERE o.mahang.maHang like ?1")
 	Page<SanPham> findAllByMaHang(String mahang,Pageable pageable);
 	@Query(value = "SELECT o FROM SanPham o WHERE o.tenSP LIKE ?1")
 	Page <SanPham> findAllByKeywords(Pageable pageable, String keywords);

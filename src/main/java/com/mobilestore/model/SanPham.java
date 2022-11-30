@@ -60,17 +60,17 @@ public class SanPham implements Serializable{
 	// hang san xuat
 	@ManyToOne
 	@JoinColumn(name = "Mahang")
-	HangSanXuat maHang;
+	HangSanXuat mahang;
 
 	// cau hinh
 	@ManyToOne
 	@JoinColumn(name = "Mach")
-	CauHinh maCH;
+	CauHinh mach;
 	
 	// loai sp
 	@ManyToOne
 	@JoinColumn(name = "Maloai")
-	LoaiSanPham maLoai;
+	LoaiSanPham maloai;
 
 	// hinh anh
 	@JsonIgnore

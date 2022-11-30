@@ -59,5 +59,5 @@ public class DonHang  implements Serializable{
 	// chi tiet don hang
 	@JsonIgnore
 	@OneToMany(mappedBy = "madh")
-	List<ChiTietDonHang> chiTietDonHang;
+	List<ChiTietDonHang> ctdh;
 }

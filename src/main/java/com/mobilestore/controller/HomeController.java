@@ -121,10 +121,6 @@ public class HomeController {
 	public String orderManagement(Model model) {
 		return "layout/qldonhang";
 	}
-	@RequestMapping("/forgot-password")
-	public String forgotPassword(Model model) {
-		return "layout/qmatkhau";
-	}
 
 	@RequestMapping("/shop-grid")
 	public String shopGrid(Model model) {

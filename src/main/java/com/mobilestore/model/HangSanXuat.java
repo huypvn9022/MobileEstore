@@ -30,6 +30,6 @@ public class HangSanXuat implements Serializable{
 	
 	//san pham
 	@JsonIgnore
-	@OneToMany(mappedBy = "maHang")
+	@OneToMany(mappedBy = "mahang")
 	List<SanPham> sanpham;
 }

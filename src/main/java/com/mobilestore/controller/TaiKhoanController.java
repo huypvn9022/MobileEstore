@@ -22,7 +22,6 @@ import com.mobilestore.service.KhachHangSevice;
 import com.mobilestore.service.MailerService;
 import com.mobilestore.service.VaiTroService;
 
-
 @Controller
 @RequestMapping("/index")
 public class TaiKhoanController {
@@ -31,7 +30,7 @@ public class TaiKhoanController {
 
 	@Autowired
 	MailerService mailService;
-	
+
 	@Autowired
 	VaiTroService vtService;
 
@@ -100,41 +99,48 @@ public class TaiKhoanController {
 	public String thongTinTK(Model model, @ModelAttribute("tttaikhoan") KhachHang kh) {
 		return "layout/TTTaiKhoan";
 	}
+
 	@PostMapping("/thong-tin-tai-khoan")
 	public String thongTinTK_submit(Model model, @ModelAttribute("tttaikhoan") KhachHang kh) {
 		return "layout/TTTaiKhoan";
 	}
-	
-	
+
 	@GetMapping("/quenmk")
 	public String quenMK_submit() {
-		return"layout/QMatKhau";
+		return "layout/QMatKhau";
 	}
-	
+
 	@PostMapping("/quenmk")
-	public String quenMK(@RequestParam String username,@RequestParam String email, Model model) {
-        KhachHang acc = khService.findById(username);
-        if (!khService.existsById(username)) {
-            model.addAttribute("message", "Tài khoản không tồn tại");
-        }else {
-//            String newPass = ((long) Math.floor(Math.random() * (999999999 - 100000000 + 1) + 100000000)) +"";
-//            acc.setMatKhau(newPass);
-//            khService.save(acc);
-            try {
-                MailInfo mail = new MailInfo();
-                mail.setFrom("tientai9a9@gmail.com");
-                mail.setTo(email);
-                mail.setSubject("Mobile Estore - Lấy lại mật khẩu");
-                mail.setBody("Xin chào " + acc.getHoTen() + ", mật khẩu của bạn là: " + acc.getMatKhau() + ""
-                		+ ". Vui lòng không được gửi mật khẩu này cho bất cứ để tránh mất thông tin.");
-                mailService.send(mail);
-                model.addAttribute("message","Gửi thành công!");
-            } catch (MessagingException e) {
-            	 model.addAttribute("message","Gửi thất bại!");
-                e.printStackTrace();
-            }
-            model.addAttribute("message","Chúng tôi đã gửi mật khẩu về email của bạn, vui lòng kiểm tra email!");
-        }
-        return "layout/QMatKhau";
+	public String quenMK(@RequestParam String username, @RequestParam String email, Model model) {
+
+		if (username.isBlank() || email.isBlank()) {
+			model.addAttribute("message", "Vui lồng không để trống dữ liệu!");
+			return "layout/QMatKhau";
+		} else {
+			KhachHang acc = khService.findById(username);
+			if (!khService.existsById(username)) {
+				model.addAttribute("message", "Tài khoản không tồn tại");
+			} else {
+				String newPass = ((long) Math.floor(Math.random() * (999999999 - 100000000 + 1) + 100000000)) + "";
+				acc.setMatKhau(newPass);
+				khService.save(acc);
+				try {
+					MailInfo mail = new MailInfo();
+					mail.setFrom("tientai9a9@gmail.com");
+					mail.setTo(email);
+					mail.setSubject("Mobile Estore - Lấy lại mật khẩu");
+					mail.setBody("Xin chào " + acc.getHoTen() + ", mật khẩu của bạn là: " + newPass + ""
+							+ ". Vui lòng không được gửi mật khẩu này cho bất cứ để tránh mất thông tin.");
+					mailService.send(mail);
+					model.addAttribute("message", "Gửi thành công!");
+				} catch (MessagingException e) {
+					model.addAttribute("message", "Gửi thất bại!");
+					e.printStackTrace();
+				}
+				model.addAttribute("message", "Chúng tôi đã gửi mật khẩu về email của bạn, vui lòng kiểm tra email!");
+			}
+			return "layout/QMatKhau";
+		}
+
 	}
 }

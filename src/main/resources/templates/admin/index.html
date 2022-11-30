@@ -1,6 +1,6 @@
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>-->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,8 +57,9 @@
 					<ul class="navbar-nav  justify-content-end">
 						<li class="nav-item d-flex align-items-center"><a
 							href="javascript:;"
-							class="nav-link text-body font-weight-bold px-0"> <i
-								class="fa fa-user me-sm-1"></i> <span class="d-sm-inline d-none">Đăng Nhập</span>
+							class="nav-link text-body font-weight-bold px-0"> 
+								 
+								<span class="d-sm-inline d-none " >Welcome [[${#request.remoteUser}]]</span>
 						</a></li>
 						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
 							<a href="javascript:;" class="nav-link text-body p-0"

@@ -79,18 +79,6 @@
 							<li><a href="#" style="color: white"><i class="fa fa-volume-control-phone text-light mr-2"></i> Liên hệ </a> &emsp;|</li>
 							<li><a th:href="@{/cart}" style="color: white"><i class="fa fa-shopping-bag text-light mr-2"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
 							</span>
-							
-							
-							
-							
-							<!-- 
-							<span th:unless="${#request.remoteUser}">
-								<li>
-								<a href="#" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
-								</li>
-							</span>
-							 -->
-							
 							<span th:if="${#request.remoteUser}">
 								<li th:if="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
 									<a th:href="@{/admin/thongke}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Admin</a>
@@ -100,7 +88,6 @@
 								</li>
 							</span>
 							<span th:unless="${#request.remoteUser}">
-								
 								<li>
 									<a th:href="@{/order-management}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
 								</li>

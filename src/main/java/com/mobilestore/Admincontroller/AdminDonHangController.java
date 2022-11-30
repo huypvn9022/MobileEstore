@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mobilestore.service.CTDHService;
 import com.mobilestore.service.DonHangService;
 import com.mobilestore.service.SanPhamService;
+import com.mobilestore.service.SessionService;
 import com.mobilestore.model.ChiTietDonHang;
 import com.mobilestore.model.DonHang;
 import com.mobilestore.model.SanPham;
@@ -36,6 +37,8 @@ public class AdminDonHangController {
 
 	@Autowired
 	CTDHService ctdhService;
+	
+
 
 	@RequestMapping("/order")
 	public String order(Model model, @RequestParam("p") Optional<Integer> page,
@@ -46,6 +49,8 @@ public class AdminDonHangController {
 		
 		TongTienCTDH tongTien = new TongTienCTDH();
 		tongTien.setTongTien(0.0);
+		
+		
 		
 		model.addAttribute("listdh", listDH);
 		model.addAttribute("listsp", listSP);

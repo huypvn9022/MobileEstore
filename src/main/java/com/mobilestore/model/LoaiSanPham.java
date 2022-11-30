@@ -33,6 +33,6 @@ public class LoaiSanPham implements Serializable {
 	private String tenLoai;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "maLoai")
+	@OneToMany(mappedBy = "maloai")
 	List<SanPham> sanpham;
 }

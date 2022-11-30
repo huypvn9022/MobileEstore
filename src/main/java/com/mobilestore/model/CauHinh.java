@@ -56,6 +56,6 @@ public class CauHinh implements Serializable{
 	
 	//san pham
 	@JsonIgnore
-	@OneToMany(mappedBy = "maCH")
+	@OneToMany(mappedBy = "mach")
 	List<SanPham> sanpham;
 }
