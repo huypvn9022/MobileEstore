@@ -119,8 +119,6 @@
 														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ram</th>
 													<th
 														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rom</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Thương Hiệu</th>
 													<th class="text-secondary opacity-7"></th>
 												</tr>
 											</thead>
@@ -149,11 +147,6 @@
 													</td>
 													<td class="align-middle text-center"><span
 														class="text-secondary text-xm font-weight-bold">[[${page.rom}]]</span>
-													</td>
-													<td class="align-middle text-center">
-														<div>
-															<span class="text-secondary text-xs font-weight-bold">[[${page.thuongHieu}]]</span>
-														</div>
 													</td>
 													<td class="align-middle">
 														<a th:href="@{|/admin/cauhinh/edit/${page.maCH}|}" class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
@@ -191,24 +184,11 @@
 											<label class="form-label">Mã Cấu Hình</label> 
 											<input th:field="*{maCH}" type="text" class="form-control" readonly/>
 										</div>																		
-										<div class="row">
-											<div class="col-6">
-												<div class="input-group input-group-outline mb-3">
-													<label class="mt-2">Thương Hiệu</label> 
-													<br>
-													<select th:field="*{thuongHieu}" class="form-control ms-2">
-														<option th:each="item : ${hangsx}" th:value="${item.tenHang}">[[${item.tenHang}]]</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-6">
-												<div class=" input-group input-group-outline ">
-													<label class="form-label">Pin</label> 
-													<input th:field="*{pin}" type="text" class="form-control"/>
-												</div>
-												<p th:if="${#fields.hasErrors('pin')}" th:errors="*{pin}" class="text-danger mb-0"></p>										
-											</div>
+										<div class=" input-group input-group-outline mb-3">
+											<label class="form-label">Pin</label> 
+											<input th:field="*{pin}" type="text" class="form-control"/>
 										</div>
+										<p th:if="${#fields.hasErrors('pin')}" th:errors="*{pin}" class="text-danger mb-0"></p>										
 										<div class="row mb-3">
 											<div class="col-6">
 												<div class="input-group input-group-outline ">

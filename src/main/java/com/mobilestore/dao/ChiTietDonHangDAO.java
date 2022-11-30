@@ -12,10 +12,11 @@ import com.mobilestore.model.DoanhThuNam;
 import com.mobilestore.model.DoanhThuNgay;
 import com.mobilestore.model.DoanhThuThang;
 import com.mobilestore.model.Top5SP;
+import com.mobilestore.model.TongTienCTDH;
 
 public interface ChiTietDonHangDAO extends JpaRepository<ChiTietDonHang, Integer>{
 	
-	@Query("SELECT  new Top5SP(o.masp,count(o.soLuong)) "
+	@Query("SELECT new Top5SP(o.masp,count(o.soLuong)) "
 			+ " FROM ChiTietDonHang o "
 			+ " GROUP BY o.masp"
 			+ " ORDER BY count(o.soLuong) DESC")
@@ -35,6 +36,12 @@ public interface ChiTietDonHangDAO extends JpaRepository<ChiTietDonHang, Integer
 	
 	@Query("SELECT  new DoanhThuNgay(COUNT(o.madh.maDon),COUNT(o.masp.maSP),SUM(o.donGia)) "
 			+ " FROM ChiTietDonHang o "
-			+ " WHERE o.madh.ngayTao = getdate()")
+			+ " WHERE DAY(o.madh.ngayTao) = DAY(getdate())")
 			List<DoanhThuNgay> getDoanhThuNgay();
+	
+	@Query("SELECT SUM(o.donGia * o.soLuong) FROM ChiTietDonHang o " + " WHERE o.madh.maDon = ?1")
+	public TongTienCTDH getTongTienByMadon(int maDon);
+	
+	@Query("SELECT o from ChiTietDonHang o where o.madh.maDon = ?1")
+	public List<ChiTietDonHang> getAllOrderDetail(int maDon);
 }

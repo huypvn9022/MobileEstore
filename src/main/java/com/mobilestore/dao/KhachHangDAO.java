@@ -1,5 +1,7 @@
 package com.mobilestore.dao;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,5 +11,5 @@ import com.mobilestore.model.KhachHang;
 
 public interface KhachHangDAO extends JpaRepository<KhachHang, String>{
 	@Query(value = "SELECT o FROM KhachHang o WHERE o.taiKhoan LIKE ?1")
-	Page <KhachHang> findAllByKeyword(Pageable pageable, String keywords);
+	List <KhachHang> findAllByKeyword( String keywords);
 }

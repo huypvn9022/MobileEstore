@@ -1,5 +1,6 @@
 package com.mobilestore.Admincontroller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -17,14 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobilestore.model.KhachHang;
+import com.mobilestore.model.VaiTro;
 import com.mobilestore.service.KhachHangSevice;
 import com.mobilestore.service.SessionService;
+import com.mobilestore.service.VaiTroService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminKhachHangController {
 	@Autowired
 	KhachHangSevice khService;
+	
+	@Autowired
+	VaiTroService vtService;
 	
 	@Autowired
 	SessionService sessionService;
@@ -34,6 +40,7 @@ public class AdminKhachHangController {
 			@ModelAttribute("khachHang") KhachHang khachHang) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
 		Page<KhachHang> pages = khService.findAll(pageable);
+		
 		model.addAttribute("pages", pages);
 		return "admin/khachhang";
 	}
@@ -48,12 +55,14 @@ public class AdminKhachHangController {
 			BindingResult bindingResult,@RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
 		Page<KhachHang> pages = khService.findAll(pageable);
+		VaiTro vaitro = vtService.findById("KH");
 		
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("pages", pages);
 			model.addAttribute("khachHang", kh);
 			return "admin/khachhang";
 		}else {
+			kh.setVaiTroKH(vaitro);
 			khService.save(kh);
 			model.addAttribute("message", "Thêm mới thành công");
 			return "redirect:/admin/khachhang";
@@ -65,7 +74,8 @@ public class AdminKhachHangController {
 			 BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
 		Page<KhachHang> pages = khService.findAll(pageable);
-		
+		VaiTro vaitro = vtService.findById("KH");
+
 		if(!khService.existsById(kh.getTaiKhoan())) {
 			model.addAttribute("message", "Không tìm thấy khách hàng");
 			
@@ -78,7 +88,8 @@ public class AdminKhachHangController {
 			model.addAttribute("pages", pages);
 			model.addAttribute("khachHang", kh);
 			return "admin/khachhang";
-		}else {
+		}else {			
+			kh.setVaiTroKH(vaitro);
 			khService.update(kh);
 			model.addAttribute("message", "Cập nhật thành công");
 			return "redirect:/admin/khachhang/edit/" + kh.getTaiKhoan();
@@ -89,14 +100,18 @@ public class AdminKhachHangController {
 	@RequestMapping("/khachhang/search")
 	public String khachhang_search(Model model, @RequestParam("keyword") Optional<String> kw,
 			@RequestParam("p") Optional<Integer> p, @ModelAttribute("khachHang") KhachHang kh) {
-		Pageable pageable = PageRequest.of(p.orElse(0), 5);
 		String kwords = kw.orElse(sessionService.get("keyword",""));
 		sessionService.get("keyword",kwords);
-		Page<KhachHang> pages = khService.findAllByKeyword(pageable,"%"+kwords+"%");
+		List<KhachHang> pages = khService.findAllByKeyword("%"+kwords+"%");
 		
-		model.addAttribute("pages", pages);
-		model.addAttribute("khachHang", kh);
-		return "admin/khachhang";
+		if(kwords.equals("")) {
+			return "redirect:/admin/khachhang";
+		}else {
+			model.addAttribute("pages", pages);
+			model.addAttribute("khachHang", kh);
+			model.addAttribute("deletePage", 1);	
+			return "admin/khachhang";
+		}
 	}
 	
 	@RequestMapping("/khachhang/delete/{taiKhoan}")
@@ -123,6 +138,7 @@ public class AdminKhachHangController {
 		model.addAttribute("khachHang", kh);
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
 		Page<KhachHang> pages = khService.findAll(pageable);
+		
 		model.addAttribute("pages", pages);
 		return "admin/khachhang";
 	}

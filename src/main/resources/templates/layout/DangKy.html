@@ -53,52 +53,40 @@
               <!--  -->
               <div class="container-fluid px-4">
                 <div class="container-accout">
-                <form action="/action_page.php">
-
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Tài khoản:</label>
-                          <input
-                            type="text" 
-                            class="form-control"
-                            placeholder="Nhập tài khoản"
-                          />
+                <form action="/index/dangky" th:object="${dangky}" method="post">
+                   <div class="mb-3">
+                      <label for="name" class="form-label">Tài khoản:</label>
+                      <input th:field="*{taiKhoan}" type="text" class="form-control"  placeholder="Nhập tài khoản" />
+                      <p th:if="${#fields.hasErrors('taiKhoan')}" th:errors="*{taiKhoan}" class="text-danger"></p>
                   </div>
 
                     <div class="mb-3 ">
                       <label for="email" class="form-label">Mật khẩu:</label>
-                        <input
-                          type="password"
-                          class="form-control"
-                          placeholder="Nhập Mật khẩu"
-                        />
+                      <input th:field="*{matKhau}" type="password" class="form-control" placeholder="Nhập Mật khẩu" />
+                      <p th:if="${#fields.hasErrors('matKhau')}" th:errors="*{matKhau}" class="text-danger"></p>                      
                     </div>
-                
-                      <div class="mb-3">
-                        <label for="number" class="form-label">Số điện thoại:</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              placeholder="Nhập số điện thoại"
-                            />
+                   <div class="mb-3">
+                      <label for="number" class="form-label">Họ tên:</label>
+                      <input th:field="*{hoTen}" type="text" class="form-control" placeholder="Nhập số điện thoại"  />
+                      <p th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}" class="text-danger"></p>                      
+                  </div>
+                   <div class="mb-3">
+                      <label for="number" class="form-label">Số điện thoại:</label>
+                      <input th:field="*{SDT}" type="text" class="form-control" placeholder="Nhập số điện thoại"  />
+                      <p th:if="${#fields.hasErrors('SDT')}" th:errors="*{SDT}" class="text-danger"></p>                      
                   </div>
 
                     <div class="mb-3">
                       <label for="Address" class="form-label">Email:</label>
-                        <input
-                          type="email"
-                          class="form-control"
-                          placeholder="Nhập Email "
-                        />
+                      <input th:field="*{email}"  type="email" class="form-control" placeholder="Nhập Email " />
+                      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>                      
                     </div>
 
                     <div class="mb-3">
-                        <label for="Address" class="form-label">Địa chỉ:</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Nhập địa chỉ "
-                          />
-                      </div>
+                      <label for="Address" class="form-label">Địa chỉ:</label>
+                      <input th:field="*{diaChi}" type="text" class="form-control"  placeholder="Nhập địa chỉ "/>
+                      <p th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}" class="text-danger"></p>                      
+                    </div>
                   <button type="submit" class="btn-submit ">Đăng ký</button>
                 </form>
               </div>

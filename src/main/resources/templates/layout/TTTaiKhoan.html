@@ -53,45 +53,30 @@
               <!--  -->
               <div class="container-fluid px-4">
                 <div class="container-accout">
-                <form action="/action_page.php">
+                <form action="/admin/thong-tin-tai-khoan" th:object="${tttaikhoan}" method="post">
 
                       <div class="mb-3">
                         <label for="name" class="form-label">Họ và tên:</label>
-                          <input
-                            type="name" 
-                            class="form-control"
-                            id="name"
-                            placeholder="Nhập họ và tên "
-                            name="name" />
+                        <input type="text"  class="form-control" id="name" placeholder="Nhập họ và tên " />
+                      <p th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}" class="text-danger"></p>                                              
                   </div>
 
                     <div class="mb-3 ">
                       <label for="email" class="form-label">Email:</label>
-                        <input
-                          type="email"
-                          class="form-control"
-                          id="email"
-                          placeholder="Nhập địa chỉ email"
-                          name="email"/>
+                       <input type="email" class="form-control" id="email" placeholder="Nhập địa chỉ email" />
+                      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>                                             
                     </div>
                 
                       <div class="mb-3">
-                        <label for="number" class="form-label"
-                          >Số điện thoại:</label>
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="number"
-                              placeholder="Nhập số điện thoại"
-                              name="number"/>
+                        <label for="number" class="form-label" >Số điện thoại:</label>
+                        <input type="text" class="form-control" id="number" placeholder="Nhập số điện thoại" />
+                      <p th:if="${#fields.hasErrors('SDT')}" th:errors="*{SDT}" class="text-danger"></p>                                          
                   </div>
 
                     <div class="mb-3">
                       <label for="Address" class="form-label">Địa chỉ</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Nhập địa chỉ " />
+                      <input type="text" class="form-control" placeholder="Nhập địa chỉ " />
+                      <p th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}" class="text-danger"></p>                                            
                     </div>
                   <button type="submit" class=" btn-submit">Cập nhật</button>
                 </form>

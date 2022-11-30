@@ -43,8 +43,8 @@ public class NhanVienService {
 		return dao.existsById(taikhoan);
 	}
 	
-	public Page<NhanVien> findAllByKeyword(Pageable pageable, String keyword) {
-		return dao.findAllByKeyword(pageable,keyword);
+	public List<NhanVien> findAllByKeyword( String keyword) {
+		return dao.findAllByKeyword(keyword);
 	}
 	
 }

@@ -1,11 +1,11 @@
 @charset "utf-8";
 
-.input-file-container {
+.input-file-container,.input-file-container2, .input-file-container3, .input-file-container4 {
 	position: relative;
 	width: 225px;
 }
 
-.js .input-file-trigger {
+.js .input-file-trigger,.js .input-file-trigger2, .js .input-file-trigger3, .js .input-file-trigger4 {
 	display: block;
 	padding: 14px 45px;
 	background: #39D2B4;
@@ -16,7 +16,7 @@
 	text-align: center;
 }
 
-.js .input-file {
+.js .input-file,.js .input-file2, .js .input-file3, .js .input-file4 {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -28,39 +28,46 @@
 }
 
 .js .input-file:hover+.input-file-trigger, .js .input-file:focus+.input-file-trigger,
-	.js .input-file-trigger:hover, .js .input-file-trigger:focus {
+	.js .input-file-trigger:hover, .js .input-file-trigger:focus,
+.js .input-file2:hover+.input-file-trigger2, .js .input-file2:focus+.input-file-trigger2,
+	.js .input-file-trigger2:hover, .js .input-file-trigger2:focus,
+.js .input-file3:hover+.input-file-trigger3, .js .input-file3:focus+.input-file-trigger3,
+	.js .input-file-trigger3:hover, .js .input-file-trigger3:focus,
+.js .input-file4:hover+.input-file-trigger4, .js .input-file4:focus+.input-file-trigger4,
+	.js .input-file-trigger4:hover, .js .input-file-trigger4:focus {
 	background: #34495E;
 	color: #39D2B4;
 }
 
-.file-return {
+.file-return,.file-return2,.file-return3,.file-return4 {
 	margin: 0;
 }
 
-.file-return:not(:empty) {
+.file-return:not(:empty),.file-return2:not(:empty),.file-return3:not(:empty),.file-return4:not(:empty) {
 	margin: 1em 0;
 }
 
-.js .file-return {
+.js .file-return, .js .file-return2, .js .file-return3, .js .file-return4 {
 	font-style: italic;
 	font-size: .9em;
 	font-weight: bold;
 }
 
-.js .file-return:not(:empty):before {
+.js .file-return:not(:empty):before,.js .file-return2:not(:empty):before,
+.js .file-return3:not(:empty):before,.js .file-return4:not(:empty):before{
 	content: "Selected file: ";
 	font-style: normal;
 	font-weight: normal;
 }
 
-.txtcenter {
+.txtcenter,.txtcenter2,.txtcenter3,.txtcenter4 {
 	margin-top: 4em;
 	font-size: .9em;
 	text-align: center;
 	color: #aaa;
 }
 
-.copy {
+ .copy {
 	margin-top: 2em;
 }
 
@@ -68,3 +75,8 @@
 	text-decoration: none;
 	color: #1ABC9C;
 }
+
+
+
+
+

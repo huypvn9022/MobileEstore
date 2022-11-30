@@ -1,4 +1,4 @@
-
+<meta charset="UTF-8">
 <div id="layoutSidenav_nav" xmlns:th="http://www.thymeleaf.org">
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
@@ -6,37 +6,43 @@
 				<div class="menu-bara">
 					<div class="sb-sidenav-menu-heading ">
 						<img src="/client/img/account.png" height="25px" class="me-3">
-						Tài khoản
+						Tài Khoản
 					</div>
 				</div>
-				<a class="nav-link" href="/taikhoan">
+				<a class="nav-link" href="/index/thong-tin-tai-khoan">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-tachometer-alt"></i>
-					</div> Thông tin tài khoản
-				</a> <a class="nav-link" href="/donhang">
+					</div> Thông Tin Tài Khoản
+				</a> 
+				<a class="nav-link" href="/donhang">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-tachometer-alt"></i>
-					</div> Quản lý đơn hàng
-				</a> <a class="nav-link" href="/quenmk">
+					</div> Quản Lý Đơn Hàng
+				</a> 
+				<a class="nav-link" href="/index/quenmk">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-tachometer-alt"></i>
-					</div> Quên mật khẩu
-				</a> <a class="nav-link" href="/doimk">
+					</div>Quên Mật Khẩu
+				</a> 
+				<a class="nav-link" href="/index/doimk">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-tachometer-alt"></i>
-					</div> Đổi mật khẩu
-				</a> <a class="nav-link" href="/dangnhap">
+					</div> Đổi Mật Khẩu
+				</a> 
+				<a class="nav-link" href="">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-tachometer-alt"></i>
-					</div> Đăng nhập
-				</a> <a class="nav-link" href="/dangky">
+					</div> Đăng Nhập
+				</a> 
+				<a class="nav-link" th:href="@{|/index/dangky|}">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-tachometer-alt"></i>
-					</div> Đăng ký
-				</a> <a class="nav-link" href="/dangxuat">
+					</div> Đăng Ký
+				</a>
+				 <a class="nav-link" href="/dangxuat">
 					<div class="sb-nav-link-icon">
 						<i class="fas fa-tachometer-alt"></i>
-					</div> Đăng xuất
+					</div>Đăng Xuất
 				</a>
 	</nav>
 </div>

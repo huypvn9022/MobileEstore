@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -40,7 +42,7 @@ public class KhachHang implements Serializable{
 	@Email(message = "Email không đúng định dạng")
 	private String email;
 	
-	@Column(name = "sdt")
+	@Column(name = "SĐT")
 	@NotEmpty(message = "Số điện thoại không được bỏ trống")
 	private String SDT;
 	
@@ -51,7 +53,11 @@ public class KhachHang implements Serializable{
 	// binh luan
 	@OneToMany(mappedBy = "tk")
 	List<BinhLuan> bl;
-
+	
+	// vai tro
+	@ManyToOne @JoinColumn(name="vaitrokh")
+	VaiTro vaiTroKH;
+	
 	// don hang
 	@OneToMany(mappedBy = "makh")
 	List<DonHang> donhang;

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -43,9 +45,9 @@ public class NhanVien implements Serializable {
 	@Email(message = "Email không đúng định dạng")
 	private String email;
 	
-	@Column(name = "sdt")
+	@Column(name = "SĐT")
 	@NotEmpty(message = "Số điện thoại không được để trống")
-	private String SDT;
+	private String sdt;
 	
 	@Column(name = "diachi")
 	@NotEmpty(message = "Địa chỉ không được để trống")
@@ -57,8 +59,9 @@ public class NhanVien implements Serializable {
 	@NotNull(message = "Ngày sinh không được để trống")
 	private Date ngaySinh;
 	
-	@Column(name = "chucvu")
-	private boolean chucVu;
+	//vai tro
+	@ManyToOne @JoinColumn(name="vaitronv")
+	VaiTro vaiTroNV;
 	
 	// don hang
 	@OneToMany(mappedBy = "manv")
