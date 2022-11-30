@@ -1,4 +1,3 @@
-
 function render(data) {
 	let htmls = "<div class='leftPaneImg'><i class='fa fa-user'></i></div>"
 		+ "<div class='rightPanel'><span class='title'>" + data.name + "</span><span class='straight'>|</span><span class='date'>"
@@ -18,19 +17,18 @@ $(document).ready(function() {
 	for (let i = 0; i < content.length; i++) {
 		render(content[i])
 	}
-	
+
 	// button toggle
-	$("#buttonToggle").click(function(){	
+	$("#buttonToggle").click(function() {
 		$("#panelToggle").slideToggle()
 	})
-	
+
 	// if content temp
-	if(content.length == 0){
+	if (content.length == 0) {
 		$(".commentBox").css("display", "none")
 	} else {
 		$(".commentBox").css("display", "block")
 	}
-	
 	// action
 	$("#addComment").click(function() {
 		let addObj = {
@@ -40,7 +38,7 @@ $(document).ready(function() {
 		}
 		content.push(addObj)
 		localStorage.comentData = JSON.stringify(content)
-		render(addObj)
+		render(addObj);
 		$(".commentBox").fadeIn()
 		$("#name").val('')
 		$("#date").val('')
@@ -48,12 +46,16 @@ $(document).ready(function() {
 	})
 
 	//delete
-	for (let i = 0; i < content.length; i++) {
-		$("#delete").click(function() {
-			console.log("delete" + i)
+	$("#delete").each(function(index) {
+		$(this).click(function() {
+			console.log(index)
 		})
+	})
+
+
+	for (let i = 0; i < content.length; i++) {
+
 	}
 
 
 })
-

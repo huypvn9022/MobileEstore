@@ -1,0 +1,79 @@
+.relative {
+    position: relative;
+}
+.teklif{
+color:#000;
+    margin-top: 51px;
+    margin-bottom: 20px;
+    /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3); */
+    padding: 45px;
+	border-radius: 3px;
+    background: white;
+}
+.button-social-login{
+	
+}
+.wc-social-login a.button-social-login {
+  text-align: center;
+  text-shadow: none;
+  line-height: normal;
+  font-weight: 400;
+  border: 0;
+  margin: 0 0 1em;
+  padding: 6px 0;
+  box-shadow: none;
+  display: block;
+  border-radius: 3px;
+  color: #fff;
+}
+.wc-social-login a.button-social-login .si {
+  color: #fff;
+  border: 0;
+  padding: 0;
+  vertical-align: middle;
+  background-size: 1.75em;
+  background-color: transparent;
+  border-radius: 0;
+}
+.wc-social-login .button-social-login-facebook{
+  background: #3b5998;
+}
+.wc-social-login .button-social-login-google{
+  background: #DA4735;
+}
+.wc-social-login .arac-icon{
+  width: 20px;
+  margin-right: 10px;
+}
+.wc-social-login-divider {
+  text-align: center;
+  overflow: hidden;
+}
+.wc-social-login-divider span {
+  display: inline-block;
+  position: relative;
+}
+.wc-social-login-divider span:before {
+  right: 100%;
+  margin-right: 15px;
+  background: #eee;
+}
+
+.wc-social-login-divider span:after {
+  left: 100%;
+  margin-left: 15px;
+  background: #eee;
+}
+.wc-social-login-divider span:after, .wc-social-login-divider span:before {
+  content: ' ';
+  position: absolute;
+  width: 600px;
+  height: 1px;
+  background: #eee;
+  top: 13px;
+}
+
+.form-control{
+	height: 45px;
+	font-size: 15px;
+}

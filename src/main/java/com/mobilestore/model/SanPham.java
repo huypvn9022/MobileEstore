@@ -19,10 +19,13 @@ import javax.validation.constraints.PositiveOrZero;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -54,25 +57,29 @@ public class SanPham implements Serializable{
 	@Column(name = "trangthai")
 	private boolean trangThai;
 	
-
-	// loai sp
-	@ManyToOne @JoinColumn(name = "maloai")
-	LoaiSanPham maloai;
-
 	// hang san xuat
-	@ManyToOne @JoinColumn(name = "mahang")
-	HangSanXuat mahang;
+	@ManyToOne
+	@JoinColumn(name = "Mahang")
+	HangSanXuat maHang;
+
+	// cau hinh
+	@ManyToOne
+	@JoinColumn(name = "Mach")
+	CauHinh maCH;
 	
+	// loai sp
+	@ManyToOne
+	@JoinColumn(name = "Maloai")
+	LoaiSanPham maLoai;
+
 	// hinh anh
+	@JsonIgnore
 	@OneToMany(mappedBy = "masp")
 	List<HinhAnh> hinhanh;
-	
-	// cau hinh
-	@ManyToOne @JoinColumn(name = "mach")
-	CauHinh mach;
-	
-	// chi tiet don hang
-	@OneToMany(mappedBy = "masp")
-	List<ChiTietDonHang> ctdh;
 
+	// chi tiet don hang
+	@JsonIgnore
+	@OneToMany(mappedBy = "masp")
+	List<ChiTietDonHang> chiTietDonHang;
+	
 }

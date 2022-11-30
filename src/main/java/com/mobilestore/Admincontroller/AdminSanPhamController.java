@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mobilestore.dao.CauHinhDAO;
-import com.mobilestore.dao.HangSanXuatDAO;
-import com.mobilestore.dao.LoaiSanPhanDAO;
 import com.mobilestore.model.CauHinh;
 import com.mobilestore.model.HangSanXuat;
 import com.mobilestore.model.KhachHang;

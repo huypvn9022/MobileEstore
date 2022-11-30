@@ -1,6 +1,7 @@
 package com.mobilestore.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +14,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,8 +58,8 @@ public class KhachHang implements Serializable{
 	private String diaChi;
 
 	// binh luan
-	@OneToMany(mappedBy = "tk")
-	List<BinhLuan> bl;
+	@OneToMany(mappedBy = "taikhoan")
+	List<BinhLuan> binhluan;
 	
 	// vai tro
 	@ManyToOne @JoinColumn(name="vaitrokh")

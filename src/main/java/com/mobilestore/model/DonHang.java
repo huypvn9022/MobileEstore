@@ -19,6 +19,8 @@ import javax.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -55,6 +57,7 @@ public class DonHang  implements Serializable{
 	NhanVien manv;
 	
 	// chi tiet don hang
+	@JsonIgnore
 	@OneToMany(mappedBy = "madh")
-	List<ChiTietDonHang> ctdh;
+	List<ChiTietDonHang> chiTietDonHang;
 }

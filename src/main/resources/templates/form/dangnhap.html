@@ -1,0 +1,118 @@
+<div xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/main :: dynamic (~{::main})}">
+	<main>
+		<!-- start banner Area -->
+		<section class="banner-area relative style" id="home"
+			data-parallax="scroll"
+			data-image-src="http://www.blogmais.org/ourimg/big/0/1532_wallpaper-website.jpg">
+
+			<div class="container">
+				<div class="row">
+					<div class="col-7" style="margin-left: 250px">
+						<div class="teklif pt-100 pb-100 border">
+							<nav>
+								<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									<a class="nav-item nav-link active" id="nav-home-tab"
+										data-toggle="tab" href="#nav-login" role="tab"
+										aria-controls="nav-home" aria-selected="true">Đăng nhập</a> <a
+										class="nav-item nav-link" id="nav-profile-tab"
+										data-toggle="tab" href="#nav-uye-ol" role="tab"
+										aria-controls="nav-profile" aria-selected="false">Đăng ký</a>
+								</div>
+							</nav>
+							<div class="tab-content" id="nav-tabContent">
+							
+								<!-- form login start -->
+								<div class="tab-pane fade show active" id="nav-login"
+									role="tabpanel" aria-labelledby="nav-home-tab">
+									
+									<div class="text-danger">
+										[[${message}]]
+									</div>
+									
+									<form th:action="@{/form/login}" method="post" class="form-group">
+										<div class="form-group mt-2">
+											<label>Tài khoản</label> 
+											<input name="username" type="text" class="form-control" placeholder="Nhập tài khoản">
+										</div>
+										<div class="form-group mt-2">
+											<label>Mật khẩu</label> 
+											<input name="password" type="text" class="form-control" placeholder="Nhập mật khẩu">
+										</div>
+										<div>
+											<input name="remember-me" type="checkbox" >
+											<label>Remember me?</label>
+										</div>
+										<button type="submit" class="btn btn-primary btn-large btn-block"
+												style="height: 30px; font-size: 15px">Đăng nhập</button>
+									</form>
+									<hr />
+									<div class="wc-social-login form-row-wide">
+										<p class="mt-2"></p>
+										<a href="#"
+											class="button-social-login button-social-login-facebook"><img
+											src="https://cdn.techgyd.com/50-Best-Facebook-Logo-Icons-GIF-Transparent-PNG-Images-54.png"
+											class="arac-icon">Facebook</a> <a href="#"
+											class="button-social-login button-social-login-google"><img
+											src="https://img.icons8.com/ios/1600/google-logo.png"
+											class="arac-icon">Google</a>
+									</div>
+								</div>
+								<!-- form login end -->
+
+
+								<div class="tab-pane fade" id="nav-uye-ol" role="tabpanel"
+									aria-labelledby="nav-profile-tab">
+									<form class="form-group">
+										<div class="box-user mt-2">
+											<label class="label-input" for="u_name">TÃ i khoáº£n</label> <input
+												type="text" name="u_name" id="u_name" value=""
+												placeholder="TÃ i khoáº£n" class="form-control">
+										</div>
+										<div class="box-user mt-2">
+											<label class="label-input" for="u_tel">Máº­t kháº©u</label> <input
+												type="password" name="u_tel" id="u_tel" value=""
+												placeholder="Máº­t kháº©u" class="form-control">
+										</div>
+										<div class="box-user mt-2">
+											<label class="label-input" for="u_tel">Ä�iá»‡n thoáº¡i</label> <input
+												type="text" name="u_tel" id="u_tel" value=""
+												placeholder="Ä�iá»‡n thoáº¡i" class="form-control">
+										</div>
+										<div class="box-user mt-2">
+											<label class="label-input" for="u_email">Email</label> <input
+												type="text" name="u_email" id="u_email" value=""
+												placeholder="Email" class="form-control">
+										</div>
+										<div class="box-user mt-2">
+											<label class="label-input" for="u_tel">Ä�á»‹a chá»‰</label> <input
+												type="text" name="u_tel" id="u_tel" value=""
+												placeholder="Ä�á»‹a chá»‰" class="form-control">
+										</div>
+										<button type="submit"
+											class="btn btn-primary btn-large btn-block mt-3"
+											style="height: 30px; font-size: 15px">Ä�Äƒng KÃ½</button>
+									</form>
+									<hr />
+									<div class="wc-social-login form-row-wide">
+										<p class="mt-2"></p>
+										<a href="#"
+											class="button-social-login button-social-login-facebook"><img
+											src="https://cdn.techgyd.com/50-Best-Facebook-Logo-Icons-GIF-Transparent-PNG-Images-54.png"
+											class="arac-icon">Facebook</a> <a href="#"
+											class="button-social-login button-social-login-google"><img
+											src="https://img.icons8.com/ios/1600/google-logo.png"
+											class="arac-icon">Google</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- End banner Area -->
+	</main>
+</div>

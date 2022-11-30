@@ -12,10 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name = "Cauhinh")
@@ -52,6 +55,7 @@ public class CauHinh implements Serializable{
 	private String rom;
 	
 	//san pham
-	@OneToMany(mappedBy = "mach")
-	List<SanPham> sp;
+	@JsonIgnore
+	@OneToMany(mappedBy = "maCH")
+	List<SanPham> sanpham;
 }

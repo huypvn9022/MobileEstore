@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.mobilestore.dao.DonHangDAO;
 import com.mobilestore.model.DonHang;
 
@@ -44,9 +45,14 @@ public class DonHangService {
 	public Boolean existsById(Integer maDon) {
 		return dao.existsById(maDon);
 	}
+
+	public DonHang create(JsonNode order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 //	public List<DonHang> findAllByKeyword(String keyword) {
 //		return dao.findAllByKeyword(keyword);
 //	}
-	
+
 }

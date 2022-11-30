@@ -12,6 +12,7 @@ import com.mobilestore.model.CauHinh;
 
 @Service
 public class CauHinhService {
+
 	@Autowired
 	CauHinhDAO dao;
 	
@@ -45,6 +46,7 @@ public class CauHinhService {
 	
 	public Page<CauHinh> findAllByKeyword(Pageable pageable, String keyword) {
 		return dao.findAllByKeyword(pageable,keyword);
+
 	}
 	
 }

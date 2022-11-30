@@ -13,6 +13,7 @@ import com.mobilestore.model.DoanhThuNgay;
 import com.mobilestore.model.DoanhThuThang;
 import com.mobilestore.model.Top5SP;
 import com.mobilestore.model.TongTienCTDH;
+import com.mobilestore.model.ChiTietDonHang;
 
 public interface ChiTietDonHangDAO extends JpaRepository<ChiTietDonHang, Integer>{
 	

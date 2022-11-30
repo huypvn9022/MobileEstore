@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,13 +22,14 @@ import lombok.NoArgsConstructor;
 @Table(name = "Hangsx")
 public class HangSanXuat implements Serializable{
 	@Id
-	@Column(name = "mahang")
+	@Column(name = "Mahang")
 	private String maHang;
 	
-	@Column(name = "tenhang")
+	@Column(name = "Tenhang")
 	private String tenHang;
 	
 	//san pham
-	@OneToMany(mappedBy = "mahang")
+	@JsonIgnore
+	@OneToMany(mappedBy = "maHang")
 	List<SanPham> sanpham;
 }

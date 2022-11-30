@@ -7,13 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.mobilestore.dao.LoaiSanPhanDAO;
+import com.mobilestore.dao.LoaiSanPhamDAO;
 import com.mobilestore.model.LoaiSanPham;
 
 @Service
 public class LoaiSPService {
 	@Autowired
-	LoaiSanPhanDAO dao;
+	LoaiSanPhamDAO dao;
 	
 	public List<LoaiSanPham> findAll() {
 		return dao.findAll();

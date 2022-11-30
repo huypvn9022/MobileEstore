@@ -1,249 +1,214 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="zxx">
-
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="Ogani Template">
-<meta name="keywords" content="Ogani, unica, creative, html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Mobile Estore</title>
-
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
-	rel="stylesheet">
-
-<!-- Css Styles -->
-<link rel="stylesheet" href="/client/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/style.css" type="text/css">
-</head>
-
-<body>
-
-	<!-- Header header Begin -->
-	<header class="header">
-		<div th:replace="/layout/header"></div>
-	</header>
-	<!-- Header header End -->
-
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
+	<main>
 	<!-- Product Details Begin -->
-    <section class="product-details spad">
-        <div class="container">
-            <h3> <b>iPhone 14 Pro Max 1TB</b> </h3>
-            <div class="product__details__rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <span>(999 reviews)</span>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="/client/img/product/details/product-details-1.jpg" alt="">
-                        </div>
-                        <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl=""
-                                src="/client/img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl=""
-                                src="/client/img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl=""
-                                src="/client/img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl=""
-                                src="/client/img/product/details/thumb-4.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <div class="row">
-                            <div class="product__details__price">43.990.000đ - </div>&nbsp;
-                            <div class="product__details__price"> <s>53.990.000đ</s> </div>
-                        </div>
-                        <div>
-                            <a href="#" data-index="0" class="box__item item">64GB</a>
-                            <a href="#" data-index="0" class="box__item item">128GB</a>
-                            <a href="#" data-index="0" class="box__item item">256GB</a>
-                        </div>
-                        <div>
-                            <a href="#" data-index="0" class="box__item item" id="color1" style="color: violet;">Tím</a>
-                            <a href="#" data-index="0" class="box__item item" id="color2" style="color: grey;">Xám</a>
-                            <a href="#" data-index="0" class="box__item item" id="color3"
-                                style="color: yellow;">Vàng</a>
-                        </div>
-                        <table class="table table-light" border="1"
-                            style="width: 500px; margin-top: 10px; margin-bottom: 20px;">
-                            <tr>
-                                <th class="thead-light"
-                                    style="background-color: rgb(195, 215, 232); text-align: center;">Khuyến mãi</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-check-square" style="margin-top: 10px; margin-bottom: 20px;"></i>
-                                    Đây là hàng khuyến mãi 1<br>
-                                    <i class="fa fa-check-square" style="margin-bottom: 20px;"></i> Đây là hàng khuyến
-                                    mãi 2<br>
-                                    <i class="fa fa-check-square" style="margin-bottom: 10px;"></i> Đây là hàng khuyến
-                                    mãi 3
-                                </td>
-                        </table>
-                        <a href="#" class="primary-btn" style="width: 446px; text-align: center;">Mua ngay</a>
-                        <a href="#" class="heart-icon"><span class="fa fa-share-alt"></span></a>
+	<section class="product-details spad">
+		<div class="container">
+			<h3>
+				<b>[[${sanpham.tenSP}]]</b>
+			</h3>
+			<div class="product__details__rating">
+				<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+					class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+					class="fa fa-star-half-o"></i> <span>(999 reviews)</span>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="product__details__pic">
+					<th:block th:each="anh: ${anh}" th:if="${sanpham.hinhanh == anh.maHinh}">
+						<div class="product__details__pic__item">
+		
+								<img class="product__details__pic__item--large"
+									src="/client/img/product/details/${anh}" alt="error">
+						</div>
+						<div class="product__details__pic__slider owl-carousel">
+							<img src="/client/img/product/details/thumb-1.jpg" alt="">
+							<img src="/client/img/product/details/thumb-2.jpg" alt="">
+							<img src="/client/img/product/details/thumb-3.jpg" alt="">
+							<img src="/client/img/product/details/thumb-4.jpg" alt="">
+						</div>
+						</th:block>
+					</div>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="product__details__text">
+					<div class="row">
+						<div class="product__details__price"
+							th:text="${#numbers.formatDecimal(sanpham.donGia, 0, 'COMMA', 0, 'POINT')}">
+							-</div>
+						&nbsp;
+						<div class="product__details__price">
+							<s>53.990.000đ</s>
+						</div>
+					</div>
+					<div>
+						<a href="#" data-index="0" class="box__item item">64GB</a> <a
+							href="#" data-index="0" class="box__item item">128GB</a> <a
+							href="#" data-index="0" class="box__item item">256GB</a>
+					</div>
+					<div>
+						<a href="#" data-index="0" class="box__item item" id="color1"
+							style="color: violet;">Tím</a> <a href="#" data-index="0"
+							class="box__item item" id="color2" style="color: grey;">Xám</a> <a
+							href="#" data-index="0" class="box__item item" id="color3"
+							style="color: yellow;">Vàng</a>
+					</div>
+					<table class="table table-light" border="1"
+						style="width: 500px; margin-top: 10px; margin-bottom: 20px;">
+						<tr>
+							<th class="thead-light"
+								style="background-color: rgb(195, 215, 232); text-align: center;">Khuyến
+								mãi</th>
+						</tr>
+						<tr>
+							<td><i class="fa fa-check-square"
+								style="margin-top: 10px; margin-bottom: 20px;"></i> Đây là hàng
+								khuyến mãi 1<br> <i class="fa fa-check-square"
+								style="margin-bottom: 20px;"></i> Đây là hàng khuyến mãi 2<br>
+								<i class="fa fa-check-square" style="margin-bottom: 10px;"></i>
+								Đây là hàng khuyến mãi 3</td>
+					</table>
+					<a href="#" class="primary-btn"
+						style="width: 446px; text-align: center;">Mua ngay</a> <a href="#"
+						class="heart-icon"><span class="fa fa-share-alt"></span></a>
 
-                    </div>
-                </div>
+				</div>
+			</div>
 
-            </div>
-            <hr />
-        </div>
-    </section>
-    <!-- Product Details End -->
-
-
-    <!-- Product description and parameters Begin -->
-    <div class="product_description">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <a data-index="0" class="box__item item" id="left" style="background-color: rgb(228, 233, 237);">Mô
-                        tả sản phẩm</a><br>
-                    <span><b style="color: blue;">iPhone 14 Pro Max</b> năm nay có màu mới tím khá lạ mắt. Còn lại, về
-                        hình thức thì không khác biệt gì nhiều so với <b style="color: blue;">iPhone 13 Pro Max</b> với
-                        mặt lưng kính, phần khung kế vuông và được bo cong 4 góc.</span>
-                </div>
+		</div>
+		<hr />
+		</div>
+	</section>
+	<!-- Product Details End -->
 
 
-                <div class="col-6">
-                    <a data-index="0" class="box__item item" id="right"
-                        style="background-color: rgb(228, 233, 237);">Thông số sản phẩm</a><br>
-                    <table class="table table-striped table-light" border="1" style="width: 550px;">
-                        <tr>
-                            <th>Độ phân giải</th>
-                            <td>1170 x 2532 Pixels</td>
-                        </tr>
-                        <tr>
-                            <th>Màn hình rộng</th>
-                            <td>6.1" - Tần số quét 60 Hz</td>
-                        </tr>
-                        <tr>
-                            <th>Chip xử lý</th>
-                            <td>Apple A14 Bionic 6 nhân</td>
-                        </tr>
-                        <tr>
-                            <th>Bộ nhớ trong</th>
-                            <td>1TB</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Product description and parameters End -->
+	<!-- Product description and parameters Begin -->
+	<div class="product_description">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<a data-index="0" class="box__item item" id="left"
+						style="background-color: rgb(228, 233, 237);">Mô tả sản phẩm</a><br>
+					<span><b style="color: blue;">[[${sanpham.tenSP}]]</b>
+						[[${sanpham.moTa}]]</span>
+				</div>
 
 
-    <!-- Reviews -->
-    <section class="reviews">
-        <div class="container">
-            <div class="card" id="card-reviews">
-                <div class="card-body">
-                    <h5 class="card-title"><b>Người dùng</b></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Sản phẩm tốt. Ủng hộ lâu dài</h6>
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">Quản trị viên!</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Cảm ơn quý khách hàng đã mua sản phẩm!</h6>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <form class="container col-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Tiêu đề">
-                            </div>
-                            <div class="form-group">
-                                <textarea type="text" class="form-control" placeholder="Mô tả"></textarea>
-                            </div>
-                            <a href="#" data-index="0" class="box__item item" id="button-feedback"
-                                style="background-color: rgb(228, 233, 237);">Phản hồi</a><br>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Reviews End -->
-
-    <!-- Similar products Begin -->
-    <section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/client/img/categories/cart-1.jpg">
-                            <h5><a href="#">iPhone 12 Pro Max</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/client/img/categories/cart-2.jpg">
-                            <h5><a href="#">iPhone 11 Pro Max</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/client/img/categories/cart-3.jpg">
-                            <h5><a href="#">iPhone 14 Pro</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/client/img/categories/cart-4.jpg">
-                            <h5><a href="#">iPhone XS Max</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/client/img/categories/cart-5.jpg">
-                            <h5><a href="#">iPhone 13 Pro Max</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Similar products End -->
-
-	<!-- Footer Section Begin -->
-	<footer class="footer spad">
-		<div th:replace="/layout/footer"></div>
-	</footer>
-	<!-- Footer Section End -->
-
-	<!-- Js Plugins -->
-	<script src="/client/js/jquery-3.3.1.min.js"></script>
-	<script src="/client/js/bootstrap.min.js"></script>
-	<script src="/client/js/jquery.nice-select.min.js"></script>
-	<script src="/client/js/jquery-ui.min.js"></script>
-	<script src="/client/js/jquery.slicknav.js"></script>
-	<script src="/client/js/mixitup.min.js"></script>
-	<script src="/client/js/owl.carousel.min.js"></script>
-	<script src="/client/js/main.js"></script>
+				<div class="col-6">
+					<a data-index="0" class="box__item item" id="right"
+						style="background-color: rgb(228, 233, 237);">Thông số sản
+						phẩm</a><br>
+					<table class="table table-striped table-light" border="1"
+						style="width: 550px;">
+						<tr>
+							<th>Độ phân giải</th>
+							<td>1170 x 2532 Pixels</td>
+						</tr>
+						<tr>
+							<th>Màn hình rộng</th>
+							<td>6.1" - Tần số quét 60 Hz</td>
+						</tr>
+						<tr>
+							<th>Chip xử lý</th>
+							<td>Apple A14 Bionic 6 nhân</td>
+						</tr>
+						<tr>
+							<th>Bộ nhớ trong</th>
+							<td>1TB</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product description and parameters End -->
 
 
+	<!-- Reviews -->
+	<section class="reviews">
+		<div class="container">
+			<div class="card" id="card-reviews">
+				<div class="card-body">
+					<h5 class="card-title">
+						<b>Người dùng</b>
+					</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Sản phẩm tốt. Ủng hộ
+						lâu dài</h6>
+					<div class="card" style="width: 100%;">
+						<div class="card-body">
+							<h5 class="card-title">Quản trị viên!</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Cảm ơn quý khách
+								hàng đã mua sản phẩm!</h6>
+						</div>
+					</div>
+					<div class="row mt-4">
+						<form class="container col-6">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Tiêu đề">
+							</div>
+							<div class="form-group">
+								<textarea type="text" class="form-control" placeholder="Mô tả"></textarea>
+							</div>
+							<a href="#" data-index="0" class="box__item item"
+								id="button-feedback"
+								style="background-color: rgb(228, 233, 237);">Phản hồi</a><br>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Reviews End -->
 
-</body>
-
-</html>
+	<!-- Similar products Begin -->
+	<section class="categories">
+		<div class="container">
+			<div class="row">
+				<div class="categories__slider owl-carousel">
+					<div class="col-lg-3">
+						<div class="categories__item set-bg"
+							data-setbg="/client/img/categories/cart-1.jpg">
+							<h5>
+								<a href="#">iPhone 12 Pro Max</a>
+							</h5>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="categories__item set-bg"
+							data-setbg="/client/img/categories/cart-2.jpg">
+							<h5>
+								<a href="#">iPhone 11 Pro Max</a>
+							</h5>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="categories__item set-bg"
+							data-setbg="/client/img/categories/cart-3.jpg">
+							<h5>
+								<a href="#">iPhone 14 Pro</a>
+							</h5>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="categories__item set-bg"
+							data-setbg="/client/img/categories/cart-4.jpg">
+							<h5>
+								<a href="#">iPhone XS Max</a>
+							</h5>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="categories__item set-bg"
+							data-setbg="/client/img/categories/cart-5.jpg">
+							<h5>
+								<a href="#">iPhone 13 Pro Max</a>
+							</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Similar products End -->
+	</main>
+</div>

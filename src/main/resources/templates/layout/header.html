@@ -1,25 +1,15 @@
 <div xmlns:th="http://www.thymeleaf.org" class="mb-4">
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
 	<!-- Humberger Begin -->
 	<div class="humberger__menu__overlay"></div>
 	<div class="humberger__menu__wrapper">
 		<div class="humberger__menu__logo">
-			<a href="#">Mobile Estore</a>
+			<a href="#"style="color: black;">Mobile Estore</a>
 		</div>
 		<div class="humberger__menu__cart">
 			<ul>
-				<li><a href="#"><i class="fa fa-heart"></i> <b>Liên Hệ</b>
-				</a> &emsp;</li>
-				<li class="active"><a href="/cart.html"><i
-						class="fa fa-shopping-bag"></i><span>3</span> <b>Giỏ Hàng</b> </a>
-					&emsp;</li>
-				<li><a th:href="@{|/thong-tin-tai-khoan|}"><i class="fa fa-user"></i> <b>Tài Khoản</b>
-				
-				</a></li>
+				<li><a href="#"><i class="fa fa-heart"></i> <b>LiÃªn há»‡</b></a> &emsp;</li>
+				<li><a href="/cart"><i class="fa fa-shopping-bag"></i><b>Giá»� hÃ ng</b> </a></li>
+				<li><a href="#"><i class="fa fa-user"></i> <b>TÃ i khoáº£n</b></a></li>
 			</ul>
 
 
@@ -71,13 +61,13 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="header__logo">
-						<a href="#">Mobile Estore</a>
+						<a href="/index" style="color: white;">Mobile Estore</a>
 					</div>
 				</div>
 				<div class="col-lg-5">
 					<div class="hero__search__form mt-3">
-						<form action="#">
-							<input type="text" placeholder="Bạn cần tìm gì...">
+						<form action="/product/search">
+							<input name="Keywords" type="text" placeholder="Bạn cần tìm gì?">
 							<button type="submit" class="site-btn"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
@@ -85,9 +75,38 @@
 				<div class="col-lg-4">
 					<div class="header__cart">
 						<ul>
-							<li><a href="#"><i class="fa fa-volume-control-phone mr-2"></i> Liên hệ </a> &emsp;|</li>
-							<li><a href="#"><i class="fa fa-shopping-bag mr-2"></i><span>3</span>Giỏ hàng </a> &emsp;|</li>
-							<li><a th:href="@{|/index/thong-tin-tai-khoan|}"><i class="fa fa-user-circle-o mr-2"></i>Tài khoản</a></li>
+							<span th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
+							<li><a href="#" style="color: white"><i class="fa fa-volume-control-phone text-light mr-2"></i> Liên hệ </a> &emsp;|</li>
+							<li><a th:href="@{/cart}" style="color: white"><i class="fa fa-shopping-bag text-light mr-2"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
+							</span>
+							
+							
+							
+							
+							<!-- 
+							<span th:unless="${#request.remoteUser}">
+								<li>
+								<a href="#" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+								</li>
+							</span>
+							 -->
+							
+							<span th:if="${#request.remoteUser}">
+								<li th:if="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
+									<a th:href="@{/admin/thongke}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Admin</a>
+								</li>
+								<li th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
+									<a th:href="@{/order-management}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+								</li>
+							</span>
+							<span th:unless="${#request.remoteUser}">
+								
+								<li>
+									<a th:href="@{/order-management}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+								</li>
+							</span>
+							
+						
 						</ul>
 					</div>
 				</div>
@@ -104,15 +123,10 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<nav class="header__menu">
-					<ul>
-						<li><a href="#">iPhone</a></li>
-						<li><a href="#">Samsung</a></li>
-						<li><a href="#">Xiaomi</a></li>
-						<li><a href="#">Oppo</a></li>
-						<li><a href="#">Nokia</a></li>
-						<li><a href="#">Vivo</a></li>
-						<li><a href="#">Realme</a></li>
-						<li><a href="#">Sony</a></li>
+					<ul class="inline-block">
+						<th:block th:each="h:${hangsx}">
+							<li><a th:href="|/product/${h.maHang}|"><b th:text="${h.tenHang}" data-user="${h.maHang}"></b></a></li>
+						</th:block>
 					</ul>
 				</nav>
 			</div>

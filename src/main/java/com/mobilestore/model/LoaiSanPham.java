@@ -10,10 +10,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data
 @Entity
 @Table(name = "Loaisp")
@@ -29,6 +32,7 @@ public class LoaiSanPham implements Serializable {
 	@NotEmpty(message = "Tên loại không được bỏ trống")
 	private String tenLoai;
 	
-	@OneToMany(mappedBy = "maloai")
+	@JsonIgnore
+	@OneToMany(mappedBy = "maLoai")
 	List<SanPham> sanpham;
 }
