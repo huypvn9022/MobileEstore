@@ -23,7 +23,6 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 		},
 		remove(id) {
 			let item = this.items.findIndex(item => item.maSP == id);
-			console.log(this.items[item] + " item ne ")
 			let text = confirm(`Bạn có muốn xóa điện thoại này không ?`)
 			if(text){
 				this.items.splice(item, 1);
@@ -31,6 +30,10 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 			}else{
 				this.saveToLocalStorage();
 			}
+		},
+		clear(){
+			this.items = [];
+			this.saveToLocalStorage();
 		},
 		get count(){
 			return this.items
@@ -66,17 +69,32 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 	
 	$scope.cart.loadToLocalStorage();
 	
-	$scope.initialize = function() {
-		
-		arrs = [],
-		
-		$http.get(`/cart/images`).then(response => {
-			this.arrs.push(response.data)
-			let json = JSON.stringify(angular.copy(this.arrs));
-			localStorage.setItem("cartImages",json);
-			console.log(  arrs + " response ne ")
-		})
-	}	
+	$scope.order = {
+		ngayTao: new Date(),
+		account: {
+			taikhoan:$("#taikhoan").text()
+		},
+		get orderDetails(){
+			return $scope.cart.items.map(item => {
+				return {
+					product: {masp: item.maSP},
+					dongia: item.donGia,
+					soluong: item.soLuong
+				}
+			})
+		},
+		datHang(){
+			let order = angular.copy(this);
+			$http.post("/rest/orders", order).then(resp => {
+				alert("Đặt hàng thành công !")
+				$scope.cart.clear()
+			}).catch(error => {
+				alert("Đặt hàng không thành công !")
+				console.log(error + " error ")
+			})
+			
+		}
+	}
 		
 	
 })

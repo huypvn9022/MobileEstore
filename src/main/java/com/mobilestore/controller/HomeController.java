@@ -94,7 +94,7 @@ public class HomeController {
 	} 
 	
 	// thanh toán
-	@RequestMapping("/checkout")
+	@RequestMapping("/user/checkout")
 	public String pay(Model model) {
 		return "layout/thanhtoan";
 	}
@@ -116,7 +116,7 @@ public class HomeController {
 		return "layout/dmatkhau";
 	}
 	
-	@RequestMapping("order-management")
+	@RequestMapping("/order-management")
 	public String orderManagement(Model model) {
 		return "layout/qldonhang";
 	}

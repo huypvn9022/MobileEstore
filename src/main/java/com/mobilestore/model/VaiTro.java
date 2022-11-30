@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor 
 @NoArgsConstructor
 @Entity
-@Table(name="VaiTro")
+@Table(name="Vaitro")
 public class VaiTro {
 	
 	@Id

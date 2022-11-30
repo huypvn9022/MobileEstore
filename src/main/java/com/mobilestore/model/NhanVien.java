@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
-@Table(name="NhanVien")
+@Table(name="Nhanvien")
 public class NhanVien {
 	@Id
 	@Column(name = "taikhoan")
@@ -58,4 +58,42 @@ public class NhanVien {
 	@JsonIgnore
 	@OneToMany(mappedBy = "manv")
 	List<DonHang> donhang;
+
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		return null;
+//	}
+//
+//	@Override
+//	public String getPassword() {
+//		return this.getMatKhau();
+//	}
+//
+//	@Override
+//	public String getUsername() {
+//		return this .getTaiKhoan();
+//	}
+//
+//	@Override
+//	public boolean isAccountNonExpired() {
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonLocked() {
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isCredentialsNonExpired() {
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isEnabled() {
+//		return true;
+//	}
+
+	
+
 }

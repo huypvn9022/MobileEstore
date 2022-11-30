@@ -7,9 +7,9 @@
 		</div>
 		<div class="humberger__menu__cart">
 			<ul>
-				<li><a href="#"><i class="fa fa-heart"></i> <b>Liên hệ</b></a> &emsp;</li>
-				<li><a href="/cart"><i class="fa fa-shopping-bag"></i><b>Giỏ hàng</b> </a></li>
-				<li><a href="#"><i class="fa fa-user"></i> <b>Tài khoản</b></a></li>
+				<li><a href="#"><i class="fa fa-heart"></i> <b>LiÃªn há»‡</b></a> &emsp;</li>
+				<li><a href="/cart"><i class="fa fa-shopping-bag"></i><b>Giá»� hÃ ng</b> </a></li>
+				<li><a href="#"><i class="fa fa-user"></i> <b>TÃ i khoáº£n</b></a></li>
 			</ul>
 
 
@@ -75,9 +75,38 @@
 				<div class="col-lg-4">
 					<div class="header__cart">
 						<ul>
+							<span th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
 							<li><a href="#" style="color: white"><i class="fa fa-volume-control-phone text-light mr-2"></i> Liên hệ </a> &emsp;|</li>
-							<li><a href="/cart" style="color: white"><i class="fa fa-shopping-bag text-light mr-2"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
-							<li><a href="/order-management" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a></li>
+							<li><a th:href="@{/cart}" style="color: white"><i class="fa fa-shopping-bag text-light mr-2"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
+							</span>
+							
+							
+							
+							
+							<!-- 
+							<span th:unless="${#request.remoteUser}">
+								<li>
+								<a href="#" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+								</li>
+							</span>
+							 -->
+							
+							<span th:if="${#request.remoteUser}">
+								<li th:if="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
+									<a href="#" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Admin</a>
+								</li>
+								<li th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
+									<a th:href="@{/order-management}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+								</li>
+							</span>
+							<span th:unless="${#request.remoteUser}">
+								
+								<li>
+									<a th:href="@{/order-management}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+								</li>
+							</span>
+							
+						
 						</ul>
 					</div>
 				</div>

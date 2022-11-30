@@ -1,5 +1,6 @@
 package com.mobilestore.model;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,8 +25,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "KhachHang")
+@Table(name = "Khachhang")
 public class KhachHang {
+	
+	
 	@Id
 	@Column(name = "taikhoan")
 	private String taiKhoan;
@@ -55,4 +62,6 @@ public class KhachHang {
 	@JsonIgnore
 	@OneToMany(mappedBy = "makh")
 	List<DonHang> donhang;
+
+
 }

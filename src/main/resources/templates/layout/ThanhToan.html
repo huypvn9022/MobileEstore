@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}" >
 <main>
 <!-- Cart Details Begin -->
 	<div class="container" style="min-height:550px">
@@ -14,10 +14,11 @@
 				<h4 class="text-center mb-4">Thông tin mua hàng</h4>
 				<form>
 					<div class="row">
+						<span hidden="true">[[${#request.remoteUser}]]</span>
 						<div class="col">
 							<div class="form-group">
 								<label>Họ và tên</label> 
-								<input type="text" class="form-control" placeholder="Nhập tên">
+								<input type="text" class="form-control" value="${sec:authentication='name'}"   placeholder="Nhập tên của bạn" />
 							</div>
 						</div>
 						<div class="col">
@@ -42,12 +43,12 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Địa chỉ</label>
+						<label>Mô tả</label>
 						<textarea class="form-control" rows="7"></textarea>
 					</div>
 					<div class="float-right">
 						<a href="/cart" class="btn btn-outline-success">Quay lại giỏ hàng</a>
-						<button class="btn btn-outline-primary">Xác nhận đặt hàng</button>
+						<button th:attr="ng-click=@{|order.datHang()|}" class="btn btn-outline-primary">Xác nhận đặt hàng</button>
 					</div>
 				</form>
 			</div>
@@ -76,8 +77,8 @@
 							<input class="form-check-input" type="radio" name="exampleRadios"
 								id="exampleRadios1" value="option1" checked> 
 							<label class="form-check-label" for="exampleRadios1">
-								<h5>Nhân hàng sau khi thanh toán</h5>
-								<span class="font-italic">Chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất.</span>
+								<h5>Nhận hàng sau khi thanh toán</h5>
+								<span class="font-italic">Chúng tôi sẽ xác nhận trong thời gian sớm nhất.</span>
 							</label>
 						</div>
 						<div class="form-check mt-2 mb-2">
@@ -91,7 +92,7 @@
 							<input class="form-check-input" type="radio" name="exampleRadios"
 								id="exampleRadios3" value="option3"> <label
 								class="form-check-label" for="exampleRadios3"> </label>
-								<h5>Thanh toán bằng thẻ ATM nội địa, thẻ quốc tế ( Visa, MasterCard ...)</h5>
+								<h5>Thanh toán bằng ATM nội địa, thẻ quốc tế ( Visa, MasterCard ...)</h5>
 							</div>
 					</div>
 				</div>
