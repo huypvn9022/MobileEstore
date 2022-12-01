@@ -1,0 +1,58 @@
+<meta charset="UTF-8">
+<div xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/layout/main :: dynamic (~{::main})}">
+	<main>
+		<!-- start banner Area -->
+		<section class="banner-area relative style" id="home" data-parallax="scroll" data-image-src="http://www.blogmais.org/ourimg/big/0/1532_wallpaper-website.jpg">
+			<div class="container">
+				<div class="row">
+					<div class="col-7" style="margin-left: 250px">
+						<div class="teklif pt-100 pb-100 border">
+							<h2 class="text-center	">Đăng Ký</h2>	
+							<div class="text-danger text-center mt-3 h4" >
+								[[${message}]]
+							</div>
+							 <form action="/index/dangky" th:object="${dangky}" method="post" class="form-group">
+			                   <div class="mb-4">
+			                      <label for="name" class="form-label">Tài khoản:</label>
+			                      <input th:field="*{taiKhoan}" type="text" class="form-control"  placeholder="Nhập tài khoản" />
+			                      <p th:if="${#fields.hasErrors('taiKhoan')}" th:errors="*{taiKhoan}" class="text-danger"></p>
+			                  </div>
+			
+			                    <div class="mb-4">
+			                      <label for="email" class="form-label">Mật khẩu:</label>
+			                      <input th:field="*{matKhau}" type="password" class="form-control" placeholder="Nhập Mật khẩu" />
+			                      <p th:if="${#fields.hasErrors('matKhau')}" th:errors="*{matKhau}" class="text-danger"></p>                      
+			                    </div>
+			                   <div class="mb-4">
+			                      <label for="number" class="form-label">Họ tên:</label>
+			                      <input th:field="*{hoTen}" type="text" class="form-control" placeholder="Nhập số điện thoại"  />
+			                      <p th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}" class="text-danger"></p>                      
+			                  </div>
+			                   <div class="mb-4">
+			                      <label for="number" class="form-label">Số điện thoại:</label>
+			                      <input th:field="*{SDT}" type="text" class="form-control" placeholder="Nhập số điện thoại"  />
+			                      <p th:if="${#fields.hasErrors('SDT')}" th:errors="*{SDT}" class="text-danger"></p>                      
+			                  </div>
+			
+			                    <div class="mb-4">
+			                      <label for="Address" class="form-label">Email:</label>
+			                      <input th:field="*{email}"  type="email" class="form-control" placeholder="Nhập Email " />
+			                      <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>                      
+			                    </div>
+			
+			                    <div class="mb-5">
+			                      <label for="Address" class="form-label">Địa chỉ:</label>
+			                      <input th:field="*{diaChi}" type="text" class="form-control"  placeholder="Nhập địa chỉ "/>
+			                      <p th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}" class="text-danger"></p>                      
+			                    </div>
+			             	    <button type="submit" class="btn btn-primary btn-large btn-block mt-3" style="height: 40px; font-size: 15px;">Đăng ký</button>			                    	
+			                </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End banner Area -->
+	</main>
+</div>

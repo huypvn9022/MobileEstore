@@ -1,0 +1,84 @@
+
+<meta charset="utf-8">
+<div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
+	<main>
+		<div class="grid-members">
+			<!-- Tabs form -->
+			<div class="grid-item">
+				<div class="user-menu-side">
+					<div class="user-name">
+						<img onerror="" src="https://didongthongminh.vn/images/logo-user.svg" alt="avatar" class="img-responsive">
+						<div class="name">
+							Xin chào, <span>[[${session.taiKhoanKH}]]</span>
+						</div>
+					</div>
+					<ul>
+						<li class="active">
+							<a href="/index/thong-tin-tai-khoan"> 
+								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản
+							</a>
+						</li>
+						<li class="">
+							<a href="/order-management"> 
+								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lí đơn hàng
+							</a>
+						</li>
+						<li class="">
+							<a href="/index/doimk"> 
+								<i class="fa fa-lock" aria-hidden="true"></i> Đổi mật khẩu
+							</a>
+						</li>
+						<li class="">
+							<a href="/index/quenmk"> 
+								<i class="fa fa-unlock" aria-hidden="true"></i> Quên mật khẩu
+							</a>
+						</li>
+						<li>
+							<a href="/form/logout"> 
+								<i class="fa fa-power-off" aria-hidden="true"></i> Đăng xuất
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- Forms -->
+			<div class="grid-item">
+				<div class="user-content-side">
+					<h2 class="member-title">Thông tin tài khoản</h2>
+					<hr/>
+					<h5 class="text-danger text-center mt-3 mb-3">[[${message}]]</h5>
+					<form action="/index/thong-tin-tai-khoan" th:object="${khachhang}"  method="post" name="frmUser" id="frmUser" >
+						<div class="box-user">
+							<label class="label-input" for="u_name">Họ và tên</label> 
+							<input type="text" th:field="*{hoTen}" id="u_name" placeholder="Họ và tên" class="form-control">
+			                <p th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}" class="text-danger"></p>
+			                
+						</div>
+						<div class="box-user">
+							<label class="label-input" for="u_email">Email</label> 
+							<input type="text" th:field="*{email}" id="u_email"  placeholder="Email" class="form-control" >
+							<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
+							
+						</div>
+						<div class="box-user">
+							<label class="label-input" for="u_tel">SĐT</label> 
+							<input type="text" th:field="*{SDT}" id="u_tel"  placeholder="SĐT" class="form-control">
+			                <p th:if="${#fields.hasErrors('SDT')}" th:errors="*{SDT}" class="text-danger"></p>
+							
+						</div>
+						<div class="box-user">
+							<label class="label-input" for="u_tel">Địa chỉ</label> 
+							<input type="text" th:field="*{diaChi}" id="u_tel" placeholder="Địa chỉ" class="form-control">
+			                <p th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}" class="text-danger"></p>
+							
+						</div>
+						<div class="box-user box-submit">
+							<button type="submit" class="submit-btn text-light" style="background-color: #7d9ad2; border: none; width: 100%; height: 45px; font-size: 17px;">Cật nhập</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>

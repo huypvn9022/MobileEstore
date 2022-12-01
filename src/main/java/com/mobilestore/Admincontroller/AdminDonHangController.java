@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobilestore.service.CTDHService;
 import com.mobilestore.service.DonHangService;
+import com.mobilestore.service.NhanVienService;
 import com.mobilestore.service.SanPhamService;
 import com.mobilestore.service.SessionService;
 import com.mobilestore.model.ChiTietDonHang;
 import com.mobilestore.model.DonHang;
+import com.mobilestore.model.NhanVien;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.model.TongTienCTDH;
 
@@ -31,12 +33,18 @@ import com.mobilestore.model.TongTienCTDH;
 public class AdminDonHangController {
 	@Autowired
 	DonHangService dhService;
-
+	
+	@Autowired
+	NhanVienService nvService;
+	
 	@Autowired
 	SanPhamService spService;
 
 	@Autowired
 	CTDHService ctdhService;
+	
+	@Autowired
+	SessionService session;
 	
 
 
@@ -46,6 +54,10 @@ public class AdminDonHangController {
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5);
 		Page<DonHang> listDH = dhService.findAll(pageAble);
 		List<SanPham> listSP = spService.findAll();
+		
+		String tk = session.get("taiKhoanNV");		
+		NhanVien nv = nvService.findById(tk);
+		donhang.setManv(nv);
 		
 		TongTienCTDH tongTien = new TongTienCTDH();
 		tongTien.setTongTien(0.0);
@@ -88,7 +100,10 @@ public class AdminDonHangController {
 		Page<DonHang> listDH = dhService.findAll(pageAble);
 //		System.out.println(donhang);
 //		return "redirect:/admin/order/edit/" + donhang.getMaDon();			
-
+		String tk = session.get("taiKhoanNV");		
+		NhanVien nv = nvService.findById(tk);
+		donhang.setManv(nv);
+		
 		if (!dhService.existsById(donhang.getMaDon())) {
 			model.addAttribute("message", "Đơn hàng không tồn tại");
 			model.addAttribute("listdh", listDH);
@@ -113,7 +128,11 @@ public class AdminDonHangController {
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5);
 		Page<DonHang> listDH = dhService.findAll(pageAble);
 		List<ChiTietDonHang> ctdh = ctdhService.getAllOrderDetail(maDon);
-
+		
+		String tk = session.get("taiKhoanNV");		
+		NhanVien nv = nvService.findById(tk);
+		donhang.setManv(nv);
+		
 		if (maDon.equals(0)) {
 			model.addAttribute("message", "Vui lòng chọn đơn hàng để xóa");
 			model.addAttribute("listdh", listDH);
@@ -128,7 +147,10 @@ public class AdminDonHangController {
 	@RequestMapping("/order/delete/product/{mactdh}/{maDon}")
 	public String orderDeleteProduct(Model model, @PathVariable("mactdh") Integer mactdh,@PathVariable("maDon") Integer maDon,
 			 @ModelAttribute("donhang") DonHang donhang) {
-
+		String tk = session.get("taiKhoanNV");		
+		NhanVien nv = nvService.findById(tk);
+		donhang.setManv(nv);
+		
 		ctdhService.delete(mactdh);
 		TongTienCTDH tongtien = ctdhService.getTongTienByMadon(maDon);
 
@@ -141,6 +163,10 @@ public class AdminDonHangController {
 	@RequestMapping("/order/add/product/{maDon}")
 	public String orderUpdateProduct(Model model, @PathVariable("maDon") Integer maDon, @RequestParam("masp") Integer maSP,
 			@ModelAttribute("donhang") DonHang donhang, @RequestParam("soluong") Integer soLuong) {
+		String tk = session.get("taiKhoanNV");		
+		NhanVien nv = nvService.findById(tk);
+		donhang.setManv(nv);
+		
 		SanPham sp = spService.findById(maSP);
 		DonHang dh = dhService.findById(maDon);
 

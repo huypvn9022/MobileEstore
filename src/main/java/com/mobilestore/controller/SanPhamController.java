@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mobilestore.dao.SanPhamDAO;
 import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.SanPham;
-import com.mobilestore.service.HangSanXuatService;
+import com.mobilestore.service.HangSXService;
 import com.mobilestore.service.HinhAnhService;
 import com.mobilestore.service.SessionService;
 
@@ -29,7 +29,7 @@ public class SanPhamController {
 	SessionService sessionService;
 	
 	@Autowired
-	HangSanXuatService hangService;
+	HangSXService hangService;
 	
 	@Autowired
 	SanPhamDAO spdao;

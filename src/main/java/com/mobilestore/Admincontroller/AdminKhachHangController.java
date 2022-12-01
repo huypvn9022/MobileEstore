@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.VaiTro;
-import com.mobilestore.service.KhachHangSevice;
+import com.mobilestore.service.KhachHangService;
 import com.mobilestore.service.SessionService;
 import com.mobilestore.service.VaiTroService;
 
@@ -27,7 +27,7 @@ import com.mobilestore.service.VaiTroService;
 @RequestMapping("/admin")
 public class AdminKhachHangController {
 	@Autowired
-	KhachHangSevice khService;
+	KhachHangService khService;
 	
 	@Autowired
 	VaiTroService vtService;

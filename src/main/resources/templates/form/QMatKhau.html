@@ -1,38 +1,40 @@
+<meta charset="UTF-8">
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
 	<main>
 		<div class="grid-members">
 			<!-- Tabs form -->
 			<div class="grid-item">
-				<div class="user-menu-side">
+					<div class="user-menu-side">
 					<div class="user-name">
 						<img onerror="" src="https://didongthongminh.vn/images/logo-user.svg" alt="avatar" class="img-responsive">
 						<div class="name">
-							Xin chào, <span>codvps18948</span>
+							Xin chào, <span th:if="${#request.remoteUser}">[[${session.taiKhoanKH}]]</span>
+									  <span th:unless="${#request.remoteUser}">Người dùng</span>
 						</div>
 					</div>
-					<ul>
+					<ul th:if="${#request.remoteUser}">
 						<li class="active">
-							<a href="/account-information"> 
+							<a href="/index/thong-tin-tai-khoan"> 
 								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản
 							</a>
 						</li>
 						<li class="">
 							<a href="/order-management"> 
-								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lý đơn hàng
+								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lí đơn hàng
 							</a>
 						</li>
 						<li class="">
-							<a href="/change-password"> 
+							<a href="/index/doimk"> 
 								<i class="fa fa-lock" aria-hidden="true"></i> Đổi mật khẩu
 							</a>
 						</li>
 						<li class="">
-							<a href="/forgot-password"> 
+							<a href="/index/quenmk"> 
 								<i class="fa fa-unlock" aria-hidden="true"></i> Quên mật khẩu
 							</a>
 						</li>
 						<li>
-							<a href="#"> 
+							<a href="/form/logout"> 
 								<i class="fa fa-power-off" aria-hidden="true"></i> Đăng xuất
 							</a>
 						</li>
@@ -43,33 +45,23 @@
 			<!-- Forms -->
 			<div class="grid-item">
 				<div class="user-content-side">
-					<h2 class="member-title">Thông tin tài khoản</h2>
+					<h2 class="member-title">Quên mật khẩu</h2>
 					<hr/>
-					<form action="" method="post" name="frmUser" id="frmUser" enctype="multipart/form-data">
+					<h5 class="text-danger text-center mt-3 mb-3">[[${message}]]</h5>
+					<form th:action="@{/index/quenmk}" method="post" name="frmUser" id="frmUser">
 						<div class="box-user">
 							<label class="label-input" for="u_name">Tài khoản</label> <input
-								type="text" name="u_name" id="u_name" value="codvps18948"
+								type="text" name="username" id="u_name" 
 								placeholder="Tài khoản" class="form-control">
 						</div>
 						<div class="box-user">
 							<label class="label-input" for="u_email">Email</label> <input
-								type="text" name="u_email" id="u_email"
-								value="codvps18948@fpt.edu.vn" placeholder="Email"
-								class="form-control" disabled="" readonly="">
-						</div>
-						<div class="box-user">
-							<label class="label-input" for="u_tel">Điện thoại</label> <input
-								type="text" name="u_tel" id="u_tel" value=""
-								placeholder="Điện thoại" class="form-control">
-						</div>
-						<div class="box-user">
-							<label class="label-input" for="u_tel">Địa chỉ</label> <input
-								type="text" name="u_tel" id="u_tel" value=""
-								placeholder="Địa chỉ" class="form-control">
+								type="text" name="email" id="u_email"
+								 placeholder="Email"
+								class="form-control">
 						</div>
 						<div class="box-user box-submit">
-							<a href="#" class="submit-btn"
-								onclick="">Cập nhật</a>
+							<button type="submit" class="submit-btn text-light" style="background-color: #7d9ad2; border: none; width: 100%; height: 45px; font-size: 17px;">Lấy lại mật khẩu</button>
 						</div>
 					</form>
 				</div>

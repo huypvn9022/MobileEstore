@@ -1,7 +1,5 @@
 package com.mobilestore.controller;
 
-import java.util.Optional;
-
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 
@@ -18,25 +16,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.MailInfo;
 import com.mobilestore.model.VaiTro;
-import com.mobilestore.service.KhachHangSevice;
+import com.mobilestore.service.KhachHangService;
 import com.mobilestore.service.MailerService;
+import com.mobilestore.service.SessionService;
 import com.mobilestore.service.VaiTroService;
 
 @Controller
 @RequestMapping("/index")
 public class TaiKhoanController {
 	@Autowired
-	KhachHangSevice khService;
+	KhachHangService khService;
 
 	@Autowired
 	MailerService mailService;
+	
+	@Autowired
+	SessionService session;
 
 	@Autowired
 	VaiTroService vtService;
 
 	@GetMapping("/dangky")
 	public String dangky(Model model, @ModelAttribute("dangky") KhachHang kh) {
-		return "layout/DangKy";
+		return "form/dangky";
 	}
 
 	@PostMapping("/dangky")
@@ -46,21 +48,21 @@ public class TaiKhoanController {
 		kh.setVaiTroKH(vt);
 
 		if (bingdingResult.hasErrors()) {
-			return "layout/DangKy";
+			return "form/dangky";
 		} else {
-			khService.save(kh);
-			return "redirect:/index/dangnhap";
+			if (khService.existsById(kh.getTaiKhoan())) {
+				model.addAttribute("message", "Tài khoản này đã tồn tại vui lòng tạo tài khoản khác");
+				return "form/dangky";
+			} else {
+				khService.save(kh);
+				return "redirect:/security/form/login";
+			}
 		}
-	}
-
-	@RequestMapping("/dangnhap")
-	public String dangnhap(Model model, @ModelAttribute("dangky") KhachHang kh) {
-		return "layout/DangNhap";
 	}
 
 	@GetMapping("/doimk")
 	public String doimk(Model model) {
-		return "layout/DMatKhau";
+		return "form/Doimk";
 	}
 
 	@PostMapping("/doimk")
@@ -69,45 +71,69 @@ public class TaiKhoanController {
 
 		if (tk.isBlank() || mkCu.isBlank() || mkMoi.isBlank() || mkMoi2.isBlank()) {
 			model.addAttribute("message", "Vui lòng không để trống dữ liệu");
-			return "layout/DMatKhau";
+			return "form/Doimk";
 		} else {
 
 			if (!khService.existsById(tk)) {
 				model.addAttribute("message", "Sai thông tin tài khoản hoặc tài khoản không tồn tại");
-				return "layout/DMatKhau";
+				return "form/Doimk";
 			} else {
 				KhachHang kh = khService.findById(tk);
 
 				if (!kh.getMatKhau().equals(mkCu)) {
 					model.addAttribute("message", "Mật khẩu cũ không khớp với tài khoản");
-					return "layout/DMatKhau";
+					return "form/Doimk";
 				} else if (!mkMoi.equals(mkMoi2)) {
 					model.addAttribute("message", "Nhập lại mật khẩu không khớp vui lòng nhập lại");
-					return "layout/DMatKhau";
+					return "form/Doimk";
 				} else {
 					kh.setTaiKhoan(tk);
 					kh.setMatKhau(mkMoi2);
 					khService.save(kh);
 					model.addAttribute("message", "Đổi mật khẩu thành công");
-					return "layout/DMatKhau";
+					return "form/Doimk";
 				}
 			}
 		}
 	}
 
 	@GetMapping("/thong-tin-tai-khoan")
-	public String thongTinTK(Model model, @ModelAttribute("tttaikhoan") KhachHang kh) {
-		return "layout/TTTaiKhoan";
+	public String thongTinTK(Model model, @ModelAttribute("khachhang") KhachHang kh) {
+		String tk  = session.get("taiKhoanKH");
+		String mk =  session.get("matKhau");
+		KhachHang khachhang = khService.findById(tk);
+		kh.setTaiKhoan(tk);
+		kh.setMatKhau(mk);
+
+		model.addAttribute("khachhang", khachhang);
+		return "form/TTTaiKhoan";
 	}
 
 	@PostMapping("/thong-tin-tai-khoan")
-	public String thongTinTK_submit(Model model, @ModelAttribute("tttaikhoan") KhachHang kh) {
-		return "layout/TTTaiKhoan";
+	public String thongTinTK_submit(Model model,@Valid @ModelAttribute("khachhang") KhachHang kh, BindingResult bindingResult) {
+		String tk  = session.get("taiKhoanKH");
+		VaiTro vt = vtService.findById(session.get("vaiTroKH"));
+		KhachHang khachhang = khService.findById(tk);		
+		
+		kh.setTaiKhoan(khachhang.getTaiKhoan());
+		kh.setMatKhau(khachhang.getMatKhau());
+		kh.setVaiTroKH(vt);
+		
+		if(!bindingResult.hasErrors()) {
+			model.addAttribute("message", "Cật nhập thất bại");
+			model.addAttribute("khachhang", khachhang);
+			return "form/TTTaiKhoan";
+		}else {
+			khService.save(kh);
+			model.addAttribute("message", "Cật nhập thành công");
+			return "form/TTTaiKhoan";
+		}
+		
 	}
 
 	@GetMapping("/quenmk")
 	public String quenMK_submit() {
-		return "layout/QMatKhau";
+		return "form/QMatKhau";
 	}
 
 	@PostMapping("/quenmk")
@@ -115,12 +141,12 @@ public class TaiKhoanController {
 
 		if (username.isBlank() || email.isBlank()) {
 			model.addAttribute("message", "Vui lồng không để trống dữ liệu!");
-			return "layout/QMatKhau";
+			return "form/QMatKhau";
 		} else {
-			KhachHang acc = khService.findById(username);
 			if (!khService.existsById(username)) {
 				model.addAttribute("message", "Tài khoản không tồn tại");
 			} else {
+				KhachHang acc = khService.findById(username);
 				String newPass = ((long) Math.floor(Math.random() * (999999999 - 100000000 + 1) + 100000000)) + "";
 				acc.setMatKhau(newPass);
 				khService.save(acc);
@@ -139,7 +165,7 @@ public class TaiKhoanController {
 				}
 				model.addAttribute("message", "Chúng tôi đã gửi mật khẩu về email của bạn, vui lòng kiểm tra email!");
 			}
-			return "layout/QMatKhau";
+			return "form/QMatKhau";
 		}
 
 	}

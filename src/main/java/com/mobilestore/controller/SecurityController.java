@@ -1,12 +1,16 @@
 package com.mobilestore.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mobilestore.service.SessionService;
+
 @Controller
 public class SecurityController {
+
 	
 	@RequestMapping("/security/form/login")
 	public String formLogin(Model model) {

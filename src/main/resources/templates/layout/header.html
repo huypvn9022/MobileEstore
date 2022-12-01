@@ -1,3 +1,4 @@
+<meta charset="utf-8"> 
 <div xmlns:th="http://www.thymeleaf.org" class="mb-4">
 	<!-- Humberger Begin -->
 	<div class="humberger__menu__overlay"></div>
@@ -75,23 +76,23 @@
 				<div class="col-lg-4">
 					<div class="header__cart">
 						<ul>
-							<span th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
-							<li><a href="#" style="color: white"><i class="fa fa-volume-control-phone text-light mr-2"></i> Liên hệ </a> &emsp;|</li>
-							<li><a th:href="@{/cart}" style="color: white"><i class="fa fa-shopping-bag text-light mr-2"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
-							</span>
-							<span th:if="${#request.remoteUser}">
+							<th:block th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
+								<li><a href="#" style="color: white"><i class="fa fa-volume-control-phone text-light mr-2"></i> Liên hệ </a> &emsp;|</li>
+								<li><a th:href="@{/cart}" style="color: white"><i class="fa fa-shopping-bag text-light mr-2"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
+							</th:block>
+							<th:block th:if="${#request.remoteUser}">
 								<li th:if="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
 									<a th:href="@{/admin/thongke}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Admin</a>
 								</li>
 								<li th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
-									<a th:href="@{/order-management}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+									<a th:href="@{/index/thong-tin-tai-khoan}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
 								</li>
-							</span>
-							<span th:unless="${#request.remoteUser}">
+							</th:block>
+							<th:block th:unless="${#request.remoteUser}">
 								<li>
-									<a th:href="@{/order-management}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
-								</li>
-							</span>
+									<a th:href="@{/security/form/login}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Đăng nhập </a>
+								</li>							
+							</th:block>
 							
 						
 						</ul>

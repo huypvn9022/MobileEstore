@@ -13,22 +13,22 @@ import com.mobilestore.model.CauHinh;
 import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.service.CauHinhService;
-import com.mobilestore.service.HangSanXuatService;
+import com.mobilestore.service.HangSXService;
 import com.mobilestore.service.HinhAnhService;
-import com.mobilestore.service.LoaiSanPhamService;
+import com.mobilestore.service.LoaiSPService;
 import com.mobilestore.service.SanPhamService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	HangSanXuatService hangSXService;
+	HangSXService hangSXService;
 	
 	@Autowired
 	SanPhamService spService;
 	
 	@Autowired
-	LoaiSanPhamService loaispService;
+	LoaiSPService loaispService;
 	
 	@Autowired
 	HinhAnhService hinhanhService;
@@ -104,32 +104,16 @@ public class HomeController {
 	public String productDetails(Model model) {
 		return "layout/ChiTietSanPham";
 	}
-	@RequestMapping("/register")
-	public String register(Model model) {
-		return "layout/dangky";
-	}
-	@RequestMapping("/login")
-	public String login(Model model) {
-		return "layout/dangnhap-dangky";
-	}
-	@RequestMapping("/change-password")
-	public String changePassword(Model model) {
-		return "layout/dmatkhau";
-	}
+
 	
-	@RequestMapping("/order-management")
-	public String orderManagement(Model model) {
-		return "layout/qldonhang";
-	}
+//	@RequestMapping("/order-management")
+//	public String orderManagement(Model model) {
+//		return "layout/qldonhang";
+//	}
 
 	@RequestMapping("/shop-grid")
 	public String shopGrid(Model model) {
 		return "layout/shop-grid";
-	}
-
-	@RequestMapping("account-information")
-	public String accoutInformation(Model model) {
-		return "layout/tttaikhoan";
 	}
 	
 	

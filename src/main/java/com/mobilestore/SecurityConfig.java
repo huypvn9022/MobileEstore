@@ -17,6 +17,7 @@ import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.NhanVien;
 import com.mobilestore.service.KhachHangService;
 import com.mobilestore.service.NhanVienService;
+import com.mobilestore.service.SessionService;
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -25,6 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	KhachHangService khservice;
+	
+	@Autowired
+	SessionService session;
 	
 	@Autowired
 	NhanVienService nvservice;
@@ -46,6 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				KhachHang khachhang = khservice.findById(taikhoan);
 				String passwordkh = pe.encode(khachhang.getMatKhau());
 				String role = khachhang.getVaiTroKH().getId();
+				session.set("taiKhoanKH", khachhang.getTaiKhoan());
+				session.set("matKhauKH", khachhang.getMatKhau());
+				session.set("vaiTroKH", role);
+
 				return User.withUsername(taikhoan).username(khachhang.getHoTen()).password(passwordkh).roles(role).build();
 			} catch (NoSuchElementException e) {
 				throw new UsernameNotFoundException(taikhoan + " not found !");
@@ -57,6 +65,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				NhanVien nhanvien = nvservice.findById(taikhoanNV);
 				String passwordnv = pe.encode(nhanvien.getMatKhau());
 				String role = nhanvien.getVaiTroNV().getId();
+				session.set("taiKhoanNV", nhanvien.getTaiKhoan());
+
 				return User.withUsername(taikhoanNV).password(passwordnv).roles(role).build();
 			} catch (NoSuchElementException e) {
 				throw new UsernameNotFoundException(taikhoanNV + " not found !");
