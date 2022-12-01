@@ -1,5 +1,6 @@
 package com.mobilestore.model;
 
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,20 +15,43 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
+@Data 
+@AllArgsConstructor 
 @NoArgsConstructor
 @Entity
-@Table(name = "Loaisp")
-public class LoaiSanPham {
-	@Id
-	@Column(name = "Maloai")
-	private String maLoai;
+@Table(name="Vaitro")
+public class VaiTro {
 	
-	@Column(name = "Tenloai")
-	private String tenLoai;
+	@Id
+	@Column(name = "id")
+	private String id;
+	@Column(name = "tenvaitro")
+	private String tenVaiTro;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "maLoai")
-	List<SanPham> sanpham;
+	@OneToMany(mappedBy = "vaiTroNV")
+	List<NhanVien> vaiTroNV; 
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "vaiTroKH")
+	List<KhachHang> vaiTroKH;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

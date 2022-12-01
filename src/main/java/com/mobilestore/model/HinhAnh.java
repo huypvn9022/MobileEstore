@@ -40,15 +40,9 @@ public class HinhAnh implements Serializable {
 	
 	@Column(name = "hinhanh5")
 	private String hinhAnh5;
-	
-	@Column(name = "hinhanh6")
-	private String hinhAnh6;
-	
-	@Column(name = "hinhanh7")
-	private String hinhAnh7;
 
 	// san pham
 	@ManyToOne
-	@JoinColumn(name = "masp")
+	@JoinColumn(name = "Masp")
 	SanPham masp;
 }

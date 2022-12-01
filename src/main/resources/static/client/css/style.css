@@ -2230,6 +2230,18 @@ transparent;
 	background-color: #7d9ad2;
 }
 
+/*---------------
+	Cart
+-----------------*/
+tbody tr td .fa-trash-o:hover{
+	color: red;
+}
+
+.w-50 .d-flex span h5{
+	font-weight: 600;
+}
+
+
 /*---------------------
   Checkout
 -----------------------*/

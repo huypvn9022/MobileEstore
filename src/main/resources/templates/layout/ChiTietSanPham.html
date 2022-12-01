@@ -1,47 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="zxx">
-
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="Ogani Template">
-<meta name="keywords" content="Ogani, unica, creative, html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Mobile Estore</title>
-
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap"
-	rel="stylesheet">
-
-<!-- Css Styles -->
-<link rel="stylesheet" href="/client/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet" href="/client/css/slicknav.min.css"
-	type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<link rel="stylesheet" href="/client/css/style.css" type="text/css">
-<link rel="stylesheet" href="/client/css/comment.css" type="text/css">
-</head>
-
-<body>
-
-	<!-- Header header Begin -->
-	<header class="header">
-		<div th:replace="/layout/header"></div>
-	</header>
-	<!-- Header header End -->
-
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
+	<main>
 	<!-- Product Details Begin -->
 	<section class="product-details spad pt-0">
 		<div class="container">
@@ -88,11 +47,11 @@
 						<div class="row">
 							<span class="product__details__price"
 								th:text="${#numbers.formatDecimal(sanpham.donGia - (((sanpham.donGia)/100)*10), 0, 'COMMA', 0, 'POINT')}">
-								đ</span>
+								</span>đ
 							&nbsp;
 							<span class="product__details__price">
-								<s th:text="${#numbers.formatDecimal(sanpham.donGia, 0, 'COMMA', 0, 'POINT')}">đ</s>
-							</span>
+								<s th:text="${#numbers.formatDecimal(sanpham.donGia, 0, 'COMMA', 0, 'POINT')}"></s>
+							</span>đ
 						</div>
 						<div>
 							<a href="#" data-index="0" class="box__item item">64GB</a> <a
@@ -152,7 +111,7 @@
 							</div>
 						</div>
 						
-						<a th:attr="ng-click=@{|cart.add(${sanpham.maSP})|}"
+						<a href="/cart" th:attr="ng-click=@{|cart.add(${sanpham.maSP})|}"
 							class="btn btn-outline-primary w-100 mt-3"
 							style="text-align: center; border-radius: 5px">
 							Mua ngay
@@ -235,45 +194,6 @@
 	</div>
 	<!-- Product description and parameters End -->
 
-
-	<!-- Reviews -->
-	<!-- 
-	<section class="reviews">
-		<div class="container">
-			<div class="card" id="card-reviews">
-				<div class="card-body">
-					<h5 class="card-title">
-						<b>Người dùng</b>
-					</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Sản phẩm tốt. Ủng hộ
-						lâu dài</h6>
-					<div class="card" style="width: 100%;">
-						<div class="card-body">
-							<h5 class="card-title">Quản trị viên!</h5>
-							<h6 class="card-subtitle mb-2 text-muted">Cảm ơn quý khách
-								hàng đã mua sản phẩm!</h6>
-						</div>
-					</div>
-					<div class="row mt-4">
-						<form class="container col-6">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Tiêu đề">
-							</div>
-							<div class="form-group">
-								<textarea type="text" class="form-control" placeholder="Mô tả"></textarea>
-							</div>
-							<a href="#" data-index="0" class="box__item item"
-								id="button-feedback"
-								style="background-color: rgb(228, 233, 237);">Phản hồi</a><br>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	 -->
-	<!-- Reviews End -->
-
 	<!-- comment client start-->
 	<div class="container">
 		<div class="mb-3">
@@ -334,24 +254,12 @@
 
 					<th:block th:each="listSpHang: ${sanpham.maHang.sanpham}">
 						<div class="col-lg-3">
-							
-							<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">
-								<a th:href="@{|/product/detail/${listSpHang.maSP}|}">
+							<a th:href="@{|/product/detail/${listSpHang.maSP}|}">
+								<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">
 									<img th:src="@{|/client/img/product/${listAnh.hinhAnh1}|}" alt="error" />
-								</a>
-							</th:block>
-
-						<!-- <img class="categories__item set-bg" th:src="@{|/client/img/product/${sanPham}|}" alt="error"/> -->
-							<!-- [[${listSpHang.tenSP}]] -->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5 class="title text-truncate" th:text="${listSpHang.tenSP}"></h5>
-								<div class="price">
-									<span class="price-new"
-										th:text="${#numbers.formatDecimal(listSpHang.donGia, 0, 'COMMA', 0, 'POINT')}">đ</span>
-									<span class="price-old">23.950.000đ</span>
-								</div>
-							</div>
+								</th:block>
+								[[${listSpHang.tenSP}]]
+							</a>
 						</div>
 					</th:block>
 				</div>
@@ -361,25 +269,6 @@
 	</section>
 	<!-- Similar products End -->
 
-	<!-- Footer Section Begin -->
-	<footer class="footer spad">
-		<div th:replace="/layout/footer"></div>
-	</footer>
-	<!-- Footer Section End -->
-
-	<!-- Js Plugins -->
-	<script src="/client/js/jquery-3.3.1.min.js"></script>
-	<script src="/client/js/bootstrap.min.js"></script>
-	<script src="/client/js/jquery.nice-select.min.js"></script>
-	<script src="/client/js/jquery-ui.min.js"></script>
-	<script src="/client/js/jquery.slicknav.js"></script>
-	<script src="/client/js/mixitup.min.js"></script>
-	<script src="/client/js/owl.carousel.min.js"></script>
-	<script src="/client/js/main.js"></script>
-	<script src="/client/js/comment.js"></script>
-	<script src="/client/js/mobile-cart.js"></script>
-
-
-</body>
+</mainx`>
 
 </html>

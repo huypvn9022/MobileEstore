@@ -18,13 +18,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "HangSX")
+@Table(name = "Hangsx")
 public class HangSanXuat {
 	@Id
-	@Column(name = "mahang")
+	@Column(name = "Mahang")
 	private String maHang;
 	
-	@Column(name = "tenhang")
+	@Column(name = "Tenhang")
 	private String tenHang;
 	
 	//san pham

@@ -15,18 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.annotation.SessionScope;
-
-import com.mobilestore.dao.HangSanXuatDAO;
 import com.mobilestore.dao.SanPhamDAO;
-import com.mobilestore.model.HangSanXuat;
 import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.service.HangSanXuatService;
 import com.mobilestore.service.HinhAnhService;
 import com.mobilestore.service.SessionService;
-
-
 
 @Controller
 @RequestMapping("/product")

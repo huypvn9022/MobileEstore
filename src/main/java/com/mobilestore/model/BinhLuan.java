@@ -27,7 +27,6 @@ public class BinhLuan {
 	@Column(name = "noidung")
 	private String noiDung;
 
-	// khach hang
 	@ManyToOne
 	@JoinColumn(name = "taikhoan")
 	KhachHang taikhoan;

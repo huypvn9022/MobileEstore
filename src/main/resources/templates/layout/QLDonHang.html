@@ -1,6 +1,14 @@
-<div xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{/layout/main :: dynamic (~{::main})}">
+<div xmlns:th="http://www.thymeleaf.org"   
+	th:replace="~{/layout/main :: dynamic (~{::main})}"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 	<main>
+		
+		<th:block th:unless="${#request.remoteUser}">
+			<span th:insert="~{/form/dangnhap::main}"></span>
+		</th:block>
+		
+		<!-- form user start -->
+		<th:block th:if="${#request.remoteUser}">
 		<div class="grid-members">
 			<!-- Tabs form -->
 			<div class="grid-item">
@@ -10,13 +18,14 @@
 							src="https://didongthongminh.vn/images/logo-user.svg"
 							alt="avatar" class="img-responsive">
 						<div class="name">
-							Xin chào, <span>codvps18948</span>
+							<!-- [[${#request.userPrincipal.principal.username}]] -->
+							Xin chào, <span sec:authentication="name"></span>
 						</div>
 					</div>
 					<ul>
 						<li class="">
 							<a href="/account-information"> 
-								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản
+								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản                              
 							</a>
 						</li>
 						<li class="active">
@@ -35,9 +44,9 @@
 							</a>
 						</li>
 						<li>
-							<a href="#"> 
+							<a th:href="@{/form/logout}">
 								<i class="fa fa-power-off" aria-hidden="true"></i> Đăng xuất
-							</a>
+							</a> 
 						</li>
 					</ul>
 				</div>
@@ -62,6 +71,7 @@
 								</tr>
 							</thead>
 							<tbody>
+<<<<<<< HEAD
 								<tr th:each="dh: ${listdonhang}">
 									<td data-title="Mã đơn" class="id-order" th:text="${dh.maDon}" ></td>
 									<td data-title="Ngày" th:text="${#dates.format(dh.ngayTao, 'dd/MM/yyyy')}"></td>
@@ -73,6 +83,67 @@
 										  Xem Chi Tiết
 										</a>
 									</td>
+=======
+								<tr>
+									<td data-title="MÃ£ Ä‘Æ¡n" class="id-order">DH00007455</td>
+									<td data-title="NgÃ y">19/11/2022</td>
+									<td data-title="Sáº£n pháº©m"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB ChÃ­nh hÃ£ng VN/A ">iPhone 14
+											Pro Max 128GB Chính Hãng VN/A </a></td>
+									<td data-title="Ä�á»‹a chá»‰">TP.HCM</td>
+									<td data-title="Tá»•ng tiá»�n">34.490.000<sup>Đ</sup>
+									</td>
+									<td data-title="Tráº¡ng thÃ¡i"></td>
+								</tr>
+								<tr>
+									<td data-title="MÃ£ Ä‘Æ¡n" class="id-order">DH00007455</td>
+									<td data-title="NgÃ y">19/11/2022</td>
+									<td data-title="Sáº£n pháº©m"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB ChÃ­nh hÃ£ng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Ä�á»‹a chá»‰">TP.HCM</td>
+									<td data-title="Tá»•ng tiá»�n">34.490.000<sup>Đ</sup>
+									</td>
+									<td data-title="Tráº¡ng thÃ¡i"></td>
+								</tr>
+								<tr>
+									<td data-title="MÃ£ Ä‘Æ¡n" class="id-order">DH00007455</td>
+									<td data-title="NgÃ y">19/11/2022</td>
+									<td data-title="Sáº£n pháº©m"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB ChÃ­nh hÃ£ng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Ä�á»‹a chá»‰">TP.HCM</td>
+									<td data-title="Tá»•ng tiá»�n">34.490.000<sup>Đ</sup>
+									</td>
+									<td data-title="Tráº¡ng thÃ¡i"></td>
+								</tr>
+								<tr>
+									<td data-title="MÃ£ Ä‘Æ¡n" class="id-order">DH00007455</td>
+									<td data-title="NgÃ y">19/11/2022</td>
+									<td data-title="Sáº£n pháº©m"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB ChÃ­nh hÃ£ng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Ä�á»‹a chá»‰">TP.HCM</td>
+									<td data-title="Tá»•ng tiá»�n">34.490.000<sup>Đ</sup>
+									</td>
+									<td data-title="Tráº¡ng thÃ¡i"></td>
+								</tr>
+								<tr>
+									<td data-title="MÃ£ Ä‘Æ¡n" class="id-order">DH00007455</td>
+									<td data-title="NgÃ y">19/11/2022</td>
+									<td data-title="Sáº£n pháº©m"><a
+										href="#"
+										title="iPhone 14 Pro Max 128GB ChÃ­nh hÃ£ng VN/A ">iPhone 14
+											Pro Max 128GB Chính hãng VN/A </a></td>
+									<td data-title="Ä�á»‹a chá»‰">TP.HCM</td>
+									<td data-title="Tá»•ng tiá»�n">34.490.000<sup>Đ</sup>
+									</td>
+									<td data-title="Tráº¡ng thÃ¡i"></td>
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 								</tr>
 							</tbody>
 						</table>
@@ -80,8 +151,20 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 		
 	</main>
+=======
+		</th:block>
+		<!-- form user end -->
+		
+		
+		
+		
+		
+		</main>
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 </div>
+
 
 
