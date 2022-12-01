@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mobilestore.dao.SanPhamDAO;
@@ -23,5 +25,7 @@ public class SanPhamService {
 		return spdao.findById(id).get();
 	}
 	
-	
+	public Page<SanPham> findAll(Pageable pageable) {
+		return spdao.findAll(pageable);
+	}
 }

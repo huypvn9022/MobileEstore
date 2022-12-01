@@ -21,7 +21,7 @@
 						</li>
 						<li class="active">
 							<a href="/order-management"> 
-								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lý đơn hàng
+								<i class="fa fa-wpforms" aria-hidden="true"></i> Chi tiết Đơn Hàng
 							</a>
 						</li>
 						<li class="">
@@ -46,33 +46,25 @@
 			<!-- Forms -->
 			<div class="grid-item">
 				<div class="user-content-side">
-					<h2 class="member-title">Quản lý đơn hàng</h2>
+					<h2 class="member-title">Chi tiết Đơn Hàng</h2>
 
 					<div class="list-order-member">
 						<table class="table table-order-member">
 							<thead>
-								<tr>
-									<th>Mã đơn</th>
-									<th>Ngày tạo</th>
-									
- 									<th>Địa chỉ</th>
-									
+								<tr>	
+									<th>Tên sản phẩm</th>									
+									<th>Đơn giá</th>
+									<th>Số lượng</th>
 									<th>Tổng tiền</th>
-									<th>Trạng thái</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="dh: ${listdonhang}">
-									<td data-title="Mã đơn" class="id-order" th:text="${dh.maDon}" ></td>
-									<td data-title="Ngày" th:text="${#dates.format(dh.ngayTao, 'dd/MM/yyyy')}"></td>
-									<td data-title="Địa chỉ" th:text="${dh.makh.diaChi}"></td>									
-									<td data-title="Tổng tiền">[[${#numbers.formatDecimal(dh.tongTien, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
-									<td data-title="Trạng thái" th:text="${dh.trangThai}"></td>
-									<td>
-										<a th:href="@{|/order/chiTietDonHang/${dh.maDon}|}" class="btn btn-primary btn-block btn-sm" >
-										  Xem Chi Tiết
-										</a>
-									</td>
+								<tr th:each="ctdh: ${ctdh}">
+									
+									<td data-title="Mã đơn" class="id-order">[[${ctdh.masp.tenSP}]]</td>
+									<td data-title="Mã đơn" class="id-order">[[${#numbers.formatDecimal(ctdh.donGia, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
+									<td data-title="Mã đơn" class="id-order">[[${ctdh.soLuong}]]</td>
+									<td data-title="Mã đơn" class="id-order">[[${#numbers.formatDecimal(ctdh.soLuong * ctdh.donGia, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
 								</tr>
 							</tbody>
 						</table>
@@ -80,7 +72,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</main>
 </div>
 

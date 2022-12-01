@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
-@Table(name="NhanVien")
+@Table(name="Nhanvien")
 public class NhanVien {
 	@Id
 	@Column(name = "taikhoan")
