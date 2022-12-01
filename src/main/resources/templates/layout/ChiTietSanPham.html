@@ -5,9 +5,9 @@
 	<section class="product-details spad pt-0">
 		<div class="container">
 			<div class="mb-2">
-				<a href="/index" class="btn btn-link pl-0">Trang chủ</a> <i
+				<a href="/index" class="btn btn-link pl-0">Trang chá»§</a> <i
 					class="fa fa-angle-right" aria-hidden="true"></i> <a href="#"
-					class="btn btn-link">Sản phẩm</a> <i class="fa fa-angle-right"
+					class="btn btn-link">Sáº£n pháº©m</a> <i class="fa fa-angle-right"
 					aria-hidden="true"></i> <a href="" class="btn btn-link">[[${sanpham.tenSP}]]</a>
 			</div>
 			<div>
@@ -20,16 +20,16 @@
 						class="fa fa-star-half-o"></i> <span>(999 reviews)</span>
 				</div>
 				<button class="btn-success d-inline border-none"
-					style="border-radius: 13px;">Trả góp 0%</button>
+					style="border-radius: 13px;">Tráº£ gÃ³p 0%</button>
 			</div>
 			<hr />
 			<div class="row">
 				<div class="col-lg-6 col-md-6">
 					<div class="product__details__pic">
 						<th:block th:each="anh: ${anhs}">
-							<div class="productss border" id="imgOrigin" >
-								<img class="product__details__pic__item--large center"
-									style="width: 100%; height: 100%"
+							<div class="productss border pt-3 pb-3" id="imgOrigin" >
+								<img class="product__details__pic__item--large mx-auto d-block"
+									width="446" height="446"
 									th:src="@{|/client/img/product/${anh.hinhAnh1}|}" alt="error">
 							</div>
 							<div class="product__details__pic__slider owl-carousel">
@@ -47,11 +47,11 @@
 						<div class="row">
 							<span class="product__details__price"
 								th:text="${#numbers.formatDecimal(sanpham.donGia - (((sanpham.donGia)/100)*10), 0, 'COMMA', 0, 'POINT')}">
-								</span>đ
+								</span>Ä‘
 							&nbsp;
 							<span class="product__details__price">
 								<s th:text="${#numbers.formatDecimal(sanpham.donGia, 0, 'COMMA', 0, 'POINT')}"></s>
-							</span>đ
+							</span>Ä‘
 						</div>
 						<div>
 							<a href="#" data-index="0" class="box__item item">64GB</a> <a
@@ -59,32 +59,32 @@
 								href="#" data-index="0" class="box__item item">256GB</a>
 						</div>
 						<div>
-							<a href="#" data-index="0" class="box__item item" id="color1">Tím</a>
+							<a href="#" data-index="0" class="box__item item" id="color1">TÃ­m</a>
 							<a href="#" data-index="0" class="box__item item" id="color2"
-								style="color: grey;">Xám</a> <a href="#" data-index="0"
-								class="box__item item" id="color3">Vàng</a>
+								style="color: grey;">XÃ¡m</a> <a href="#" data-index="0"
+								class="box__item item" id="color3">VÃ ng</a>
 						</div>
 						<table class="table border border-info"
 							style="margin-top: 10px; margin-bottom: 20px;">
 							<tr >
 								<th class="thead-light"
-									style="background-color: rgb(195, 215, 232); text-align: center; border-top: 1px solid #17A2B8; border-bottom: 1px solid black">Khuyến
-									mãi</th>
+									style="background-color: rgb(195, 215, 232); text-align: center; border-top: 1px solid #17A2B8; border-bottom: 1px solid black">Khuyáº¿n
+									mÃ£i</th>
 							</tr>
 							<tr>
 								<td><i class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>SẴN HÀNG, chi tiết số lượng vui lòng gọi
+									aria-hidden="true"></i>Sáº´N HÃ€NG, chi tiáº¿t sá»‘ lÆ°á»£ng vui lÃ²ng gá»�i
 									0123.456.789<br> <i
 									class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>Giảm 5% tối đa 1.000.000đ khi thanh toán
+									aria-hidden="true"></i>Giáº£m 5% tá»‘i Ä‘a 1.000.000Ä‘ khi thanh toÃ¡n
 									qua Kredivo<br> <i
 									class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>Tặng đến 3.000.000đ khi thu cũ đổi mới
-									(Chi tiết)<br> <i
+									aria-hidden="true"></i>Táº·ng Ä‘áº¿n 3.000.000Ä‘ khi thu cÅ© Ä‘á»•i má»›i
+									(Chi tiáº¿t)<br> <i
 									class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>Tặng 500.000đ khi mua Apple Watch<br>
+									aria-hidden="true"></i>Táº·ng 500.000Ä‘ khi mua Apple Watch<br>
 									<i class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>Mua tai nghe Airpods 3 giá chỉ còn
+									aria-hidden="true"></i>Mua tai nghe Airpods 3 giÃ¡ chá»‰ cÃ²n
 									4.100.000<br></td>
 						</table>
 						<div class="border border-info p-3">
@@ -92,22 +92,22 @@
 								<div class="col-1">
 									<i class="fa fa-shield border-success" aria-hidden="true"></i>
 								</div>
-								<div class="col-11">Tình trạng: Mới 100%, Nguyên Seal,
-									Chưa Kích Hoạt, Đủ Bảo Hành</div>
+								<div class="col-11">TÃ¬nh tráº¡ng: Má»›i 100%, NguyÃªn Seal,
+									ChÆ°a KÃ­ch Hoáº¡t, Ä�á»§ Báº£o HÃ nh</div>
 							</div>
 							<div class="row">
 								<div class="col-1">
 									<i class="fa fa-shield border-success" aria-hidden="true"></i>
 								</div>
-								<div class="col-11">Bộ sản phẩm chuẩn: Thân máy, Cable,
-									Sách hướng dẫn, Cây lấy sim</div>
+								<div class="col-11">Bá»™ sáº£n pháº©m chuáº©n: ThÃ¢n mÃ¡y, Cable,
+									SÃ¡ch hÆ°á»›ng dáº«n, CÃ¢y láº¥y sim</div>
 							</div>
 							<div class="row">
 								<div class="col-1">
 									<i class="fa fa-shield border-success" aria-hidden="true"></i>
 								</div>
-								<div class="col-11">Bảo hành: 24 tháng chính hãng (12
-									tháng tại Apple + 12 tháng tại MobileEstore)</div>
+								<div class="col-11">Báº£o hÃ nh: 24 thÃ¡ng chÃ­nh hÃ£ng (12
+									thÃ¡ng táº¡i Apple + 12 thÃ¡ng táº¡i MobileEstore)</div>
 							</div>
 						</div>
 						
@@ -134,15 +134,15 @@
 				<div class="col-8">
 					<a data-index="0" class="box__item item font-weight-bold mt-4 mb-2 w-25"
 						id="left"
-						style="background-color: rgb(228, 233, 237); font-size: 17px;">Mô
-						tả sản phẩm</a><br> 
+						style="background-color: rgb(228, 233, 237); font-size: 17px;">MÃ´
+						táº£ sáº£n pháº©m</a><br> 
 					<span> 
 						<p class="text-justify">
 							[[${sanpham.moTa}]]
 						</p>
 					</span>
 					<div class="text-center">
-						<button type="button" class="btn btn-link">Xem thêm</button>
+						<button type="button" class="btn btn-link">Xem thÃªm</button>
 					</div>
 				</div>
 
@@ -150,21 +150,21 @@
 				<div class="col-4">
 					<a data-index="0"
 						class="box__item item w-100 font-weight-bold mt-4 mb-2" id="right"
-						style="background-color: rgb(228, 233, 237); font-size: 17px;">Thông
-						số sản phẩm</a><br>
+						style="background-color: rgb(228, 233, 237); font-size: 17px;">ThÃ´ng
+						sá»‘ sáº£n pháº©m</a><br>
 					<table class="table table-striped">
 						<tbody>
 							<th:block th:each="cauHinh : ${cauHinh}">
 								<tr>
-									<th scope="1">Độ phân giải</th>
+									<th scope="1">Ä�á»™ phÃ¢n giáº£i</th>
 									<td>[[${cauHinh.doPhanGiai}]]</td>
 								</tr>
 								<tr>
-									<th scope="1">Độ rộng</th>
+									<th scope="1">Ä�á»™ rá»™ng</th>
 									<td>[[${cauHinh.doRong}]]</td>
 								</tr>
 								<tr>
-									<th scope="1">Hệ điều hành</th>
+									<th scope="1">Há»‡ Ä‘iá»�u hÃ nh</th>
 									<td>[[${cauHinh.heDH}]]</td>
 								</tr>
 								<tr>
@@ -186,8 +186,8 @@
 							</th:block>
 						</tbody>
 					</table>
-					<button class="btn btn-outline-primary w-100">Xem cấu hình
-						chi tiết</button>
+					<button class="btn btn-outline-primary w-100">Xem cáº¥u hÃ¬nh
+						chi tiáº¿t</button>
 				</div>
 			</div>
 		</div>
@@ -197,7 +197,7 @@
 	<!-- comment client start-->
 	<div class="container">
 		<div class="mb-3">
-			<h4 class="font-weight-bold d-inline">Đánh giá điện thoại [[${sanpham.tenSP}]]</h4>
+			<h4 class="font-weight-bold d-inline">Ä�Ã¡nh giÃ¡ Ä‘iá»‡n thoáº¡i [[${sanpham.tenSP}]]</h4>
 			<span class="d-inline ml-3">
 				<i class="fa fa-star text-warning" aria-hidden="true"></i>
 				<i class="fa fa-star text-warning" aria-hidden="true"></i>
@@ -215,7 +215,7 @@
 						<i class="fa fa-user-circle" aria-hidden="true"></i>
 					</div>
 					<div class="col-9">
-						<input type="text" class="form-control" placeholder="Tên hiện thị"
+						<input type="text" class="form-control" placeholder="TÃªn hiá»‡n thá»‹"
 							id="name">
 					</div>
 					<div class="col-2">
@@ -229,7 +229,7 @@
 				</div>
 				<div class="form-group">
 					<textarea rows="5" cols="5" class="form-control"
-						placeholder="Nội dung bình luận ..." id="body"></textarea>
+						placeholder="Ná»™i dung bÃ¬nh luáº­n ..." id="body"></textarea>
 				</div>
 			</form>
 		</div>
@@ -247,12 +247,12 @@
 		<div class="container">
 			<hr />
 			<a data-index="0" class="box__item item w-25 font-weight-bold mb-2" id="right"
-				style="background-color: rgb(228, 233, 237); font-size: 17px;">Sản phẩm cùng loại</a><br>
+				style="background-color: rgb(228, 233, 237); font-size: 17px;">Sáº£n pháº©m cÃ¹ng loáº¡i</a><br>
 			<div class="row">
 				<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
 				<!-- <div class="categories__slider owl-carousel"> -->
 
-					<th:block th:each="listSpHang: ${sanpham.maHang.sanpham}">
+					<th:block th:each="listSpHang: ${sanpham.mahang.sanpham}">
 						<div class="col-lg-3">
 							<a th:href="@{|/product/detail/${listSpHang.maSP}|}">
 								<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">

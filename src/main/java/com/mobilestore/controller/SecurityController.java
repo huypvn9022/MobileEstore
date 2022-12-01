@@ -27,7 +27,7 @@ public class SecurityController {
 		Object principal = SecurityContextHolder.getContext().getAuthentication();
 		model.addAttribute("principal" , principal);
 		model.addAttribute("message", "Đăng nhập thành công !");
-		return "forward:/security/form/login";
+		return "forward:/index";
 	}
 	
 	@RequestMapping("/form/login/fail")

@@ -65,32 +65,32 @@
 						<a href="/index" style="color: white;">Mobile Estore</a>
 					</div>
 				</div>
-				<div class="col-lg-5">
-					<div class="hero__search__form mt-3">
+				<div class="col-lg-4 d-flex align-items-center justify-content-center p-0">
+					<div class="hero__search__form">
 						<form action="/product/search">
 							<input name="Keywords" type="text" placeholder="Bạn cần tìm gì?">
 							<button type="submit" class="site-btn"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-5 d-flex align-items-center justify-content-end p-0">
 					<div class="header__cart">
-						<ul>
+						<ul style="font-size: 17px">
 							<th:block th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
-								<li><a href="#" style="color: white"><i class="fa fa-volume-control-phone text-light mr-2"></i> Liên hệ </a> &emsp;|</li>
-								<li><a th:href="@{/cart}" style="color: white"><i class="fa fa-shopping-bag text-light mr-2"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
+								<li><a href="#" style="color: white"><i class="fa fa fa-phone text-light mr-2" style="font-size: 23px"></i> Liên hệ </a> &emsp;|</li>
+								<li><a th:href="@{/cart}" style="color: white"><i class="fa fa-shopping-cart text-light mr-2" style="font-size: 23px"></i><span>{{cart.count}}</span>Giỏ hàng </a> &emsp;|</li>
 							</th:block>
 							<th:block th:if="${#request.remoteUser}">
 								<li th:if="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
-									<a th:href="@{/admin/thongke}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Admin</a>
+									<a th:href="@{/admin/thongke}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2" style="font-size: 23px"></i>Admin</a>
 								</li>
 								<li th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
-									<a th:href="@{/index/thong-tin-tai-khoan}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Tài khoản</a>
+									<a th:href="@{/index/thong-tin-tai-khoan}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2" style="font-size: 23px"></i>Tài khoản</a>
 								</li>
 							</th:block>
 							<th:block th:unless="${#request.remoteUser}">
 								<li>
-									<a th:href="@{/security/form/login}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2"></i>Đăng nhập </a>
+									<a th:href="@{/security/form/login}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2" style="font-size: 23px"></i>Đăng nhập </a>
 								</li>							
 							</th:block>
 							
