@@ -62,14 +62,28 @@
 							<thead>
 								<tr>
 									<th>Mã đơn</th>
-									<th>Ngày</th>
-									<th>Sản phẩm</th>
-									<th>Địa chỉ</th>
+									<th>Ngày tạo</th>
+									
+ 									<th>Địa chỉ</th>
+									
 									<th>Tổng tiền</th>
 									<th>Trạng thái</th>
 								</tr>
 							</thead>
 							<tbody>
+<<<<<<< HEAD
+								<tr th:each="dh: ${listdonhang}">
+									<td data-title="Mã đơn" class="id-order" th:text="${dh.maDon}" ></td>
+									<td data-title="Ngày" th:text="${#dates.format(dh.ngayTao, 'dd/MM/yyyy')}"></td>
+									<td data-title="Địa chỉ" th:text="${dh.makh.diaChi}"></td>									
+									<td data-title="Tổng tiền">[[${#numbers.formatDecimal(dh.tongTien, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
+									<td data-title="Trạng thái" th:text="${dh.trangThai}"></td>
+									<td>
+										<a th:href="@{|/order/chiTietDonHang/${dh.maDon}|}" class="btn btn-primary btn-block btn-sm" >
+										  Xem Chi Tiết
+										</a>
+									</td>
+=======
 								<tr>
 									<td data-title="MÃ£ Ä‘Æ¡n" class="id-order">DH00007455</td>
 									<td data-title="NgÃ y">19/11/2022</td>
@@ -129,6 +143,7 @@
 									<td data-title="Tá»•ng tiá»�n">34.490.000<sup>Đ</sup>
 									</td>
 									<td data-title="Tráº¡ng thÃ¡i"></td>
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 								</tr>
 							</tbody>
 						</table>
@@ -136,6 +151,10 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
+		
+	</main>
+=======
 		</th:block>
 		<!-- form user end -->
 		
@@ -144,6 +163,7 @@
 		
 		
 		</main>
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 </div>
 
 

@@ -80,16 +80,26 @@
 				<div class="slider-child">
 					<div class="row no-gutters">
 						<div class="categories__slider owl-carousel">
-							<div class="col-lg-3">
+						
+							<div class="col-lg-3" th:each="sp: ${top5sp}">
 								<div class="border card-cascade card-ecommerce wider">
 									<!--Card image-->
-									<div class="view view-cascade overlay text-center">
-										<img class="img-fluid mt-4" width="150" height="150"
-											src="/client/img/categories/cart-1.jpg" alt="">
-									</div>
+									<th:block th:each="img: ${images}"> 
+										<a th:href="@{|/product/detail/${sp.group.maSP}|}">
+											<div class="view view-cascade overlay text-center" th:if="${img.masp.maSP == sp.group.maSP}">
+												<img class="img-fluid mt-4" width="150" height="150"
+													th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="">
+											</div>
+										</a>
+									</th:block>
 									<!--Card Body-->
 									<div class="card-body">
 										<!--Card Title-->
+<<<<<<< HEAD
+										<h5 class="title-product" th:text="${sp.group.tenSP}"></h5>
+										<div class="price">
+											<span class="price-new" th:text="${#numbers.formatDecimal(sp.group.donGia, 0, 'COMMA', 0, 'POINT')}">đ</span> <span
+=======
 										<h5 class="title-product">iPhone XR 64Gb cũ nguyên bản</h5>
 										<div class="price">
 											<span class="price-new">23.950.000đ</span> <span
@@ -165,11 +175,13 @@
 										<h5 class="title-product">iPhone XR 64Gb cũ nguyên bản đẹp nhất</h5>
 										<div class="price">
 											<span class="price-new">23.950.000đ</span> <span
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 												class="price-old">23.950.000đ</span>
 										</div>
 									</div>
 								</div>
 							</div>
+	
 						</div>
 					</div>
 				</div>
@@ -197,9 +209,7 @@
 		<!-- View Product Start -->
 		<div class="container">
 			<div class="card-group">
-				<div
-					class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
-
+				<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
 
 					<div class="col" th:each="listsp: ${listsp}">
 						<div class="border product-img">
@@ -217,8 +227,12 @@
 								<!--Card Title-->
 								<h5 class="title text-truncate" th:text="${listsp.tenSP}"></h5>
 								<div class="price">
+<<<<<<< HEAD
+									<span class="price-new">[[${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}]]đ</span>
+=======
 									<span class="price-new"
 										th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 									<span class="price-old">23.950.000đ</span>
 								</div>
 							</div>
@@ -227,6 +241,15 @@
 
 				</div>
 			</div>
+
+			<!-- Page Product Begin -->
+			<ul class="pagination mt-3" style="padding-left: 470px;">
+				<li class="page-item"><a class="page-link" th:href="@{|/index?p=0|}">First</a></li>
+				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listsp.getNumber() > 0 ? listsp.getNumber() - 1 : 0}|}">Previous</a></li>
+				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listsp.getNumber() < listsp.getTotalPages() - 1 ? listsp.getNumber() + 1 : listsp.getTotalPages() - 1}|}">Next</a></li>
+				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listsp.getTotalPages() - 1}|}">Last</a></li>
+			</ul>
+			<!-- Page Product End -->
 		</div>
 		<!-- View Product End -->
 

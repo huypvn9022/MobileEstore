@@ -10,6 +10,14 @@ import com.mobilestore.model.KhachHang;
 
 @Service
 public class KhachHangService {
+<<<<<<< HEAD
+	@Autowired
+	KhachHangDAO khachhangdao;
+
+	public List<KhachHang> findAll() {
+		return khachhangdao.findAll();
+	}
+=======
 	
 	@Autowired
 	KhachHangDAO khdao;
@@ -28,4 +36,5 @@ public class KhachHangService {
 	
 	
 	
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 }

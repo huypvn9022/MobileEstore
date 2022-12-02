@@ -8,6 +8,16 @@ import org.springframework.stereotype.Service;
 import com.mobilestore.dao.NhanVienDAO;
 import com.mobilestore.model.NhanVien;
 
+<<<<<<< HEAD
+@Service
+public class NhanVienService {
+	@Autowired
+	NhanVienDAO nhanviendao;
+
+	public List<NhanVien> findAll() {
+		return nhanviendao.findAll();
+	}
+=======
 
 
 @Service
@@ -28,4 +38,5 @@ public class NhanVienService {
 		return nvdao.findAccountOrEmail(taikhoan);
 	}
 	
+>>>>>>> e601094b900b44858e2945c75c292780735634a4
 }
