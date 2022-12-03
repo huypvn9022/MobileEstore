@@ -122,8 +122,8 @@ public class HomeController {
 	// thanh toán
 	@RequestMapping("/user/checkout")
 	public String pay(Model model, @ModelAttribute("khachhang") KhachHang kh) {
-		String taikhoankh = session.get("taiKhoanKH");
-		KhachHang khachhang = khservice.findById(taikhoankh);
+		String tk = cookieService.getValue("taiKhoanKH",null);
+		KhachHang khachhang = khservice.findById(tk);
 		model.addAttribute("khachhang", khachhang);
 		return "layout/thanhtoan";
 	}

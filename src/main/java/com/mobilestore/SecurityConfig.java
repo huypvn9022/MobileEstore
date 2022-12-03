@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.NhanVien;
+import com.mobilestore.service.CookieService;
 import com.mobilestore.service.KhachHangService;
 import com.mobilestore.service.NhanVienService;
 import com.mobilestore.service.SessionService;
@@ -29,6 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	SessionService session;
+	
+	@Autowired
+	CookieService cookie;
 	
 	@Autowired
 	NhanVienService nvservice;
@@ -51,9 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				String passwordkh = pe.encode(khachhang.getMatKhau());
 				String role = khachhang.getVaiTroKH().getId();
 				session.set("taiKhoanKH", khachhang.getTaiKhoan());
+				cookie.add("taiKhoanKH", khachhang.getTaiKhoan(), 5);
 				session.set("matKhauKH", khachhang.getMatKhau());
 				session.set("vaiTroKH", role);
-
+				
 				return User.withUsername(taikhoan).username(khachhang.getHoTen()).password(passwordkh).roles(role).build();
 			} catch (NoSuchElementException e) {
 				throw new UsernameNotFoundException(taikhoan + " not found !");
