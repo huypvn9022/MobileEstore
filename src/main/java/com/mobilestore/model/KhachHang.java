@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -58,6 +59,7 @@ public class KhachHang implements Serializable{
 	private String diaChi;
 
 	// binh luan
+	@JsonIgnore
 	@OneToMany(mappedBy = "taikhoan")
 	List<BinhLuan> binhluan;
 	
@@ -66,6 +68,7 @@ public class KhachHang implements Serializable{
 	VaiTro vaiTroKH;
 	
 	// don hang
-	@OneToMany(mappedBy = "makh")
+	@JsonIgnore
+	@OneToMany(mappedBy = "makh", cascade = {CascadeType.ALL})
 	List<DonHang> donhang;
 }

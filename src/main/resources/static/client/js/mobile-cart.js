@@ -60,39 +60,59 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 			this.items = json ? JSON.parse(json) : [];
 			let jsonImage = localStorage.getItem("cartImages");
 			this.imageArr = jsonImage ? JSON.parse(jsonImage) : [];
-		},
-		
-		
-		
-		
+		},		
 	}
 	
 	$scope.cart.loadToLocalStorage();
 	
+	function getCookie(cname) {
+		var name = cname + '=';
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return '';
+	}
+	
 	$scope.order = {
 		ngayTao: new Date(),
-		account: {
-			taikhoan:$("#taikhoan").text()
+		tongTien: $scope.cart.items
+			.map(item => item.donGia * item.soLuong)
+			.reduce((total, soLuong) => total += soLuong, 0)
+		,
+		trangThai: "Chưa xử lý",
+		makh: {
+			taiKhoan:$("#taikhoankh").text()
 		},
-		get orderDetails(){
+		get ctdh(){
 			return $scope.cart.items.map(item => {
 				return {
-					product: {masp: item.maSP},
-					dongia: item.donGia,
-					soluong: item.soLuong
+					masp: {maSP: item.maSP},
+					donGia: item.donGia,
+					soLuong: item.soLuong
 				}
 			})
 		},
 		datHang(){
 			let order = angular.copy(this);
 			$http.post("/rest/orders", order).then(resp => {
-				alert("Đặt hàng thành công !")
-				$scope.cart.clear()
+				let message = confirm("Bạn có chắc chắn đặt hàng không ?");
+				if(message){
+					alert("Đặt hàng thành công !");
+					$scope.cart.clear();
+					location.href="/index";	
+				}
 			}).catch(error => {
-				alert("Đặt hàng không thành công !")
-				console.log(error + " error ")
+				alert("Đặt hàng thất bại !");
+				console.log(error + "error");
 			})
-			
 		}
 	}
 		

@@ -169,4 +169,9 @@ public class TaiKhoanController {
 		}
 
 	}
+	
+	@RequestMapping("/order-management")
+	public String orderManagement(Model model) {
+		return "layout/qldonhang";
+	}
 }

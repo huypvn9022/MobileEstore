@@ -32,7 +32,6 @@ public class DonHang  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "madon")
-	@Positive(message = "Vui lòng chọn đơn hàng")
 	private int maDon;
 	
 	@Column(name = "ngaytao")
@@ -48,7 +47,7 @@ public class DonHang  implements Serializable{
 	
 	// khach hang
 	@ManyToOne
-	@JoinColumn(name = "makh")
+	@JoinColumn(name = "Makh")
 	KhachHang makh;
 	
 	// nhan vien
