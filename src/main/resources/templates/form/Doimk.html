@@ -11,18 +11,18 @@
 							Xin chào, <span >[[${session.taiKhoanKH}]]</span>
 						</div>
 					</div>
-					<ul >
-						<li class="active">
+					<ul>
+						<li class="">
 							<a href="/index/thong-tin-tai-khoan"> 
 								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản
 							</a>
 						</li>
 						<li class="">
-							<a href="/order-management"> 
+							<a href="/index/order-management"> 
 								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lí đơn hàng
 							</a>
 						</li>
-						<li class="">
+						<li class="active">
 							<a href="/index/doimk"> 
 								<i class="fa fa-lock" aria-hidden="true"></i> Đổi mật khẩu
 							</a>
@@ -44,7 +44,7 @@
 			<!-- Forms -->
 			<div class="grid-item">
 				<div class="user-content-side">
-					<h2 class="member-title">Quên mật khẩu</h2>
+					<h2 class="member-title">Đổi mật mật khẩu</h2>
 					<hr/>
 					<h5 class="text-danger text-center mt-3 mb-3">[[${message}]]</h5>
 					 <form action="/index/doimk" method="post" name="frmUser" id="frmUser">

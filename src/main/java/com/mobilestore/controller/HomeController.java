@@ -2,16 +2,23 @@ package com.mobilestore.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobilestore.model.CauHinh;
 import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.SanPham;
+import com.mobilestore.model.Top5SP;
+import com.mobilestore.service.CTDHService;
 import com.mobilestore.service.CauHinhService;
 import com.mobilestore.service.HangSXService;
 import com.mobilestore.service.HinhAnhService;
@@ -36,14 +43,20 @@ public class HomeController {
 	@Autowired
 	CauHinhService cauhinhService;
 	
-	@RequestMapping("/index")
-	public String list(Model model) {
-		List<SanPham> listsp = spService.findAll();
-		List<HinhAnh> images = hinhanhService.findAll();
+	@Autowired
+	CTDHService chitietdonhangService;
 	
+	@RequestMapping("/index")
+	public String list(Model model, @RequestParam("p") Optional<Integer> p) {
+		Pageable pageableTop5SP = PageRequest.of(0, 5);
+		Pageable pageableListSP = PageRequest.of(p.orElse(0), 15);
+		List<Top5SP> top5sp = chitietdonhangService.getTop5(pageableTop5SP);
+		Page<SanPham> listsp = spService.findAll(pageableListSP);
+		List<HinhAnh> images = hinhanhService.findAll();
+		
+		model.addAttribute("top5sp", top5sp);
 		model.addAttribute("images", images);
 		model.addAttribute("listsp", listsp);
-		
 		return "layout/index";
 	}
 	
@@ -104,12 +117,6 @@ public class HomeController {
 	public String productDetails(Model model) {
 		return "layout/ChiTietSanPham";
 	}
-
-	
-//	@RequestMapping("/order-management")
-//	public String orderManagement(Model model) {
-//		return "layout/qldonhang";
-//	}
 
 	@RequestMapping("/shop-grid")
 	public String shopGrid(Model model) {
