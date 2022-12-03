@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mobilestore.dao.ChiTietDonHangDAO;
 import com.mobilestore.model.ChiTietDonHang;
 import com.mobilestore.model.TongTienCTDH;
+import com.mobilestore.model.Top5SP;
 
 @Service
 public class CTDHService {
@@ -57,5 +58,9 @@ public class CTDHService {
 //	public List<DonHang> findAllByKeyword(String keyword) {
 //		return dao.findAllByKeyword(keyword);
 //	}
+	
+	public List<Top5SP> getTop5(Pageable pageable) {
+		return dao.getTop5(pageable).getContent();
+	}
 	
 }
