@@ -562,10 +562,10 @@ transparent;
 }
 
 .header__cart ul li a span {
-	height: 13px;
-	width: 13px;
+	height: 15px;
+	width: 15px;
 	background: #7fad39;
-	font-size: 10px;
+	font-size: 12px;
 	color: #ffffff;
 	line-height: 13px;
 	text-align: center;

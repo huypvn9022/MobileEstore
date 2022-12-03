@@ -10,20 +10,24 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobilestore.model.CauHinh;
 import com.mobilestore.model.HinhAnh;
+import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.model.Top5SP;
 import com.mobilestore.service.CTDHService;
 import com.mobilestore.service.CauHinhService;
 import com.mobilestore.service.HangSXService;
 import com.mobilestore.service.HinhAnhService;
+import com.mobilestore.service.KhachHangService;
 import com.mobilestore.service.LoaiSPService;
 import com.mobilestore.service.SanPhamService;
+import com.mobilestore.service.SessionService;
 
 @Controller
 public class HomeController {
@@ -45,6 +49,11 @@ public class HomeController {
 	
 	@Autowired
 	CTDHService chitietdonhangService;
+
+	SessionService session;
+	
+	@Autowired
+	KhachHangService khservice;
 	
 	@RequestMapping("/index")
 	public String list(Model model, @RequestParam("p") Optional<Integer> p) {
@@ -108,7 +117,10 @@ public class HomeController {
 	
 	// thanh toán
 	@RequestMapping("/user/checkout")
-	public String pay(Model model) {
+	public String pay(Model model, @ModelAttribute("khachhang") KhachHang kh) {
+		String taikhoankh = session.get("taiKhoanKH");
+		KhachHang khachhang = khservice.findById(taikhoankh);
+		model.addAttribute("khachhang", khachhang);
 		return "layout/thanhtoan";
 	}
 
