@@ -1,15 +1,21 @@
 package com.mobilestore.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mobilestore.dao.ChiTietDonHangDAO;
 import com.mobilestore.dao.DonHangDAO;
+import com.mobilestore.model.ChiTietDonHang;
 import com.mobilestore.model.DonHang;
+import com.mobilestore.model.KhachHang;
 
 
 
@@ -17,6 +23,15 @@ import com.mobilestore.model.DonHang;
 public class DonHangService {
 	@Autowired
 	DonHangDAO dao;
+	
+	@Autowired
+	KhachHangService khService;
+	
+	@Autowired
+	SessionService session;
+	
+	@Autowired
+	ChiTietDonHangDAO ctdhdao;
 	
 	public List<DonHang> findAll() {
 		return dao.findAll();
@@ -47,8 +62,17 @@ public class DonHangService {
 	}
 
 	public DonHang create(JsonNode order) {
-		// TODO Auto-generated method stub
-		return null;
+		ObjectMapper mapper = new ObjectMapper();
+		DonHang donhang = mapper.convertValue(order, DonHang.class);
+		String tk = session.get("taiKhoanKH");
+		KhachHang kh  = khService.findById(tk);
+		donhang.setMakh(kh);
+		dao.save(donhang);
+		TypeReference<List<ChiTietDonHang>> type = new TypeReference<List<ChiTietDonHang>>() {};
+		List<ChiTietDonHang> chitietdh = mapper.convertValue(order.get("ctdh"), type)
+				.stream().peek(d -> d.setMadh(donhang)).collect(Collectors.toList());
+		ctdhdao.saveAll(chitietdh);
+		return donhang;
 	}
 	
 //	public List<DonHang> findAllByKeyword(String keyword) {

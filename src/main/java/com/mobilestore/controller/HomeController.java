@@ -15,6 +15,7 @@ import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.service.CauHinhService;
+import com.mobilestore.service.CookieService;
 import com.mobilestore.service.HangSXService;
 import com.mobilestore.service.HinhAnhService;
 import com.mobilestore.service.KhachHangService;
@@ -45,6 +46,9 @@ public class HomeController {
 	
 	@Autowired
 	KhachHangService khservice;
+	
+	@Autowired
+	CookieService cookieService;
 	
 	@RequestMapping("/index")
 	public String list(Model model) {

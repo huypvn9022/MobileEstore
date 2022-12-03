@@ -15,6 +15,12 @@
 				<h4 class="text-center mb-4">Thông tin mua hàng</h4>
 				<form th:object="${khachhang}">
 					<div class="row">
+						<div class="col" hidden="true">
+							<div class="form-group">
+								<label>Tài khoản khách hàng</label>
+								<input class="form-control" th:field="*{taiKhoan}" id="taikhoankh">
+							</div>
+						</div>
 						<div class="col">
 							<div class="form-group">
 								<label>Họ và tên</label> 
@@ -61,12 +67,13 @@
 					<hr class="p-0"/>
 					<div ng-repeat="item in cart.items" class="d-flex">
 						<div class="p-2">{{item.tenSP}} <span class="badge badge-primary" style="padding-top: -20px">{{item.soLuong}}</span> </div>
-						<div class="ml-auto p-2">{{item.donGia * item.soLuong | number : 0}}đ</div>
+						<div class="ml-auto p-2">{{item.donGia * item.soLuong | number : 0}} VNĐ</div>
 					</div>
 					<hr class="p-0"/>
 					<div class="d-flex">
 						<div class="mr-auto p-2"><h5>Tổng tiền</h5></div>
-						<div class="p-2"><h5>{{cart.price | number : 0}}đ</h5></div>
+						<div class="p-2"><h5 >{{cart.price | number : 0}} VNĐ</h5></div>
+						<input id="tongtien" value="{{cart.price}}" hidden="true">
 					</div>
 				</div>
 				<div class="mt-2 mb-2"></div>

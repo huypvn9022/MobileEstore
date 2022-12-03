@@ -82,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().disable();
 		http.authorizeRequests()
 			.antMatchers("/user/checkout").authenticated()
-			.antMatchers("/admin/index").hasAnyRole("NV", "QL")
+			.antMatchers("/admin/**").hasAnyRole("NV", "QL")
 			.anyRequest().permitAll();
 		
 		http.formLogin()
