@@ -175,7 +175,7 @@
 					<div class="col" th:each="listsp: ${listsp}">
 						<div class="border product-img">
 							<!--Card image-->
-							<th:block th:each="img: ${images}">s
+							<th:block th:each="img: ${images}">
 								<a th:href="@{|/product/detail/${listsp.maSP}|}">
 									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
 										<img class="mt-4 img-org" width="210" height="210"

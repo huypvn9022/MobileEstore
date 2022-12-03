@@ -275,7 +275,7 @@
 								</div>
 								<div class="input-group input-group-outline mb-3">
 									<label class="mt-2">Tổng Tiền</label> 
- 									<input th:value="${#numbers.formatDecimal(tongtien.tongTien, 1, 'NONE', 0, 'DEFAULT')}" name="tongtien" class="form-control ms-3" type="text">								
+ 									<input th:value="${#numbers.formatDecimal(@ctdh.getTongTienByMadon(donhang.maDon)?:0, 1, 'NONE', 0, 'DEFAULT')}" name="tongtien" class="form-control ms-3" type="text">								
 								</div>								
  	 							<div class="text-center">
 									<button th:formaction="@{|/admin/order/delete/${donhang.maDon}|}" type="submit" class="btn bg-gradient-primary my-4 mb-2">Xóa Đơn Hàng</button>

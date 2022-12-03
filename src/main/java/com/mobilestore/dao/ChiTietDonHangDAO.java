@@ -12,8 +12,7 @@ import com.mobilestore.model.DoanhThuNam;
 import com.mobilestore.model.DoanhThuNgay;
 import com.mobilestore.model.DoanhThuThang;
 import com.mobilestore.model.Top5SP;
-import com.mobilestore.model.TongTienCTDH;
-import com.mobilestore.model.ChiTietDonHang;
+
 
 public interface ChiTietDonHangDAO extends JpaRepository<ChiTietDonHang, Integer>{
 	
@@ -41,7 +40,7 @@ public interface ChiTietDonHangDAO extends JpaRepository<ChiTietDonHang, Integer
 			List<DoanhThuNgay> getDoanhThuNgay();
 	
 	@Query("SELECT SUM(o.donGia * o.soLuong) FROM ChiTietDonHang o " + " WHERE o.madh.maDon = ?1")
-	public TongTienCTDH getTongTienByMadon(int maDon);
+	public Double getTongTienByMadon(int maDon);
 	
 	@Query("SELECT o from ChiTietDonHang o where o.madh.maDon = ?1")
 	public List<ChiTietDonHang> getAllOrderDetail(int maDon);

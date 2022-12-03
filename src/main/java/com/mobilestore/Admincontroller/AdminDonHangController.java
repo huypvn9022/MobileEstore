@@ -17,16 +17,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mobilestore.model.ChiTietDonHang;
+import com.mobilestore.model.DonHang;
+import com.mobilestore.model.NhanVien;
+import com.mobilestore.model.SanPham;
 import com.mobilestore.service.CTDHService;
 import com.mobilestore.service.DonHangService;
 import com.mobilestore.service.NhanVienService;
 import com.mobilestore.service.SanPhamService;
 import com.mobilestore.service.SessionService;
-import com.mobilestore.model.ChiTietDonHang;
-import com.mobilestore.model.DonHang;
-import com.mobilestore.model.NhanVien;
-import com.mobilestore.model.SanPham;
-import com.mobilestore.model.TongTienCTDH;
 
 @Controller
 @RequestMapping("/admin")
@@ -59,14 +58,11 @@ public class AdminDonHangController {
 		NhanVien nv = nvService.findById(tk);
 		donhang.setManv(nv);
 		
-		TongTienCTDH tongTien = new TongTienCTDH();
-		tongTien.setTongTien(0.0);
 		
 		
 		
 		model.addAttribute("listdh", listDH);
 		model.addAttribute("listsp", listSP);
-		model.addAttribute("tongtien", tongTien);
 		return "admin/index";
 	}                                                 
 
@@ -77,12 +73,10 @@ public class AdminDonHangController {
 		List<SanPham> listSP = spService.findAll();
 
 		DonHang donhang = dhService.findById(maDon);
-		TongTienCTDH tongtien = ctdhService.getTongTienByMadon(maDon);
 
 		model.addAttribute("listdh", listDH);
 		model.addAttribute("listsp", listSP);
 		model.addAttribute("donhang", donhang);
-		model.addAttribute("tongtien", tongtien);
 
 		return "admin/index";
 	}
@@ -152,9 +146,6 @@ public class AdminDonHangController {
 		donhang.setManv(nv);
 		
 		ctdhService.delete(mactdh);
-		TongTienCTDH tongtien = ctdhService.getTongTienByMadon(maDon);
-
-		donhang.setTongTien(tongtien.getTongTien());
 		dhService.save(donhang);
 		System.out.println(donhang);
 		return "redirect:/admin/order/edit/" + maDon;
@@ -176,10 +167,6 @@ public class AdminDonHangController {
 		ctdh.setDonGia(sp.getDonGia());
 		ctdh.setSoLuong(soLuong);
 		ctdhService.save(ctdh);
-
-		TongTienCTDH tongtien = ctdhService.getTongTienByMadon(maDon);
-
-		model.addAttribute("tongtien", tongtien);
 
 		return "redirect:/admin/order/edit/" + maDon;
 	}

@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.mobilestore.dao.ChiTietDonHangDAO;
 import com.mobilestore.model.ChiTietDonHang;
-import com.mobilestore.model.TongTienCTDH;
 import com.mobilestore.model.Top5SP;
 
-@Service
+@Service("ctdh")
 public class CTDHService {
 	@Autowired
 	ChiTietDonHangDAO dao;
@@ -37,7 +36,7 @@ public class CTDHService {
 		 dao.deleteById(maDon);
 	}
 	
-	public TongTienCTDH getTongTienByMadon(Integer maDon) {
+	public Double getTongTienByMadon(Integer maDon) {
 		 return dao.getTongTienByMadon(maDon);
 	}
 	
