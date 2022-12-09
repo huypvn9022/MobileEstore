@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.service.HinhAnhService;
+import com.mobilestore.service.HinhAnhService;
 import com.mobilestore.service.SanPhamService;
 import com.mobilestore.service.SessionService;
 
@@ -79,8 +80,7 @@ public class AdminHinhAnhController {
 	@RequestMapping("/hinhanh/create")
 	public String imageCreate(Model model, @Valid @ModelAttribute("hinhanh") HinhAnh hinhAnh,
 			BindingResult bindingResult, @RequestParam("p") Optional<Integer> page,
-			@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
-			@RequestParam("file3") MultipartFile file3, @RequestParam("file4") MultipartFile file4) {
+			@RequestParam("file1") MultipartFile file1) {
 
 		Sort sort = Sort.by("masp.maSP").ascending();
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5, sort);
@@ -88,16 +88,9 @@ public class AdminHinhAnhController {
 		List<SanPham> listSP = spService.findAll();
 
 		String fileName1 = file1.getOriginalFilename().toString();
-		String fileName2 = file2.getOriginalFilename().toString();
-		String fileName3 = file3.getOriginalFilename().toString();
-		String fileName4 = file4.getOriginalFilename().toString();
-
-		hinhAnh.setHinhAnh1(fileName1);
-		hinhAnh.setHinhAnh2(fileName2);
-		hinhAnh.setHinhAnh3(fileName3);
-		hinhAnh.setHinhAnh4(fileName4);
-
-		if (file1.isEmpty() || file2.isEmpty() || file3.isEmpty() || file4.isEmpty()) {
+		hinhAnh.setHinhAnh(fileName1);
+		
+		if (file1.isEmpty()) {
 			model.addAttribute("message", "Vui lòng chọn hình ảnh");
 			model.addAttribute("pages", pages);
 			model.addAttribute("listsp", listSP);
@@ -105,9 +98,6 @@ public class AdminHinhAnhController {
 		} else {
 			try {
 				FileCopyUtils.copy(file1.getBytes(), new File(path + "\\" + fileName1));
-				FileCopyUtils.copy(file2.getBytes(), new File(path + "\\" + fileName2));
-				FileCopyUtils.copy(file3.getBytes(), new File(path + "\\" + fileName3));
-				FileCopyUtils.copy(file4.getBytes(), new File(path + "\\" + fileName4));
 
 				haService.save(hinhAnh);
 
@@ -121,24 +111,16 @@ public class AdminHinhAnhController {
 //
 	@RequestMapping("/hinhanh/update/{mahinh}")
 	public String imageUpdate(Model model, @ModelAttribute("hinhanh") HinhAnh hinhAnh,
-			@RequestParam("p") Optional<Integer> page, @RequestParam("file1") MultipartFile file1,
-			@RequestParam("file2") MultipartFile file2, @PathVariable("mahinh") Integer maHinh,
-			@RequestParam("file3") MultipartFile file3, @RequestParam("file4") MultipartFile file4) {
-
+			@RequestParam("p") Optional<Integer> page, @RequestParam("file1") MultipartFile file1,@PathVariable("mahinh") Integer maHinh) {
+			
 		Sort sort = Sort.by("masp.maSP").ascending();
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5, sort);
 		Page<HinhAnh> pages = haService.findAll(pageAble);
 		List<SanPham> listSP = spService.findAll();
 
 		String fileName1 = file1.getOriginalFilename().toString();
-		String fileName2 = file2.getOriginalFilename().toString();
-		String fileName3 = file3.getOriginalFilename().toString();
-		String fileName4 = file4.getOriginalFilename().toString();
+		hinhAnh.setHinhAnh(fileName1);
 
-		hinhAnh.setHinhAnh1(fileName1);
-		hinhAnh.setHinhAnh2(fileName2);
-		hinhAnh.setHinhAnh3(fileName3);
-		hinhAnh.setHinhAnh4(fileName4);
 		if (haService.existsById(maHinh)) {
 			try {
 				hinhAnh.setMaHinh(maHinh);
@@ -149,39 +131,6 @@ public class AdminHinhAnhController {
 					haService.save(hinhAnh);
 				} else {
 					FileCopyUtils.copy(file1.getBytes(), new File(path + "\\" + fileName1));
-					haService.save(hinhAnh);
-				}
-
-				if (fileName2.isEmpty()) {
-					Files.deleteIfExists(Paths.get(
-							asolutePath + "\\src\\main\\resources\\static\\client\\img\\product\\" + "\\" + fileName2));
-					FileCopyUtils.copy(file2.getBytes(), new File(path + "\\" + fileName2));
-					haService.save(hinhAnh);
-
-				} else {
-					FileCopyUtils.copy(file2.getBytes(), new File(path + "\\" + fileName2));
-					haService.save(hinhAnh);
-				}
-
-				if (fileName3.isEmpty()) {
-					Files.deleteIfExists(Paths.get(
-							asolutePath + "\\src\\main\\resources\\static\\client\\img\\product\\" + "\\" + fileName3));
-					FileCopyUtils.copy(file3.getBytes(), new File(path + "\\" + fileName3));
-					haService.save(hinhAnh);
-
-				} else {
-					FileCopyUtils.copy(file3.getBytes(), new File(path + "\\" + fileName3));
-					haService.save(hinhAnh);
-				}
-
-				if (fileName4.isEmpty()) {
-					Files.deleteIfExists(Paths.get(
-							asolutePath + "\\src\\main\\resources\\static\\client\\img\\product\\" + "\\" + fileName4));
-					FileCopyUtils.copy(file4.getBytes(), new File(path + "\\" + fileName4));
-					haService.save(hinhAnh);
-
-				} else {
-					FileCopyUtils.copy(file4.getBytes(), new File(path + "\\" + fileName4));
 					haService.save(hinhAnh);
 				}
 			} catch (IOException e) {

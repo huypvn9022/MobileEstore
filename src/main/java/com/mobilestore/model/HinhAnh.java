@@ -26,20 +26,20 @@ public class HinhAnh implements Serializable {
 	@Column(name = "mahinh")
 	private int maHinh;
 	
-	@Column(name = "hinhanh1")
-	private String hinhAnh1;
+	@Column(name = "hinhanh")
+	private String hinhAnh;
 	
-	@Column(name = "hinhanh2")
-	private String hinhAnh2;
-	
-	@Column(name = "hinhanh3")
-	private String hinhAnh3;
-	
-	@Column(name = "hinhanh4")
-	private String hinhAnh4;
-	
-	@Column(name = "hinhanh5")
-	private String hinhAnh5;
+//	@Column(name = "hinhanh2")
+//	private String hinhAnh2;
+//	
+//	@Column(name = "hinhanh3")
+//	private String hinhAnh3;
+//	
+//	@Column(name = "hinhanh4")
+//	private String hinhAnh4;
+//	
+//	@Column(name = "hinhanh5")
+//	private String hinhAnh5;
 
 	// san pham
 	@ManyToOne

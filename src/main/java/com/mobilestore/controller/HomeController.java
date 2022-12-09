@@ -1,8 +1,13 @@
 package com.mobilestore.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -69,6 +74,9 @@ public class HomeController {
 		Page<SanPham> listpk = spService.findAllByMaLoai1(pageableListpk);
 		List<HinhAnh> images = hinhanhService.findAll();
 		
+		Set<Integer> imgSet = new HashSet<Integer>();
+		images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+		
 		model.addAttribute("top5sp", top5sp);
 		model.addAttribute("images", images);
 		model.addAttribute("listdt", listdt);
@@ -91,11 +99,7 @@ public class HomeController {
 		List<HinhAnh> anhCart = hinhanhService.findAll();
 		
 		// lưu các sản phẩm thành một list
-		List<String> listAnh = new ArrayList<String>();
-		listAnh.add(anh.getHinhAnh1());
-		listAnh.add(anh.getHinhAnh2());
-		listAnh.add(anh.getHinhAnh3());
-		listAnh.add(anh.getHinhAnh4());
+		List<HinhAnh> listAnh = hinhanhService.findAll();
 		
 		// hiện thị cấu hình sản phẩm
 		CauHinh cauHinh = cauhinhService.findById(id);
