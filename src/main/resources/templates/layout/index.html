@@ -87,9 +87,9 @@
 									<!--Card image-->
 									<th:block th:each="img: ${images}"> 
 										<a th:href="@{|/product/detail/${sp.group.maSP}|}">
-											<div class="view view-cascade overlay text-center" th:if="${img.masp.maSP == sp.group.maSP}">
-												<img class="img-fluid mt-4" width="150" height="150"
-													th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="">
+											<div class="view view-cascade overlay text-center">
+												<img class="img-fluid mt-4" width="150" height="150" th:if="${img.masp.maSP == sp.group.maSP}"                           
+													th:src="@{|/client/img/product/${img.hinhAnh}|}" alt="">
 											</div>
 										</a>
 									</th:block>
@@ -143,7 +143,7 @@
 								<a th:href="@{|/product/detail/${listsp.maSP}|}">
 									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
 										<img class="mt-4 img-org" width="210" height="210"
-											th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="error">
+											th:src="@{|/client/img/product/${img.hinhAnh}|}" alt="error">
 									</div>
 								</a>
 							</th:block>

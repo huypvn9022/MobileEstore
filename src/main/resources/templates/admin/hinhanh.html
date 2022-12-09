@@ -60,7 +60,7 @@
 						<li class="nav-item d-flex align-items-center">
 							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
 								<i class="fa fa-user me-sm-1"></i>
-								<a href="dangnhap.html"><span class="d-sm-inline d-none">Đăng Nhập</span></a>
+								<span class="d-sm-inline d-none " >Welcome [[${#request.remoteUser}]]</span>
 							</a>
 						</li>
 						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -72,10 +72,6 @@
 								</div>
 							</a>
 						</li>
-						<li class="nav-item px-3 d-flex align-items-center"><a href="javascript:;"
-								class="nav-link text-body p-0"> <i
-									class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-							</a></li>
 					</ul>
 				</div>
 			</div>
@@ -92,50 +88,27 @@
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">
-									<div class="table-responsive p-0" style="height: 400px; overflow: scroll;">
+									<div class="table-responsive p-0" style="height: 450px; overflow: scroll;">
 										<table class="table align-items-center mb-0" >
 											<thead>
 												<tr>
-													<th
-														class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
+													<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">
 														Tên Sản Phẩm</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-														Hình Ảnh 1</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-														Hình Ảnh 2</th>	
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-														Hình Ảnh 3</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
-														Hình Ảnh 4</th>																												
+													<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">
+														Hình Ảnh </th>																											
 													<th class="text-secondary opacity-7"></th>
 												</tr>
 											</thead>
 											<tbody>
 													<tr th:each="page : ${pages}">
 														<td>
-															<div class="d-flex px-2 py-1">
-
-																<div class="d-flex flex-column justify-content-center">
-																	<h6 class="mb-0 text-sm">[[${page.masp.tenSP}]]</h6>
-																</div>
+															<div class=" text-center">
+																<h6 class="mb-0 text-sm ">[[${page.masp.tenSP}]]</h6>
 															</div>
 														</td>
 														<td class="align-middle text-center text-sm">
-															<img  th:src="@{|/client/img/product/${page.hinhAnh1}|}" class="avatar"/>
-														</td>
-														<td class="align-middle text-center text-sm">
-															<img  th:src="@{|/client/img/product/${page.hinhAnh2}|}" class="avatar"/>
-														</td>
-														<td class="align-middle text-center text-sm">
-															<img  th:src="@{|/client/img/product/${page.hinhAnh3}|}" class="avatar"/>
-														</td>
-														<td class="align-middle text-center text-sm">
-															<img  th:src="@{|/client/img/product/${page.hinhAnh4}|}" class="avatar"/>
-														</td>																												
+															<img  th:src="@{|/client/img/product/${page.hinhAnh}|}" style="width: 60px; height: 60px;"/>
+														</td>																											
 														<td class="align-middle">
 															<a th:href="@{|/admin/hinhanh/edit/${page.maHinh}|}"
 																class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
@@ -147,11 +120,11 @@
 										</table>
 									</div>
 									<div class="text-center mt-3" th:unless="${deletePage == 1}">
-										<a th:href="@{|/admin/image?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
-										<a th:href="@{|/admin/image?p=${pages.getNumber() > 0 ? pages.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
-										<a th:href="@{|/admin/image?p=${pages.getNumber() < pages.getTotalPages() -1 ? pages.getNumber() + 1 : pages.getTotalPages() -1}|}"
+										<a th:href="@{|/admin/hinhanh?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
+										<a th:href="@{|/admin/hinhanh?p=${pages.getNumber() > 0 ? pages.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
+										<a th:href="@{|/admin/hinhanh?p=${pages.getNumber() < pages.getTotalPages() -1 ? pages.getNumber() + 1 : pages.getTotalPages() -1}|}"
 											class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
-										<a th:href="@{|/admin/image?p=${pages.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+										<a th:href="@{|/admin/hinhanh?p=${pages.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
 									</div>									
 								</div>
 							</div>
@@ -179,63 +152,21 @@
 												</th:block>
 											</select>
 										</div>	
-										
-										<div class="row mt-4 mb-4">
-											<div class="col-3" th:unless="${hinhanh.hinhAnh1 == null}">
-												<img th:src="@{'/client/img/product/'+*{hinhAnh1}}" class="avatar avatar-xl me-3 border-radius-lg ms-3">
-											</div>
-											<div class="col-3" th:unless="${hinhanh.hinhAnh2 == null}">
-												<img th:src="@{'/client/img/product/'+*{hinhAnh2}}" class="avatar avatar-xl me-3 border-radius-lg ms-3">
-											</div>
-											<div class="col-3" th:unless="${hinhanh.hinhAnh3 == null}">
-												<img th:src="@{'/client/img/product/'+*{hinhAnh3}}" class="avatar avatar-xl me-3 border-radius-lg ms-3">
-											</div>
-											<div class="col-3" th:unless="${hinhanh.hinhAnh4 == null}">
-												<img th:src="@{'/client/img/product/'+*{hinhAnh4}}" class="avatar avatar-xl me-3 border-radius-lg ms-3">
-											</div>																																
-										</div>	
 																							
-										<div class="row">
-											<div class="col-6">
+										<div class="row mt-3">
+											<div class="col-6" th:unless="${hinhanh.hinhAnh == null}">
+												<img th:src="@{'/client/img/product/'+*{hinhAnh}}" class=" me-3 border-radius-lg ms-3">
+											</div>											
+											<div class="col-5">
 												<div class="input-group input-group-outline my-3 ">
 													<div class="input-file-container">
 														<input name="file1"  class="input-file" id="my-file" type="file" />
-														<label tabindex="0" for="my-file" class="input-file-trigger">Chọn Hình Ảnh 1</label>
+														<label tabindex="0" for="my-file" class="input-file-trigger">Chọn Hình Ảnh </label>
 													</div>
 													<p class="file-return ms-3"></p>
 												</div>										
 											</div>
-											<div class="col-6">
-												<div class="input-group input-group-outline my-3 ">
-													<div class="input-file-container2">
-														<input name="file2"  class="input-file2" id="my-file" type="file" />
-														<label tabindex="0" for="my-file" class="input-file-trigger2">Chọn Hình Ảnh 2</label>
-													</div>
-													<p class="file-return2 ms-3"></p>
-												</div>												
-											</div>
-										</div>						
-										<div class="row">
-											<div class="col-6">
-												<div class="input-group input-group-outline my-3 ">
-													<div class="input-file-container3">
-														<input name="file3"  class="input-file3" id="my-file" type="file" />
-														<label tabindex="0" for="my-file" class="input-file-trigger3">Chọn Hình Ảnh 3</label>
-													</div>
-													<p class="file-return3 ms-3"></p>
-												</div>										
-											</div>
-											<div class="col-6">
-												<div class="input-group input-group-outline my-3 ">
-													<div class="input-file-container4">
-														<input name="file4"  class="input-file4" id="my-file" type="file" />
-														<label tabindex="0" for="my-file" class="input-file-trigger4">Chọn Hình Ảnh 4</label>
-													</div>
-													<p class="file-return4 ms-3"></p>
-												</div>												
-											</div>
-										</div>	
-
+										</div>		
 										<div class="text-center">
 											<button formaction="/admin/hinhanh/create" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
 											<button th:formaction="@{|/admin/hinhanh/update/${hinhanh.maHinh}|}" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
