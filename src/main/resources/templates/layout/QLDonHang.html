@@ -67,18 +67,23 @@
 										<th>Địa chỉ</th>
 										<th>Tổng tiền</th>
 										<th>Trạng thái</th>
+										<th></th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="dh: ${listdonhang}">
+									<tr th:each="dh: ${makh}">
 										<td data-title="Mã đơn" class="id-order" th:text="${dh.maDon}"></td>
 										<td data-title="Ngày"
 											th:text="${#dates.format(dh.ngayTao, 'dd/MM/yyyy')}"></td>
 										<td data-title="Địa chỉ" th:text="${dh.makh.diaChi}"></td>
 										<td data-title="Tổng tiền">[[${#numbers.formatDecimal(dh.tongTien, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
 										<td data-title="Trạng thái" th:text="${dh.trangThai}"></td>
-										<td><a th:href="@{|/order/chiTietDonHang/${dh.maDon}|}"
-											class="btn btn-primary btn-block btn-sm"> Xem Chi Tiết </a>
+										<td>
+											<a th:href="@{|/index/order/chiTietDonHang/${dh.maDon}|}" class="btn btn-primary btn-block btn-sm p-0"> Xem Chi Tiết </a>
+										</td>
+										<td th:unless="${dh.trangThai == 'Complete' || dh.trangThai == 'Cancel'}">
+											<a th:href="@{|/index/order/cancel/${dh.maDon}|}" class="btn btn-primary btn-block btn-sm text-light p-0"> Huỷ đơn hàng </a>
 										</td>
 									</tr>
 								</tbody>

@@ -18,7 +18,6 @@ import com.mobilestore.model.DonHang;
 import com.mobilestore.model.KhachHang;
 
 
-
 @Service
 public class DonHangService {
 	@Autowired
@@ -78,5 +77,8 @@ public class DonHangService {
 //	public List<DonHang> findAllByKeyword(String keyword) {
 //		return dao.findAllByKeyword(keyword);
 //	}
-
+	
+	public List<DonHang> findByUsername(String makh) {
+		return dao.findByUsername(makh);
+	}
 }
