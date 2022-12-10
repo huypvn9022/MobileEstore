@@ -1,8 +1,11 @@
 package com.mobilestore.controller;
 
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,7 +45,10 @@ public class SanPhamController {
 	public String list(Model model) {
 		List<SanPham> listsp = spService.findAll();
 		List<HinhAnh> images = hinhanhService.findAll();
-	
+		
+		Set<Integer> imgSet = new HashSet<Integer>();
+		images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+		
 		model.addAttribute("images", images);
 		model.addAttribute("listsp", listsp);
 		
@@ -55,6 +61,9 @@ public class SanPhamController {
 		System.out.println(mahang);
 	
 		List<HinhAnh> images = hinhanhService.findAll();
+		Set<Integer> imgSet = new HashSet<Integer>();
+		images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+		
 		Page<SanPham> products = spdao.findAllByMaHang(mahang,pageable);
 		model.addAttribute("listsp",products);
 		model.addAttribute("images", images);
@@ -69,6 +78,8 @@ public class SanPhamController {
 			Pageable pageable = PageRequest.of(p.orElse(0), 15);
 			Page<SanPham> products = spdao.findAllByKeywords(pageable,"%"+kwords+"%");
 			List<HinhAnh> images = hinhanhService.findAll();
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -79,7 +90,8 @@ public class SanPhamController {
 			Pageable pageable = PageRequest.of(p.orElse(0), 20);
 			Page<SanPham> products = spdao.findByDongia5(pageable,donGia);
 			List<HinhAnh> images = hinhanhService.findAll();
-
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 
@@ -90,7 +102,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 			Pageable pageable = PageRequest.of(p.orElse(0), 20);
 			Page<SanPham> products = spdao.findByDongia6(pageable,donGia);
 			List<HinhAnh> images = hinhanhService.findAll();
-
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 
@@ -103,7 +116,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 			Pageable pageable = PageRequest.of(p.orElse(0), 8);
 			Page<SanPham> products = spdao.findByDongia(pageable,donGia);
 			List<HinhAnh> images = hinhanhService.findAll();
-
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 
@@ -114,7 +128,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 			Pageable pageable = PageRequest.of(p.orElse(0), 8);
 			Page<SanPham> products = spdao.findByDongia1(pageable,donGia);
 			List<HinhAnh> images = hinhanhService.findAll();
-
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 
@@ -125,7 +140,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 			Pageable pageable = PageRequest.of(p.orElse(0), 8);
 			Page<SanPham> products = spdao.findByDongia2(pageable,donGia);
 			List<HinhAnh> images = hinhanhService.findAll();
-
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 
@@ -136,7 +152,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 			Pageable pageable = PageRequest.of(p.orElse(0), 8);
 			Page<SanPham> products = spdao.findByDongia3(pageable,donGia);
 			List<HinhAnh> images = hinhanhService.findAll();
-
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 
@@ -147,7 +164,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 			Pageable pageable = PageRequest.of(p.orElse(0), 8);
 			Page<SanPham> products = spdao.findByDongia4(pageable,donGia);
 			List<HinhAnh> images = hinhanhService.findAll();
-
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 			model.addAttribute("listsp",products);
 			model.addAttribute("images", images);
 
@@ -159,6 +177,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByRam(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -168,6 +188,8 @@ public String dongia6(Model model,@RequestParam("p") Optional<Integer> p,Integer
 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByRam1(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -177,6 +199,8 @@ Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByRam2(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -187,6 +211,8 @@ Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByRom(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -196,6 +222,8 @@ Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByRom1(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -205,6 +233,8 @@ Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByRom2(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -215,6 +245,8 @@ Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByHDH(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -224,6 +256,8 @@ Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Pageable pageable = PageRequest.of(p.orElse(0), 15);
 		 Page<SanPham> products = spdao.findAllByHDH1(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -233,6 +267,8 @@ Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang1(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 return "layout/shop-grid";
@@ -242,6 +278,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang2(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -251,6 +289,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang3(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -260,6 +300,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang4(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -269,6 +311,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang5(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -278,6 +322,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang6(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -287,6 +333,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang7(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -296,6 +344,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 		 Page<SanPham> products = spdao.findAllByMaHang8(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -305,6 +355,8 @@ return "layout/shop-grid";
 		 Pageable pageable = PageRequest.of(p.orElse(0), 8);
 Page<SanPham> products = spdao.findAllByMaHang9(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -315,6 +367,8 @@ Page<SanPham> products = spdao.findAllByMaHang9(pageable);
 		 Pageable pageable = PageRequest.of(p.orElse(0),15);
 		 Page<SanPham> products = spdao.findAllByMaLoai(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
@@ -324,6 +378,8 @@ Page<SanPham> products = spdao.findAllByMaHang9(pageable);
 		 Pageable pageable = PageRequest.of(p.orElse(0),15);
 		 Page<SanPham> products = spdao.findAllByMaLoai1(pageable);
 		 List<HinhAnh> images = hinhanhService.findAll();
+		 Set<Integer> imgSet = new HashSet<Integer>();
+		 images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		 model.addAttribute("listsp",products);
 		 model.addAttribute("images", images);
 		 return "layout/shop-grid";
