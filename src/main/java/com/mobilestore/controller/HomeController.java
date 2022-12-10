@@ -95,7 +95,9 @@ public class HomeController {
 		model.addAttribute("priceOld", priceOld);
 		
 		// hiện thị ảnh chính theo id
-		HinhAnh anh = hinhanhService.findById(id);
+		List<HinhAnh> anh = hinhanhService.findByMaSP(id);
+		Set<Integer> imgSet = new HashSet<Integer>();
+		anh = anh.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		
 		// Hiện thị ảnh chính giỏ hàng
 		List<HinhAnh> anhCart = hinhanhService.findAll();

@@ -1,6 +1,9 @@
 package com.mobilestore.rest.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -31,7 +34,12 @@ public class SanPhamRestController {
 	
 	@GetMapping("/cart/images")
 	public List<HinhAnh> getImage(Model model){
-		return haservice.findAll();
+		List<HinhAnh> images = haservice.findAll();
+		
+		Set<Integer> imgSet = new HashSet<Integer>();
+		images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+		
+		return images;
 	}
 	
 }

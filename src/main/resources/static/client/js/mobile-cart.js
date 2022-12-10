@@ -6,6 +6,7 @@ var app = angular.module("mobile-estore-app", [])
 app.controller("mobile-estore-ctrl", function($scope, $http) {
 	$scope.cart = {
 		items: [],
+		imageArr: [],
 		add(id) {
 			let item = this.items.find(item => item.maSP == id);
 			if (item) {
@@ -26,6 +27,7 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 			let text = confirm(`Bạn có muốn xóa điện thoại này không ?`)
 			if(text){
 				this.items.splice(item, 1);
+				this.imageArr.splice(item, 1);
 				this.saveToLocalStorage();
 			}else{
 				this.saveToLocalStorage();
@@ -45,7 +47,6 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 				.map(item => item.soLuong * item.donGia)
 				.reduce((total, soLuong) => total += soLuong, 0);
 		},
-		imageArr: [],
 		saveToLocalStorage(){
 			$http.get(`/cart/images`).then(response => {
 				imageArr = response.data
@@ -87,7 +88,7 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 			.map(item => item.donGia * item.soLuong)
 			.reduce((total, soLuong) => total += soLuong, 0)
 		,
-		trangThai: "Chưa xử lý",
+		trangThai: "Processing",
 		makh: {
 			taiKhoan:$("#taikhoankh").text()
 		},
