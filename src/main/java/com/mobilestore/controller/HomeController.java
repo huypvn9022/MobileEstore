@@ -9,6 +9,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -98,6 +100,7 @@ public class HomeController {
 		// Hiện thị ảnh chính giỏ hàng
 		List<HinhAnh> anhCart = hinhanhService.findAll();
 		
+		
 		// lưu các sản phẩm thành một list
 		List<HinhAnh> listAnh = hinhanhService.findAll();
 		
@@ -105,10 +108,12 @@ public class HomeController {
 		CauHinh cauHinh = cauhinhService.findById(id);
 		
 		// hiện thị các ảnh sản phẩm cùng hãng
-		List<HinhAnh> listImg = hinhanhService.findAll(); 
+		List<HinhAnh> listImg = hinhanhService.findAll();
+		Set<Integer> setImg = new HashSet<Integer>();
+		listImg = listImg.stream().filter(img -> setImg.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		
 		model.addAttribute("hangsx", hangSXService.findAll());
-		model.addAttribute("anhs", anh);
+		model.addAttribute("anh", anh);
 		model.addAttribute("sanpham", sanpham);
 		model.addAttribute("listAnh", listAnh);
 		model.addAttribute("cauHinh", cauHinh);

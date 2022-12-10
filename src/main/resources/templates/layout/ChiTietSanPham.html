@@ -31,7 +31,7 @@
 							<div class="productss border pt-3 pb-3" id="imgOrigin" >
 								<img class="product__details__pic__item--large mx-auto d-block"
 									width="446" height="446"
-									th:src="@{|/client/img/product/${anhs.hinhAnh}|}" alt="error">
+									th:src="@{|/client/img/product/${anh.hinhAnh}|}" alt="error">
 							</div>
 							<div class="product__details__pic__slider owl-carousel">
 								<th:block th:each="listAnh: ${listAnh}" th:if="${listAnh.masp.maSP == sanpham.maSP}">

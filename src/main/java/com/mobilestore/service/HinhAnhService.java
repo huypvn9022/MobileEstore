@@ -47,4 +47,8 @@ public class HinhAnhService {
 		return dao.findAllByKeyword(keyword);
 	}
 	
+	public List<HinhAnh> findByMaSP(Integer masp){
+		return dao.findByMaSP(masp);
+	}
+	
 }

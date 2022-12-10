@@ -2,7 +2,7 @@
 <div xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
 	<main>
 		<!-- Hero Section Begin -->
-		<section class="hero mb-3">
+		<section class="hero">
 			<div class="container">
 				<div class="row">
 					<div class="col-8">
@@ -198,7 +198,7 @@
 								<a th:href="@{|/product/detail/${listpk.maSP}|}">
 									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listpk.maSP}">
 										<img class="mt-4 img-org" width="210" height="210"
-											th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="error">
+											th:src="@{|/client/img/product/${img.hinhAnh}|}" alt="error">
 									</div>
 								</a>
 							</th:block>
