@@ -1,10 +1,12 @@
 package com.mobilestore.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.mobilestore.dao.SanPhamDAO;
@@ -20,6 +22,9 @@ public class SanPhamService {
 		return dao.findAll();
 	}
 	
+	public Page<SanPham> findAll(Pageable pageable) {
+		return dao.findAll(pageable);
+	}
 	public SanPham findById(Integer maSP) {
 		return dao.findById(maSP).get();
 	}
@@ -36,17 +41,32 @@ public class SanPhamService {
 		 dao.deleteById(maSP);
 	}
 	
-	public Page<SanPham> findAll(Pageable pageable) {
-		return dao.findAll(pageable);
-	}
-	
 	public Boolean existsById(Integer maSP) {
 		return dao.existsById(maSP);
 	}
 	
-	public List<SanPham> findAllByKeyword(String keyword) {
-		return dao.findAllByKeyword(keyword);
+	public Page<SanPham> findAllByKeyword(Pageable pageable, String keywords) {
+		return dao.findAllByKeywords(pageable, keywords);
+	}
+	 public Page<SanPham> findAllByMaHang(String mahang,Pageable pageable){
+		 return dao.findAllByMaHang(mahang,pageable);
+	 }
+	 public Page <SanPham> findAllByRam(Pageable pageable,String ram){
+			return dao.findAllByRam(pageable,ram);
+		}
+	 public Page <SanPham> findAllByRom(Pageable pageable,String rom){
+			return dao.findAllByRom(pageable,rom);
+		}
+	public 	Page <SanPham> findByDongia(Pageable pageable , Double  min, Double  max){
+		return dao.findByDongia(pageable ,min,max);
 	}
 
-	
+	public Page<SanPham> findAllByHDH(Pageable pageable, String hedh) {
+		return dao.findAllByHDH(pageable,hedh);
+	}
+
+	public Page<SanPham> findAllByMaLoai(Pageable pageable, String maloai) {
+		return dao.findAllByMaLoai(pageable, maloai);
+	}
+
 }

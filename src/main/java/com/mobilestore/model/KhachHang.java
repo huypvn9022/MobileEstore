@@ -62,7 +62,8 @@ public class KhachHang implements Serializable{
 	List<BinhLuan> binhluan;
 	
 	// vai tro
-	@ManyToOne @JoinColumn(name="vaitrokh")
+	@ManyToOne 
+	@JoinColumn(name="vaitrokh")
 	VaiTro vaiTroKH;
 	
 	// don hang
