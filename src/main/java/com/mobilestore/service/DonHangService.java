@@ -92,5 +92,8 @@ public class DonHangService {
 //	public List<DonHang> findAllByKeyword(String keyword) {
 //		return dao.findAllByKeyword(keyword);
 //	}
-
+	
+	public List<DonHang> findByUsername(String makh) {
+		return dao.findByUsername(makh);
+	}
 }

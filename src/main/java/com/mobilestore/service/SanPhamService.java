@@ -48,5 +48,11 @@ public class SanPhamService {
 		return dao.findAllByKeyword(keyword);
 	}
 
+	public Page<SanPham> findAllByMaLoai(Pageable pageable){
+		return dao.findAllByMaLoai(pageable);
+	}
 	
+	public Page<SanPham> findAllByMaLoai1(Pageable pageable){
+		return dao.findAllByMaLoai1(pageable);
+	}
 }

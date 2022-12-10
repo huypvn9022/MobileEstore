@@ -136,12 +136,12 @@
 			<div class="card-group">
 				<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
 
-					<div class="col" th:each="listsp: ${listsp}">
+					<div class="col" th:each="listdt: ${listdt}">
 						<div class="border product-img">
 							<!--Card image-->
 							<th:block th:each="img: ${images}">
-								<a th:href="@{|/product/detail/${listsp.maSP}|}">
-									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
+								<a th:href="@{|/product/detail/${listdt.maSP}|}">
+									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listdt.maSP}">
 										<img class="mt-4 img-org" width="210" height="210"
 											th:src="@{|/client/img/product/${img.hinhAnh}|}" alt="error">
 									</div>
@@ -150,10 +150,10 @@
 							<!--Card Body-->
 							<div class="card-body card-body-cascade text-left">
 								<!--Card Title-->
-								<h5 class="title text-truncate" th:text="${listsp.tenSP}"></h5>
+								<h5 class="title text-truncate" th:text="${listdt.tenSP}"></h5>
 								<div class="price">
 									<span class="price-new"
-										th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
+										th:text="${#numbers.formatDecimal(listdt.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
 									<span class="price-old">23.950.000đ</span>
 								</div>
 							</div>
@@ -164,11 +164,11 @@
 			</div>
 			
 			<!-- Page Product Begin -->
-			<ul class="pagination mt-3" style="padding-left: 455px;">
+			<ul class="pagination mt-3" style="padding-left: 450px;">
 				<li class="page-item"><a class="page-link" th:href="@{|/index?p=0|}">First</a></li>
-				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listsp.getNumber() > 0 ? listsp.getNumber() - 1 : 0}|}">Previous</a></li>
-				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listsp.getNumber() < listsp.getTotalPages() - 1 ? listsp.getNumber() + 1 : listsp.getTotalPages() - 1}|}">Next</a></li>
-				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listsp.getTotalPages() - 1}|}">Last</a></li>
+				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listdt.getNumber() > 0 ? listdt.getNumber() - 1 : 0}|}">Previous</a></li>
+				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listdt.getNumber() < listdt.getTotalPages() - 1 ? listdt.getNumber() + 1 : listdt.getTotalPages() - 1}|}">Next</a></li>
+				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listdt.getTotalPages() - 1}|}">Last</a></li>
 			</ul>
 			<!-- Page Product End -->
 			
@@ -180,7 +180,7 @@
 			<div class="d-flex">
 				<span class="title-phone"> Phụ kiện đáng mua nhất </span>
 				<div class="ml-auto d-flex align-items-end">
-					<a href="/product/loaisp/DT">Xem tất cả phụ kiện <b>>></b></a>
+					<a href="/product/loaisp/PK">Xem tất cả phụ kiện <b>>></b></a>
 				</div>
 			</div>
 		</div>
@@ -191,123 +191,33 @@
 			<div class="card-group">
 				<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
 				
-					<!-- <div class="col" th:each="listsp: ${listsp}">
+					<div class="col" th:each="listpk: ${listpk}">
 						<div class="border product-img">
-							Card image
+							<!--Card image-->
 							<th:block th:each="img: ${images}">
-								<a th:href="@{|/product/detail/${listsp.maSP}|}">
-									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listsp.maSP}">
+								<a th:href="@{|/product/detail/${listpk.maSP}|}">
+									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listpk.maSP}">
 										<img class="mt-4 img-org" width="210" height="210"
 											th:src="@{|/client/img/product/${img.hinhAnh1}|}" alt="error">
 									</div>
 								</a>
 							</th:block>
-							Card Body
+							<!--Card Body-->
 							<div class="card-body card-body-cascade text-left">
-								Card Title
-								<h5 class="title text-truncate" th:text="${listsp.tenSP}"></h5>
+								<!--Card Title-->
+								<h5 class="title text-truncate" th:text="${listpk.tenSP}"></h5>
 								<div class="price">
 									<span class="price-new"
-										th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
+										th:text="${#numbers.formatDecimal(listpk.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
 									<span class="price-old">23.950.000đ</span>
 								</div>
 							</div>
 						</div>
-					</div> -->
+					</div>
 					
-					<div class="col">
-						<div class="border product-img">
-							<!--Card image-->
-							<div class="view product-frame view-cascade overlay text-center">
-								<img class="img-fluid mt-4 img-org" width="150" height="150"
-									src="/client/img/categories/cart-1.jpg" alt="">
-							</div>
-							<!--Card Body-->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5  class =" title " > the most beautiful original old iPhone XR 64Gb
-									</h5>
-								<div class="price">
-									<span class="price-new">23.950.000Ä‘</span> <span
-										class="price-old">23.950.000Ä‘</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="border card-cascade card-ecommerce wider">
-							<!--Card image-->
-							<div class="view view-cascade overlay text-center">
-								<img class="img-fluid mt-4" width="150" height="150"
-									src="/client/img/categories/cart-2.jpg" alt="">
-							</div>
-							<!--Card Body-->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5 class="title">iPhone 11 64GB chính hãng VN/A</h5>
-								<div class="price">
-									<span class="price-new">23.950.000Đ</span> <span
-										class="price-old">23.950.000Đ</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="border card-cascade card-ecommerce wider">
-							<!--Card image-->
-							<div class="view view-cascade overlay text-center">
-								<img class="img-fluid mt-4" width="150" height="150"
-									src="/client/img/categories/cart-3.jpg" alt="">
-							</div>
-							<!--Card Body-->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5  class =" title " > Genuine iPhone 13 128GB VN/A </h5>
-								<div class="price">
-									<span class="price-new">23.950.000Đ</span> <span
-										class="price-old">23.950.000Đ</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="border card-cascade card-ecommerce wider">
-							<!--Card image-->
-							<div class="view view-cascade overlay text-center">
-								<img class="img-fluid mt-4" width="150" height="150"
-									src="/client/img/categories/cart-4.jpg" alt="">
-							</div>
-							<!--Card Body-->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5  class =" title " > the most beautiful original old iPhone XR 64Gb </h5>
-								<div class="price">
-									<span class="price-new">23.950.000Đ</span> <span
-										class="price-old">23.950.000Đ</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="border card-cascade card-ecommerce wider">
-							<!--Card image-->
-							<div class="view view-cascade overlay text-center">
-								<img class="img-fluid mt-4" width="150" height="150"
-									src="/client/img/categories/cart-5.jpg" alt="">
-							</div>
-							<!--Card Body-->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5  class =" title " > the most beautiful original old iPhone XR 64Gb </h5>
-								<div class="price">
-									<span class="price-new">23.950.000Đ</span> <span
-										class="price-old">23.950.000đ</span>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
+			
 		</div>
 		<!-- View Product End -->
 	</main>

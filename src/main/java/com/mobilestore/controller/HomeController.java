@@ -67,9 +67,11 @@ public class HomeController {
 	@RequestMapping("/index")
 	public String list(Model model, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageableTop5SP = PageRequest.of(0, 5);
-		Pageable pageableListSP = PageRequest.of(p.orElse(0), 15);
+		Pageable pageableListdt = PageRequest.of(p.orElse(0), 10);
+		Pageable pageableListpk = PageRequest.of(p.orElse(0), 10);
 		List<Top5SP> top5sp = chitietdonhangService.getTop5(pageableTop5SP);
-		Page<SanPham> listsp = spService.findAll(pageableListSP);
+		Page<SanPham> listdt = spService.findAllByMaLoai(pageableListdt);
+		Page<SanPham> listpk = spService.findAllByMaLoai1(pageableListpk);
 		List<HinhAnh> images = hinhanhService.findAll();
 		
 		Set<Integer> imgSet = new HashSet<Integer>();
@@ -77,7 +79,8 @@ public class HomeController {
 		
 		model.addAttribute("top5sp", top5sp);
 		model.addAttribute("images", images);
-		model.addAttribute("listsp", listsp);
+		model.addAttribute("listdt", listdt);
+		model.addAttribute("listpk", listpk);
 		return "layout/index";
 	}
 	
@@ -133,19 +136,19 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping("/product-details")
-	public String productDetails(Model model) {
-		return "layout/ChiTietSanPham";
-	}
-
-	@RequestMapping("/shop-grid")
-	public String shopGrid(Model model) {
-		return "layout/shop-grid";
-	}
-	
-	
-	@RequestMapping("/admin")
-	public String admin(Model model) {
-		return "admin/index";
-	}
+//	@RequestMapping("/product-details")
+//	public String productDetails(Model model) {
+//		return "layout/ChiTietSanPham";
+//	}
+//
+//	@RequestMapping("/shop-grid")
+//	public String shopGrid(Model model) {
+//		return "layout/shop-grid";
+//	}
+//	
+//	
+//	@RequestMapping("/admin")
+//	public String admin(Model model) {
+//		return "admin/index";
+//	}
 }
