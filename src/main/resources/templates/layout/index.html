@@ -8,7 +8,7 @@
 					<div class="col-8">
 						<div id="carouselExampleIndicators" class="carousel slide"
 							data-ride="carousel">
-							<div class="carousel-inner">
+							<div class="carousel-inner rounded">
 								<div class="carousel-item active">
 									<img class="d-block w-100" src="/client/img/hero/banner-1.jpg"
 										alt="First slide">
@@ -45,26 +45,26 @@
 						<div class="row">
 							<div class="col-md-6 pl-0">
 								<a href="https://www.youtube.com/watch?v=FT3ODSg1GFE"> <img
-									height="130px" alt="" class=""
+									height="130px" alt="" class="rounded"
 									src="/client/img/banner/iphone.jpg">
 								</a>
 							</div>
 							<div class="col-md-6 pl-0" style="margin-left: -5px">
 								<a href="https://www.youtube.com/watch?v=iq5aUUETl0o"> <img
-									height="130px" alt="" src="/client/img/banner/oppo.jpg">
+									height="130px" alt="" class="rounded" src="/client/img/banner/oppo.jpg">
 								</a>
 							</div>
 						</div>
 						<div class="row mt-2">
 							<div class="col-md-6 pl-0">
 								<a href="https://www.youtube.com/watch?v=FzshLMEVbrU"> <img
-									height="130px" alt="" class=""
+									height="130px" alt="" class="rounded"
 									src="/client/img/banner/samsung.jpg">
 								</a>
 							</div>
 							<div class="col-md-6 pl-0" style="margin-left: -5px">
 								<a href="https://www.youtube.com/watch?v=rZm4gg5CvWc"> <img
-									height="130px" alt="" class=""
+									height="130px" alt="" class="rounded"
 									src="/client/img/banner/xiaomi.jpg">
 								</a>
 							</div>
@@ -75,8 +75,8 @@
 		</section>
 		<!-- Hero Section End -->
 
-		<div class="container">
-			<div class="slider-parent">
+		<div class="container mt-4">
+			<div class="slider-parent pb-3 rounded">
 				<div class="title">sản phẩm được mua nhiều nhất</div>
 				<div class="slider-child">
 					<div class="row no-gutters">
@@ -99,10 +99,7 @@
 										<h5 class="title-product" th:text="${sp.group.tenSP}"></h5>
 										<div class="price">
 											<span class="price-new" th:text="${#numbers.formatDecimal(sp.group.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
-									
-										
-											<span
-												class="price-old">23.950.000đ</span>
+											<span class="price-old">23.950.000đ</span>
 										</div>
 									</div>
 								</div>
@@ -111,22 +108,13 @@
 						</div>
 					</div>
 				</div>
-		
-				<!--View all product -->
-				<div class="view-all-product">
-					<div class="btn">Xem tất cả</div>
-				</div>
-
 			</div>
 		</div>
 
 		<!-- Title Desgn Start -->
-		<div class="container mb-4 mt-5">
+		<div class="container mb-3 mt-4">
 			<div class="d-flex">
 				<span class="title-phone">Tất cả điện thoại</span>
-				<div class="ml-auto d-flex align-items-end">
-					<a href="/product/loaisp/DT">Xem tất cả điện thoại <b>>></b></a>
-				</div>
 			</div>
 		</div>
 		<!-- Title Desgn End -->
@@ -165,10 +153,10 @@
 			
 			<!-- Page Product Begin -->
 			<ul class="pagination mt-3" style="padding-left: 450px;">
-				<li class="page-item"><a class="page-link" th:href="@{|/index?p=0|}">First</a></li>
-				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listdt.getNumber() > 0 ? listdt.getNumber() - 1 : 0}|}">Previous</a></li>
-				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listdt.getNumber() < listdt.getTotalPages() - 1 ? listdt.getNumber() + 1 : listdt.getTotalPages() - 1}|}">Next</a></li>
-				<li class="page-item"><a class="page-link" th:href="@{|/index?p=${listdt.getTotalPages() - 1}|}">Last</a></li>
+				<li class="page-item"><a class="page-link text-dark" th:href="@{|/index?p=0|}">First</a></li>
+				<li class="page-item"><a class="page-link text-dark" th:href="@{|/index?p=${listdt.getNumber() > 0 ? listdt.getNumber() - 1 : 0}|}">Previous</a></li>
+				<li class="page-item"><a class="page-link text-dark" th:href="@{|/index?p=${listdt.getNumber() < listdt.getTotalPages() - 1 ? listdt.getNumber() + 1 : listdt.getTotalPages() - 1}|}">Next</a></li>
+				<li class="page-item"><a class="page-link text-dark" th:href="@{|/index?p=${listdt.getTotalPages() - 1}|}">Last</a></li>
 			</ul>
 			<!-- Page Product End -->
 			
@@ -176,12 +164,9 @@
 		<!-- View Product End -->
 
 		<!-- Title Desgn Start -->
-		<div class="container mb-2">
+		<div class="container mb-3 mt-4">
 			<div class="d-flex">
 				<span class="title-phone"> Phụ kiện đáng mua nhất </span>
-				<div class="ml-auto d-flex align-items-end">
-					<a href="/product/loaisp/PK">Xem tất cả phụ kiện <b>>></b></a>
-				</div>
 			</div>
 		</div>
 		<!-- Title Desgn End -->

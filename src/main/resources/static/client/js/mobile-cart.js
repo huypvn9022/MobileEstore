@@ -108,7 +108,7 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 				if(message){
 					alert("Đặt hàng thành công !");
 					$scope.cart.clear();
-					location.href="/index";	
+					location.href="/index/order-management";	
 				}
 			}).catch(error => {
 				alert("Đặt hàng thất bại !");

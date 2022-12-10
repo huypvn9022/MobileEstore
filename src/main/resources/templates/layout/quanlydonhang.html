@@ -56,13 +56,12 @@
 				<!-- Forms -->
 				<div class="grid-item">
 					<div class="user-content-side">
-						<h2 class="member-title">Quản lý đơn hàng</h2>
+						<h3 class="member-title mb-3 text-center">Quản lý đơn hàng</h3>
 
 						<div class="list-order-member">
 							<table class="table table-order-member">
 								<thead>
 									<tr>
-										<th>Mã đơn</th>
 										<th>Ngày tạo</th>
 										<th>Địa chỉ</th>
 										<th>Tổng tiền</th>
@@ -73,17 +72,16 @@
 								</thead>
 								<tbody>
 									<tr th:each="dh: ${makh}">
-										<td data-title="Mã đơn" class="id-order" th:text="${dh.maDon}"></td>
 										<td data-title="Ngày"
 											th:text="${#dates.format(dh.ngayTao, 'dd/MM/yyyy')}"></td>
 										<td data-title="Địa chỉ" th:text="${dh.makh.diaChi}"></td>
 										<td data-title="Tổng tiền">[[${#numbers.formatDecimal(dh.tongTien, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
 										<td data-title="Trạng thái" th:text="${dh.trangThai}"></td>
 										<td>
-											<a th:href="@{|/index/order/chiTietDonHang/${dh.maDon}|}" class="btn btn-primary btn-block btn-sm p-0"> Xem Chi Tiết </a>
+											<a th:href="@{|/index/order/chiTietDonHang/${dh.maDon}|}" class="btn btn-info btn-block btn-sm p-1"> Xem Chi Tiết </a>
 										</td>
 										<td th:unless="${dh.trangThai == 'Complete' || dh.trangThai == 'Cancel'}">
-											<a th:href="@{|/index/order/cancel/${dh.maDon}|}" class="btn btn-primary btn-block btn-sm text-light p-0"> Huỷ đơn hàng </a>
+											<a th:href="@{|/index/order/cancel/${dh.maDon}|}" class="btn btn-danger btn-block btn-sm text-light p-1"> Huỷ đơn hàng </a>
 										</td>
 									</tr>
 								</tbody>

@@ -121,7 +121,7 @@ public class HomeController {
 		model.addAttribute("cauHinh", cauHinh);
 		model.addAttribute("listImg", listImg);
 		model.addAttribute("anhCart", anhCart);
-		return "layout/ChiTietSanPham";
+		return "layout/chitietsanpham";
 	}
 	
 
@@ -142,20 +142,4 @@ public class HomeController {
 		return "layout/thanhtoan";
 	}
 
-	
-//	@RequestMapping("/product-details")
-//	public String productDetails(Model model) {
-//		return "layout/ChiTietSanPham";
-//	}
-//
-//	@RequestMapping("/shop-grid")
-//	public String shopGrid(Model model) {
-//		return "layout/shop-grid";
-//	}
-//	
-//	
-//	@RequestMapping("/admin")
-//	public String admin(Model model) {
-//		return "admin/index";
-//	}
 }
