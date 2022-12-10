@@ -40,7 +40,17 @@ public interface SanPhamDAO extends JpaRepository<SanPham, Integer>{
 	Page <SanPham> findAllByHDH(Pageable pageable,String hedh);
 
 	@Query(value = "SELECT o FROM SanPham o WHERE o.maloai.maLoai like ?1")
-	Page<SanPham> findAllByMaLoai(Pageable pageable,String maloai);
+	Page<SanPham> findAllByMaLoai2(Pageable pageable,String maloai);
+
+
+//
+//	@Query(value = "SELECT o FROM SanPham o WHERE o.maloai.maLoai like 'DT'")
+//	Page<SanPham> findAllByMaLoai(Pageable pageable);
+//
+//
+//
+//	@Query(value = "SELECT o FROM SanPham o WHERE o.maloai.maLoai like 'PK'")
+//	Page<SanPham> findAllByMaLoai1(Pageable pageable);
 	
 
 }

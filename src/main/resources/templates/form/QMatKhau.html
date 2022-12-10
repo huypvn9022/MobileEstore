@@ -13,13 +13,13 @@
 						</div>
 					</div>
 					<ul th:if="${#request.remoteUser}">
-						<li class="active">
+						<li class="">
 							<a href="/index/thong-tin-tai-khoan"> 
 								<i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản
 							</a>
 						</li>
 						<li class="">
-							<a href="/order-management"> 
+							<a href="/index/order-management"> 
 								<i class="fa fa-wpforms" aria-hidden="true"></i> Quản lí đơn hàng
 							</a>
 						</li>
@@ -28,7 +28,7 @@
 								<i class="fa fa-lock" aria-hidden="true"></i> Đổi mật khẩu
 							</a>
 						</li>
-						<li class="">
+						<li class="active">
 							<a href="/index/quenmk"> 
 								<i class="fa fa-unlock" aria-hidden="true"></i> Quên mật khẩu
 							</a>

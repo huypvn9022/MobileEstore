@@ -1,6 +1,9 @@
 package com.mobilestore.controller;
 
+import java.util.List;
+
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +12,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mobilestore.model.ChiTietDonHang;
+import com.mobilestore.model.DonHang;
 import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.MailInfo;
 import com.mobilestore.model.VaiTro;
+import com.mobilestore.service.CTDHService;
+import com.mobilestore.service.DonHangService;
 import com.mobilestore.service.KhachHangService;
 import com.mobilestore.service.MailerService;
 import com.mobilestore.service.SessionService;
@@ -35,6 +43,12 @@ public class TaiKhoanController {
 
 	@Autowired
 	VaiTroService vtService;
+	
+	@Autowired
+	DonHangService donhangService;
+	
+	@Autowired
+	CTDHService chitietdonhangService;
 
 	@GetMapping("/dangky")
 	public String dangky(Model model, @ModelAttribute("dangky") KhachHang kh) {
@@ -168,5 +182,30 @@ public class TaiKhoanController {
 			return "form/QMatKhau";
 		}
 
+	}
+	
+	@RequestMapping("/order-management")
+	public String orderManagement(Model model) {
+		String makh = session.get("taiKhoanKH");
+		
+		model.addAttribute("makh", donhangService.findByUsername(makh));
+		return "layout/qldonhang";
+	}
+	
+	@RequestMapping("/order/chiTietDonHang/{orderId}")
+	public String orderDetail(Model model, @PathVariable Integer orderId) {
+		List<ChiTietDonHang> ctdh = chitietdonhangService.getAllOrderDetail(orderId);
+
+		model.addAttribute("ctdh", ctdh);
+ 		return "layout/chitietdonhang";
+	}
+	
+	@RequestMapping("/order/cancel/{orderId}")
+	public String orderCancel(Model model, @PathVariable Integer orderId) {
+		DonHang dh = donhangService.findById(orderId);
+		dh.setTrangThai("Cancel");
+		donhangService.update(dh);
+		
+ 		return "redirect:/index/order-management";
 	}
 }

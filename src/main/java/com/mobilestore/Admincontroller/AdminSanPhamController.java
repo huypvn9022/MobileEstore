@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobilestore.model.CauHinh;
 import com.mobilestore.model.HangSanXuat;
-import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.LoaiSanPham;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.service.CauHinhService;

@@ -178,7 +178,7 @@ public class SanPhamController {
 	@RequestMapping("/loaisp/{maloai}")
 	public String sp_LoaiSP(Model model, @RequestParam("p") Optional<Integer> p,@PathVariable("maloai") String maloai) {
 		Pageable pageable = PageRequest.of(p.orElse(0), 20);
-		Page<SanPham> products = spService.findAllByMaLoai(pageable, "%" + maloai + "%");
+		Page<SanPham> products = spService.findAllByMaLoai2(pageable, "%" + maloai + "%");
 		List<HinhAnh> images = hinhanhService.findAll();
 		model.addAttribute("listsp", products);
 		model.addAttribute("images", images);
