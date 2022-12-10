@@ -50,8 +50,8 @@ public class AdminSanPhamController {
 	@RequestMapping("/sanpham")
 	public String sanPham_index(Model model, @RequestParam("p") Optional<Integer> p,
 			@ModelAttribute("sanpham") SanPham sanPham) {
-		Pageable pageAble = PageRequest.of(p.orElse(0), 5);
-		Page<SanPham> listSP = spService.findAll(pageAble);
+		Pageable pageable = PageRequest.of(p.orElse(0), 5);
+		Page<SanPham> listSP = spService.findAll(pageable);
 		List<LoaiSanPham> listLoaiSP = lspService.findAll();
 		List<HangSanXuat> listHangSX = hsxService.findAll();
 		List<CauHinh> listCauHinh = chService.findAll();
@@ -163,20 +163,20 @@ public class AdminSanPhamController {
 		return "redirect:/admin/sanpham";
 	}
 	
-	@RequestMapping("/sanpham/search")
-	public String sanPham_search(Model model, @RequestParam("keyword") Optional<String> kw,
-			 @ModelAttribute("sanpham") SanPham sp) {
-		String kwords = kw.orElse(sessionService.get("keyword",""));
-		sessionService.get("keyword",kwords);
-		List<SanPham> listSP = spService.findAllByKeyword("%"+kwords+"%");
-		
-		if(kwords.equals("")) {
-			return "redirect:/admin/sanpham";
-		}else {
-			model.addAttribute("listsp", listSP);	
-			model.addAttribute("deletePage", 1);	
-			return "admin/sanpham";
-		}
-	}
+//	@RequestMapping("/sanpham/search")
+//	public String sanPham_search(Model model, @RequestParam("keyword") Optional<String> kw,
+//			 @ModelAttribute("sanpham") SanPham sp) {
+//		String kwords = kw.orElse(sessionService.get("keyword",""));
+//		sessionService.get("keyword",kwords);
+//		List<SanPham> listSP = spService.findAllByKeyword("%"+kwords+"%");
+//		
+//		if(kwords.equals("")) {
+//			return "redirect:/admin/sanpham";
+//		}else {
+//			model.addAttribute("listsp", listSP);	
+//			model.addAttribute("deletePage", 1);	
+//			return "admin/sanpham";
+//		}
+//	}
 
 }

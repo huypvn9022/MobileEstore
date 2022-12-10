@@ -76,96 +76,118 @@
 		<!-- Hero Section End -->
 
     <!-- Product Section Begin -->
-    <section class="product spad p-0">
-        <div class="container">
-            <div class="row">
-                    <div class="row box-filter">
-                        <div class="dropdown p-2">
-                            <button class="btn btn-light dropdown-toggle" style="height: 50px;width: 70px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Giá
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="/product/dongia/0tr4tr">Dưới 2 triệu</a>
-                              <a class="dropdown-item" href="/product/dongia/2tr4tr">Từ 2 - 4 triệu </a>
-                              <a class="dropdown-item" href="/product/dongia/4tr7tr">Từ 4 - 7 triệu </a>
-                              <a class="dropdown-item" href="/product/dongia/7tr13tr">Từ 7 - 13 triệu </a>
-                              <a class="dropdown-item" href="/product/dongia/13tr20tr">Từ 13 - 20 triệu </a>
-                              <a class="dropdown-item" href="#">Trên 20 triệu </a>
-                            </div>
-                        </div>
-                        
-                        <div class="dropdown p-2">
-                            <button class="btn btn-light dropdown-toggle" style="height: 50px;width: 80px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Ram
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="/product/ram/4gb">4GB</a>
-                              <a class="dropdown-item" href="/product/ram/6gb">6GB</a>
-                              <a class="dropdown-item" href="/product/ram/8gb">8GB</a>
-                            </div>
-                        </div>
-                        <div class="dropdown p-2">
-                            <button class="btn btn-light dropdown-toggle" style="height: 50px; width: 140px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Bộ nhớ trong
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/product/rom/32gb">32GB</a>
-                                <a class="dropdown-item" href="/product/rom/64gb">64GB</a>
-                                <a class="dropdown-item" href="/product/rom/128gb">128GB</a>
-                              
-                            </div>
-                        </div>       
-                        <div class="dropdown p-2">
-                            <button class="btn btn-light dropdown-toggle"  style="height: 50px; width: 140px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Hệ điều hành
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" name="hedh" >
-                              <a class="dropdown-item" href="/product/hedh/android">Android</a>
-                              <a class="dropdown-item" href="/product/hedh/iphone" value="Iphone" name="hedh">Iphone(IOS)</a>
-                            </div>
-                        </div> 
-                        <div class="dropdown p-2">
-                            <button class="btn btn-light dropdown-toggle"  style="height: 50px;width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Phân loại
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                              <a class="dropdown-item" href="/product/loaisp/DT">Điện thoại</a>
-                              <a class="dropdown-item" href="/product/loaisp/PK" value="Iphone" name="hedh">Phụ kiện</a>
-                            </div>
-                        </div> 
-                        <div class="dropdown p-2">
-                            <button class="btn btn-light dropdown-toggle" style="height: 50px;width: 110px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Sắp xếp
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/product/dongia/tangdan">Giá tăng dần</a>
-                                <a class="dropdown-item" href="/product/dongia/giamdan">Giá giam dần</a>
-                            </div>
-                        </div>            
-                    </div>
-                    <div class=" row box-filter">
-					<a href="/product/hang/IP" class="box-quicklink__item bd-radius"><img
-						src="/client/img/filter/iphone.png"></a> <a href="/product/hang/SS"
-						class="box-quicklink__item bd-radius"><img
-						src="/client/img/filter/samsung.png"></a> <a href="/product/hang/NK"
-						class="box-quicklink__item bd-radius"><img
-						src="/client/img/filter/nokia.jpg"></a> <a href="/product/hang/RM"
-						class="box-quicklink__item bd-radius"><img
-						src="/client/img/filter/realme.png"></a> <a href="/product/hang/XM"
-						class="box-quicklink__item bd-radius"><img
-						src="/client/img/filter/xiaomi.png"></a> <a href="/product/hang/VV"
-						class="box-quicklink__item bd-radius"><img
-						src="/client/img/filter/vivo.png"></a> <a href="/product/hang/OP"
-						class="box-quicklink__item bd-radius"><img
-						src="/client/img/filter/oppop.jpg"></a>
+		<section class="product spad">
+			<div class="container">
+				<div class="row">
+					<div class="row box-filter">
+						<div class="dropdown p-2">
+							<button class="btn btn-light dropdown-toggle"
+								style="height: 50px;" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Giá</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a>
+								<span></span> <span></span>
+								</a>
+								
+								<a class="dropdown-item"
+									th:href="@{|/product/dongia/0den2000000|}"></span>Dưới
+									2 triệu</a> <a class="dropdown-item"
+									th:href="@{|/product/dongia/2000000den4000000|}"> Từ
+									2 - 4 triệu </a> <a class="dropdown-item"
+									th:href="@{|/product/dongia/4000000den7000000|}">Từ 4 - 7 triệu </a> <a
+									class="dropdown-item" th:href="@{|/product/dongia/7000000den13000000|}">Từ 7 -
+									13 triệu </a> <a class="dropdown-item"
+									th:href="@{|/product/dongia/13000000den20000000|}">Từ
+									13 - 20 triệu </a> <a class="dropdown-item" th:href="@{|/product/dongia/20000000den100000000|}">Trên 20
+									triệu </a>
+							</div>
+						</div>
+
+						<div class="dropdown p-2" >
+							<button class="btn btn-light dropdown-toggle"
+								style="height: 50px;" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false" >Ram</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >	<a
+									class="dropdown-item"  th:href="@{|/product/ram/2GB|}">2 GB</a> <a
+									class="dropdown-item" th:href="@{|/product/ram/3GB|}">3 GB</a>						
+								<a class="dropdown-item" th:href="@{|/product/ram/4GB|}" >4 GB</a> <a
+									class="dropdown-item"  th:href="@{|/product/ram/6GB|}">6 GB</a> <a
+									class="dropdown-item" th:href="@{|/product/ram/8GB|}">8 GB</a>
+									<a
+									class="dropdown-item" th:href="@{|/product/ram/12GB|}">12 GB</a>
+							</div>
+						</div>
+						<div class="dropdown p-2">
+							<button class="btn btn-light dropdown-toggle"
+								style="height: 50px;" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Bộ nhớ trong</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">	
+								<a class="dropdown-item" th:href="@{|/product/rom/32GB|}">32GB</a> <a
+									class="dropdown-item" th:href="@{|/product/rom/64GB|}">64GB</a> <a
+									class="dropdown-item" th:href="@{|/product/rom/128GB|}">128GB</a>
+									<a
+									class="dropdown-item" th:href="@{|/product/rom/512GB|}">512GB</a>
+
+							</div>
+						</div>
+						<div class="dropdown p-2">
+							<button class="btn btn-light dropdown-toggle"
+								style="height: 50px;" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Hệ điều hành</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+								name="hedh">
+								<a class="dropdown-item" th:href="@{|/product/hedh/Android|}">Android</a>
+								<a class="dropdown-item" 
+									th:href="@{|/product/hedh/(IOS)|}">Iphone(IOS)</a>
+							</div>
+						</div>
+						<div class="dropdown p-2">
+							<button class="btn btn-light dropdown-toggle"
+								style="height: 50px;" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Phân loại</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" th:href="@{|/product|}">Tất cả sản phẩm
+									</a>
+								<a class="dropdown-item" th:href="@{|/product/loaisp/DT|}">Điện
+									thoại</a> <a class="dropdown-item" href="/product/loaisp/PK"
+									value="Iphone" name="hedh">Phụ kiện</a>
+							</div>
+						</div>
+						<div class="dropdown p-2" >
+							<button class="btn btn-light dropdown-toggle"
+								style="height: 50px;" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Hãng</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+							<th:block th:each="ha : ${hangsx}">
+								<a class="dropdown-item" th:text="${ha.tenHang}" th:href="|/product/${ha.maHang}|">4 GB</a> 
+							</th:block>
+							</div>
+						</div>
+						<div class="dropdown p-2">
+							<button class="btn btn-light dropdown-toggle"
+								style="height: 50px;" type="button"
+								id="dropdownMenuButton" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false">Sắp xếp</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" th:href="@{|?sort=ASC|}">Giá
+									tăng dần</a> <a class="dropdown-item"
+									th:href="@{|?sort=DESC|}">Giá giam dần</a>
+							</div>
+						</div>
+						
+					</div>
 				</div>
-				
-                </div>
-              
-        </div>
-        
-    </section>
-    <!-- Product Section End -->
+
+			</div>
+
+		</section>
+		<!-- Product Section End -->
     <div class="container">
 			<div class="card-group2">
 				<div
@@ -198,6 +220,14 @@
 
 				</div>
 			</div>
+		</div>
+		<div class="container ">
+		<div class="p-5 offset-4">
+					<a class="btn border " th:href="@{|?p=0|}" style="height: 30px; width: 80px;font-size:15px; font-weight: bold;">  << </a>
+					<a class="btn border " th:href="@{|?p=${listsp.getNumber() > 0 ? listsp.getNumber() - 1 : 0}|}" style="height: 30px; width: 	80px;font-size:15px; font-weight: bold;"> < </a> 
+					<a class="btn border " th:href="@{|?p=${listsp.getNumber() < listsp.getTotalPages() -1 ? listsp.getNumber() + 1 : listsp.getTotalPages() -1}|}" style="height: 30px; width: 80px;font-size:15px; font-weight: bold;"> > </a> 
+					<a class="btn border " th:href="@{|?p=${listsp.getTotalPages() - 1}|}" style="height: 30px; width: 80px;font-size:15px; font-weight: bold;"> >> </a>
+		</div>
 		</div>
     </main>
 </div>
