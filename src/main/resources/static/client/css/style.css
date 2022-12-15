@@ -2240,6 +2240,11 @@ transparent;
 	background-color: #7d9ad2;
 }
 
+.product .container .dropdown button:hover{
+	border-color: red !important;
+	background-color: #f5f5fa;
+}
+
 /*---------------
 	Cart
 -----------------*/
