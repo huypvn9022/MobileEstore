@@ -2189,6 +2189,16 @@ transparent;
 	cursor: pointer;	
 }
 
+.container-body{
+	background-color: #efefef;
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
+
+.container-body .card-group{
+	background-color: white;
+}
+
 .container .slider-parent {
 	width: 100%;
 	height: auto;

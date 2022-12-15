@@ -38,7 +38,7 @@
 							<div class="product__details__pic__slider owl-carousel">
 								<th:block th:each="listAnh: ${listAnh}" th:if="${listAnh.masp.maSP == sanpham.maSP}">
 									<img th:src="@{|/client/img/product/${listAnh.hinhAnh}|}" alt="error"
-										class="border mt-2">
+										class="border mt-2" width="121" height="121">
 								</th:block>
 							</div>
 						
