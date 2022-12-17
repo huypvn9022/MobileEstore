@@ -44,9 +44,13 @@ public class CauHinhService {
 		return dao.existsById(maCH);
 	}
 	
-	public Page<CauHinh> findAllByKeyword(Pageable pageable, String keyword) {
-		return dao.findAllByKeyword(pageable,keyword);
-
+	public List<CauHinh> findAllByKeyword( String keyword) {
+		return dao.findAllByKeyword(keyword);
 	}
+	
+	public Page<CauHinh> findAllByDaXoaFalse(Pageable pageable) {
+		return dao.findAllByDaXoaFalse(pageable);
+	}
+	
 	
 }

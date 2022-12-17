@@ -64,6 +64,9 @@ public class NhanVien implements Serializable {
 	@NotNull(message = "Ngày sinh không được để trống")
 	private Date ngaySinh;
 	
+	@Column(name = "daxoa")
+	private boolean daXoa;
+	
 	//vai tro
 	@ManyToOne @JoinColumn(name="vaitronv")
 	VaiTro vaiTroNV;

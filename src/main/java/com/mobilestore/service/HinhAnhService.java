@@ -39,11 +39,15 @@ public class HinhAnhService {
 		return dao.findAll(pageable);
 	}
 	
+	public Page<HinhAnh> findAllByDaXoaFalse(Pageable pageable) {
+		return dao.findAllByDaXoaFalse(pageable);
+	}
+	
 	public Boolean existsById(Integer maCH) {
 		return dao.existsById(maCH);
 	}
 	
-	public List<HinhAnh> findAllByKeyword( String keyword) {
+	public List<HinhAnh> findAllByKeyword(String keyword) {
 		return dao.findAllByKeyword(keyword);
 	}
 	

@@ -57,6 +57,9 @@ public class SanPham implements Serializable{
 	@Column(name = "trangthai")
 	private boolean trangThai;
 	
+	@Column(name = "daxoa")
+	private boolean daXoa;
+	
 	// hang san xuat
 	@ManyToOne
 	@JoinColumn(name = "Mahang")

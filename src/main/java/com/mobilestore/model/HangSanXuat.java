@@ -28,6 +28,9 @@ public class HangSanXuat implements Serializable{
 	@Column(name = "Tenhang")
 	private String tenHang;
 	
+	@Column(name = "daxoa")
+	private boolean daXoa;
+	
 	//san pham
 	@JsonIgnore
 	@OneToMany(mappedBy = "mahang")

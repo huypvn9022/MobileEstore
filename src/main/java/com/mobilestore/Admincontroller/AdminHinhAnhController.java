@@ -28,7 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.service.HinhAnhService;
-import com.mobilestore.service.HinhAnhService;
 import com.mobilestore.service.SanPhamService;
 import com.mobilestore.service.SessionService;
 
@@ -53,7 +52,7 @@ public class AdminHinhAnhController {
 			@ModelAttribute("hinhanh") HinhAnh hinhanh) {
 		Sort sort = Sort.by("masp.maSP").ascending();
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5, sort);
-		Page<HinhAnh> pages = haService.findAll(pageAble);
+		Page<HinhAnh> pages = haService.findAllByDaXoaFalse(pageAble);
 		List<SanPham> listSP = spService.findAll();
 
 		model.addAttribute("listsp", listSP);
@@ -66,7 +65,7 @@ public class AdminHinhAnhController {
 			@PathVariable("maHinh") Integer maHinh) {
 		Sort sort = Sort.by("masp.maSP").ascending();
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5, sort);
-		Page<HinhAnh> pages = haService.findAll(pageAble);
+		Page<HinhAnh> pages = haService.findAllByDaXoaFalse(pageAble);
 		List<SanPham> listSP = spService.findAll();
 
 		HinhAnh anh = haService.findById(maHinh);
@@ -84,12 +83,12 @@ public class AdminHinhAnhController {
 
 		Sort sort = Sort.by("masp.maSP").ascending();
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5, sort);
-		Page<HinhAnh> pages = haService.findAll(pageAble);
+		Page<HinhAnh> pages = haService.findAllByDaXoaFalse(pageAble);
 		List<SanPham> listSP = spService.findAll();
 
 		String fileName1 = file1.getOriginalFilename().toString();
 		hinhAnh.setHinhAnh(fileName1);
-		
+
 		if (file1.isEmpty()) {
 			model.addAttribute("message", "Vui lòng chọn hình ảnh");
 			model.addAttribute("pages", pages);
@@ -111,11 +110,12 @@ public class AdminHinhAnhController {
 //
 	@RequestMapping("/hinhanh/update/{mahinh}")
 	public String imageUpdate(Model model, @ModelAttribute("hinhanh") HinhAnh hinhAnh,
-			@RequestParam("p") Optional<Integer> page, @RequestParam("file1") MultipartFile file1,@PathVariable("mahinh") Integer maHinh) {
-			
+			@RequestParam("p") Optional<Integer> page, @RequestParam("file1") MultipartFile file1,
+			@PathVariable("mahinh") Integer maHinh) {
+
 		Sort sort = Sort.by("masp.maSP").ascending();
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5, sort);
-		Page<HinhAnh> pages = haService.findAll(pageAble);
+		Page<HinhAnh> pages = haService.findAllByDaXoaFalse(pageAble);
 		List<SanPham> listSP = spService.findAll();
 
 		String fileName1 = file1.getOriginalFilename().toString();
@@ -145,48 +145,56 @@ public class AdminHinhAnhController {
 			return "admin/hinhanh";
 		}
 	}
+
 //
 	@RequestMapping("/hinhanh/delete/{mahinh}")
 	public String imageDelete(Model model, @ModelAttribute("hinhanh") HinhAnh hinhAnh,
-			 @RequestParam("p") Optional<Integer> page,
-			@PathVariable("mahinh") Integer maHinh) {
-		
+			@RequestParam("p") Optional<Integer> page, @PathVariable("mahinh") Integer maHinh) {
+
 		Sort sort = Sort.by("masp.maSP").ascending();
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5, sort);
-		Page<HinhAnh> pages = haService.findAll(pageAble);
+		Page<HinhAnh> pages = haService.findAllByDaXoaFalse(pageAble);
 		List<SanPham> listSP = spService.findAll();
 
+		
+		
 		if (maHinh.equals(0)) {
 			model.addAttribute("message", "Vui lòng chọn hình ảnh để xóa");
 			model.addAttribute("listsp", listSP);
 			model.addAttribute("pages", pages);
 			return "admin/hinhanh";
 		} else {
-			haService.delete(maHinh);
+			HinhAnh ha = haService.findById(maHinh);
+			ha.setDaXoa(true);
+			haService.update(ha);
+			model.addAttribute("message", "Xóa thành công");
 			return "redirect:/admin/hinhanh";
 		}
 	}
+
 //
 	@RequestMapping("/hinhanh/reset")
 	public String imageNew(Model model) {
 		return "redirect:/admin/hinhanh";
 	}
+
 //
 	@RequestMapping("/hinhanh/search")
 	public String Search(Model model, @RequestParam("p") Optional<Integer> page,
 			@ModelAttribute("hinhanh") HinhAnh product, @RequestParam("Keyword") Optional<String> kw) {
+
 		String kwords = kw.orElse(sessionService.get("keywords", ""));
 		sessionService.get("keywords", kwords);
 		List<SanPham> listSP = spService.findAll();
 
 		List<HinhAnh> pages = haService.findAllByKeyword( "%" + kwords + "%");
-		
-		if(kwords.equals("")) {		
+
+		if (kwords.equals("")) {
 			return "redirect:/admin/hinhanh";
-		}else {
+		} else {
 			model.addAttribute("pages", pages);
 			model.addAttribute("listsp", listSP);
-			model.addAttribute("deletePage", 1);	
+			model.addAttribute("deletePage", 1);
 			return "admin/hinhanh";
 		}
 

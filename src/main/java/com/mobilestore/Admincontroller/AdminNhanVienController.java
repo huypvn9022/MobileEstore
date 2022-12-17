@@ -39,7 +39,7 @@ public class AdminNhanVienController {
 	public String nhanvieng_index(@RequestParam("p") Optional<Integer> p, Model model,
 			@ModelAttribute("nhanVien") NhanVien nhanVien) {
 		Pageable pageable = PageRequest.of(p.orElse(0), 5);
-		Page<NhanVien> pages = nvService.findAll(pageable);
+		Page<NhanVien> pages = nvService.findAllByDaXoaFalse(pageable);
 		List<VaiTro> listVaiTro = vtService.findAll();
 		
 		model.addAttribute("listVaiTro", listVaiTro);
@@ -56,7 +56,7 @@ public class AdminNhanVienController {
 	public String nhanvien_addNew(Model model, @Valid @ModelAttribute("nhanVien") NhanVien nv,
 			BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0), 5);
-		Page<NhanVien> pages = nvService.findAll(pageable);
+		Page<NhanVien> pages = nvService.findAllByDaXoaFalse(pageable);
 		List<VaiTro> listVaiTro = vtService.findAll();
 
 
@@ -77,7 +77,7 @@ public class AdminNhanVienController {
 	public String nhanvien_update(Model model, @Valid @ModelAttribute("nhanVien") NhanVien nv,
 			BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0), 5);
-		Page<NhanVien> pages = nvService.findAll(pageable);
+		Page<NhanVien> pages = nvService.findAllByDaXoaFalse(pageable);
 		List<VaiTro> listVaiTro = vtService.findAll();
 
 		if (!nvService.existsById(nv.getTaiKhoan())) {
@@ -86,7 +86,7 @@ public class AdminNhanVienController {
 			model.addAttribute("pages", pages);
 			model.addAttribute("nhanVien", nv);
 			return "admin/nhanvien";
-		} else if (bindingResult.hasErrors()) {
+		} else if (bindingResult.hasErrors()) {	
 			model.addAttribute("message", "Cập nhật thất bại");
 			model.addAttribute("listVaiTro", listVaiTro);
 			model.addAttribute("pages", pages);
@@ -126,16 +126,18 @@ public class AdminNhanVienController {
 	public String nhanvien_delete(Model model, @ModelAttribute("nhanVien") NhanVien nv,
 			@PathVariable("taiKhoan") String tk, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0), 5);
-		Page<NhanVien> pages = nvService.findAll(pageable);
+		Page<NhanVien> pages = nvService.findAllByDaXoaFalse(pageable);
 		List<VaiTro> listVaiTro = vtService.findAll();
 
-		if (tk.equalsIgnoreCase("null")) {
+		if (tk.equals("null")) {
 			model.addAttribute("message", "Vui lòng chọn một tài khoản để xóa");
 			model.addAttribute("pages", pages);
-			model.addAttribute("listVaiTro", listVaiTro);
-			return "admin/nhanvien";
+			model.addAttribute("listVaiTro", listVaiTro);		
+			return "admin/nhanvien";	
 		} else {
-			nvService.delete(tk);
+			NhanVien nhanVien = nvService.findById(tk);
+			nhanVien.setDaXoa(true);
+			nvService.update(nhanVien);	
 			model.addAttribute("message", "Xóa thành công");
 			return "redirect:/admin/nhanvien";
 		}
@@ -148,7 +150,7 @@ public class AdminNhanVienController {
 		NhanVien nv = nvService.findById(taiKhoan);
 		model.addAttribute("nhanVien", nv);
 		Pageable pageable = PageRequest.of(p.orElse(0), 5);
-		Page<NhanVien> pages = nvService.findAll(pageable);
+		Page<NhanVien> pages = nvService.findAllByDaXoaFalse(pageable);
 		List<VaiTro> listVaiTro = vtService.findAll();
 		
 		model.addAttribute("listVaiTro", listVaiTro);

@@ -39,7 +39,7 @@ public class AdminCauHinhController {
 	public String cauhinh_index(@RequestParam("p") Optional<Integer> p, Model model,
 			@ModelAttribute("cauhinh") CauHinh cauHinh) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<CauHinh> pages = chService.findAll(pageable);
+		Page<CauHinh> pages = chService.findAllByDaXoaFalse(pageable);
 		
 		List<HangSanXuat> hangSX = hsxService.findAll();
 		
@@ -57,7 +57,7 @@ public class AdminCauHinhController {
 	public String cauhinh_addNew(Model model,@Valid @ModelAttribute("cauhinh") CauHinh ch,
 			BindingResult bindingResult,@RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<CauHinh> pages = chService.findAll(pageable);
+		Page<CauHinh> pages = chService.findAllByDaXoaFalse(pageable);
 		
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("pages", pages);
@@ -74,7 +74,7 @@ public class AdminCauHinhController {
 	public String cauhinh_update(Model model, @Valid @ModelAttribute("cauhinh") CauHinh ch,
 			 BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<CauHinh> pages = chService.findAll(pageable);
+		Page<CauHinh> pages = chService.findAllByDaXoaFalse(pageable);
 		List<HangSanXuat> hangSX = hsxService.findAll();
 
 		
@@ -91,8 +91,8 @@ public class AdminCauHinhController {
 			model.addAttribute("cauhinh", ch);
 			return "admin/cauhinh";
 		}else {
-			chService.update(ch);
 			model.addAttribute("message", "Cập nhật thành công");
+			chService.update(ch);
 			return "redirect:/admin/cauhinh/edit/" + ch.getMaCH();
 
 		}
@@ -101,24 +101,28 @@ public class AdminCauHinhController {
 	@RequestMapping("/cauhinh/search")
 	public String cauhinh_search(Model model, @RequestParam("keyword") Optional<String> kw,
 			@RequestParam("p") Optional<Integer> p, @ModelAttribute("cauhinh") CauHinh ch) {
-		Pageable pageable = PageRequest.of(p.orElse(0), 5);
 		String kwords = kw.orElse(sessionService.get("keyword",""));
 		sessionService.get("keyword",kwords);
-		Page<CauHinh> pages = chService.findAllByKeyword(pageable,"%"+kwords+"%");
+		List<CauHinh> pages = chService.findAllByKeyword("%"+kwords+"%");
 		List<HangSanXuat> hangSX = hsxService.findAll();
 
-		model.addAttribute("pages", pages);
-		model.addAttribute("hangsx", hangSX);
-		return "admin/cauhinh";
+		if (kwords.equals("")) {
+			return "redirect:/admin/cauhinh";
+		}else {
+			model.addAttribute("pages", pages);
+			model.addAttribute("hangsx", hangSX);
+			model.addAttribute("deletePage", 1);
+			return "admin/cauhinh";	
+		}
+
 	}
 //	
 	@RequestMapping("/cauhinh/delete/{mach}")
 	public String cauhinh_delete(Model model, @ModelAttribute("cauhinh") CauHinh ch,
 			@PathVariable("mach") Integer maCH, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<CauHinh> pages = chService.findAll(pageable);
+		Page<CauHinh> pages = chService.findAllByDaXoaFalse(pageable);
 		List<HangSanXuat> hangSX = hsxService.findAll();
-
 		
 		if(maCH.equals(0)) {
 			model.addAttribute("message", "Vui lòng chọn một cấu hình để xóa");
@@ -126,7 +130,9 @@ public class AdminCauHinhController {
 			model.addAttribute("hangsx", hangSX);
 			return "admin/cauhinh";
 		}else {
-			chService.delete(maCH);
+			CauHinh cauHinh = chService.findById(maCH);
+			cauHinh.setDaXoa(true);
+			chService.save(cauHinh);
 			model.addAttribute("message", "Xóa thành công");	
 			return "redirect:/admin/cauhinh";
 		}
@@ -139,7 +145,7 @@ public class AdminCauHinhController {
 		model.addAttribute("cauhinh", ch);
 		
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<CauHinh> pages = chService.findAll(pageable);
+		Page<CauHinh> pages = chService.findAllByDaXoaFalse(pageable);
 		List<HangSanXuat> hangSX = hsxService.findAll();
 		
 		model.addAttribute("hangsx", hangSX);

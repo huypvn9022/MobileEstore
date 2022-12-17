@@ -39,6 +39,10 @@ public class KhachHangService {
 		return dao.findAll(pageable);
 	}
 	
+	public Page<KhachHang> findAllByDaXoaFalse(Pageable pageable) {
+		return dao.findAllByDaXoaFalse(pageable);
+	}
+	
 	public Boolean existsById(String taikhoan) {
 		return dao.existsById(taikhoan);
 	}

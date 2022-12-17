@@ -32,6 +32,9 @@ public class LoaiSanPham implements Serializable {
 	@NotEmpty(message = "Tên loại không được bỏ trống")
 	private String tenLoai;
 	
+	@Column(name = "daxoa")
+	private boolean daXoa;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "maloai")
 	List<SanPham> sanpham;

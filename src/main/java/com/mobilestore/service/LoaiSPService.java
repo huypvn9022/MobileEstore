@@ -38,6 +38,9 @@ public class LoaiSPService {
 	public Page<LoaiSanPham> findAll(Pageable pageable) {
 		return dao.findAll(pageable);
 	}
+	public Page<LoaiSanPham> findAllByDaXoaFalse(Pageable pageable) {
+		return dao.findAllByDaXoaFalse(pageable);
+	}
 	
 	public Boolean existsById(String maLoai) {
 		return dao.existsById(maLoai);
