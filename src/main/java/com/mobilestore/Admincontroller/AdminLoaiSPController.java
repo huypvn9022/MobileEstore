@@ -31,7 +31,7 @@ public class AdminLoaiSPController {
 			@ModelAttribute("loaisp") LoaiSanPham loaisp) {
 
 		Pageable pageAble = PageRequest.of(p.orElse(0), 5);
-		Page<LoaiSanPham> listLoaiSP = lspService.findAll(pageAble);
+		Page<LoaiSanPham> listLoaiSP = lspService.findAllByDaXoaFalse(pageAble);
 		
 		model.addAttribute("listLoaiSP", listLoaiSP);
 		return "admin/loaisp";
@@ -42,7 +42,7 @@ public class AdminLoaiSPController {
 	public String LoaiSP_create(Model model,@Valid @ModelAttribute("loaisp") LoaiSanPham loaisp,
 			BindingResult bindingResult , @RequestParam("p") Optional<Integer> p) {
 		Pageable pageAble = PageRequest.of(p.orElse(0), 5);
-		Page<LoaiSanPham> listLoaiSP = lspService.findAll(pageAble);
+		Page<LoaiSanPham> listLoaiSP = lspService.findAllByDaXoaFalse(pageAble);
 		
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("loaisp", loaisp);
@@ -61,7 +61,7 @@ public class AdminLoaiSPController {
 			BindingResult bindingResult, @RequestParam("page") Optional<Integer> page) {
 
 		Pageable pageAble = PageRequest.of(page.orElse(0), 5);
-		Page<LoaiSanPham> listLoaiSP = lspService.findAll(pageAble);
+		Page<LoaiSanPham> listLoaiSP = lspService.findAllByDaXoaFalse(pageAble);
 		
 		if (!lspService.existsById(loaisp.getMaLoai())) {
 			model.addAttribute("message", "Loại sản phẩm không tồn tại");
@@ -82,14 +82,16 @@ public class AdminLoaiSPController {
 	public String loaiSP_delete(Model model, @ModelAttribute("loaisp") LoaiSanPham loaisp,
 			@PathVariable("maloai") String maLoai, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<LoaiSanPham> listLoaiSP = lspService.findAll(pageable);
+		Page<LoaiSanPham> listLoaiSP = lspService.findAllByDaXoaFalse(pageable);
 		
 		if(maLoai.equalsIgnoreCase("null")) {
 			model.addAttribute("message", "Vui lòng chọn một loại sản phẩm để xóa");
 			model.addAttribute("listLoaiSP", listLoaiSP);
 			return "admin/loaisp";
 		}else {
-			lspService.delete(maLoai);
+			LoaiSanPham loaiSP = lspService.findById(maLoai);
+			loaiSP.setDaXoa(true);
+			lspService.update(loaiSP);
 			model.addAttribute("message", "Xóa thành công");	
 			return "redirect:/admin/loaiSP";
 		}
@@ -104,7 +106,7 @@ public class AdminLoaiSPController {
 	public String loaiSP_edit(Model model, @PathVariable("maloai") String maloai,
 			@RequestParam("p") Optional<Integer> p) {
 		Pageable pageAble = PageRequest.of(p.orElse(0), 5);
-		Page<LoaiSanPham> listLoaiSP = lspService.findAll(pageAble);
+		Page<LoaiSanPham> listLoaiSP = lspService.findAllByDaXoaFalse(pageAble);
 		
 		LoaiSanPham loaisp = lspService.findById(maloai);
 		

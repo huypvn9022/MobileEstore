@@ -61,25 +61,9 @@
 					</div>
 					<ul class="navbar-nav  justify-content-end">
 						<li class="nav-item d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0"> 
-								<i class="fa fa-user me-sm-1"></i> 
-								<a href="dangnhap.html">
-									<span class="d-sm-inline d-none">Đăng Nhập</span>
-								</a>
-							</a> 
-						</li>
-						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-								<div class="sidenav-toggler-inner">
-									<i class="sidenav-toggler-line"></i> 
-									<i class="sidenav-toggler-line"></i> 
-									<i class="sidenav-toggler-line"></i>
-								</div>
-						</a>
-						</li>
-						<li class="nav-item px-3 d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body p-0"> 
-								<i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+								<i class="fa fa-user me-sm-1"></i>
+								<span class="d-sm-inline d-none " >Welcome [[${#request.remoteUser}]]</span>
 							</a>
 						</li>
 					</ul>
@@ -98,7 +82,7 @@
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">
-									<div class="table-responsive p-0">
+									<div class="table-responsive p-0" style="height: 400px; overflow: scroll;">
 										<table class="table align-items-center mb-0">
 											<thead>
 												<tr>
@@ -128,7 +112,7 @@
 												</tr>
 											</tbody>
 										</table>
-										<div class="text-center mt-3">
+										<div class="text-center mt-3" th:unless="${deletePage == 1}">
 											<a th:href="@{|/admin/loaiSP?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
 											<a th:href="@{|/admin/loaiSP?p=${listLoaiSP.getNumber() > 0 ? listLoaiSP.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
 											<a th:href="@{|/admin/loaiSP?p=${listLoaiSP.getNumber() < listLoaiSP.getTotalPages() -1 ? listLoaiSP.getNumber() + 1 : listLoaiSP.getTotalPages() -1}|}"
@@ -162,7 +146,7 @@
 											<input th:field="*{tenLoai}" type="text" class="form-control" />
 										</div>
 										<p th:if="${#fields.hasErrors('tenLoai')}" th:errors="*{tenLoai}" class="text-danger"></p>
-										<div class="text-center">
+										<div class="text-center" >
 											<button formaction="/admin/loaiSP/create" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
 											<button th:formaction="@{|/admin/loaiSP/update|}" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
 											<button th:formaction="|/admin/loaiSP/delete/${loaisp.maLoai}|" class="btn bg-gradient-info my-4 mb-2">Xóa</button>

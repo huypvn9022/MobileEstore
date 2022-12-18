@@ -39,7 +39,7 @@ public class AdminKhachHangController {
 	public String khachhang_index(@RequestParam("p") Optional<Integer> p, Model model,
 			@ModelAttribute("khachHang") KhachHang khachHang) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<KhachHang> pages = khService.findAll(pageable);
+		Page<KhachHang> pages = khService.findAllByDaXoaFalse(pageable);
 		
 		model.addAttribute("pages", pages);
 		return "admin/khachhang";
@@ -54,7 +54,7 @@ public class AdminKhachHangController {
 	public String khachhang_addNew(Model model,@Valid @ModelAttribute("khachHang") KhachHang kh,
 			BindingResult bindingResult,@RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<KhachHang> pages = khService.findAll(pageable);
+		Page<KhachHang> pages = khService.findAllByDaXoaFalse(pageable);
 		VaiTro vaitro = vtService.findById("KH");
 		
 		if (bindingResult.hasErrors()) {
@@ -73,7 +73,7 @@ public class AdminKhachHangController {
 	public String khachhang_update(Model model, @Valid @ModelAttribute("khachHang") KhachHang kh,
 			 BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<KhachHang> pages = khService.findAll(pageable);
+		Page<KhachHang> pages = khService.findAllByDaXoaFalse(pageable);
 		VaiTro vaitro = vtService.findById("KH");
 
 		if(!khService.existsById(kh.getTaiKhoan())) {
@@ -118,14 +118,16 @@ public class AdminKhachHangController {
 	public String khachhang_delete(Model model, @ModelAttribute("khachHang") KhachHang kh,
 			@PathVariable("taiKhoan") String tk, @RequestParam("p") Optional<Integer> p) {
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<KhachHang> pages = khService.findAll(pageable);
+		Page<KhachHang> pages = khService.findAllByDaXoaFalse(pageable);
 		
-		if(tk.equalsIgnoreCase("null")) {
+		if(tk.equals("null")) {
 			model.addAttribute("message", "Vui lòng chọn một tài khoản để xóa");
 			model.addAttribute("pages", pages);
 			return "admin/khachhang";
-		}else {
-			khService.delete(tk);
+		}else {	
+			KhachHang khachHang = khService.findById(tk);
+			khachHang.setDaXoa(true);
+			khService.update(khachHang);
 			model.addAttribute("message", "Xóa thành công");	
 			return "redirect:/admin/khachhang";
 		}
@@ -137,7 +139,7 @@ public class AdminKhachHangController {
 		KhachHang kh = khService.findById(taiKhoan);
 		model.addAttribute("khachHang", kh);
 		Pageable pageable = PageRequest.of(p.orElse(0),5);
-		Page<KhachHang> pages = khService.findAll(pageable);
+		Page<KhachHang> pages = khService.findAllByDaXoaFalse(pageable);
 		
 		model.addAttribute("pages", pages);
 		return "admin/khachhang";

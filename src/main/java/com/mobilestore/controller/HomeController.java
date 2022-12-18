@@ -1,15 +1,10 @@
 package com.mobilestore.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.persistence.criteria.CriteriaBuilder.In;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -95,7 +90,9 @@ public class HomeController {
 		model.addAttribute("priceOld", priceOld);
 		
 		// hiện thị ảnh chính theo id
-		HinhAnh anh = hinhanhService.findById(id);
+		List<HinhAnh> anh = hinhanhService.findByMaSP(id);
+		Set<Integer> imgSet = new HashSet<Integer>();
+		anh = anh.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		
 		// Hiện thị ảnh chính giỏ hàng
 		List<HinhAnh> anhCart = hinhanhService.findAll();
@@ -119,7 +116,7 @@ public class HomeController {
 		model.addAttribute("cauHinh", cauHinh);
 		model.addAttribute("listImg", listImg);
 		model.addAttribute("anhCart", anhCart);
-		return "layout/ChiTietSanPham";
+		return "layout/chitietsanpham";
 	}
 	
 
@@ -140,20 +137,4 @@ public class HomeController {
 		return "layout/thanhtoan";
 	}
 
-	
-//	@RequestMapping("/product-details")
-//	public String productDetails(Model model) {
-//		return "layout/ChiTietSanPham";
-//	}
-//
-//	@RequestMapping("/shop-grid")
-//	public String shopGrid(Model model) {
-//		return "layout/shop-grid";
-//	}
-//	
-//	
-//	@RequestMapping("/admin")
-//	public String admin(Model model) {
-//		return "admin/index";
-//	}
 }

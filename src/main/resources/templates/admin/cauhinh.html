@@ -54,33 +54,18 @@
 						<form action="/admin/cauhinh/search" method="post">
 							<div class="input-group input-group-outline">	
 								<label class="form-label">Type here...</label> 
-								<input name="keyword" type="text" class="form-control" style="height: 40px; "/>
+								<input name="keyword" th:value="${kwords}" type="text" class="form-control" style="height: 40px; "/>
 									<button class="btn bg-gradient-primary  ms-2"> Tìm kiếm</button>
 							</div>
 						</form>
 					</div>
 					<ul class="navbar-nav  justify-content-end">
 						<li class="nav-item d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0"> 
-								<i class="fa fa-user me-sm-1"></i> 
-								<a href="dangnhap.html"><span class="d-sm-inline d-none">Đăng Nhập</span></a>
-							</a> 
+							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+								<i class="fa fa-user me-sm-1"></i>
+								<span class="d-sm-inline d-none " >Welcome [[${#request.remoteUser}]]</span>
+							</a>
 						</li>
-						<li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-							<a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-								<div class="sidenav-toggler-inner">
-									<i class="sidenav-toggler-line"></i> 
-									<i class="sidenav-toggler-line"></i> 
-									<i class="sidenav-toggler-line"></i>
-								</div>
-						</a>
-						</li>
-						<li class="nav-item px-3 d-flex align-items-center"><a
-							href="javascript:;" class="nav-link text-body p-0"> <i
-								class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-						</a></li>
-
-
 					</ul>
 				</div>
 			</div>
@@ -99,9 +84,9 @@
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">
-									<div class="table-responsive p-0">
+									<div class="table-responsive p-0" style="height: 300px; overflow: scroll;">
 										<table class="table align-items-center mb-0">
-											<thead>
+											<thead>	
 												<tr>
 													<th
 														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Mã Cấu Hình</th>										
@@ -155,14 +140,14 @@
 												</tr>
 											</tbody>
 										</table>
-										<div class="text-center mt-3">
-											<a th:href="@{|/admin/cauhinh?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
-											<a th:href="@{|/admin/cauhinh?p=${pages.getNumber() > 0 ? pages.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
-											<a th:href="@{|/admin/cauhinh?p=${pages.getNumber() < pages.getTotalPages() -1 ? pages.getNumber() + 1 : pages.getTotalPages() -1}|}"
-												class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
-											<a th:href="@{|/admin/cauhinh?p=${pages.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
-										</div>
 									</div>
+									<div class="text-center mt-3"  th:unless="${deletePage == 1}">
+										<a th:href="@{|?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
+										<a th:href="@{|?p=${pages.getNumber() > 0 ? pages.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
+										<a th:href="@{|?p=${pages.getNumber() < pages.getTotalPages() -1 ? pages.getNumber() + 1 : pages.getTotalPages() -1}|}"
+											class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
+										<a th:href="@{|?p=${pages.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+									</div>										
 								</div>
 							</div>
 						</div>

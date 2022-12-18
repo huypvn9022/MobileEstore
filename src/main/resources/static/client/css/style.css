@@ -2189,6 +2189,16 @@ transparent;
 	cursor: pointer;	
 }
 
+.container-body{
+	background-color: #efefef;
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
+
+.container-body .card-group{
+	background-color: white;
+}
+
 .container .slider-parent {
 	width: 100%;
 	height: auto;
@@ -2228,6 +2238,11 @@ transparent;
 .slider-parent .view-all-product .btn:hover{
 	color: white;
 	background-color: #7d9ad2;
+}
+
+.product .container .dropdown button:hover{
+	border-color: red !important;
+	background-color: #f5f5fa;
 }
 
 /*---------------

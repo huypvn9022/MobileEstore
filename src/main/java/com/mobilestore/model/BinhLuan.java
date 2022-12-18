@@ -30,6 +30,9 @@ public class BinhLuan implements Serializable {
 	@Column(name = "noidung")
 	private String noiDung;
 
+	@Column(name = "daxoa")
+	private boolean daXoa;
+	
 	@ManyToOne
 	@JoinColumn(name = "taikhoan")
 	KhachHang taikhoan;

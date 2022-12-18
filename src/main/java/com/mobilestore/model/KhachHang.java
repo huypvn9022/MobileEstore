@@ -58,6 +58,9 @@ public class KhachHang implements Serializable{
 	@NotEmpty(message = "Địa chỉ không được bỏ trống")
 	private String diaChi;
 
+	@Column(name = "daxoa")
+	private boolean daXoa;
+	
 	// binh luan
 	@JsonIgnore
 	@OneToMany(mappedBy = "taikhoan")

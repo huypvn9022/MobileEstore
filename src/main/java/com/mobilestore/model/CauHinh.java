@@ -54,6 +54,9 @@ public class CauHinh implements Serializable{
 	@Column(name = "rom")
 	private String rom;
 	
+	@Column(name = "daxoa")
+	private boolean daXoa;
+	
 	//san pham
 	@JsonIgnore
 	@OneToMany(mappedBy = "mach")

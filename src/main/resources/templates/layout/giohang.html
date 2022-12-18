@@ -1,16 +1,17 @@
+<meta charset="utf-8">
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
 	<main>
 	<!-- Cart Details Begin -->
 	<div ng-hide="cart.items.length == 0" class="container">
 			<div class="mb-2" style="margin-left : -15px">
-				<a href="/index" class="btn btn-link pl-0" >Trang chá»§</a> <i
+				<a href="/index" class="btn btn-link pl-0" >Trang chủ</a> <i
 					class="fa fa-angle-right" aria-hidden="true"></i> 
-					<a href="#" class="btn btn-link">Sáº£n pháº©m</a>
+					<a href="#" class="btn btn-link">Sản phẩm</a>
 			<i class="fa fa-angle-right" aria-hidden="true"></i> 
-					<a href="#" class="btn btn-link">Giá»� hÃ ng cá»§a báº¡n</a>
+					<a href="#" class="btn btn-link">Giỏ hàng của bạn</a>
 			</div>
 			<div class="text-uppercase mb-3 mt-3" style="margin-left:-15px; ">
-				<h4>thÃ´ng tin giá»� hÃ ng</h4>
+				<h4>Thông tin giao hàng</h4>
 			</div>
 			<div class="row mt-2">
 			<div class="col-12 pl-0">
@@ -18,11 +19,11 @@
 					<table class="table border-left border-right border-bottom">
 						<thead style="background-color: #f7f7f7">
 							<tr>
-								<th scope="col">Sáº£n pháº©m</th>
-								<th scope="col">HÃ¬nh áº£nh</th>
-								<th scope="col" class="text-center">Sá»‘ lÆ°á»£ng</th>
-								<th scope="col">Ä�Æ¡n giÃ¡</th>
-								<th scope="col">Tá»•ng tiá»�n</th>
+								<th scope="col">Sản phẩm</th>
+								<th scope="col">Hình ảnh</th>
+								<th scope="col" class="text-center">Số lượng</th>
+								<th scope="col">Đơn giá</th>
+								<th scope="col">Tổng tiền</th>
 								<th scope="col"></th>
 							</tr>
 						</thead>
@@ -42,8 +43,8 @@
 									<input ng-change="cart.saveToLocalStorage()" type="number" ng-model="item.soLuong" min="1" 
 									class="w-25 text-center p-0 border" />
 								</td>
-								<td>{{item.donGia | number : 0}} VNÄ�</td>
-								<td>{{item.soLuong * item.donGia | number : 0}} VNÄ�</td>
+								<td>{{item.donGia | number : 0}} VNĐ</td>
+								<td>{{item.soLuong * item.donGia | number : 0}} VNĐ</td>
 								<td><i ng-click="cart.remove(item.maSP)" class="fa fa-trash-o" aria-hidden="true" style="" ></i></td>
 							</tr>
 						</tbody>
@@ -53,30 +54,30 @@
 				<div class="w-50 float-right border p-5">
 					<div class="d-flex">
 						<span class="d-inline">
-							<h5>Táº¡m tÃ­nh :</h5>
+							<h5>Tạm tính :</h5>
 						</span>
 						<h5 class="ml-auto d-inline font-weight-normal">{{cart.price
-							| number : 0}} VNÄ�</h5>
+							| number : 0}} VNĐ</h5>
 					</div>
 					<hr />
 					<div class="d-flex">
 						<span class="d-inline">
-							<h5>Khuyáº¿n mÃ£i :</h5>
+							<h5>Khuyến mãi :</h5>
 						</span>
-						<h5 class="ml-auto d-inline font-weight-normal">0 VNÄ�</h5>
+						<h5 class="ml-auto d-inline font-weight-normal">0 VNĐ</h5>
 					</div>
 					<hr />
 					<div class="d-flex">
 						<span class="d-inline">
-							<h5>Tá»•ng tiá»�n :</h5>
+							<h5>Tổng tiền :</h5>
 						</span>
 						<h5 class="ml-auto d-inline text-danger font-weight-normal">{{cart.price
-							| number : 0}} VNÄ�</h5>
+							| number : 0}} VNĐ</h5>
 					</div>
 					<hr />
 					<div class="float-right">
-						<a th:href="@{/index}" class="btn btn-outline-success">Tiáº¿p tá»¥c mua hÃ ng</a> 
-						<a th:href="@{/user/checkout}" class="btn btn-outline-primary">Thanh toÃ¡n</a>
+						<a th:href="@{/index}" class="btn btn-outline-success">Quay lại trang chủ</a> 
+						<a th:href="@{/user/checkout}" class="btn btn-outline-primary">Thanh toán</a>
 					</div>
 				</div>
 			</div>
@@ -90,9 +91,9 @@
 		<div class="text-danger mb-3" style="font-size: 80px">
 			<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 		</div>
-		<span class="h4">KhÃ´ng cÃ²n sáº£n pháº©m nÃ o trong giá»� hÃ ng !</span>
+		<span class="h4">Không còn sản phẩm nào trong giỏ hàng !</span>
 		<div class="mt-3">
-			<a href="/index" class="btn btn-outline-primary w-25">Quay láº¡i trang chá»§</a>
+			<a href="/index" class="btn btn-outline-primary w-25">Quay lại trang chủ</a>
 		</div>
 	</div>
 	<!-- Cart Empty End -->

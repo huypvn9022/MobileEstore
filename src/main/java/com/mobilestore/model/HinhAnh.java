@@ -29,17 +29,8 @@ public class HinhAnh implements Serializable {
 	@Column(name = "hinhanh")
 	private String hinhAnh;
 	
-//	@Column(name = "hinhanh2")
-//	private String hinhAnh2;
-//	
-//	@Column(name = "hinhanh3")
-//	private String hinhAnh3;
-//	
-//	@Column(name = "hinhanh4")
-//	private String hinhAnh4;
-//	
-//	@Column(name = "hinhanh5")
-//	private String hinhAnh5;
+	@Column(name = "daxoa")
+	private boolean daXoa;
 
 	// san pham
 	@ManyToOne

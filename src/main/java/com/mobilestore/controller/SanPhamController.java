@@ -92,24 +92,6 @@ public class SanPhamController {
 
 	}
 
-//	@RequestMapping
-//	public String sp_Index( Model model) {
-//		List <SanPham> products = spService.findAll();
-//		List<HinhAnh> images = hinhanhService.findAll();
-//
-//
-//		model.addAttribute("hangsx", hangsxService.findAll());
-//
-//		
-//		Set<Integer> imgSet = new HashSet<Integer>();
-//		images = images.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
-//		
-//
-//		model.addAttribute("images", images);
-//		model.addAttribute("listsp", products);
-//		return "layout/shop-grid";
-//	}
-//	
 	@RequestMapping("/search")
 	public String sp_Search(Model model, @RequestParam("Keywords") Optional<String> kw,
 			@RequestParam("p") Optional<Integer> p) {
@@ -204,7 +186,11 @@ public class SanPhamController {
 
 			model.addAttribute("hangsx", hangsxService.findAll());
 			model.addAttribute("images", images);
+
 			model.addAttribute("listsp", products);
+
+model.addAttribute("listsp", products);
+
 			return "layout/shop-grid";
 		} else if (sr.equals("ASC")) {
 			Pageable pageable = PageRequest.of(p.orElse(0), 15, sort.ascending());

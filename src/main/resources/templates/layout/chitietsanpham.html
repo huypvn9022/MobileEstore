@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <meta charset="utf-8">
-=======
-<meta charset="utf-8"> 
->>>>>>> 00734aeb0e67bfd1cc45f15461448653dca09ada
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/main :: dynamic (~{::main})}">
 	<main>
 	<!-- Product Details Begin -->
@@ -31,19 +27,21 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6">
 					<div class="product__details__pic">
-						<th:block>
+						
 							<div class="productss border pt-3 pb-3" id="imgOrigin" >
-								<img class="product__details__pic__item--large mx-auto d-block"
-									width="446" height="446"
-									th:src="@{|/client/img/product/${anh.hinhAnh}|}" alt="error">
+								<th:block th:each="anh : ${anh}">
+									<img class="product__details__pic__item--large mx-auto d-block"
+										width="446" height="446"
+										th:src="@{|/client/img/product/${anh.hinhAnh}|}" alt="error">
+								</th:block>
 							</div>
 							<div class="product__details__pic__slider owl-carousel">
 								<th:block th:each="listAnh: ${listAnh}" th:if="${listAnh.masp.maSP == sanpham.maSP}">
 									<img th:src="@{|/client/img/product/${listAnh.hinhAnh}|}" alt="error"
-										class="border mt-2">
+										class="border mt-2" width="121" height="121">
 								</th:block>
 							</div>
-						</th:block>
+						
 					</div>
 				</div>
 				<div class="col-1"></div>
@@ -140,14 +138,9 @@
 						id="left"
 						style="background-color: rgb(228, 233, 237); font-size: 17px;">Mô
 						tả sản phẩm</a><br> 
-					<span> 
-						<p class="text-justify">
-							[[${sanpham.moTa}]]
-						</p>
+					<span style="font-size: 15px; line-height: 28px; text-align: justify"> 					
+							<p class="text-dark">[[${sanpham.moTa}]]</p>
 					</span>
-					<div class="text-center">
-						<button type="button" class="btn btn-link">Xem thêm</button>
-					</div>
 				</div>
 
 
@@ -251,9 +244,6 @@
 	<div class="container mb-4 mt-5">
 		<div class="d-flex">
 			<span class="title-phone">Sản phẩm cùng loại</span>
-			<div class="ml-auto d-flex align-items-end">
-				<a href="/product/loaisp/DT">Xem tất cả điện thoại <b>>></b></a>
-			</div>
 		</div>
 	</div>
 	<!-- Title Desgn End -->
