@@ -131,44 +131,113 @@ public class SanPhamController {
 	}
 
 	@RequestMapping("/{mahang}")
-	public String sp_Hang(@PathVariable("mahang") String mahang, Model model, @RequestParam("p") Optional<Integer> p) {
-		sessionService.set("mahang", mahang);
-
-		Pageable pageable = PageRequest.of(p.orElse(0), 15);
-
+	public String sp_Hang(Model model,
+			@PathVariable("mahang") String mahang, 
+			@RequestParam("sort") Optional<String> sort1,
+			@RequestParam("field") Optional<String> field,
+			@RequestParam("p") Optional<Integer> p) {
 		System.out.println(mahang);
+				
+		Sort sort = Sort.by("donGia");
+		String sr = sort1.orElse(sessionService.get("sort", ""));
+		System.out.print(sort1);
 
-		List<HinhAnh> images = hinhanhService.findAll();
-		Page<SanPham> products = spService.findAllByMaHang(mahang, pageable);
+		if (sr.equals("DESC")) {
+			Pageable pageable = PageRequest.of(p.orElse(0), 15, sort.descending());
 
-		Set<Integer> imgSet = new HashSet<Integer>();
-		images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+			Page<SanPham> products = spService.findAllByMaHang(mahang, pageable);
+			List<HinhAnh> images = hinhanhService.findAll();
 
-		model.addAttribute("listsp", products);
-		model.addAttribute("images", images);
-		return "layout/shop-grid";
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 
+			model.addAttribute("hangsx", hangsxService.findAll());
+			model.addAttribute("images", images);
+			model.addAttribute("listsp", products);
+			return "layout/shop-grid";
+		} else if (sr.equals("ASC")) {
+			Pageable pageable = PageRequest.of(p.orElse(0), 15, sort.ascending());
+			Page<SanPham> products = spService.findAllByMaHang(mahang, pageable);
+			List<HinhAnh> images = hinhanhService.findAll();
+
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+
+			model.addAttribute("hangsx", hangsxService.findAll());
+			model.addAttribute("images", images);
+			model.addAttribute("listsp", products);
+			return "layout/shop-grid";
+		} else {
+			Pageable pageable = PageRequest.of(p.orElse(0), 15);
+			Page<SanPham> products = spService.findAllByMaHang(mahang, pageable);
+			List<HinhAnh> images = hinhanhService.findAll();
+
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+
+			model.addAttribute("hangsx", hangsxService.findAll());
+			model.addAttribute("images", images);
+			model.addAttribute("listsp", products);
+			return "layout/shop-grid";
+		}	
 	}
 
 	@RequestMapping("/dongia/{min}den{max}")
 	public String sp_DonGia(Model model,
+			@RequestParam("sort") Optional<String> sort1,
+			@RequestParam("field") Optional<String> field, 
+			@RequestParam("p") Optional<Integer> p, 
+			@PathVariable("min") Double min, 
+			@PathVariable("max") Double max) {
+		Sort sort = Sort.by("donGia");
+		String sr = sort1.orElse(sessionService.get("sort", ""));
+		System.out.print(sort1);
 
-			@RequestParam("p") Optional<Integer> p, @PathVariable("min") Double min, @PathVariable("max") Double max) {
-		Pageable pageable = PageRequest.of(p.orElse(0), 15);
-		Page<SanPham> products = spService.findByDongia(pageable, min, max);
-		List<HinhAnh> images = hinhanhService.findAll();
+		if (sr.equals("DESC")) {
+			Pageable pageable = PageRequest.of(p.orElse(0), 15, sort.descending());
 
-		Set<Integer> imgSet = new HashSet<Integer>();
-		images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+			Page<SanPham> products = spService.findByDongia(pageable, min, max);
+			List<HinhAnh> images = hinhanhService.findAll();
 
-		model.addAttribute("listsp", products);
-		model.addAttribute("images", images);
-		return "layout/shop-grid";
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+
+			model.addAttribute("hangsx", hangsxService.findAll());
+			model.addAttribute("images", images);
+			model.addAttribute("listsp", products);
+			return "layout/shop-grid";
+		} else if (sr.equals("ASC")) {
+			Pageable pageable = PageRequest.of(p.orElse(0), 15, sort.ascending());
+			Page<SanPham> products = spService.findByDongia(pageable, min, max);
+			List<HinhAnh> images = hinhanhService.findAll();
+
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+
+			model.addAttribute("hangsx", hangsxService.findAll());
+			model.addAttribute("images", images);
+			model.addAttribute("listsp", products);
+			return "layout/shop-grid";
+		} else {
+			Pageable pageable = PageRequest.of(p.orElse(0), 15);
+			Page<SanPham> products = spService.findByDongia(pageable, min, max);
+			List<HinhAnh> images = hinhanhService.findAll();
+
+			Set<Integer> imgSet = new HashSet<Integer>();
+			images = images.stream().filter(img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+
+			model.addAttribute("hangsx", hangsxService.findAll());
+			model.addAttribute("images", images);
+			model.addAttribute("listsp", products);
+			return "layout/shop-grid";
+		}	
 	}
 
 	@RequestMapping("/ram/{ram}")
-	public String sp_Ram(Model model, @RequestParam("sort") Optional<String> sort1,
-			@RequestParam("field") Optional<String> field, @RequestParam("p") Optional<Integer> p,
+	public String sp_Ram(Model model, 
+			@RequestParam("sort") Optional<String> sort1,
+			@RequestParam("field") Optional<String> field, 
+			@RequestParam("p") Optional<Integer> p,
 			@PathVariable("ram") String ram) {
 
 		Sort sort = Sort.by("donGia");
