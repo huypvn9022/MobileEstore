@@ -154,7 +154,7 @@ public class TaiKhoanController {
 	public String quenMK(@RequestParam String username, @RequestParam String email, Model model) {
 
 		if (username.isBlank() || email.isBlank()) {
-			model.addAttribute("message", "Vui lồng không để trống dữ liệu!");
+			model.addAttribute("message", "Vui lòng không để trống dữ liệu!");
 			return "form/quenmatkhau";
 		} else {
 			if (!khService.existsById(username)) {

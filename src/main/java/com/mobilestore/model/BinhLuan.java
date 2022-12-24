@@ -1,7 +1,9 @@
 package com.mobilestore.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,9 +36,15 @@ public class BinhLuan implements Serializable {
 	
 	@Column(name = "noidung")
 	private String noiDung;
-
-	@Column(name = "daxoa")
-	private boolean daXoa;
+	
+	@Column(name = "ngaybl")
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd-M-yyyy hh:mm:ss")
+	private Date ngayBL;
+	
+	@ManyToOne
+	@JoinColumn(name = "masp")
+	SanPham masp;
 	
 	@ManyToOne
 	@JoinColumn(name = "taikhoan")

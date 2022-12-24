@@ -32,10 +32,20 @@ $(document).ready(function() {
 	// action
 	$("#addComment").click(function() {
 		let addObj = {
-			"name": $("#name").val(),
-			"date": today,
-			"body": $("#body").val()
+			"taikhoan": $("#taikhoan").val(),
+			"masp": $('#masp').val(),
+			"noidung": $("#noidung").val()
 		}
+		alert(addObj.noidung)
+		
+		
+		
+		
+		
+		
+		
+		
+		/** 
 		content.push(addObj)
 		localStorage.comentData = JSON.stringify(content)
 		render(addObj);
@@ -43,6 +53,7 @@ $(document).ready(function() {
 		$("#name").val('')
 		$("#date").val('')
 		$("#body").val('')
+		*/
 	})
 
 	//delete

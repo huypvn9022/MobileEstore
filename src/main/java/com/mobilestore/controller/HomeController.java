@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mobilestore.model.BinhLuan;
 import com.mobilestore.model.CauHinh;
 import com.mobilestore.model.HinhAnh;
 import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.SanPham;
 import com.mobilestore.model.Top5SP;
+import com.mobilestore.service.BinhLuanService;
 import com.mobilestore.service.CTDHService;
 import com.mobilestore.service.CauHinhService;
 import com.mobilestore.service.CookieService;
@@ -60,6 +62,9 @@ public class HomeController {
 	
 	@Autowired
 	CookieService cookieService;
+	
+	@Autowired
+	BinhLuanService binhluanService;
 	
 	@RequestMapping("/index")
 	public String list(Model model, @RequestParam("p") Optional<Integer> p) {
@@ -108,6 +113,20 @@ public class HomeController {
 		List<HinhAnh> listImg = hinhanhService.findAll();
 		Set<Integer> setImg = new HashSet<Integer>();
 		listImg = listImg.stream().filter(img -> setImg.add(img.getMasp().getMaSP())).collect(Collectors.toList());
+		
+		// tài khoản bình luận
+		String taikhoan = cookieService.getValue("taiKhoanKH", null);
+		if(taikhoan == null) {
+			KhachHang khachhang = new KhachHang();
+			model.addAttribute("khachhang", khachhang);
+		} else {
+			KhachHang khachhang = khservice.findById(taikhoan);
+			model.addAttribute("khachhang", khachhang);
+		}
+		
+		// danh sách bình luận
+		List<BinhLuan> comments = binhluanService.findAllComments(id);
+		model.addAttribute("comments" ,comments);
 		
 		model.addAttribute("hangsx", hangSXService.findAll());
 		model.addAttribute("anh", anh);

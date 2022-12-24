@@ -84,10 +84,9 @@
 									aria-hidden="true"></i>Tặng đến 3.000.000đ khi thu cũ đổi mới
 									(Chi tiết)<br> <i
 									class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>Tặng 500.000đ khi mua Apple Watch<br>
+									aria-hidden="true"></i>Tặng 500.000đ khi mua thêm phụ kiện<br>
 									<i class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>Mua tai nghe Airpods 3 giá chỉ còn
-									4.100.000<br></td>
+									aria-hidden="true"></i>Mua tai nghe mới nhất giá hấp dẫn<br></td>
 						</table>
 						<div class="border border-info p-3">
 							<div class="row">
@@ -109,7 +108,7 @@
 									<i class="fa fa-shield border-success" aria-hidden="true"></i>
 								</div>
 								<div class="col-11">Bảo hành: 24 tháng chính hãng (12
-									tháng tại Apple + 12 tháng tại MobileEstore)</div>
+									tháng tại các trung tâm + 12 tháng tại MobileEstore)</div>
 							</div>
 						</div>
 						
@@ -183,9 +182,66 @@
 							</th:block>
 						</tbody>
 					</table>
-					<button class="btn btn-outline-primary w-100">Xem cấu hình
-						chi tiết</button>
+					<button class="btn btn-outline-primary w-100" data-toggle="modal" data-target="#myModal22">
+						Xem cấu hình chi tiết
+					</button>
 				</div>
+
+				<!-- xem cấu hình chi tiết -->
+				<div class="modal" id="myModal22">
+					<div class="modal-dialog">
+						<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header w-100">
+								<h4 class="modal-title text-center">
+									Thông số chi tiết [[${sanpham.tenSP}]]
+								</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+								<table class="table table-striped">
+									<tbody>
+										<th:block th:each="cauHinh : ${cauHinh}">
+											<tr>
+												<th scope="1">Độ phân giải</th>
+												<td>[[${cauHinh.doPhanGiai}]]</td>
+											</tr>
+											<tr>
+												<th scope="1">Độ rộng</th>
+												<td>[[${cauHinh.doRong}]]</td>
+											</tr>
+											<tr>
+												<th scope="1">Hệ điều hành</th>
+												<td>[[${cauHinh.heDH}]]</td>
+											</tr>
+											<tr>
+												<th scope="1">Chip</th>
+												<td>[[${cauHinh.chip}]]</td>
+											</tr>
+											<tr>
+												<th scope="1">Pin</th>
+												<td>[[${cauHinh.pin}]]</td>
+											</tr>
+											<tr>
+												<th scope="1">RAM</th>
+												<td>[[${cauHinh.ram}]]</td>
+											</tr>
+											<tr>
+												<th scope="1">ROM</th>
+												<td>[[${cauHinh.rom}]]</td>
+											</tr>
+										</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
 	</div>
@@ -205,37 +261,96 @@
 		</div>
 		<hr />
 		<!-- form -->
-		<div class="d-flex justify-content-center mt-5 mb-1">
-			<form action="#" class="w-75" id="panelToggle">
-				<div class="row">
-					<div class="col-1">
+		
+		<th:block th:if="${#request.remoteUser}">
+			<div class="mt-5">
+				<h4 class="text-danger text-center">[[${message}]]</h4>
+			</div>
+			<div class="d-flex justify-content-center mt-3 mb-1">
+				<form action="/binhluan" method="post" class="w-75" id="panelToggle" th:object="${khachhang}">
+					<input th:value="${khachhang.taiKhoan}" name="taiKhoan" hidden="true"/>
+					<input th:value="${sanpham.maSP}" name="maSP" hidden="true">
+					<div class="row">
+						<div class="col-1">
+							<i class="fa fa-user-circle" aria-hidden="true"></i>
+						</div>
+						<div class="col-9">
+							<input th:field="*{hoTen}" type="text" class="form-control" placeholder="Tên hiện thị" readonly="readonly">
+						</div>
+						<div class="col-2">
+							<button  type="submit"  class="btn btn-primary p-2">Bình luận</button>
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<input type="date" class="form-control"
+							placeholder="Enter password" id="date" hidden="true">
+					</div>
+					<div class="form-group">
+						<textarea rows="5" cols="5" class="form-control"
+							placeholder="Nội dung bình luận ..." name="noiDung"></textarea>
+					</div>
+				</form>
+			</div>
+		</th:block>
+		
+		<th:block th:unless="${#request.remoteUser}">
+			<div class="d-flex justify-content-center mt-5 mb-1">
+				<form action="#" class="w-75" id="panelToggle" >
+					<div class="row">
+						<div class="col-1">
+							<i class="fa fa-user-circle" aria-hidden="true"></i>
+						</div>
+						<div class="col-9">
+							<input type="text" class="form-control" placeholder="Tên hiện thị"
+								readonly="readonly">
+						</div>
+						<div class="col-2">
+							<a href="/security/form/login" type="button" class="btn btn-primary p-2">Đăng nhập</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="date" class="form-control"
+							placeholder="Enter password" id="date" hidden="true">
+					</div>
+					<div class="form-group">
+						<textarea rows="5" cols="5" class="form-control"
+							placeholder="Nội dung bình luận ..."></textarea>
+					</div>
+				</form>
+			</div>
+		</th:block>
+
+
+		<div class="d-flex align-items-center flex-column mt-2 mb-5">
+			<div class="w-75 row border pt-2 pb-2" th:each="comment: ${comments}">
+				<div class="leftPaneImg col-1">
 						<i class="fa fa-user-circle" aria-hidden="true"></i>
+				</div>
+				<div class="col-11">
+					<div class="row p-2">
+						<span>
+							<span class="font-weight-bold">[[${comment.taikhoan.hoTen}]]</span>
+							<span class="ml-4 mr-4">|</span>
+							<span>[[${comment.ngayBL}]]</span>
+						</span>
 					</div>
-					<div class="col-8">
-						<input type="text" class="form-control" placeholder="Tên hiện thị"
-							id="name">
-					</div>
-					<div class="col-3">
-						<button type="button" id="addComment" class="btn btn-primary">Post</button>
-						<button type="button" id="addComment" class="btn btn-danger">Cancel</button>
+					<div class="row p-2 text-justify pr-4">
+						<span>[[${comment.noiDung}]]</span>
 					</div>
 				</div>
-				<div class="form-group">
-					<input type="date" class="form-control"
-						placeholder="Enter password" id="date" hidden="true">
-				</div>
-				<div class="form-group">
-					<textarea rows="5" cols="5" class="form-control"
-						placeholder="Nội dung bình luận ..." id="body"></textarea>
-				</div>
-			</form>
+			</div>
 		</div>
-		<!-- comment -->
+
+
+		<!-- comment
 		<div class="d-flex justify-content-center mb-5">
 			<div class="commentBox w-75">
 				<div class="comment-list"></div>
 			</div>
 		</div>
+		 -->
+		
 	</div>
 	<!-- comment client end -->
 

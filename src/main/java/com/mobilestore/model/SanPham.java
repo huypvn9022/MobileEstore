@@ -84,5 +84,16 @@ public class SanPham implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "masp")
 	List<ChiTietDonHang> chiTietDonHang;
+
+	// binh luân
+	@JsonIgnore
+	@OneToMany(mappedBy = "masp")
+	List<BinhLuan> binhluan;
+	
+	
+	
+	
+	
+	
 	
 }

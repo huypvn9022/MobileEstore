@@ -19,23 +19,15 @@ body {
 	display: none;
 }
 
-.commentBox .leftPaneImg {
-	width: 7%;
-	height: 55px;
-	border: 1px solid black;
-	float: left;
-	border-radius: 50%;
-	border: none;
-	background-color: #eee;
-}
 
-.commentBox .leftPaneImg i {
+.leftPaneImg i {
 	font-size: 35px;
 	display: flex;
 	align-items: center;
 	height: 100%;
 	justify-content: center;
 	color: #808080;
+	border-radius: 50%;
 }
 
 .commentBox .rightPanel {
