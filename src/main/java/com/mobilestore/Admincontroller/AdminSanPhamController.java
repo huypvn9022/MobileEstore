@@ -163,20 +163,4 @@ public class AdminSanPhamController {
 		return "redirect:/admin/sanpham";
 	}
 	
-//	@RequestMapping("/sanpham/search")
-//	public String sanPham_search(Model model, @RequestParam("keyword") Optional<String> kw,
-//			 @ModelAttribute("sanpham") SanPham sp) {
-//		String kwords = kw.orElse(sessionService.get("keyword",""));
-//		sessionService.get("keyword",kwords);
-//		List<SanPham> listSP = spService.findAllByKeyword("%"+kwords+"%");
-//		
-//		if(kwords.equals("")) {
-//			return "redirect:/admin/sanpham";
-//		}else {
-//			model.addAttribute("listsp", listSP);	
-//			model.addAttribute("deletePage", 1);	
-//			return "admin/sanpham";
-//		}
-//	}
-
 }

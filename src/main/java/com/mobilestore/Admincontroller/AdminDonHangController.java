@@ -83,7 +83,7 @@ public class AdminDonHangController {
 	public String orderReset() {
 		return"redirect:/admin/order/"+session.get("trangthaidh").toString();
 	}
-//
+
 	@RequestMapping("/order/update/{trangthai}")
 	public String orderUpdate(Model model,@Valid @ModelAttribute("donhang") DonHang donhang, BindingResult bind,
 			@RequestParam("p") Optional<Integer> page,@RequestParam("tongtien") Double tongtien,@PathVariable("trangthai") String trangThai) {
@@ -108,7 +108,7 @@ public class AdminDonHangController {
 			return"redirect:/admin/order/edit/"+session.get("trangthaidh").toString()+"/"+ donhang.getMaDon();
 		}
 	}
-//
+
 	@RequestMapping("/order/delete/{maDon}")
 	public String orderDelete(Model model, @ModelAttribute("donhang") DonHang donhang,@RequestParam("tongtien") Double tongtien,
 			@RequestParam("p") Optional<Integer> page, @PathVariable("maDon") Integer maDon) {

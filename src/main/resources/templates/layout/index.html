@@ -98,8 +98,8 @@
 										<!--Card Title-->
 										<h5 class="title-product text-truncate" th:text="${sp.group.tenSP}"></h5>
 										<div class="price">
-											<span class="price-new" th:text="${#numbers.formatDecimal(sp.group.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
-											<span class="price-old">23.950.000đ</span>
+											<span class="price-new" th:text="${#numbers.formatDecimal(sp.group.donGia - (((sp.group.donGia)/100)*10), 0, 'COMMA', 0, 'POINT')}"></span><span class="text-danger">đ</span>
+											<span class="price-old" th:text="${#numbers.formatDecimal(sp.group.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
 										</div>
 									</div>
 								</div>
@@ -109,6 +109,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 		<!-- Title Desgn Start -->
 		<div class="container mb-3 mt-4">
@@ -140,8 +141,8 @@
 								<h5 class="title text-truncate" th:text="${listdt.tenSP}"></h5>
 								<div class="price">
 									<span class="price-new"
-										th:text="${#numbers.formatDecimal(listdt.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
-									<span class="price-old">23.950.000đ</span>
+										th:text="${#numbers.formatDecimal(listdt.donGia - (((listdt.donGia)/100)*10), 0, 'COMMA', 0, 'POINT')}"></span><span style="color: red">đ</span>
+									<span class="price-old" th:text="${#numbers.formatDecimal(listdt.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
 								</div>
 							</div>
 						</div>
@@ -170,39 +171,48 @@
 		</div>
 		<!-- Title Desgn End -->
 
-		<!-- View Product Start -->
-		<div class="container container-body">
-			<div class="card-group">
-				<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
-				
-					<div class="col" th:each="listpk: ${listpk}">
-						<div class="border product-img">
-							<!--Card image-->
-							<th:block th:each="img: ${images}">
-								<a th:href="@{|/product/detail/${listpk.maSP}|}">
-									<div class="view product-frame view-cascade overlay text-center" th:if="${img.masp.maSP == listpk.maSP}">
-										<img class="mt-4 img-org" width="210" height="210"
-											th:src="@{|/client/img/product/${img.hinhAnh}|}" alt="error">
+		<!-- slider start -->
+		<div class="container mt-4 p-0" style="background-color: #efefef">
+			<div class="slider-parent2a pb-2 pt-3 rounded">
+				<div class="slider-child2">
+					<div class="slider-accessory">
+						<div class="row no-gutters">
+							<div class="categories__slider owl-carousel">
+								<div class="card-groups col-lg-3 p-0"
+									th:each="listpk: ${listpk}">
+									<div class="border card-cascade card-ecommerce wider">
+										<!--Card image-->
+										<th:block th:each="img: ${images}">
+											<a th:href="@{|/product/detail/${listpk.maSP}|}">
+												<div class="view product-frame view-cascade overlay text-center">
+													<img class="mt-4 img-org" width="210" height="240"
+														th:if="${img.masp.maSP == listpk.maSP}"
+														th:src="@{|/client/img/product/${img.hinhAnh}|}"
+														alt="error">
+												</div>
+											</a>
+										</th:block>
+										<!--Card Body-->
+										<div class="card-body">
+											<h5 class="title-product text-truncate"
+												th:text="${listpk.tenSP}"></h5>
+											<div class="price">
+												<span class="price-new"
+													th:text="${#numbers.formatDecimal(listpk.donGia - (((listpk.donGia)/100)*10), 0, 'COMMA', 0, 'POINT')}"></span></span><span
+													style="color: red">đ</span> <span class="price-old"
+													th:text="${#numbers.formatDecimal(listpk.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
+											</div>
+										</div>
 									</div>
-								</a>
-							</th:block>
-							<!--Card Body-->
-							<div class="card-body card-body-cascade text-left">
-								<!--Card Title-->
-								<h5 class="title text-truncate" th:text="${listpk.tenSP}"></h5>
-								<div class="price">
-									<span class="price-new"
-										th:text="${#numbers.formatDecimal(listpk.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
-									<span class="price-old">23.950.000đ</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					
 				</div>
 			</div>
-			
 		</div>
-		<!-- View Product End -->
+		<!-- slider end -->
+
+
 	</main>
 </div>

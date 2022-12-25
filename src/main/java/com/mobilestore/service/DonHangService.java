@@ -88,10 +88,6 @@ public class DonHangService {
 		ctdhdao.saveAll(chitietdh);
 		return donhang;
 	}
-
-//	public List<DonHang> findAllByKeyword(String keyword) {
-//		return dao.findAllByKeyword(keyword);
-//	}
 	
 	public List<DonHang> findByUsername(String makh) {
 		return dao.findByUsername(makh);

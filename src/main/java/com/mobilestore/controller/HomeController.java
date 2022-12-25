@@ -73,7 +73,7 @@ public class HomeController {
 		Pageable pageableListpk = PageRequest.of(p.orElse(0), 10);
 		List<Top5SP> top5sp = chitietdonhangService.getTop5(pageableTop5SP);
 		Page<SanPham> listdt = spService.findAllByMaLoai(pageableListdt);
-		Page<SanPham> listpk = spService.findAllByMaLoai1(pageableListpk);
+		List<SanPham> listpk = spService.findAllByMaLoai1();
 		List<HinhAnh> images = hinhanhService.findAll();
 		
 		Set<Integer> imgSet = new HashSet<Integer>();

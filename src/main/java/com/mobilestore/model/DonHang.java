@@ -42,11 +42,15 @@ public class DonHang  implements Serializable{
 	@Column(name = "tongtien")
 	private double tongTien;
 	
+	@Column(name = "ghichu")
+	private String ghiChu;
+	
 	@Column(name = "trangthai")
 	private String trangThai;
 	
 	@Column(name = "daxoa")
 	private boolean daXoa;
+	
 	// khach hang
 	@ManyToOne
 	@JoinColumn(name = "Makh")

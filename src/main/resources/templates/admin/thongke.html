@@ -36,7 +36,7 @@
 					<ol
 						class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
 						<li class="breadcrumb-item text-sm"><a
-							class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+							class="opacity-5 text-dark" href="javascript:;">Admin</a></li>
 						<li class="breadcrumb-item text-sm text-dark active"
 							aria-current="page">Thống Kê</li>
 					</ol>
@@ -48,7 +48,7 @@
 						<li class="nav-item d-flex align-items-center">
 							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
 								<i class="fa fa-user me-sm-1"></i>
-								<span class="d-sm-inline d-none " >Welcome [[${#request.remoteUser}]]</span>
+								<span class="d-sm-inline d-none " >[[${#request.remoteUser}]]</span>
 							</a>
 						</li>
 					</ul>
@@ -68,7 +68,7 @@
 						<button class="nav-link" id="nav-nam-tab" data-bs-toggle="tab" data-bs-target="#nav-nam" type="button" role="tab"
 						 aria-selected="false">Thống Kê Doanh Thu Năm</button>
 						<button class="nav-link" id="nav-top5-tab" data-bs-toggle="tab" data-bs-target="#nav-top5" type="button" role="tab"
-						 aria-selected="false">Top 5 Sản Phẩm</button>
+						 aria-selected="false">Top Sản Phẩm</button>
 					</div>
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
@@ -271,11 +271,11 @@
 											class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 											<div
 												class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
-												<h6 class="text-white text-capitalize ps-3">Top 5 Sản Phẩm Bán Chạy Nhất</h6>
+												<h6 class="text-white text-capitalize ps-3">Top Sản Phẩm Bán Chạy Nhất</h6>
 											</div>
 										</div>
 										<div class="card-body px-0 pb-2 ">
-											<div class="table-responsive p-0 ">
+											<div class="table-responsive p-0 " style="height: 400px; overflow: scroll;">
 												<table class="table align-items-center mb-0">
 													<thead>
 														<tr>
@@ -298,6 +298,7 @@
 														</tr>
 													</tbody>
 												</table>
+									
 											</div>
 										</div>
 									</div>
@@ -308,26 +309,6 @@
 				</div>
 			</div>
 		</div>
-
-
-		<footer class="footer py-4  ">
-			<div class="container-fluid">
-				<div class="row align-items-center justify-content-lg-between">
-					<div class="col-lg-6 mb-lg-0 mb-4">
-						<div
-							class="copyright text-center text-sm text-muted text-lg-start">
-							@
-							<script>
-								document.write(new Date().getFullYear())
-							</script>
-							, made with <i class="fa fa-heart"></i> by <a
-								href="https://www.creative-tim.com" class="font-weight-bold"
-								target="_blank">Ken</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
 	</main>
 
 	<div class="fixed-plugin">

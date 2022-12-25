@@ -192,8 +192,6 @@
 			<div class="card-group">
 				<div
 					class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
-
-
 					<div class="col" th:each="listsp: ${listsp}">
 						<div class="border product-img">
 							<!--Card image-->
@@ -211,8 +209,8 @@
 								<h5 class="title text-truncate" th:text="${listsp.tenSP}"></h5>
 								<div class="price">
 									<span class="price-new"
-										th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
-									<span class="price-old">23.950.000đ</span>
+										th:text="${#numbers.formatDecimal(listsp.donGia - (((listsp.donGia)/100)*10), 0, 'COMMA', 0, 'POINT')}"></span></span><span style="color: red">đ</span>
+									<span class="price-old" th:text="${#numbers.formatDecimal(listsp.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
 								</div>
 							</div>
 						</div>

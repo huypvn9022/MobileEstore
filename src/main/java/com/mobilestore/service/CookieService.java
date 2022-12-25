@@ -15,10 +15,11 @@ public class CookieService {
 	HttpServletRequest request;
 	@Autowired
 	HttpServletResponse response;
-	/*  Đọc cookie từ request
-		@param name tên cookie cần đọc
-		@return đối tượng cookie đọc được hoặc null nếu
-		 không tồn tại
+	
+	/*  
+	 Đọc cookie từ request
+	 @param name tên cookie cần đọc
+	 @return đối tượng cookie đọc được hoặc null nếu không tồn tại
 	*/
 	public Cookie get(String name) {
 		Cookie[] cookies = request.getCookies();
@@ -31,7 +32,8 @@ public class CookieService {
 		}
 		return null;
 	}
-/*
+	
+	/*
 	 Đọc giá trị của cookie từ request
 	 @param name tên cookie cần đọc
 	 @return chuỗi giá trị đọc được
@@ -43,7 +45,8 @@ public class CookieService {
 		}
 		return defaultValue;
 	}
-/*
+	
+	/*
 	 * Tạo và gửi cookie về client
 	 * @param name tên cookie
 	 * @param value giá trị cookie
@@ -65,6 +68,7 @@ public class CookieService {
 		response.addCookie(cookie);
 		return cookie;
 	}
+	
 	/*
 	 * Xóa cookie khỏi client
 	 * @param name tên cookie cần xóa

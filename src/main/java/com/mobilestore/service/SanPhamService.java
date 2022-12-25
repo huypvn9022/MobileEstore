@@ -72,7 +72,7 @@ public class SanPhamService {
 		return dao.findAllByMaLoai(pageable);
 	}
 	
-	public Page<SanPham> findAllByMaLoai1(Pageable pageable){
-		return dao.findAllByMaLoai1(pageable);
+	public List<SanPham> findAllByMaLoai1(){
+		return dao.findAllByMaLoai1();
 	}
 }

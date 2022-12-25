@@ -54,10 +54,6 @@ public class CTDHService {
 		return dao.existsById(maDon);
 	}
 	
-//	public List<DonHang> findAllByKeyword(String keyword) {
-//		return dao.findAllByKeyword(keyword);
-//	}
-	
 	public List<Top5SP> getTop5(Pageable pageable) {
 		return dao.getTop5(pageable).getContent();
 	}

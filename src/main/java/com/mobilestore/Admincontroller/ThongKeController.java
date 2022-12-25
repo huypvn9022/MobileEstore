@@ -1,13 +1,16 @@
 package com.mobilestore.Admincontroller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobilestore.model.DoanhThuNam;
 import com.mobilestore.model.DoanhThuNgay;
@@ -23,13 +26,12 @@ public class ThongKeController {
 	ThongKeService tkService;
 
 	@RequestMapping("/thongke")
-	public String thongke(Model model ) {
-		Pageable pageable =  PageRequest.of(0, 5);
-		List<Top5SP> top5sp = tkService.getTop5(pageable).getContent();
-		List<DoanhThuThang> doanhThuThang = tkService.getDoanhThuThang(pageable).getContent();
-		List<DoanhThuNam> doanhThuNam = tkService.getDoanhThuNam(pageable).getContent();
+	public String thongke(Model model) {
+		List<Top5SP> top5sp = tkService.getTopSP();
+		List<DoanhThuThang> doanhThuThang = tkService.getDoanhThuThang();
+		List<DoanhThuNam> doanhThuNam = tkService.getDoanhThuNam();
 		List<DoanhThuNgay> doanhThuNgay = tkService.getDoanhThuNgay();
-
+		
 		model.addAttribute("top5sp", top5sp);
 		model.addAttribute("doanhThuThang", doanhThuThang);
 		model.addAttribute("doanhThuNam", doanhThuNam);

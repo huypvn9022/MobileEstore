@@ -62,33 +62,34 @@
 								href="#" data-index="0" class="box__item item">256GB</a>
 						</div>
 						<div>
-							<a href="#" data-index="0" class="box__item item" id="color1">Tím</a>
-							<a href="#" data-index="0" class="box__item item" id="color2"
-								style="color: grey;">Xám</a> <a href="#" data-index="0"
-								class="box__item item" id="color3">Vàng</a>
+							<a href="#" data-index="0" class="box__item item">Tím</a>
+							<a href="#" data-index="0" class="box__item item">Xám</a> 
+							<a href="#" data-index="0" class="box__item item">Vàng</a>
 						</div>
-						<table class="table border border-info"
-							style="margin-top: 10px; margin-bottom: 20px;">
+						<table class="table border"
+							style="margin-top: 10px; margin-bottom: 20px; border-color: #efefef">
 							<tr >
-								<th class="thead-light"
-									style="background-color: rgb(195, 215, 232); text-align: center; border-top: 1px solid #17A2B8; border-bottom: 1px solid black">Khuyến mãi</th>
+								<th style="background-color: #efefef; text-align: center; border-top: 1px solid#efefef; border-bottom: 1px solid #efefef">
+									<span class="h6" style="font-weight: normal;">KHUYẾN MÃI</span>	
+								</th>
 							</tr>
 							<tr>
-								<td><i class="fa fa-mars mr-2 mb-3 font-weight-bold"
-									aria-hidden="true"></i>SẴN HÀNG, chi tiết số lượng vui lòng gọi
-									0123.456.789<br> <i
-									class="fa fa-mars mr-2 mb-3 font-weight-bold"
+								<td style="font-size: 16px">
+									<i class="fa fa-mars mr-4 mb-2 font-weight-bold"
+									aria-hidden="true"></i>SẴN HÀNG, chi tiết số lượng vui lòng gọi qua hotline<br> <i
+									class="fa fa-mars mr-4 mb-2 font-weight-bold"
 									aria-hidden="true"></i>Giảm 5% tối đa 1.000.000đ khi thanh toán
 									qua Kredivo<br> <i
-									class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									class="fa fa-mars mr-4 mb-2 font-weight-bold"
 									aria-hidden="true"></i>Tặng đến 3.000.000đ khi thu cũ đổi mới
 									(Chi tiết)<br> <i
-									class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									class="fa fa-mars mr-4 mb-2 font-weight-bold"
 									aria-hidden="true"></i>Tặng 500.000đ khi mua thêm phụ kiện<br>
-									<i class="fa fa-mars mr-2 mb-3 font-weight-bold"
+									<i class="fa fa-mars mr-4 mb-2 font-weight-bold"
 									aria-hidden="true"></i>Mua tai nghe mới nhất giá hấp dẫn<br></td>
+							</tr>
 						</table>
-						<div class="border border-info p-3">
+						<div class="border p-3" style="font-size: 16px; border-color: #efefef">
 							<div class="row">
 								<div class="col-1">
 									<i class="fa fa-shield border-success" aria-hidden="true"></i>
@@ -114,8 +115,8 @@
 						
 						<a href="/cart" th:attr="ng-click=@{|cart.add(${sanpham.maSP})|}"
 							class="btn btn-outline-primary w-100 mt-3"
-							style="text-align: center; border-radius: 5px">
-							Mua ngay
+							style="text-align: center; border-radius: 5px;">
+							MUA NGAY
 						</a>
 
 					</div>
@@ -362,49 +363,46 @@
 		</div>
 	</div>
 	<!-- Title Desgn End -->
-
-	<!-- san pham cung loai start -->
-	<div class="container">
-		<div class="card-group2">
-			
-			<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5 no-gutters">
-				<div class="col" th:each="listSpHang: ${sanpham.mahang.sanpham}">
-					
-					<div class="border product-img">
-					<!-- card image -->	
-						<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">
-							<a th:href="@{|/product/detail/${listSpHang.maSP}|}">	
-								<div class="view product-frame view-cascade overlay text-center">
-									<img class="mt-4 img-org" width="210" height="210"
+ 
+ 	<!-- sản phẩm cùng loại start -->
+		<div class="container p-0" style="background-color: #efefef">
+			<div class="slider-parent2a pb-2 pt-3 rounded">
+			<div class="slider-child" >
+				<div class="slider-accessory">
+					<div class="row no-gutters">
+						<div class="categories__slider owl-carousel">	
+							<div class="card-groups col-lg-3 p-0" th:each="listSpHang: ${sanpham.mahang.sanpham}">
+								<div class="border card-cascade card-ecommerce wider">
+							<!--Card image-->
+							<th:block th:each="listAnh: ${listImg}" th:if="${listSpHang.maSP == listAnh.masp.maSP}">
+								<a th:href="@{|/product/detail/${listSpHang.maSP}|}">
+									<div class="view product-frame view-cascade overlay text-center">
+										<img class="mt-4 img-org" width="210" height="240"
 									th:src="@{|/client/img/product/${listAnh.hinhAnh}|}" alt="error" />
-								</div>
-							</a>
-						</th:block>
-					<!--Card Body-->
-						<div class="card-body card-body-cascade text-left">
-							<!--Card Title-->
-							<h5 class="title text-truncate">[[${listSpHang.tenSP}]]</h5>
-							<div class="price">
-								<span class="price-new"
+									</div>
+								</a>
+							</th:block>
+							<!--Card Body-->
+							<div class="card-body">
+								<h5 class="title-product text-truncate" th:text="${listSpHang.tenSP}"></h5>
+								<div class="price">
+									<span class="price-new"
+										th:text="${#numbers.formatDecimal(listSpHang.donGia - ((listSpHang.donGia)/100)*10, 0, 'COMMA', 0, 'POINT')}"></span></span></span><span style="color: red">đ</span>
+									<span class="price-old"
 										th:text="${#numbers.formatDecimal(listSpHang.donGia, 0, 'COMMA', 0, 'POINT')}"></span>đ
-								<span class="price-old">23.950.000đ</span>
+								</div>
 							</div>
 						</div>
+							</div>
+						</di>
 					</div>
-					
-					
-					<!--  
-							
-					-->
-					
 				</div>
 			</div>
-			
+			</div>	
+		
 		</div>
 	</div>
-	<!-- san pham cung loai end -->
-	
-	
+		<!-- sản phẩm cùng loại end -->
 	
 
 </main>

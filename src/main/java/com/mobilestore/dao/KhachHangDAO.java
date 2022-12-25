@@ -11,6 +11,7 @@ import com.mobilestore.model.KhachHang;
 
 
 public interface KhachHangDAO extends JpaRepository<KhachHang, String>{
+	
 	@Query(value = "SELECT o FROM KhachHang o WHERE o.taiKhoan LIKE ?1 OR o.hoTen LIKE ?1")
 	List <KhachHang> findAllByKeyword( String keywords);
 	

@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.mobilestore.model.CauHinh;
 
 public interface CauHinhDAO extends JpaRepository<CauHinh, Integer>{
+	
 	@Query(value = "SELECT o FROM CauHinh o WHERE o.doPhanGiai LIKE ?1 OR o.heDH LIKE ?1 OR o.chip LIKE ?1")
 	List<CauHinh> findAllByKeyword( String keywords);
 	

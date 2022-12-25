@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.mobilestore.model.NhanVien;
 
 public interface NhanVienDAO extends JpaRepository<NhanVien, String>{
+	
 	@Query(value = "SELECT o FROM NhanVien o WHERE o.taiKhoan LIKE ?1 OR o.hoTen LIKE ?1")
 	List <NhanVien> findAllByKeyword( String keywords);
 

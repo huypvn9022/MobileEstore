@@ -36,17 +36,21 @@ public class VaiTroService {
 	public void delete(String id) {
 		 dao.deleteById(id);
 	}
-	
-//	public Page<VaiTro> findAll(Pageable pageable) {
-//		return dao.findAll(pageable);
-//	}
-//	
-//	public Boolean existsById(Integer maCH) {
-//		return dao.existsById(maCH);
-//	}
-//	
-//	public Page<CauHinh> findAllByKeyword(Pageable pageable, String keyword) {
-//		return dao.findAllByKeyword(pageable,keyword);
-//	}
-//	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

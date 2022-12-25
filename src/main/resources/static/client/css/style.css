@@ -2189,6 +2189,10 @@ transparent;
 	cursor: pointer;	
 }
 
+.slider-child2 .row .col-lg-3:hover .card-body .title{
+	cursor: pointer;	
+}
+
 .container-body{
 	background-color: #efefef;
 	padding-top: 18px;
@@ -2205,7 +2209,22 @@ transparent;
 	background-color: #1d3245;
 }
 
+.container .slider-parent2 {
+	width: 100%;
+	height: auto;
+}
+
 .container .slider-parent .title {
+	text-align: center;
+	padding-top: 15px; 
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+.container .slider-parent2 .title {
 	text-align: center;
 	padding-top: 15px; 
 	color: white;
@@ -2225,6 +2244,25 @@ transparent;
 	padding: 18px 20px;
 }
 
+.container .slider-child .slider-accessory .row {
+	background-color: white;
+	padding: 18px 20px;
+}
+
+.container .slider-child2 {
+	margin: 5px 32px 15px;
+}
+
+.container .slider-child2 .row {
+	background-color: white;
+	padding: 18px 20px;
+}
+
+.container .slider-child2 .slider-accessory .row {
+	background-color: white;
+	padding: 18px 20px;
+}
+
 .slider-parent .view-all-product {
 	text-align: center;
 }
@@ -2236,6 +2274,21 @@ transparent;
 }
 
 .slider-parent .view-all-product .btn:hover{
+	color: white;
+	background-color: #7d9ad2;
+}
+
+.slider-parent2 .view-all-product {
+	text-align: center;
+}
+
+.slider-parent2 .view-all-product .btn {
+	background-color: white;
+	width: 20%;
+	margin-bottom: 15px;
+}
+
+.slider-parent2 .view-all-product .btn:hover{
 	color: white;
 	background-color: #7d9ad2;
 }
@@ -2923,7 +2976,7 @@ tbody tr td .fa-trash-o:hover{
 .product__details__text .product__details__price {
 	font-size: 30px;
 	color: #dd2222;
-	font-weight: 600;
+	font-weight: 500;
 	margin-bottom: 15px;
 	margin-left: 15px;
 }
@@ -3087,7 +3140,7 @@ tbody tr td .fa-trash-o:hover{
 }
 
 .box__item {
-	border: 1px solid #e0e0e0;
+	border: 1px solid #efefef;
 	border-radius: 2px;
 	color: #333;
 	display: inline-block;

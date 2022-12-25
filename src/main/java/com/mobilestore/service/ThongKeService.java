@@ -24,12 +24,16 @@ public class ThongKeService {
 		return ctdhDAO.getTop5(pageable);
 	}
 	
-	public Page<DoanhThuThang> getDoanhThuThang(Pageable pageable){
-		return ctdhDAO.getDoanhThuThang(pageable);
+	public List<Top5SP> getTopSP(){
+		return ctdhDAO.getTopSP();
 	}
 	
-	public Page<DoanhThuNam> getDoanhThuNam(Pageable pageable){
-		return ctdhDAO.getDoanhThuNam(pageable);
+	public List<DoanhThuThang> getDoanhThuThang(){
+		return ctdhDAO.getDoanhThuThang();
+	}
+	
+	public List<DoanhThuNam> getDoanhThuNam(){
+		return ctdhDAO.getDoanhThuNam();
 	}
 	
 	public List<DoanhThuNgay> getDoanhThuNgay(){

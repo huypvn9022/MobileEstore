@@ -40,13 +40,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	BCryptPasswordEncoder pe;
 	
-	// cơ chế mã hóa mật khẩu
 	@Bean
 	public BCryptPasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
-	// cung cấp nguồn dữ liệu đăng nhập
+	// đăng nhập
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(taikhoan -> {
@@ -72,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				String role = nhanvien.getVaiTroNV().getId();
 				session.set("taiKhoanNV", nhanvien.getTaiKhoan());
 
-				return User.withUsername(taikhoanNV).password(passwordnv).roles(role).build();
+				return User.withUsername(taikhoanNV).username(nhanvien.getHoTen()).password(passwordnv).roles(role).build();
 			} catch (NoSuchElementException e) {
 				throw new UsernameNotFoundException(taikhoanNV + " not found !");
 			}
@@ -107,38 +106,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		
 	}
-	
-//	@Bean
-//	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
-//		
-//		httpSecurity.csrf().disable();
-//		httpSecurity.cors().disable();
-//		
-//		httpSecurity.authorizeHttpRequests()
-//					.antMatchers("/user/checkout").authenticated()
-//					.anyRequest().permitAll();
-//		
-//		httpSecurity.exceptionHandling().accessDeniedPage("/security/access/denied");
-//		
-//		httpSecurity.formLogin()
-//					.loginPage("/security/form/login")
-//					.loginProcessingUrl("/form/login")
-//					.defaultSuccessUrl("/form/login/success")
-//					.failureUrl("/form/login/fail");
-//		
-//		httpSecurity.rememberMe().tokenValiditySeconds(1*24*60*60);
-//		
-//		/**		
-//		httpSecurity.logout()
-//					.logoutUrl("/form/logout")
-//					.logoutSuccessUrl("/security/form/logout")
-//					.addLogoutHandler(new SecurityContextLogoutHandler());
-//		**/
-//		
-//		
-//		
-//		return httpSecurity.build();
-//		
-//	}
-	
 }

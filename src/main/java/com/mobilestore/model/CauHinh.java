@@ -62,3 +62,12 @@ public class CauHinh implements Serializable{
 	@OneToMany(mappedBy = "mach")
 	List<SanPham> sanpham;
 }
+
+
+
+
+
+
+
+
+

@@ -39,11 +39,6 @@
 								<i class="fa fa-lock" aria-hidden="true"></i> Đổi mật khẩu
 							</a>
 						</li>
-						<li class="">
-							<a href="/index/quenmk"> 
-								<i class="fa fa-unlock" aria-hidden="true"></i> Quên mật khẩu
-							</a>
-						</li>
 						<li>
 							<a href="/form/logout"> 
 								<i class="fa fa-power-off" aria-hidden="true"></i> Đăng xuất
@@ -76,7 +71,9 @@
 											th:text="${#dates.format(dh.ngayTao, 'dd/MM/yyyy')}"></td>
 										<td data-title="Địa chỉ" th:text="${dh.makh.diaChi}"></td>
 										<td data-title="Tổng tiền">[[${#numbers.formatDecimal(dh.tongTien, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
-										<td data-title="Trạng thái" th:text="${dh.trangThai}"></td>
+										<td data-title="Trạng thái" th:if="${dh.trangThai} == 'Processing' ">Đang xử lý</td>
+										<td data-title="Trạng thái" th:if="${dh.trangThai} == 'Complete' ">Hoàn thành</td>
+										<td data-title="Trạng thái" th:if="${dh.trangThai} == 'Cancel' ">Hủy đơn hàng</td>
 										<td>
 											<a th:href="@{|/index/order/chiTietDonHang/${dh.maDon}|}" class="btn btn-info btn-block btn-sm p-1"> Xem Chi Tiết </a>
 										</td>

@@ -86,12 +86,12 @@ app.controller("mobile-estore-ctrl", function($scope, $http) {
 		ngayTao: new Date(),
 		tongTien: $scope.cart.items
 			.map(item => item.donGia * item.soLuong)
-			.reduce((total, soLuong) => total += soLuong, 0)
-		,
+			.reduce((total, soLuong) => total += soLuong, 0),
+		ghiChu: "Giao hàng cẩn thận",
 		trangThai: "Processing",
 		makh: {
 			taiKhoan:$("#taikhoankh").text()
-		},
+		},		
 		get ctdh(){
 			return $scope.cart.items.map(item => {
 				return {

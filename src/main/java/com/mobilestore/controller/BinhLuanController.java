@@ -42,8 +42,6 @@ public class BinhLuanController {
 			model.addAttribute("message", "Vui lòng nhập nội dung bình luận");
 			return "forward:/product/detail/" + maSP;
 		}else {
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-			LocalDateTime now = LocalDateTime.now(); 
 			Date date = new Date();
 			binhluan.setTaikhoan(khachhang);
 			binhluan.setNoiDung(noiDung);

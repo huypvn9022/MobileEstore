@@ -11,13 +11,11 @@ import com.mobilestore.model.SanPham;
 
 public interface SanPhamDAO extends JpaRepository<SanPham, Integer>{
 	
-
 	@Query(value = "SELECT o FROM SanPham o WHERE o.daXoa = 0 and o.tenSP LIKE ?1")
 	List <SanPham> findAllByKeyword(String keywords);
 	
 	@Query(value = "SELECT o FROM SanPham o WHERE o.daXoa = 0 ")
 	List <SanPham> findAllSPDelete();
-
 	
 	@Query(value = "SELECT o FROM SanPham o WHERE o.daXoa = 0 and o.mahang.maHang like ?1")
 	Page<SanPham> findAllByMaHang(String mahang,Pageable pageable);
@@ -34,22 +32,17 @@ public interface SanPhamDAO extends JpaRepository<SanPham, Integer>{
 	@Query(value = "select o from SanPham o where o.daXoa = 0 and o.mach.rom like ?1")
 	Page <SanPham> findAllByRom(Pageable pageable,String rom);
 
-	
 	@Query(value = "select o from SanPham o where o.daXoa = 0 and o.mach.heDH like ?1")
 	Page <SanPham> findAllByHDH(Pageable pageable,String hedh);
 
 	@Query(value = "SELECT o FROM SanPham o WHERE o.daXoa = 0 and o.maloai.maLoai like ?1")
 	Page<SanPham> findAllByMaLoai2(Pageable pageable,String maloai);
 
-
-
 	@Query(value = "SELECT o FROM SanPham o WHERE o.daXoa = 0 and o.maloai.maLoai like 'DT'")
 	Page<SanPham> findAllByMaLoai(Pageable pageable);
 
-
-
 	@Query(value = "SELECT o FROM SanPham o WHERE  o.daXoa = 0 and o.maloai.maLoai like 'PK'")
-	Page<SanPham> findAllByMaLoai1(Pageable pageable);
+	List<SanPham> findAllByMaLoai1();
 	
 
 }

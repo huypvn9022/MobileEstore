@@ -23,6 +23,7 @@ import com.mobilestore.model.KhachHang;
 import com.mobilestore.model.MailInfo;
 import com.mobilestore.model.VaiTro;
 import com.mobilestore.service.CTDHService;
+import com.mobilestore.service.CookieService;
 import com.mobilestore.service.DonHangService;
 import com.mobilestore.service.KhachHangService;
 import com.mobilestore.service.MailerService;
@@ -49,12 +50,17 @@ public class TaiKhoanController {
 	
 	@Autowired
 	CTDHService chitietdonhangService;
+	
+	@Autowired
+	CookieService cookieService;
 
+	// [GET] đăng ký
 	@GetMapping("/dangky")
 	public String dangky(Model model, @ModelAttribute("dangky") KhachHang kh) {
 		return "form/dangky";
 	}
 
+	// [POST] đăng ký
 	@PostMapping("/dangky")
 	public String dangky_submit(Model model, @Valid @ModelAttribute("dangky") KhachHang kh,
 			BindingResult bingdingResult) {
@@ -69,27 +75,34 @@ public class TaiKhoanController {
 				return "form/dangky";
 			} else {
 				khService.save(kh);
-				return "redirect:/security/form/login";
+				model.addAttribute("message", "Đăng ký thành công !");
+				return "forward:/security/form/login";
 			}
 		}
 	}
 
+	// [GET] Đổi mật khẩu
 	@GetMapping("/doimk")
 	public String doimk(Model model) {
 		return "form/doimatkhau";
 	}
 
+	// [POST] đổi mật khẩu
 	@PostMapping("/doimk")
 	public String doimk_submit(Model model, @RequestParam("taiKhoan") String tk, @RequestParam("matKhauCu") String mkCu,
 			@RequestParam("matKhauMoi") String mkMoi, @RequestParam("matKhauMoi2") String mkMoi2) {
-
+		
+		String taikhoandn = cookieService.getValue("taiKhoanKH", "");
+		
 		if (tk.isBlank() || mkCu.isBlank() || mkMoi.isBlank() || mkMoi2.isBlank()) {
 			model.addAttribute("message", "Vui lòng không để trống dữ liệu");
 			return "form/doimatkhau";
 		} else {
-
 			if (!khService.existsById(tk)) {
-				model.addAttribute("message", "Sai thông tin tài khoản hoặc tài khoản không tồn tại");
+				model.addAttribute("message", "Tài khoản không tồn tại");
+				return "form/doimatkhau";
+			} else if(!taikhoandn.equalsIgnoreCase(tk)){
+				model.addAttribute("message", "Tài khoản không hợp lệ");
 				return "form/doimatkhau";
 			} else {
 				KhachHang kh = khService.findById(tk);
@@ -111,18 +124,16 @@ public class TaiKhoanController {
 		}
 	}
 
+	// [GET] thông tin tài khoản
 	@GetMapping("/thong-tin-tai-khoan")
 	public String thongTinTK(Model model, @ModelAttribute("khachhang") KhachHang kh) {
 		String tk  = session.get("taiKhoanKH");
-		String mk =  session.get("matKhau");
 		KhachHang khachhang = khService.findById(tk);
-		kh.setTaiKhoan(tk);
-		kh.setMatKhau(mk);
-
 		model.addAttribute("khachhang", khachhang);
 		return "form/thongtintaikhoan";
 	}
-
+	
+	// [POST] thông tin tài khoản
 	@PostMapping("/thong-tin-tai-khoan")
 	public String thongTinTK_submit(Model model,@Valid @ModelAttribute("khachhang") KhachHang kh, BindingResult bindingResult) {
 		String tk  = session.get("taiKhoanKH");
@@ -133,7 +144,7 @@ public class TaiKhoanController {
 		kh.setMatKhau(khachhang.getMatKhau());
 		kh.setVaiTroKH(vt);
 		
-		if(!bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors()) {
 			model.addAttribute("message", "Cật nhập thất bại");
 			model.addAttribute("khachhang", khachhang);
 			return "form/thongtintaikhoan";
@@ -145,31 +156,34 @@ public class TaiKhoanController {
 		
 	}
 
+	// [GET] thông tin tài khoản
 	@GetMapping("/quenmk")
 	public String quenMK_submit() {
 		return "form/quenmatkhau";
 	}
 
+	// [POST] thông tin tài khoản
 	@PostMapping("/quenmk")
 	public String quenMK(@RequestParam String username, @RequestParam String email, Model model) {
 
+		String taikhoandn = cookieService.getValue("taiKhoanKH", "");
+		
 		if (username.isBlank() || email.isBlank()) {
 			model.addAttribute("message", "Vui lòng không để trống dữ liệu!");
 			return "form/quenmatkhau";
 		} else {
 			if (!khService.existsById(username)) {
-				model.addAttribute("message", "Tài khoản không tồn tại");
+				model.addAttribute("message", "Tài khoản không tồn tại !");
+			} else if(!taikhoandn.equalsIgnoreCase(username)) {
+				model.addAttribute("message", "Tài khoản không hợp lệ !");
 			} else {
 				KhachHang acc = khService.findById(username);
-				String newPass = ((long) Math.floor(Math.random() * (999999999 - 100000000 + 1) + 100000000)) + "";
-				acc.setMatKhau(newPass);
-				khService.save(acc);
 				try {
 					MailInfo mail = new MailInfo();
 					mail.setFrom("tientai9a9@gmail.com");
 					mail.setTo(email);
 					mail.setSubject("Mobile Estore - Lấy lại mật khẩu");
-					mail.setBody("Xin chào " + acc.getHoTen() + ", mật khẩu của bạn là: " + newPass + ""
+					mail.setBody("Xin chào " + acc.getHoTen() + ", mật khẩu của bạn là: " + acc.getMatKhau() + ""
 							+ ". Vui lòng không được gửi mật khẩu này cho bất cứ để tránh mất thông tin.");
 					mailService.send(mail);
 					model.addAttribute("message", "Gửi thành công!");
@@ -184,6 +198,7 @@ public class TaiKhoanController {
 
 	}
 	
+	// Quản lý đơn hàng
 	@RequestMapping("/order-management")
 	public String orderManagement(Model model) {
 		String makh = session.get("taiKhoanKH");
@@ -192,6 +207,7 @@ public class TaiKhoanController {
 		return "layout/quanlydonhang";
 	}
 	
+	// Quản lý chi tiết đơn hàng
 	@RequestMapping("/order/chiTietDonHang/{orderId}")
 	public String orderDetail(Model model, @PathVariable Integer orderId) {
 		List<ChiTietDonHang> ctdh = chitietdonhangService.getAllOrderDetail(orderId);
@@ -200,12 +216,12 @@ public class TaiKhoanController {
  		return "layout/chitietdonhang";
 	}
 	
+	// Hủy đơn hàng
 	@RequestMapping("/order/cancel/{orderId}")
 	public String orderCancel(Model model, @PathVariable Integer orderId) {
 		DonHang dh = donhangService.findById(orderId);
 		dh.setTrangThai("Cancel");
 		donhangService.update(dh);
-		
  		return "redirect:/index/order-management";
 	}
 }

@@ -38,7 +38,7 @@ public class BinhLuan implements Serializable {
 	private String noiDung;
 	
 	@Column(name = "ngaybl")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd-M-yyyy hh:mm:ss")
 	private Date ngayBL;
 	

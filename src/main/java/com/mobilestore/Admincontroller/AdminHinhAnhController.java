@@ -107,7 +107,7 @@ public class AdminHinhAnhController {
 		}
 	}
 
-//
+
 	@RequestMapping("/hinhanh/update/{mahinh}")
 	public String imageUpdate(Model model, @ModelAttribute("hinhanh") HinhAnh hinhAnh,
 			@RequestParam("p") Optional<Integer> page, @RequestParam("file1") MultipartFile file1,
@@ -146,7 +146,7 @@ public class AdminHinhAnhController {
 		}
 	}
 
-//
+
 	@RequestMapping("/hinhanh/delete/{mahinh}")
 	public String imageDelete(Model model, @ModelAttribute("hinhanh") HinhAnh hinhAnh,
 			@RequestParam("p") Optional<Integer> page, @PathVariable("mahinh") Integer maHinh) {
@@ -172,13 +172,13 @@ public class AdminHinhAnhController {
 		}
 	}
 
-//
+
 	@RequestMapping("/hinhanh/reset")
 	public String imageNew(Model model) {
 		return "redirect:/admin/hinhanh";
 	}
 
-//
+
 	@RequestMapping("/hinhanh/search")
 	public String Search(Model model, @RequestParam("p") Optional<Integer> page,
 			@ModelAttribute("hinhanh") HinhAnh product, @RequestParam("Keyword") Optional<String> kw) {

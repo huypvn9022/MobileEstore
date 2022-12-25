@@ -186,11 +186,8 @@ public class SanPhamController {
 
 			model.addAttribute("hangsx", hangsxService.findAll());
 			model.addAttribute("images", images);
-
 			model.addAttribute("listsp", products);
-
-model.addAttribute("listsp", products);
-
+			model.addAttribute("listsp", products);
 			return "layout/shop-grid";
 		} else if (sr.equals("ASC")) {
 			Pageable pageable = PageRequest.of(p.orElse(0), 15, sort.ascending());

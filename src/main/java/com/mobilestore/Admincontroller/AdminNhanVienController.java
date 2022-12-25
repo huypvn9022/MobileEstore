@@ -41,10 +41,14 @@ public class AdminNhanVienController {
 		Pageable pageable = PageRequest.of(p.orElse(0), 5);
 		Page<NhanVien> pages = nvService.findAllByDaXoaFalse(pageable);
 		List<VaiTro> listVaiTro = vtService.findAll();
-		
-		model.addAttribute("listVaiTro", listVaiTro);
-		model.addAttribute("pages", pages);
-		return "admin/nhanvien";
+		NhanVien nv = nvService.findById(sessionService.get("taiKhoanNV"));
+		if(nv.getVaiTroNV().getId().equals("NV")) {
+			return "admin/phanquyen";
+		} else {
+			model.addAttribute("listVaiTro", listVaiTro);
+			model.addAttribute("pages", pages);
+			return "admin/nhanvien";
+		}
 	}
 
 	@RequestMapping("/nhanvien/new")
@@ -72,7 +76,7 @@ public class AdminNhanVienController {
 		}
 	}
 
-//	
+	
 	@RequestMapping("/nhanvien/update")
 	public String nhanvien_update(Model model, @Valid @ModelAttribute("nhanVien") NhanVien nv,
 			BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
@@ -100,7 +104,7 @@ public class AdminNhanVienController {
 		}
 	}
 
-//	
+	
 	@RequestMapping("/nhanvien/search")
 	public String nhanvien_search(Model model, @RequestParam("keyword") Optional<String> kw,
 			@RequestParam("p") Optional<Integer> p, @ModelAttribute("nhanVien") NhanVien nhanVien) {
@@ -121,7 +125,7 @@ public class AdminNhanVienController {
 
 	}
 
-//	
+	
 	@RequestMapping("/nhanvien/delete/{taiKhoan}")
 	public String nhanvien_delete(Model model, @ModelAttribute("nhanVien") NhanVien nv,
 			@PathVariable("taiKhoan") String tk, @RequestParam("p") Optional<Integer> p) {
@@ -143,7 +147,7 @@ public class AdminNhanVienController {
 		}
 	}
 
-//	
+	
 	@RequestMapping("/nhanvien/edit/{taiKhoan}")
 	public String nhanvien_edit(Model model, @PathVariable("taiKhoan") String taiKhoan,
 			@RequestParam("p") Optional<Integer> p) {

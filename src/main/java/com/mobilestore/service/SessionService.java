@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class SessionService {
 	@Autowired
 	HttpSession session;
+	
 	/**
 	 * Đọc giá trị của attribute trong session
 	 * @param name tên attribute
@@ -18,6 +19,7 @@ public class SessionService {
 	public <T> T get(String name) {
 		return (T) session.getAttribute(name);
 	}
+	
 	/**
 	 * Đọc giá trị của attribute trong session
 	 * @param name tên attribute
@@ -28,6 +30,7 @@ public class SessionService {
 		T value = get(name);
 		return value != null ? value : defaultValue;
 	}
+	
 	/**
 	 * Thay đổi hoặc tạo mới attribute trong session
 	 * @param name tên attribute
@@ -36,6 +39,7 @@ public class SessionService {
 	public void set(String name, Object value) {
 		session.setAttribute(name, value);
 	}
+	
 	/**
 	 * Xóa attribute trong session
 	 * @param name tên attribute cần xóa

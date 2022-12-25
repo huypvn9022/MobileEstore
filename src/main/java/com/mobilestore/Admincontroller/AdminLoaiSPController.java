@@ -55,7 +55,7 @@ public class AdminLoaiSPController {
 		}
 
 	}
-//	
+	
 	@RequestMapping("/loaiSP/update")
 	public String loaiSP_update(Model model,@Valid @ModelAttribute("loaisp") LoaiSanPham loaisp,
 			BindingResult bindingResult, @RequestParam("page") Optional<Integer> page) {
@@ -77,7 +77,7 @@ public class AdminLoaiSPController {
 			return "redirect:/admin/loaiSP/edit/" + loaisp.getMaLoai();
 		}
 	}
-//
+
 	@RequestMapping("/loaiSP/delete/{maloai}")
 	public String loaiSP_delete(Model model, @ModelAttribute("loaisp") LoaiSanPham loaisp,
 			@PathVariable("maloai") String maLoai, @RequestParam("p") Optional<Integer> p) {
@@ -96,12 +96,12 @@ public class AdminLoaiSPController {
 			return "redirect:/admin/loaiSP";
 		}
 	}
-//	
+
 	@RequestMapping("/loaiSP/reset")
 	public String loaiSP_reset(Model model) {	
 		return "redirect:/admin/loaiSP";
 	}
-//	
+
 	@RequestMapping("/loaiSP/edit/{maloai}")
 	public String loaiSP_edit(Model model, @PathVariable("maloai") String maloai,
 			@RequestParam("p") Optional<Integer> p) {

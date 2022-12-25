@@ -9,6 +9,7 @@ import com.mobilestore.model.LoaiSanPham;
 import com.mobilestore.model.NhanVien;
 
 public interface LoaiSanPhamDAO extends JpaRepository<LoaiSanPham, String>{
+	
 	@Query(value = "SELECT o FROM LoaiSanPham o WHERE o.maLoai LIKE ?1 OR o.tenLoai LIKE ?1")
 	Page <LoaiSanPham> findAllByKeyword(Pageable pageable, String keywords);
 	

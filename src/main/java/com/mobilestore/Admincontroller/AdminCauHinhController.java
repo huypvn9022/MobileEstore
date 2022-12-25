@@ -47,12 +47,12 @@ public class AdminCauHinhController {
 		model.addAttribute("pages", pages);
 		return "admin/cauhinh";
 	}
-//	
+	
 	@RequestMapping("/cauhinh/new")
 	public String cauhinh_reset() {
 		return "redirect:/admin/cauhinh";
 	}
-//	
+
 	@RequestMapping("/cauhinh/create")
 	public String cauhinh_addNew(Model model,@Valid @ModelAttribute("cauhinh") CauHinh ch,
 			BindingResult bindingResult,@RequestParam("p") Optional<Integer> p) {
@@ -69,7 +69,7 @@ public class AdminCauHinhController {
 			return "redirect:/admin/cauhinh";
 		}
 	}
-//	
+
 	@RequestMapping("/cauhinh/update")
 	public String cauhinh_update(Model model, @Valid @ModelAttribute("cauhinh") CauHinh ch,
 			 BindingResult bindingResult, @RequestParam("p") Optional<Integer> p) {
@@ -97,7 +97,7 @@ public class AdminCauHinhController {
 
 		}
 	}
-//	
+	
 	@RequestMapping("/cauhinh/search")
 	public String cauhinh_search(Model model, @RequestParam("keyword") Optional<String> kw,
 			@RequestParam("p") Optional<Integer> p, @ModelAttribute("cauhinh") CauHinh ch) {
@@ -116,7 +116,7 @@ public class AdminCauHinhController {
 		}
 
 	}
-//	
+
 	@RequestMapping("/cauhinh/delete/{mach}")
 	public String cauhinh_delete(Model model, @ModelAttribute("cauhinh") CauHinh ch,
 			@PathVariable("mach") Integer maCH, @RequestParam("p") Optional<Integer> p) {
@@ -137,7 +137,7 @@ public class AdminCauHinhController {
 			return "redirect:/admin/cauhinh";
 		}
 	}
-//	
+
 	@RequestMapping("/cauhinh/edit/{mach}")
 	public String cauhinh_edit(Model model, @PathVariable("mach") Integer maCH,
 			@RequestParam("p") Optional<Integer> p ) {

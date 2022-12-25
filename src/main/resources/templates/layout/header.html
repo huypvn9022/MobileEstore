@@ -8,9 +8,9 @@
 		</div>
 		<div class="humberger__menu__cart">
 			<ul>
-				<li><a href="#"><i class="fa fa-heart"></i> <b>LiÃªn há»‡</b></a> &emsp;</li>
-				<li><a href="/cart"><i class="fa fa-shopping-bag"></i><b>Giá»� hÃ ng</b> </a></li>
-				<li><a href="#"><i class="fa fa-user"></i> <b>TÃ i khoáº£n</b></a></li>
+				<li><a href="#"><i class="fa fa-heart"></i> <b>Liên hệ</b></a> &emsp;</li>
+				<li><a href="/cart"><i class="fa fa-shopping-bag"></i><b>Giỏ hàng</b> </a></li>
+				<li><a href="#"><i class="fa fa-user"></i> <b>Tài khoản</b></a></li>
 			</ul>
 
 
@@ -82,7 +82,9 @@
 							</th:block>
 							<th:block th:if="${#request.remoteUser}">
 								<li th:if="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
-									<a th:href="@{/admin/thongke}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2" style="font-size: 23px"></i>Admin</a>
+									<a th:href="@{/admin/order/Processing}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2 ml-2" style="font-size: 23px"></i>Admin</a>
+									|
+									<a th:href="@{/form/logout}" style="color: white"><i class="fa fa-sign-out text-light mr-2 ml-2" aria-hidden="true"></i>Đăng xuất</a>
 								</li>
 								<li th:unless="${#request.isUserInRole('NV') or #request.isUserInRole('QL')}">
 									<a th:href="@{/index/thong-tin-tai-khoan}" style="color: white"><i class="fa fa-user-circle-o text-light mr-2" style="font-size: 23px"></i>Tài khoản</a>

@@ -40,7 +40,7 @@
 			<div class="container-fluid py-1 px-3">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-						<li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+						<li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Admin</a>
 						</li>
 						<li class="breadcrumb-item text-sm text-dark active" aria-current="page">Sản Phẩm - Hình Ảnh</li>
 					</ol>
@@ -50,7 +50,7 @@
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
 						<form action="/admin/hinhanh/search"  method="post">
 							<div class="input-group input-group-outline">
-								<label class="form-label">Type here...</label>
+								<label class="form-label">Tìm kiếm...</label>
 								<input name="Keyword" type="text" class="form-control" style="height: 40px; " />
 								<button class="btn bg-gradient-info  ms-2"> Tìm kiếm</button>
 							</div>
@@ -60,7 +60,7 @@
 						<li class="nav-item d-flex align-items-center">
 							<a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
 								<i class="fa fa-user me-sm-1"></i>
-								<span class="d-sm-inline d-none " >Welcome [[${#request.remoteUser}]]</span>
+								<span class="d-sm-inline d-none " >[[${#request.remoteUser}]]</span>
 							</a>
 						</li>
 					</ul>
@@ -170,23 +170,6 @@
 						</div>
 					</div>
 				</div>
-
-		<footer class="footer py-4  ">
-			<div class="container-fluid">
-				<div class="row align-items-center justify-content-lg-between">
-					<div class="col-lg-6 mb-lg-0 mb-4">
-						<div class="copyright text-center text-sm text-muted text-lg-start">
-							@
-							<script>
-								document.write(new Date().getFullYear())
-							</script>
-							, made with <i class="fa fa-heart"></i> by <a href="https://www.creative-tim.com"
-								class="font-weight-bold" target="_blank">Ken</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
 	</main>
 
 	<div class="fixed-plugin">

@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 
 
-<title>Sản Phẩm - Cấu Hình</title>
+<title>Loại Sản Phẩm</title>
 
 <!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -45,16 +45,16 @@
 						<li class="breadcrumb-item text-sm"><a
 							class="opacity-5 text-dark" href="javascript:;">Admin</a></li>
 						<li class="breadcrumb-item text-sm text-dark active"
-							aria-current="page">Sản Phẩm - Cấu Hình</li>
+							aria-current="page">Bình luận</li>
 					</ol>
-					<h6 class="font-weight-bolder mb-0">Sản Phẩm - Cấu Hình</h6>
+					<h6 class="font-weight-bolder mb-0">Bình luận</h6>
 				</nav>
 				<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 					<div class="ms-md-auto pe-md-3 d-flex align-items-center mt-3">
-						<form action="/admin/cauhinh/search" method="post">
+						<form action="/admin/sanpham/page" modelAttribute="sp">
 							<div class="input-group input-group-outline">	
 								<label class="form-label">Tìm kiếm...</label> 
-								<input name="keyword" th:value="${kwords}" type="text" class="form-control" style="height: 40px; "/>
+								<input type="text" class="form-control" style="height: 40px; "/>
 									<button class="btn bg-gradient-info  ms-2"> Tìm kiếm</button>
 							</div>
 						</form>
@@ -70,184 +70,58 @@
 				</div>
 			</div>
 		</nav>
-		<!-- End Navbar -->			
-			
-				<div class="container-fluid py-4">
-					<div class="row">
-						<div class="col-12">
-							<div class="card my-4">
-								<div
-									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-									<div
-										class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">Danh Sách Cấu Hình</h6>
-									</div>
-								</div>
-								<div class="card-body px-0 pb-2">
-									<div class="table-responsive p-0" style="height: 300px; overflow: scroll;">
-										<table class="table align-items-center mb-0">
-											<thead>	
-												<tr>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Mã Cấu Hình</th>										
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Độ Phân Giải</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Độ Rộng</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Hệ Điều Hành</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Chip</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Pin</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ram</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rom</th>
-													<th class="text-secondary opacity-7"></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr th:each="page : ${pages}">
-													<td class="align-middle text-center text-sm">
-														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.maCH}]]</h6>
-													</td>												
-													<td>
-														<h6 class="text-center text-xm font-weight-bold mb-0 text-secondary">[[${page.doPhanGiai}]]</h6>												
-													</td>
-													<td class="align-middle text-center text-sm">
-														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.doRong}]]</h6>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xm font-weight-bold">[[${page.heDH}]]</span>
-													</td>
-													<td class="align-middle text-center text-sm">
-														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.chip}]]</h6>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xm font-weight-bold">[[${page.pin}]]</span>
-													</td>
-													<td class="align-middle text-center text-sm">
-														<h6 class="text-xm font-weight-bold mb-0 text-secondary">[[${page.ram}]]</h6>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xm font-weight-bold">[[${page.rom}]]</span>
-													</td>
-													<td class="align-middle">
-														<a th:href="@{|/admin/cauhinh/edit/${page.maCH}|}" class="text-secondary font-weight-bold text-xs mx-1">Edit</a>
-														<a th:href="@{|/admin/cauhinh/delete/${page.maCH}|}" class="text-secondary font-weight-bold text-xs">Del</a>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div class="text-center mt-3"  th:unless="${deletePage == 1}">
-										<a th:href="@{|?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
-										<a th:href="@{|?p=${pages.getNumber() > 0 ? pages.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
-										<a th:href="@{|?p=${pages.getNumber() < pages.getTotalPages() -1 ? pages.getNumber() + 1 : pages.getTotalPages() -1}|}"
-											class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
-										<a th:href="@{|?p=${pages.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
-									</div>										
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							<div class="card my-4">
-								<div
-									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-									<div
-										class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">Thông Tin Chi Tiết</h6>
-									</div>
-								</div>
-								<div class="card-body px-0 pb-2" >
-									<h6 class="text-center text-danger mb-3" th:text="${message}"></h6>						
-									<form action="/admin/sanpham" th:object="${cauhinh}" method="post" class="text-start" style="padding: 0 200px;">
-										<div class=" input-group input-group-outline mb-3">
-											<label class="form-label">Mã Cấu Hình</label> 
-											<input th:field="*{maCH}" type="text" class="form-control" readonly/>
-										</div>																		
-										<div class=" input-group input-group-outline mb-3">
-											<label class="form-label">Pin</label> 
-											<input th:field="*{pin}" type="text" class="form-control"/>
-										</div>
-										<p th:if="${#fields.hasErrors('pin')}" th:errors="*{pin}" class="text-danger mb-0"></p>										
-										<div class="row mb-3">
-											<div class="col-6">
-												<div class="input-group input-group-outline ">
-													<label class="mt-2">Ram</label> 
-													<br>
-													<select th:field="*{ram}" class="form-control ms-2">
-														<option value="4 GB">4 GB</option>
-														<option value="6 GB">6 GB</option>
-														<option value="8 GB">8 GB</option>
-														<option value="12 GB">12 GB</option>
-														<option value="16 GB">16 GB</option>
-														<option value="32 GB">32 GB</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-6">
-												<div class="input-group input-group-outline ">
-													<label class="mt-2">Rom</label> 
-													<br>
-													<select th:field="*{rom}" class="form-control ms-2">
-														<option value="32 GB">32 GB</option>
-														<option value="64 GB">64 GB</option>
-														<option value="128 GB">128 GB</option>
-														<option value="256 GB">256 GB</option>
-														<option value="512 GB">512 GB</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-6">
-												<div class=" input-group input-group-outline ">
-													<label class="form-label">Hệ Điều Hành</label> 
-													<input th:field="*{heDH}" type="text" class="form-control"/>
-												</div>
-												<p th:if="${#fields.hasErrors('heDH')}" th:errors="*{heDH}" class="text-danger mb-0"></p>										
-											</div>
-											<div class="col-6">
-												<div class=" input-group input-group-outline ">
-													<label class="form-label">Chip</label> 
-													<input th:field="*{chip}" type="text" class="form-control"/>
-												</div>
-												<p th:if="${#fields.hasErrors('chip')}" th:errors="*{chip}" class="text-danger mb-0"></p>																				
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-6">
-												<div class=" input-group input-group-outline ">
-													<label class="form-label">Độ Phân Giải</label> 
-													<input th:field="*{doPhanGiai}" type="text" class="form-control"/>
-												</div>
-												<p th:if="${#fields.hasErrors('doPhanGiai')}" th:errors="*{doPhanGiai}" class="text-danger mb-0"></p>																						
-											</div>
-											<div class="col-6">
-												<div class=" input-group input-group-outline ">
-													<label class="form-label">Độ Rộng</label> 
-													<input th:field="*{doRong}" type="text" class="form-control"/>
-												</div>
-												<p th:if="${#fields.hasErrors('doRong')}" th:errors="*{doRong}" class="text-danger mb-0"></p>										
-											</div>
-										</div>
-										<div class="text-center">
-											<button formaction="/admin/cauhinh/create" class="btn bg-gradient-primary my-4 mb-2">Thêm</button>
-											<button formaction="/admin/cauhinh/update" class="btn bg-gradient-secondary my-4 mb-2">Sửa</button>
-											<button th:formaction="@{|/admin/cauhinh/delete/${cauhinh.maCH}|}" class="btn bg-gradient-info my-4 mb-2">Xóa</button>
-											<button formaction="/admin/cauhinh/new" class="btn bg-gradient-danger my-4 mb-2">Mới</button>
-										</div>
+		<!-- End Navbar -->
 		
-									</form>
+		<div class="container-fluid py-4">
+					<div class="row">
+						<div class="col-12">
+							<div class="card my-4">
+								<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
+										<h6 class="text-white text-capitalize ps-3">Danh Sách Bình Luận Sản Phẩm</h6>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive p-0">
+								<table class="table table-hover "
+									style="-ms-word-break: break-all; word-break: break-all;">
+									<thead>
+										<tr>
+											<th>Tên sản phẩm</th>
+											<th>Tên tài khoản</th>
+											<th class="w-25">Nội dung</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="binhluan : ${listBinhLuan}">
+											<td>[[${binhluan.masp.tenSP}]]</td>
+											<td>[[${binhluan.taikhoan.hoTen}]]</td>
+											<div style="width: 10px !important;">
+												<td>[[${binhluan.noiDung}]]</td>
+											</div>
+											<td>
+												<a th:href="@{|/admin/binhluan/delete/${binhluan.maBL}|}">
+													<i class="fas fa-trash-alt"></i>
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="text-center mt-3">
+											<a th:href="@{|/admin/binhluan?p=0|}" class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-backward-step"></i></a>
+											<a th:href="@{|/admin/binhluan?p=${listBinhLuan.getNumber() > 0 ? listBinhLuan.getNumber() - 1 : 0}|}" class=" mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-backward"></i> </a>
+											<a th:href="@{|/admin/binhluan?p=${listBinhLuan.getNumber() < listBinhLuan.getTotalPages() -1 ? listBinhLuan.getNumber() + 1 : listBinhLuan.getTotalPages() -1}|}"
+												class="mx-2" style="text-transform: uppercase; font-weight: bold;"><i class="fa fa-solid fa-forward"></i> </a>
+											<a th:href="@{|/admin/binhluan?p=${listBinhLuan.getTotalPages() - 1}|}" class="ms-1" style="text-transform: uppercase; font-weight: bold;"><i class="fa-sharp fa-solid fa-forward-step"></i> </a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 	</main>
 
 	<div class="fixed-plugin">
