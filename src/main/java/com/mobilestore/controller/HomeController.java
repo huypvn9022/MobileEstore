@@ -87,29 +87,27 @@ public class HomeController {
 	}
 	
 	
-	// product detail
+	// chi tiết sản phẩm
 	@RequestMapping("/product/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id) {
-		SanPham sanpham = spService.findById(id);
-		double priceOld = sanpham.getDonGia() - ((sanpham.getDonGia() / 100) * 5);
-		model.addAttribute("priceOld", priceOld);
 		
-		// hiện thị ảnh chính theo id
+		SanPham sanpham = spService.findById(id);
+		
+		// ảnh chính
 		List<HinhAnh> anh = hinhanhService.findByMaSP(id);
 		Set<Integer> imgSet = new HashSet<Integer>();
 		anh = anh.stream().filter( img -> imgSet.add(img.getMasp().getMaSP())).collect(Collectors.toList());
 		
-		// Hiện thị ảnh chính giỏ hàng
-		List<HinhAnh> anhCart = hinhanhService.findAll();
-		
-		
-		// lưu các sản phẩm thành một list
+		// ảnh phụ
 		List<HinhAnh> listAnh = hinhanhService.findAll();
 		
-		// hiện thị cấu hình sản phẩm
+		// cấu hình sản phẩm
 		CauHinh cauHinh = cauhinhService.findById(id);
 		
-		// hiện thị các ảnh sản phẩm cùng hãng
+		// ảnh giỏ hàng
+		List<HinhAnh> anhCart = hinhanhService.findAll();
+			
+		// ảnh sản phẩm cùng hãng
 		List<HinhAnh> listImg = hinhanhService.findAll();
 		Set<Integer> setImg = new HashSet<Integer>();
 		listImg = listImg.stream().filter(img -> setImg.add(img.getMasp().getMaSP())).collect(Collectors.toList());
